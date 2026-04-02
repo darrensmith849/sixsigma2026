@@ -1,6 +1,6 @@
+import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
 import Button from "@/components/Button";
-import SectionHeading from "@/components/SectionHeading";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import CTASection from "@/components/CTASection";
 
@@ -46,25 +46,32 @@ export default function Home() {
         </p>
       </HeroSection>
 
-      {/* Kickstart Section */}
-      <section
-        className="section bg-light-grey relative"
-        style={{
-          backgroundImage: "url(/images/kickstart-businessman.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-light-grey/85" />
-        <div className="container text-center relative z-10">
-          <SectionHeading
-            subtitle="Explore our comprehensive range of courses, from White Belt to Black Belt. Our curriculum includes Lean Management and Root Cause Analysis as well. Embark on a path to success with our internationally recognized certifications."
-          >
-            Kickstart your Six Sigma journey
-          </SectionHeading>
-          <Button href="/courses" variant="filled" size="large">
-            View our courses
-          </Button>
+      {/* Kickstart Section — 2-column: image left, green text right */}
+      <section className="flex flex-col lg:flex-row">
+        <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px]">
+          <Image
+            src="/images/kickstart-businessman.jpg"
+            alt="Six Sigma professional"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </div>
+        <div className="w-full lg:w-1/2 bg-green flex items-center">
+          <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px]">
+            <h2 className="text-white font-semibold mb-4">
+              Kickstart your Six Sigma journey
+            </h2>
+            <p className="text-white/90 text-[18px] leading-relaxed mb-8">
+              Explore our comprehensive range of courses, from White Belt to
+              Black Belt. Our curriculum includes Lean Management and Root Cause
+              Analysis as well. Embark on a path to success with our
+              internationally recognized certifications.
+            </p>
+            <Button href="/courses" variant="white" size="large">
+              View our courses
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -82,15 +89,34 @@ export default function Home() {
         iconAlt="Process improvement"
       />
 
-      {/* Events & Workshops CTA */}
-      <CTASection
-        heading="Stay ahead with our events and workshops"
-        description="Join our upcoming webinars, workshops, and training sessions to stay up-to-date on the latest Six Sigma methodologies and industry best practices. Learn from experienced professionals and enhance your skills."
-        buttonText="Enquire for dates"
-        buttonHref="/contact"
-        variant="light"
-        backgroundSrc="/images/events-certification.jpg"
-      />
+      {/* Events & Workshops — 2-column: text left, image right */}
+      <section className="flex flex-col lg:flex-row">
+        <div className="w-full lg:w-1/2 bg-white flex items-center">
+          <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px] lg:ml-auto">
+            <h2 className="text-heading-text font-semibold mb-4">
+              Stay ahead with our events and workshops
+            </h2>
+            <p className="text-body-text text-[18px] leading-relaxed mb-8">
+              Join our upcoming webinars, workshops, and training sessions to
+              stay up-to-date on the latest Six Sigma methodologies and industry
+              best practices. Learn from experienced professionals and enhance
+              your skills.
+            </p>
+            <Button href="/contact" variant="filled" size="large">
+              Enquire for dates
+            </Button>
+          </div>
+        </div>
+        <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px]">
+          <Image
+            src="/images/events-certification.jpg"
+            alt="Six Sigma Green Belt certification ceremony"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </div>
+      </section>
     </>
   );
 }

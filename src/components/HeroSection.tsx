@@ -33,7 +33,7 @@ export default function HeroSection({
           {/* Image Side */}
           {imageSrc && (
             <div className="flex-1 w-full lg:max-w-[45%]">
-              <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-sm">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
                   src={imageSrc}
                   alt={imageAlt}
