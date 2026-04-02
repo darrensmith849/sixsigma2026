@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+:root {
+  --green: #14B24A;
+  --green-hover: #0f9a3e;
+  --green-dark: #0d8535;
+  --black: #111111;
+  --white: #FFFFFF;
+  --light-grey: #F3F3F3;
+  --border-grey: #E6E6E6;
+  --body-text: #5A5A5A;
+  --heading-text: #1E2132;
+  --footer-bg: #FAFBFD;
+
+  --container-max: 1200px;
+  --container-wide: 1400px;
+  --section-padding: 80px;
+  --section-padding-mobile: 48px;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+@theme inline {
+  --color-green: var(--green);
+  --color-green-hover: var(--green-hover);
+  --color-green-dark: var(--green-dark);
+  --color-sssa-black: var(--black);
+  --color-light-grey: var(--light-grey);
+  --color-border-grey: var(--border-grey);
+  --color-body-text: var(--body-text);
+  --color-heading-text: var(--heading-text);
+  --color-footer-bg: var(--footer-bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--body-text);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  color: var(--heading-text);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  color: var(--body-text);
+}
+
+h2 {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 600;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--green-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container utility */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section spacing */
+.section {
+  padding: var(--section-padding) 0;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--section-padding-mobile) 0;
+  }
+}
