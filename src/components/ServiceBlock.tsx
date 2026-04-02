@@ -7,13 +7,15 @@ interface ServiceBlockProps {
   buttonText: string;
   buttonHref: string;
   /** Layout variant */
-  layout: "text-left" | "text-right" | "centered";
+  layout: "text-left" | "text-right" | "centered" | "fullwidth-bg";
   /** Image for 2-column layouts (cover image shown beside text) */
   imageSrc?: string;
   imageAlt?: string;
   /** Icon for centered layout (small green icon above heading) */
   iconSrc?: string;
   iconAlt?: string;
+  /** Full-width background image for centered or fullwidth-bg layouts */
+  backgroundSrc?: string;
 }
 
 export default function ServiceBlock({
@@ -26,12 +28,59 @@ export default function ServiceBlock({
   imageAlt = "",
   iconSrc,
   iconAlt = "",
+  backgroundSrc,
 }: ServiceBlockProps) {
-  /* ─── Centered / icon layout ─── */
-  if (layout === "centered") {
+  /* ─── Full-width background with text overlay on left ─── */
+  if (layout === "fullwidth-bg") {
     return (
-      <section className="section bg-white">
-        <div className="container text-center">
+      <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center overflow-hidden">
+        {backgroundSrc && (
+          <div className="absolute inset-0">
+            <Image
+              src={backgroundSrc}
+              alt={imageAlt}
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        )}
+        <div className="relative z-10 container-wide py-12 lg:py-16">
+          <div className="lg:max-w-[40%]">
+            <h2 className="font-semibold text-white mb-4">{heading}</h2>
+            <p className="text-[18px] text-white/90 leading-relaxed mb-8">
+              {description}
+            </p>
+            <Button href={buttonHref} variant="filled" size="large">
+              {buttonText}
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  /* ─── Centered / icon layout (with optional dark background image) ─── */
+  if (layout === "centered") {
+    const hasBg = !!backgroundSrc;
+
+    return (
+      <section className={`section relative overflow-hidden ${hasBg ? "" : "bg-white"}`}>
+        {hasBg && (
+          <>
+            <div className="absolute inset-0">
+              <Image
+                src={backgroundSrc}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/70" />
+          </>
+        )}
+        <div className="container text-center relative z-10">
           {iconSrc && (
             <div className="mb-6 flex justify-center">
               <Image
@@ -43,8 +92,10 @@ export default function ServiceBlock({
               />
             </div>
           )}
-          <h2 className="font-semibold text-heading-text mb-4">{heading}</h2>
-          <p className="text-[18px] text-body-text max-w-2xl mx-auto leading-relaxed mb-8">
+          <h2 className={`font-semibold mb-4 ${hasBg ? "text-white" : "text-heading-text"}`}>
+            {heading}
+          </h2>
+          <p className={`text-[18px] max-w-2xl mx-auto leading-relaxed mb-8 ${hasBg ? "text-white/90" : "text-body-text"}`}>
             {description}
           </p>
           <Button href={buttonHref} variant="filled" size="large">
@@ -85,7 +136,6 @@ export default function ServiceBlock({
       </div>
     </div>
   ) : (
-    /* Decorative green block when no image is provided */
     <div className="flex-1 w-full">
       <div className="aspect-[4/3] rounded-lg bg-green/10" />
     </div>

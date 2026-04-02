@@ -70,7 +70,7 @@ export default function ServicesPage() {
         imageAlt="Six Sigma consultancy session"
       />
 
-      {/* ───── 2. Process Improvement (centered with icon) ───── */}
+      {/* ───── 2. Process Improvement (centered with dark bg image) ───── */}
       <ServiceBlock
         heading="Process Improvement"
         description="Unlock your organization's potential with our process improvement services. We apply Six Sigma methodologies to analyze and optimize your business processes, reducing waste, and increasing profitability while maintaining high-quality standards."
@@ -79,6 +79,7 @@ export default function ServicesPage() {
         layout="centered"
         iconSrc="/images/Services-01.png"
         iconAlt="Process improvement icon"
+        backgroundSrc="/images/Process-improvement.jpg"
       />
 
       {/* ───── 3. Quality Management (image left, text right) ───── */}
@@ -103,14 +104,14 @@ export default function ServicesPage() {
         iconAlt="Project management icon"
       />
 
-      {/* ───── 5. eLearning Solutions (text left, image right) ───── */}
+      {/* ───── 5. eLearning Solutions (full-width bg image, text left) ───── */}
       <ServiceBlock
         heading="eLearning Solutions"
         description="Gain access to flexible and cost-effective learning options with our e-learning solutions. Our online courses are designed to accommodate various learning styles, allowing your team to learn at their own pace and from anywhere."
         buttonText="View Our Courses"
         buttonHref="/courses"
-        layout="text-left"
-        imageSrc="/images/focused-man-working-with-laptop.jpg"
+        layout="fullwidth-bg"
+        backgroundSrc="/images/focused-man-working-with-laptop.jpg"
         imageAlt="eLearning solutions"
       />
 
