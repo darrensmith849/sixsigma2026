@@ -16,11 +16,25 @@ export default function HeroSection({
   actions,
 }: HeroSectionProps) {
   return (
-    <section className="bg-white pt-[80px]">
-      <div className="container-wide">
-        <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-0 py-10 lg:py-0">
-          {/* Text Side */}
-          <div className="flex-1 lg:max-w-[55%] lg:py-14 lg:pr-16">
+    <section className="relative bg-white pt-[80px] overflow-hidden">
+      {/* Background image — right-aligned, sits behind everything */}
+      {imageSrc && (
+        <div className="hidden lg:block absolute top-0 right-0 w-[55%] h-full">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="55vw"
+          />
+        </div>
+      )}
+
+      <div className="container-wide relative z-10">
+        <div className="py-10 lg:py-14">
+          {/* Text Side — overlaps the image slightly */}
+          <div className="lg:max-w-[55%]">
             <h1 className="mb-6 leading-[1.15]">{heading}</h1>
             <div className="text-[18px] text-body-text leading-[1.7] space-y-4">
               {children}
@@ -29,22 +43,22 @@ export default function HeroSection({
               <div className="flex flex-wrap gap-4 mt-8">{actions}</div>
             )}
           </div>
-
-          {/* Image Side */}
-          {imageSrc && (
-            <div className="relative flex-1 w-full lg:max-w-[45%] min-h-[350px] lg:min-h-0 overflow-hidden">
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 45vw"
-              />
-            </div>
-          )}
         </div>
       </div>
+
+      {/* Mobile image — shown below text on small screens */}
+      {imageSrc && (
+        <div className="relative lg:hidden w-full h-[300px]">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
+      )}
     </section>
   );
 }
