@@ -22,35 +22,35 @@ export default function ServicesPage() {
             goals. Certification training is available in{" "}
             <a
               href="/courses"
-              className="text-white underline underline-offset-2 hover:text-white/80"
+              className="!text-white underline underline-offset-2 hover:!text-white/80"
             >
               Johannesburg
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="text-white underline underline-offset-2 hover:text-white/80"
+              className="!text-white underline underline-offset-2 hover:!text-white/80"
             >
               Cape Town
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="text-white underline underline-offset-2 hover:text-white/80"
+              className="!text-white underline underline-offset-2 hover:!text-white/80"
             >
               Port Elizabeth
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="text-white underline underline-offset-2 hover:text-white/80"
+              className="!text-white underline underline-offset-2 hover:!text-white/80"
             >
               Durban
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="text-white underline underline-offset-2 hover:text-white/80"
+              className="!text-white underline underline-offset-2 hover:!text-white/80"
             >
               Pretoria
             </a>{" "}
