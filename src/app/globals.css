@@ -73,12 +73,20 @@ h3 {
 }
 
 a {
-  color: var(--green);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:hover {
+/* Inline text links only — buttons handle their own colours */
+p a,
+li a,
+td a {
+  color: var(--green);
+}
+
+p a:hover,
+li a:hover,
+td a:hover {
   color: var(--green-hover);
 }
 

@@ -70,6 +70,8 @@ export default function Home() {
         buttonText="View our courses"
         buttonHref="/courses"
         variant="green"
+        iconSrc="/images/Success-stories-01.png"
+        iconAlt="Process improvement"
       />
 
       {/* Events & Workshops CTA */}
