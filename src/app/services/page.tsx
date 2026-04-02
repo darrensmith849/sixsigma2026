@@ -88,8 +88,8 @@ export default function ServicesPage() {
         buttonText="View our courses"
         buttonHref="/courses"
         layout="text-right"
-        imageSrc="/images/Consultancy-01.jpg"
-        imageAlt="Quality management consulting"
+        imageSrc="/images/Quality-management.jpg"
+        imageAlt="Quality management research and analysis"
       />
 
       {/* ───── 4. Project Management (centered with icon) ───── */}
@@ -110,7 +110,7 @@ export default function ServicesPage() {
         buttonText="View Our Courses"
         buttonHref="/courses"
         layout="text-left"
-        imageSrc="/images/Consultancy-01.jpg"
+        imageSrc="/images/focused-man-working-with-laptop.jpg"
         imageAlt="eLearning solutions"
       />
 
@@ -132,7 +132,7 @@ export default function ServicesPage() {
         buttonText="View our courses"
         buttonHref="/courses"
         layout="text-right"
-        imageSrc="/images/Consultancy-01.jpg"
+        imageSrc="/images/Industry-specific-solutions.jpg"
         imageAlt="Industry-specific solutions"
       />
     </div>

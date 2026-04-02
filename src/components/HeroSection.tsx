@@ -31,10 +31,10 @@ export default function HeroSection({
         </div>
       )}
 
-      <div className="container-wide relative z-10">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-[120px]">
         <div className="py-10 lg:py-14">
           {/* Text Side — overlaps the image slightly */}
-          <div className="lg:max-w-[55%]">
+          <div className="lg:max-w-[50%]">
             <h1 className="mb-6 leading-[1.15]">{heading}</h1>
             <div className="text-[18px] text-body-text leading-[1.7] space-y-4">
               {children}
