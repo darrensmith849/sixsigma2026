@@ -47,8 +47,8 @@ export default function ServiceBlock({
         )}
         <div className="relative z-10 container-wide py-12 lg:py-16">
           <div className="lg:max-w-[40%]">
-            <h2 className="font-semibold text-white mb-4">{heading}</h2>
-            <p className="text-[18px] text-white/90 leading-relaxed mb-8">
+            <h2 className="font-semibold text-inverse mb-4">{heading}</h2>
+            <p className="text-[18px] text-inverse/90 leading-relaxed mb-8">
               {description}
             </p>
             <Button href={buttonHref} variant="filled" size="large">
@@ -92,10 +92,10 @@ export default function ServiceBlock({
               />
             </div>
           )}
-          <h2 className={`font-semibold mb-4 ${hasBg ? "text-white" : "text-heading-text"}`}>
+          <h2 className={`font-semibold mb-4 ${hasBg ? "text-inverse" : "text-heading"}`}>
             {heading}
           </h2>
-          <p className={`text-[18px] max-w-2xl mx-auto leading-relaxed mb-8 ${hasBg ? "text-white/90" : "text-body-text"}`}>
+          <p className={`text-[18px] max-w-2xl mx-auto leading-relaxed mb-8 ${hasBg ? "text-inverse/90" : "text-body"}`}>
             {description}
           </p>
           <Button href={buttonHref} variant="filled" size="large">
@@ -111,8 +111,8 @@ export default function ServiceBlock({
 
   const textBlock = (
     <div className="flex-1 flex flex-col justify-center">
-      <h2 className="font-semibold text-heading-text mb-4">{heading}</h2>
-      <p className="text-[18px] text-body-text leading-relaxed mb-8">
+      <h2 className="font-semibold text-heading mb-4">{heading}</h2>
+      <p className="text-[18px] text-body leading-relaxed mb-8">
         {description}
       </p>
       <div>

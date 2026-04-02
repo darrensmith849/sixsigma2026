@@ -1,34 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --green: #14B24A;
-  --green-hover: #0f9a3e;
+  /* Brand greens */
+  --green: #16b24a;
+  --green-hover: #11913c;
   --green-dark: #0d8535;
+
+  /* Locked text-colour system */
+  --sssa-text-display: #262626;
+  --sssa-text-heading: #2d2d2d;
+  --sssa-text-body: #5f5f5f;
+  --sssa-text-muted: #7a7a7a;
+  --sssa-text-link: #16b24a;
+  --sssa-text-link-hover: #11913c;
+  --sssa-text-inverse: #ffffff;
+  --sssa-text-button-light: #262626;
+  --sssa-text-button-dark: #ffffff;
+
+  /* Surfaces / neutrals */
   --black: #111111;
   --white: #FFFFFF;
   --light-grey: #F3F3F3;
   --border-grey: #E6E6E6;
-  --body-text: #5A5A5A;
-  --heading-text: #1E2132;
   --footer-bg: #FAFBFD;
 
+  /* Layout */
   --container-max: 1200px;
   --container-wide: 1400px;
   --section-padding: 80px;
   --section-padding-mobile: 48px;
 
+  /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 @theme inline {
+  /* Brand greens */
   --color-green: var(--green);
   --color-green-hover: var(--green-hover);
   --color-green-dark: var(--green-dark);
+
+  /* Text system — use these for all text colours */
+  --color-display: var(--sssa-text-display);
+  --color-heading: var(--sssa-text-heading);
+  --color-body: var(--sssa-text-body);
+  --color-muted: var(--sssa-text-muted);
+  --color-link: var(--sssa-text-link);
+  --color-link-hover: var(--sssa-text-link-hover);
+  --color-inverse: var(--sssa-text-inverse);
+
+  /* Surfaces */
   --color-sssa-black: var(--black);
   --color-light-grey: var(--light-grey);
   --color-border-grey: var(--border-grey);
-  --color-body-text: var(--body-text);
-  --color-heading-text: var(--heading-text);
   --color-footer-bg: var(--footer-bg);
 }
 
@@ -44,7 +68,7 @@ body {
   font-family: var(--font-sans);
   font-size: 18px;
   line-height: 1.6;
-  color: var(--body-text);
+  color: var(--sssa-text-body);
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -52,14 +76,14 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
-  color: var(--heading-text);
+  color: var(--sssa-text-heading);
   line-height: 1.2;
   font-weight: 700;
 }
 
 h1 {
   font-size: clamp(36px, 5vw, 60px);
-  color: var(--heading-text);
+  color: var(--sssa-text-display);
 }
 
 h2 {
@@ -81,13 +105,13 @@ a {
 p a,
 li a,
 td a {
-  color: var(--green);
+  color: var(--sssa-text-link);
 }
 
 p a:hover,
 li a:hover,
 td a:hover {
-  color: var(--green-hover);
+  color: var(--sssa-text-link-hover);
 }
 
 img {

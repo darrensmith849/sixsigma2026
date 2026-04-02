@@ -25,9 +25,9 @@ export default function Button({
 
   const variantClass = {
     filled:
-      "bg-green text-white border-2 border-green hover:bg-green-hover hover:border-green-hover",
+      "bg-green text-inverse border-2 border-green hover:bg-green-hover hover:border-green-hover",
     outline:
-      "bg-transparent text-green border-2 border-green hover:bg-green hover:text-white",
+      "bg-transparent text-green border-2 border-green hover:bg-green hover:text-inverse",
     white:
       "bg-white text-green border-2 border-white hover:bg-light-grey",
   }[variant];

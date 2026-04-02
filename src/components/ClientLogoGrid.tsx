@@ -24,8 +24,8 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
       <div className="container">
         {showHeading && (
           <div className="text-center mb-8">
-            <h2 className="text-heading-text font-semibold">Client List</h2>
-            <p className="mt-4 text-body-text text-[18px] max-w-2xl mx-auto">
+            <h2 className="text-heading font-semibold">Client List</h2>
+            <p className="mt-4 text-body text-[18px] max-w-2xl mx-auto">
               Discover some of the esteemed organizations that have chosen us as
               their training and consultancy partner:
             </p>
@@ -50,7 +50,7 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
         </div>
 
         {showHeading && (
-          <p className="text-center text-[20px] font-semibold text-heading-text mt-6">
+          <p className="text-center text-[20px] font-semibold text-heading mt-6">
             And over 5,000 more!
           </p>
         )}

@@ -17,7 +17,7 @@ export default function SectionHeading({
     <div className={`${centered ? "text-center" : ""} mb-8 ${className}`}>
       <h2
         className={`font-semibold ${
-          light ? "text-white" : "text-heading-text"
+          light ? "text-inverse" : "text-heading"
         }`}
       >
         {children}
@@ -26,7 +26,7 @@ export default function SectionHeading({
         <p
           className={`mt-4 text-[18px] max-w-2xl ${
             centered ? "mx-auto" : ""
-          } ${light ? "text-white/90" : "text-body-text"}`}
+          } ${light ? "text-inverse/90" : "text-body"}`}
         >
           {subtitle}
         </p>

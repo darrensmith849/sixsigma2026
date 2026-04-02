@@ -14,43 +14,43 @@ export default function ServicesPage() {
       {/* ───── Green Hero ───── */}
       <section className="bg-green py-16 md:py-24">
         <div className="container text-center">
-          <h1 className="text-white mb-6 !text-white">Our Services</h1>
-          <p className="text-white/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mx-auto">
+          <h1 className="!text-inverse mb-6">Our Services</h1>
+          <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mx-auto">
             At Six Sigma South Africa, we offer a comprehensive range of
             services tailored to help businesses of all sizes achieve their
             process improvement, quality management, and project management
             goals. Certification training is available in{" "}
             <a
               href="/courses"
-              className="!text-white underline underline-offset-2 hover:!text-white/80"
+              className="!text-inverse underline underline-offset-2 hover:!text-inverse/80"
             >
               Johannesburg
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="!text-white underline underline-offset-2 hover:!text-white/80"
+              className="!text-inverse underline underline-offset-2 hover:!text-inverse/80"
             >
               Cape Town
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="!text-white underline underline-offset-2 hover:!text-white/80"
+              className="!text-inverse underline underline-offset-2 hover:!text-inverse/80"
             >
               Port Elizabeth
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="!text-white underline underline-offset-2 hover:!text-white/80"
+              className="!text-inverse underline underline-offset-2 hover:!text-inverse/80"
             >
               Durban
             </a>
             ,{" "}
             <a
               href="/courses"
-              className="!text-white underline underline-offset-2 hover:!text-white/80"
+              className="!text-inverse underline underline-offset-2 hover:!text-inverse/80"
             >
               Pretoria
             </a>{" "}
