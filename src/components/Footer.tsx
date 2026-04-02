@@ -23,7 +23,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Quick Links
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -34,7 +34,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-[16px] text-body hover:text-link transition-colors"
+                    className="text-[16px] text-body leading-relaxed hover:text-link transition-colors"
                   >
                     {label}
                   </Link>
@@ -48,7 +48,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Courses
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {[
                 "White Belt",
                 "Yellow Belt",
@@ -61,7 +61,7 @@ export default function Footer() {
                 <li key={course}>
                   <Link
                     href="/courses"
-                    className="text-[16px] text-body hover:text-link transition-colors"
+                    className="text-[16px] text-body leading-relaxed hover:text-link transition-colors"
                   >
                     {course}
                   </Link>
@@ -75,7 +75,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Contact Us
             </h4>
-            <ul className="space-y-3 text-[16px] text-body">
+            <ul className="space-y-4 text-[16px] text-body">
               <li>
                 <a
                   href="tel:+27214265300"
