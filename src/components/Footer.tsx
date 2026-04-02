@@ -23,7 +23,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Quick Links
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -48,7 +48,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Courses
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 "White Belt",
                 "Yellow Belt",
@@ -75,7 +75,7 @@ export default function Footer() {
             <h4 className="text-[18px] text-heading font-semibold mb-4">
               Contact Us
             </h4>
-            <ul className="space-y-2 text-[16px] text-body">
+            <ul className="space-y-3 text-[16px] text-body">
               <li>
                 <a
                   href="tel:+27214265300"
