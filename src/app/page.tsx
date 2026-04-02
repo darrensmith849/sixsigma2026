@@ -10,8 +10,8 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection
         heading="Six Sigma training and certification in South Africa"
-        imageSrc="/images/focused-man-working-with-laptop.jpg"
-        imageAlt="Six Sigma training session"
+        imageSrc="/images/hero-presentation.jpg"
+        imageAlt="Six Sigma training presentation"
         actions={
           <>
             <Button href="/contact" variant="filled" size="large">
@@ -47,8 +47,16 @@ export default function Home() {
       </HeroSection>
 
       {/* Kickstart Section */}
-      <section className="section bg-light-grey">
-        <div className="container text-center">
+      <section
+        className="section bg-light-grey relative"
+        style={{
+          backgroundImage: "url(/images/kickstart-businessman.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="absolute inset-0 bg-light-grey/85" />
+        <div className="container text-center relative z-10">
           <SectionHeading
             subtitle="Explore our comprehensive range of courses, from White Belt to Black Belt. Our curriculum includes Lean Management and Root Cause Analysis as well. Embark on a path to success with our internationally recognized certifications."
           >
@@ -81,6 +89,7 @@ export default function Home() {
         buttonText="Enquire for dates"
         buttonHref="/contact"
         variant="light"
+        backgroundSrc="/images/events-certification.jpg"
       />
     </>
   );

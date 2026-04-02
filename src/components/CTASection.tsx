@@ -9,6 +9,7 @@ interface CTASectionProps {
   variant?: "green" | "light";
   iconSrc?: string;
   iconAlt?: string;
+  backgroundSrc?: string;
 }
 
 export default function CTASection({
@@ -19,14 +20,31 @@ export default function CTASection({
   variant = "green",
   iconSrc,
   iconAlt = "",
+  backgroundSrc,
 }: CTASectionProps) {
   const isGreen = variant === "green";
 
   return (
     <section
-      className={`section ${isGreen ? "bg-green" : "bg-light-grey"}`}
+      className={`section relative ${isGreen ? "bg-green" : "bg-light-grey"}`}
+      style={
+        backgroundSrc
+          ? {
+              backgroundImage: `url(${backgroundSrc})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
     >
-      <div className="container text-center">
+      {backgroundSrc && (
+        <div
+          className={`absolute inset-0 ${
+            isGreen ? "bg-green/85" : "bg-light-grey/85"
+          }`}
+        />
+      )}
+      <div className="container text-center relative z-10">
         {iconSrc && (
           <div className="mb-6 flex justify-center">
             <Image
