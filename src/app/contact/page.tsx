@@ -17,7 +17,7 @@ export default function ContactPage() {
       <section className="bg-green py-16 md:py-24">
         <div className="container text-center">
           <h1 className="!text-inverse mb-6">Contact / Resources</h1>
-          <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mx-auto">
+          <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-4xl mx-auto">
             Get in touch with our team for course enquiries, consultancy
             requests, partnership opportunities, or general questions about
             Six Sigma training in South Africa.
@@ -37,18 +37,18 @@ export default function ContactPage() {
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Company
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       Six Sigma South Africa&trade; &mdash; 2KO Africa CC
                     </p>
                   </div>
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Phone
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       <a
                         href="tel:+27214265300"
                         className="text-link hover:text-link-hover"
@@ -58,10 +58,10 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Email
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       <a
                         href="mailto:info@2ko.co.za"
                         className="text-link hover:text-link-hover"
@@ -71,10 +71,10 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Training Locations
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       Johannesburg, Cape Town, Durban, Pretoria, Port
                       Elizabeth &amp; on-site nationwide
                     </p>
@@ -89,16 +89,16 @@ export default function ContactPage() {
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Company
                     </p>
-                    <p className="text-body text-[16px]">2KO International</p>
+                    <p className="text-body text-[18px]">2KO International</p>
                   </div>
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Email
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       <a
                         href="mailto:info@2ko.co.za"
                         className="text-link hover:text-link-hover"
@@ -108,10 +108,10 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div>
-                    <p className="text-[14px] text-muted font-medium mb-1">
+                    <p className="text-[15px] text-muted font-medium mb-1">
                       Services
                     </p>
-                    <p className="text-body text-[16px]">
+                    <p className="text-body text-[18px]">
                       Virtual and online Six Sigma training for UK-based
                       professionals and organisations
                     </p>
@@ -142,7 +142,7 @@ export default function ContactPage() {
             <SectionHeading subtitle="Are you a certified Six Sigma Black Belt or Master Black Belt looking for training opportunities? We are always looking for experienced trainers to join our network.">
               Become a Trainer
             </SectionHeading>
-            <p className="text-body text-[16px] leading-relaxed mt-4">
+            <p className="text-body text-[18px] leading-relaxed mt-4">
               If you are interested in becoming a Six Sigma trainer with us,
               please send your CV and a brief cover letter to{" "}
               <a
@@ -194,10 +194,10 @@ export default function ContactPage() {
                 },
               ].map(({ q, a }) => (
                 <div key={q} className="bg-white rounded-lg p-6">
-                  <h3 className="text-[18px] text-heading font-semibold mb-2">
+                  <h3 className="text-heading font-semibold mb-2">
                     {q}
                   </h3>
-                  <p className="text-body text-[16px] leading-relaxed">{a}</p>
+                  <p className="text-body text-[18px] leading-relaxed">{a}</p>
                 </div>
               ))}
             </div>

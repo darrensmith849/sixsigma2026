@@ -23,7 +23,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-[14px] text-heading font-medium mb-1.5"
+            className="block text-[16px] text-heading font-medium mb-1.5"
           >
             Full Name *
           </label>
@@ -35,14 +35,14 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, name: e.target.value })
             }
-            className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
+            className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
             placeholder="Your full name"
           />
         </div>
         <div>
           <label
             htmlFor="email"
-            className="block text-[14px] text-heading font-medium mb-1.5"
+            className="block text-[16px] text-heading font-medium mb-1.5"
           >
             Email Address *
           </label>
@@ -54,7 +54,7 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             }
-            className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
+            className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
             placeholder="you@company.co.za"
           />
         </div>
@@ -64,7 +64,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="phone"
-            className="block text-[14px] text-heading font-medium mb-1.5"
+            className="block text-[16px] text-heading font-medium mb-1.5"
           >
             Phone Number
           </label>
@@ -75,14 +75,14 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, phone: e.target.value })
             }
-            className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
+            className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
             placeholder="021 000 0000"
           />
         </div>
         <div>
           <label
             htmlFor="company"
-            className="block text-[14px] text-heading font-medium mb-1.5"
+            className="block text-[16px] text-heading font-medium mb-1.5"
           >
             Company
           </label>
@@ -93,7 +93,7 @@ export default function ContactForm() {
             onChange={(e) =>
               setFormData({ ...formData, company: e.target.value })
             }
-            className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
+            className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
             placeholder="Your company name"
           />
         </div>
@@ -102,7 +102,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="subject"
-          className="block text-[14px] text-heading font-medium mb-1.5"
+          className="block text-[16px] text-heading font-medium mb-1.5"
         >
           Subject *
         </label>
@@ -113,7 +113,7 @@ export default function ContactForm() {
           onChange={(e) =>
             setFormData({ ...formData, subject: e.target.value })
           }
-          className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
+          className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors"
         >
           <option value="">Select a subject</option>
           <option value="course-enquiry">Course Enquiry</option>
@@ -127,7 +127,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-[14px] text-heading font-medium mb-1.5"
+          className="block text-[16px] text-heading font-medium mb-1.5"
         >
           Message *
         </label>
@@ -139,7 +139,7 @@ export default function ContactForm() {
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           }
-          className="w-full px-4 py-3 text-[16px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors resize-vertical"
+          className="w-full px-4 py-3.5 text-[18px] text-body bg-white border border-border-grey rounded-[5px] focus:outline-none focus:border-green transition-colors resize-vertical"
           placeholder="How can we help you?"
         />
       </div>
@@ -147,7 +147,7 @@ export default function ContactForm() {
       <div className="text-center pt-2">
         <button
           type="submit"
-          className="inline-flex items-center justify-center font-medium rounded-[5px] transition-all duration-200 text-center px-8 py-3 text-[18px] bg-green text-inverse border-2 border-green hover:bg-green-hover hover:border-green-hover cursor-pointer"
+          className="inline-flex items-center justify-center font-semibold rounded-[5px] transition-all duration-200 text-center px-10 py-4 text-[22px] bg-green text-inverse border-2 border-green hover:bg-green-hover hover:border-green-hover cursor-pointer"
         >
           Send Enquiry
         </button>

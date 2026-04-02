@@ -31,12 +31,12 @@ export default function AboutPage() {
           <div className="bg-green">
             <div className="container py-12 md:py-16">
               <h1 className="!text-inverse mb-6">Who We Are</h1>
-              <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl">
+              <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-3xl">
                 2KO Africa CC &ndash; Six Sigma South Africa is the leading Six
                 Sigma Training provider for many of the largest companies in
                 South Africa, as well as neighbouring African countries.
               </p>
-              <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mt-4">
+              <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-3xl mt-4">
                 Choosing the correct training provider is crucial in a
                 successful Six Sigma/Lean process. At 2KO Africa CC we work
                 closely together with companies to assist them according to
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   Six Sigma Council Registered Training Provider
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed">
+                <p className="text-body text-[18px] leading-relaxed">
                   We are a professional accrediting body within the Six Sigma
                   industry. Our objective is to ensure that Six Sigma Certified
                   individuals have been exposed to the complete Six Sigma Body
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   MICT SETA Accreditation
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed">
+                <p className="text-body text-[18px] leading-relaxed">
                   Unit Standard: 243816 &mdash; Developing a project quality
                   management plan for a simple to moderately complex project.
                   Level 5. Our MICT SETA accreditation number is 2007/01/215.
@@ -82,7 +82,7 @@ export default function AboutPage() {
             </div>
 
             <div className="mt-8 max-w-3xl mx-auto">
-              <p className="text-body text-[16px] leading-relaxed text-center">
+              <p className="text-body text-[18px] leading-relaxed text-center">
                 Six Sigma South Africa is aligned with the Council for Six
                 Sigma Certification (CSSC), which is known for quality
                 assurance and high standards. In South Africa, our company
@@ -125,7 +125,7 @@ export default function AboutPage() {
                   <span className="text-green text-[18px] mt-0.5 shrink-0">
                     &#10003;
                   </span>
-                  <span className="text-body text-[16px]">{item}</span>
+                  <span className="text-body text-[18px]">{item}</span>
                 </div>
               ))}
             </div>
@@ -169,10 +169,10 @@ export default function AboutPage() {
                     <span className="text-green text-[18px]">&#10003;</span>
                   </div>
                   <div>
-                    <h3 className="text-[18px] text-heading font-semibold mb-1">
+                    <h3 className="text-heading font-semibold mb-1">
                       {heading}
                     </h3>
-                    <p className="text-body text-[16px] leading-relaxed">
+                    <p className="text-body text-[18px] leading-relaxed">
                       {text}
                     </p>
                   </div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
                 <h2 className="text-heading font-semibold mb-4">
                   Our Mission
                 </h2>
-                <p className="text-body text-[16px] leading-relaxed">
+                <p className="text-body text-[18px] leading-relaxed">
                   To provide world-class Six Sigma and Lean training that
                   empowers individuals and organisations to achieve measurable
                   process improvement, reduce waste, and drive continuous
@@ -203,7 +203,7 @@ export default function AboutPage() {
                 <h2 className="text-heading font-semibold mb-4">
                   Our Vision
                 </h2>
-                <p className="text-body text-[16px] leading-relaxed">
+                <p className="text-body text-[18px] leading-relaxed">
                   To be the most trusted and recognised Six Sigma training
                   provider on the African continent, equipping professionals
                   with internationally accredited skills that drive excellence

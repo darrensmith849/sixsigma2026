@@ -16,12 +16,12 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const base =
-    "inline-flex items-center justify-center font-medium rounded-[5px] transition-all duration-200 text-center";
+    "inline-flex items-center justify-center font-semibold rounded-[5px] transition-all duration-200 text-center";
 
   const sizeClass =
     size === "large"
-      ? "px-8 py-3 text-[18px]"
-      : "px-6 py-2.5 text-[16px]";
+      ? "px-10 py-4 text-[22px]"
+      : "px-7 py-3 text-[18px]";
 
   const variantClass = {
     filled:

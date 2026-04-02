@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <section className="bg-green py-16 md:py-24">
         <div className="container text-center">
           <h1 className="!text-inverse mb-6">Our Services</h1>
-          <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mx-auto">
+          <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-4xl mx-auto">
             At Six Sigma South Africa, we offer a comprehensive range of
             services tailored to help businesses of all sizes achieve their
             process improvement, quality management, and project management

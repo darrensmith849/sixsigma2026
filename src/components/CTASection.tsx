@@ -64,7 +64,7 @@ export default function CTASection({
           {heading}
         </h2>
         <p
-          className={`text-[18px] max-w-2xl mx-auto mb-8 leading-relaxed ${
+          className={`text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed ${
             isGreen ? "text-inverse/90" : "text-body"
           }`}
         >

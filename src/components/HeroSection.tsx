@@ -35,8 +35,8 @@ export default function HeroSection({
         <div className="py-10 lg:py-14">
           {/* Text Side — overlaps the image slightly */}
           <div className="lg:max-w-[50%]">
-            <h1 className="mb-6 leading-[1.15]">{heading}</h1>
-            <div className="text-[18px] text-body leading-[1.7] space-y-4">
+            <h1 className="mb-6">{heading}</h1>
+            <div className="text-[21px] text-body leading-[1.55] space-y-4">
               {children}
             </div>
             {actions && (

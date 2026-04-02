@@ -9,10 +9,10 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Company */}
           <div>
-            <h4 className="text-[16px] text-heading font-semibold mb-4">
+            <h4 className="text-[18px] text-heading font-semibold mb-4">
               Six Sigma South Africa
             </h4>
-            <p className="text-[14px] text-body leading-relaxed">
+            <p className="text-[16px] text-body leading-relaxed">
               The premier provider of internationally accredited Six Sigma
               training and certification on the African continent.
             </p>
@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-[16px] text-heading font-semibold mb-4">
+            <h4 className="text-[18px] text-heading font-semibold mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -34,7 +34,7 @@ export default function Footer() {
                 <li key={href}>
                   <Link
                     href={href}
-                    className="text-[14px] text-body hover:text-link transition-colors"
+                    className="text-[16px] text-body hover:text-link transition-colors"
                   >
                     {label}
                   </Link>
@@ -45,7 +45,7 @@ export default function Footer() {
 
           {/* Courses */}
           <div>
-            <h4 className="text-[16px] text-heading font-semibold mb-4">
+            <h4 className="text-[18px] text-heading font-semibold mb-4">
               Courses
             </h4>
             <ul className="space-y-2">
@@ -61,7 +61,7 @@ export default function Footer() {
                 <li key={course}>
                   <Link
                     href="/courses"
-                    className="text-[14px] text-body hover:text-link transition-colors"
+                    className="text-[16px] text-body hover:text-link transition-colors"
                   >
                     {course}
                   </Link>
@@ -72,10 +72,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-[16px] text-heading font-semibold mb-4">
+            <h4 className="text-[18px] text-heading font-semibold mb-4">
               Contact Us
             </h4>
-            <ul className="space-y-2 text-[14px] text-body">
+            <ul className="space-y-2 text-[16px] text-body">
               <li>
                 <a
                   href="tel:+27214265300"
@@ -106,7 +106,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-border-grey">
-        <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[13px] text-muted">
+        <div className="container py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-[14px] text-muted">
           <p>&copy; {year} Six Sigma South Africa&trade; &mdash; 2KO Africa CC</p>
           <p>CSSC Internationally Accredited</p>
         </div>

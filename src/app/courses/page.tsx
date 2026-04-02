@@ -243,7 +243,7 @@ export default function CoursesPage() {
           <h1 className="!text-inverse mb-6">
             Six Sigma Courses in South Africa
           </h1>
-          <p className="text-inverse/90 text-[18px] md:text-[20px] leading-relaxed max-w-3xl mx-auto">
+          <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-4xl mx-auto">
             Internationally accredited Six Sigma training and certification
             courses available online, virtually, and in the classroom.
             Training available in{" "}
@@ -293,19 +293,19 @@ export default function CoursesPage() {
             <div className="flex flex-wrap justify-center gap-6 mt-8">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-green" />
-                <span className="text-[14px] text-body">
+                <span className="text-[16px] text-body">
                   <strong className="text-heading">Online</strong> — Self-paced e-learning
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-green-hover" />
-                <span className="text-[14px] text-body">
+                <span className="text-[16px] text-body">
                   <strong className="text-heading">Virtual</strong> — Live instructor-led via video
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-green-dark" />
-                <span className="text-[14px] text-body">
+                <span className="text-[16px] text-body">
                   <strong className="text-heading">Classroom</strong> — In-person training in SA
                 </span>
               </div>
@@ -375,12 +375,12 @@ export default function CoursesPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   Yellow Belt
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed mb-3">
+                <p className="text-body text-[18px] leading-relaxed mb-3">
                   The foundational level covering the understanding of Six Sigma
                   methodology. Participants become part of a project team,
                   reviewing process improvements that support the project.
                 </p>
-                <p className="text-muted text-[14px]">
+                <p className="text-muted text-[15px]">
                   <strong className="text-heading">Role:</strong> Project team
                   support member
                 </p>
@@ -390,12 +390,12 @@ export default function CoursesPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   Green Belt
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed mb-3">
+                <p className="text-body text-[18px] leading-relaxed mb-3">
                   Learn the tips and techniques for effective Six Sigma
                   execution. Receive fundamental training in Define, Measure,
                   Analyse, Improve and Control (DMAIC).
                 </p>
-                <p className="text-muted text-[14px]">
+                <p className="text-muted text-[15px]">
                   <strong className="text-heading">Role:</strong> Problem solver
                   assigned to Black Belt projects
                 </p>
@@ -405,12 +405,12 @@ export default function CoursesPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   Black Belt
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed mb-3">
+                <p className="text-body text-[18px] leading-relaxed mb-3">
                   Advanced training in deeper analysis tools and change
                   management. Black Belts lead Six Sigma projects within their
                   organisations and coach project teams.
                 </p>
-                <p className="text-muted text-[14px]">
+                <p className="text-muted text-[15px]">
                   <strong className="text-heading">Role:</strong> Project leader,
                   coach, and advisor
                 </p>
@@ -420,12 +420,12 @@ export default function CoursesPage() {
                 <h3 className="text-heading font-semibold mb-3">
                   Lean vs DMAIC
                 </h3>
-                <p className="text-body text-[16px] leading-relaxed mb-3">
+                <p className="text-body text-[18px] leading-relaxed mb-3">
                   <strong className="text-heading">Lean:</strong> Focuses on
                   waste reduction using 5S and visual factory. Best suited for
                   manufacturing environments.
                 </p>
-                <p className="text-body text-[16px] leading-relaxed">
+                <p className="text-body text-[18px] leading-relaxed">
                   <strong className="text-heading">DMAIC:</strong> Focuses on
                   variation reduction using statistical methods. Best suited for
                   process environments.

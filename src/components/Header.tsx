@@ -103,10 +103,10 @@ export default function Header() {
                 <path d="M12 20C12 15.6 15.6 12 20 12C22.4 12 24.5 13.1 26 14.8L24 16.8C23 15.7 21.6 15 20 15C17.2 15 15 17.2 15 20C15 22.8 17.2 25 20 25C21.6 25 23 24.3 24 23.2L26 25.2C24.5 26.9 22.4 28 20 28C15.6 28 12 24.4 12 20Z" fill="white"/>
               </svg>
               <div className="leading-tight">
-                <span className="text-[20px] font-bold tracking-tight text-display block">
+                <span className="text-[24px] font-bold tracking-tight text-display block">
                   SIX SIGMA
                 </span>
-                <span className="text-[11px] font-medium tracking-[0.15em] text-muted block">
+                <span className="text-[12px] font-medium tracking-[0.15em] text-muted block">
                   SOUTH AFRICA
                 </span>
               </div>
@@ -183,7 +183,7 @@ function NavItemDesktop({ item }: { item: NavItem }) {
     return (
       <Link
         href={item.href}
-        className="px-4 py-2 text-[15px] font-medium text-heading hover:text-link transition-colors"
+        className="px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
       >
         {item.label}
       </Link>
@@ -198,7 +198,7 @@ function NavItemDesktop({ item }: { item: NavItem }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button
-        className="flex items-center gap-1 px-4 py-2 text-[15px] font-medium text-heading hover:text-link transition-colors"
+        className="flex items-center gap-1 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
         onClick={() => setOpen(!open)}
       >
         {item.label}
@@ -231,7 +231,7 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
     return (
       <Link
         href={item.href}
-        className="block px-4 py-2 text-[14px] text-body hover:text-link hover:bg-light-grey transition-colors"
+        className="block px-4 py-2 text-[16px] text-body hover:text-link hover:bg-light-grey transition-colors"
       >
         {item.label}
       </Link>
@@ -245,7 +245,7 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button
-        className="flex items-center justify-between w-full px-4 py-2 text-[14px] text-body hover:text-link hover:bg-light-grey transition-colors"
+        className="flex items-center justify-between w-full px-4 py-2 text-[16px] text-body hover:text-link hover:bg-light-grey transition-colors"
         onClick={() => setOpen(!open)}
       >
         {item.label}
@@ -280,7 +280,7 @@ function MobileNavItem({
     return (
       <Link
         href={item.href}
-        className="block py-3 text-[16px] font-medium text-heading border-b border-border-grey"
+        className="block py-3 text-[22px] font-semibold text-heading border-b border-border-grey"
         onClick={onClose}
       >
         {item.label}
@@ -291,7 +291,7 @@ function MobileNavItem({
   return (
     <div className="border-b border-border-grey">
       <button
-        className="flex items-center justify-between w-full py-3 text-[16px] font-medium text-heading"
+        className="flex items-center justify-between w-full py-3 text-[22px] font-semibold text-heading"
         onClick={() => setOpen(!open)}
       >
         {item.label}
@@ -328,7 +328,7 @@ function MobileSubItem({
     return (
       <Link
         href={item.href}
-        className="block py-2 text-[15px] text-body"
+        className="block py-2 text-[18px] text-body"
         onClick={onClose}
       >
         {item.label}
@@ -339,7 +339,7 @@ function MobileSubItem({
   return (
     <div>
       <button
-        className="flex items-center justify-between w-full py-2 text-[15px] text-body"
+        className="flex items-center justify-between w-full py-2 text-[18px] text-body"
         onClick={() => setOpen(!open)}
       >
         {item.label}

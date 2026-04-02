@@ -66,7 +66,7 @@ export default function Home() {
               <h2 className="text-inverse font-semibold mb-4">
                 Kickstart your Six Sigma journey
               </h2>
-              <p className="text-inverse/90 text-[18px] leading-relaxed mb-8">
+              <p className="text-inverse/90 text-[21px] leading-relaxed mb-8">
                 Explore our comprehensive range of courses, from White Belt to
                 Black Belt. Our curriculum includes Lean Management and Root Cause
                 Analysis as well. Embark on a path to success with our
@@ -106,7 +106,7 @@ export default function Home() {
               <h2 className="text-heading font-semibold mb-4">
                 Stay ahead with our events and workshops
               </h2>
-              <p className="text-body text-[18px] leading-relaxed mb-8">
+              <p className="text-body text-[21px] leading-relaxed mb-8">
                 Join our upcoming webinars, workshops, and training sessions to
                 stay up-to-date on the latest Six Sigma methodologies and industry
                 best practices. Learn from experienced professionals and enhance
