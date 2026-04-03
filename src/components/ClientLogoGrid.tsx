@@ -43,7 +43,7 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
                 alt={logo.alt}
                 width={130}
                 height={130}
-                className="object-contain grayscale contrast-[1.15] brightness-[1.05] opacity-50"
+                className="object-contain grayscale contrast-[1.18] brightness-[0.62] opacity-[0.62]"
               />
             </div>
           ))}
