@@ -63,7 +63,7 @@ export default function ServicesPage() {
       <ServiceBlock
         heading="Consultancy"
         description="Maximize efficiency and productivity with our expert consultancy services. Our team of certified Six Sigma professionals will work with your organization to identify areas for improvement, develop strategies, and implement solutions for long-term success."
-        buttonText="Enquire Now"
+        buttonText="Enquire now"
         buttonHref="/contact"
         layout="text-left"
         imageSrc="/images/Consultancy-01.jpg"
@@ -74,7 +74,7 @@ export default function ServicesPage() {
       <ServiceBlock
         heading="Process Improvement"
         description="Unlock your organization's potential with our process improvement services. We apply Six Sigma methodologies to analyze and optimize your business processes, reducing waste, and increasing profitability while maintaining high-quality standards."
-        buttonText="Learn More"
+        buttonText="Learn more"
         buttonHref="/about"
         layout="centered"
         iconSrc="/images/Services-01.png"
@@ -96,8 +96,8 @@ export default function ServicesPage() {
       {/* ───── 4. Project Management (centered with icon) ───── */}
       <ServiceBlock
         heading="Project Management"
-        description="Unlock your organization's potential with our process improvement services. We apply Six Sigma methodologies to analyze and optimize your business processes, reducing waste, and increasing profitability while maintaining high-quality standards."
-        buttonText="View Our Courses"
+        description="Drive successful project delivery with our structured project management services. Our experts help your teams plan effectively, coordinate resources, manage timelines, and execute with precision — ensuring every project meets its objectives on time and within budget."
+        buttonText="View our courses"
         buttonHref="/courses"
         layout="centered"
         iconSrc="/images/Services-03.png"
@@ -108,7 +108,7 @@ export default function ServicesPage() {
       <ServiceBlock
         heading="eLearning Solutions"
         description="Gain access to flexible and cost-effective learning options with our e-learning solutions. Our online courses are designed to accommodate various learning styles, allowing your team to learn at their own pace and from anywhere."
-        buttonText="View Our Courses"
+        buttonText="View our courses"
         buttonHref="/courses"
         layout="fullwidth-bg"
         backgroundSrc="/images/focused-man-working-with-laptop.jpg"
@@ -119,7 +119,7 @@ export default function ServicesPage() {
       <ServiceBlock
         heading="Corporate Training"
         description="Empower your workforce with our customized corporate training programs. We offer a wide range of Six Sigma and Lean Management courses, tailored to your organization's needs, to help your employees develop the skills and knowledge necessary for continuous improvement."
-        buttonText="View Our Courses"
+        buttonText="View our courses"
         buttonHref="/courses"
         layout="centered"
         iconSrc="/images/Services-02.png"

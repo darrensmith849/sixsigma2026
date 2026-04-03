@@ -35,15 +35,18 @@ export default function ServiceBlock({
     return (
       <section className="relative min-h-[500px] lg:min-h-[600px] flex items-center overflow-hidden">
         {backgroundSrc && (
-          <div className="absolute inset-0">
-            <Image
-              src={backgroundSrc}
-              alt={imageAlt}
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
+          <>
+            <div className="absolute inset-0">
+              <Image
+                src={backgroundSrc}
+                alt={imageAlt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/60" />
+          </>
         )}
         <div className="relative z-10 container-wide py-12 lg:py-16">
           <div className="lg:max-w-[40%]">
