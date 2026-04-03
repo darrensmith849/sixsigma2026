@@ -164,22 +164,39 @@ html {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  outline: none !important;
+}
+
+.client-logo-item::before,
+.client-logo-item::after,
+.client-logo-card::before,
+.client-logo-card::after,
+.client-logo-tile::before,
+.client-logo-tile::after,
+.logo-item::before,
+.logo-item::after {
+  display: none !important;
+  content: none !important;
 }
 
 .client-logo-item img,
 .client-logo-card img,
 .client-logo-tile img,
 .logo-item img {
-  filter: grayscale(1) brightness(0.22) contrast(1.28) !important;
-  opacity: 0.72 !important;
+  background: transparent !important;
+  filter: grayscale(1) brightness(0.35) contrast(1.4) !important;
+  opacity: 0.88 !important;
+  mix-blend-mode: multiply !important;
+  object-fit: contain !important;
 }
 
 .client-logo-item:hover img,
 .client-logo-card:hover img,
 .client-logo-tile:hover img,
 .logo-item:hover img {
-  filter: grayscale(1) brightness(0.22) contrast(1.28) !important;
-  opacity: 0.72 !important;
+  filter: grayscale(1) brightness(0.35) contrast(1.4) !important;
+  opacity: 0.88 !important;
+  mix-blend-mode: multiply !important;
 }
 
 /* Scroll fade-in animation */
