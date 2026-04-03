@@ -36,14 +36,14 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
           {logos.map((logo) => (
             <div
               key={logo.alt}
-              className="w-full max-w-[130px] aspect-square flex items-center justify-center p-3 hover:scale-105 transition-transform duration-300"
+              className="w-full max-w-[120px] flex items-center justify-center"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
                 width={130}
                 height={130}
-                className="object-contain grayscale contrast-[1.2] brightness-[0.85] opacity-60"
+                className="object-contain grayscale contrast-[1.15] brightness-[1.05] opacity-50"
               />
             </div>
           ))}
