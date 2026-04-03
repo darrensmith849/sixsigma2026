@@ -156,6 +156,29 @@ html {
   }
 }
 
+/* Client logo strip — transparent monochrome treatment */
+.logo-item,
+.client-logo-card,
+.client-logo-tile {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.logo-item img,
+.client-logo-card img,
+.client-logo-tile img {
+  filter: grayscale(1) contrast(1.18) brightness(0.62) !important;
+  opacity: 0.62 !important;
+}
+
+.logo-item:hover img,
+.client-logo-card:hover img,
+.client-logo-tile:hover img {
+  filter: grayscale(1) contrast(1.18) brightness(0.62) !important;
+  opacity: 0.62 !important;
+}
+
 /* Scroll fade-in animation */
 .fade-in {
   opacity: 0;
