@@ -237,7 +237,7 @@ const classroomCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-2.jpg",
+    imageSrc: "/images/courses/Classroom-4.jpg",
     href: "/courses",
   },
   {
@@ -251,7 +251,7 @@ const classroomCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-3.jpg",
+    imageSrc: "/images/courses/Classroom-5.jpg",
     href: "/courses",
   },
   {
