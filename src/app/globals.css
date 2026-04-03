@@ -156,27 +156,30 @@ html {
   }
 }
 
-/* Client logo strip — transparent monochrome treatment */
-.logo-item,
+/* Client logo strip — transparent dark monochrome treatment */
+.client-logo-item,
 .client-logo-card,
-.client-logo-tile {
+.client-logo-tile,
+.logo-item {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
-.logo-item img,
+.client-logo-item img,
 .client-logo-card img,
-.client-logo-tile img {
-  filter: grayscale(1) contrast(1.18) brightness(0.62) !important;
-  opacity: 0.62 !important;
+.client-logo-tile img,
+.logo-item img {
+  filter: grayscale(1) brightness(0.22) contrast(1.28) !important;
+  opacity: 0.72 !important;
 }
 
-.logo-item:hover img,
+.client-logo-item:hover img,
 .client-logo-card:hover img,
-.client-logo-tile:hover img {
-  filter: grayscale(1) contrast(1.18) brightness(0.62) !important;
-  opacity: 0.62 !important;
+.client-logo-tile:hover img,
+.logo-item:hover img {
+  filter: grayscale(1) brightness(0.22) contrast(1.28) !important;
+  opacity: 0.72 !important;
 }
 
 /* Scroll fade-in animation */
