@@ -13,8 +13,38 @@ interface SubMenuItem {
 interface NavItem {
   label: string;
   href: string;
+  icon?: React.ReactNode;
   children?: SubMenuItem[];
 }
+
+const navIcons: Record<string, React.ReactNode> = {
+  Home: (
+    <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" />
+    </svg>
+  ),
+  Services: (
+    <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  Courses: (
+    <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+    </svg>
+  ),
+  "About Us": (
+    <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
+  "Contact / Resources": (
+    <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  ),
+};
 
 const navItems: NavItem[] = [
   { label: "Home", href: "/" },
@@ -96,21 +126,15 @@ export default function Header() {
       <div className="container-wide">
         <div className="flex items-center justify-between h-[80px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <div className="flex items-center gap-2">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="8" fill="#16b24a" />
-                <path d="M12 20C12 15.6 15.6 12 20 12C22.4 12 24.5 13.1 26 14.8L24 16.8C23 15.7 21.6 15 20 15C17.2 15 15 17.2 15 20C15 22.8 17.2 25 20 25C21.6 25 23 24.3 24 23.2L26 25.2C24.5 26.9 22.4 28 20 28C15.6 28 12 24.4 12 20Z" fill="white"/>
-              </svg>
-              <div className="leading-tight">
-                <span className="text-[24px] font-bold tracking-tight text-display block">
-                  SIX SIGMA
-                </span>
-                <span className="text-[12px] font-medium tracking-[0.15em] text-muted block">
-                  SOUTH AFRICA
-                </span>
-              </div>
-            </div>
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/images/sssa-logo-full.jpg"
+              alt="Six Sigma South Africa"
+              width={280}
+              height={70}
+              className="h-[50px] w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -179,12 +203,15 @@ function NavItemDesktop({ item }: { item: NavItem }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const icon = navIcons[item.label];
+
   if (!item.children) {
     return (
       <Link
         href={item.href}
-        className="px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
+        className="inline-flex items-center gap-2 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
       >
+        {icon}
         {item.label}
       </Link>
     );
@@ -198,9 +225,10 @@ function NavItemDesktop({ item }: { item: NavItem }) {
       onMouseLeave={() => setOpen(false)}
     >
       <button
-        className="flex items-center gap-1 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
+        className="inline-flex items-center gap-1 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
         onClick={() => setOpen(!open)}
       >
+        {icon && <span className="mr-1">{icon}</span>}
         {item.label}
         <svg
           className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
