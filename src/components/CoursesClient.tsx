@@ -48,7 +48,7 @@ const onlineCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Online",
-    imageSrc: "/images/courses/Online-3.jpg",
+    imageSrc: "/images/courses/Online-2.jpg",
     href: "/courses",
   },
   {
@@ -62,7 +62,7 @@ const onlineCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Online",
-    imageSrc: "/images/courses/Online-1.jpg",
+    imageSrc: "/images/courses/Online-3.jpg",
     href: "/courses",
   },
   {
@@ -76,7 +76,7 @@ const onlineCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Online",
-    imageSrc: "/images/courses/Online-3.jpg",
+    imageSrc: "/images/courses/Online-4.jpg",
     href: "/courses",
   },
   {
@@ -90,7 +90,7 @@ const onlineCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Online",
-    imageSrc: "/images/courses/Online-1.jpg",
+    imageSrc: "/images/courses/Online-5.jpg",
     href: "/courses",
   },
   {
@@ -104,7 +104,7 @@ const onlineCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Online",
-    imageSrc: "/images/courses/Online-3.jpg",
+    imageSrc: "/images/courses/Online-6.jpg",
     href: "/courses",
   },
 ];
@@ -136,6 +136,7 @@ const virtualCourses: CourseData[] = [
     ],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-2.jpg",
+
     href: "/courses",
   },
   {
@@ -163,7 +164,7 @@ const virtualCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Virtual",
-    imageSrc: "/images/courses/Virtual-5.jpg",
+    imageSrc: "/images/courses/Virtual-4.jpg",
     href: "/courses",
   },
   {
@@ -177,7 +178,7 @@ const virtualCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Virtual",
-    imageSrc: "/images/courses/Virtual-6.jpg",
+    imageSrc: "/images/courses/Virtual-5.jpg",
     href: "/courses",
   },
 ];
@@ -222,7 +223,7 @@ const classroomCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-4.jpg",
+    imageSrc: "/images/courses/Classroom-3.jpg",
     href: "/courses",
   },
   {
@@ -236,7 +237,7 @@ const classroomCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-1.jpg",
+    imageSrc: "/images/courses/Classroom-2.jpg",
     href: "/courses",
   },
   {
@@ -250,7 +251,7 @@ const classroomCourses: CourseData[] = [
       "CSSC internationally accredited certificate",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-2.jpg",
+    imageSrc: "/images/courses/Classroom-3.jpg",
     href: "/courses",
   },
   {
@@ -264,7 +265,7 @@ const classroomCourses: CourseData[] = [
       "Certificate of completion",
     ],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-4.jpg",
+    imageSrc: "/images/courses/Classroom-1.jpg",
     href: "/courses",
   },
 ];
