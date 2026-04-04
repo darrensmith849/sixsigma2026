@@ -341,7 +341,7 @@ export default function CoursesClient() {
                 >
                   Tailor your Six Sigma training experience with our custom
                   training solutions. Collaborate with our expert trainers to
-                  develop a curriculum that meets your organization&#39;s unique
+                  develop a curriculum that meets your organisation&#39;s unique
                   needs and objectives.
                 </p>
                 <Button href="/contact" variant="filled" size="large">
