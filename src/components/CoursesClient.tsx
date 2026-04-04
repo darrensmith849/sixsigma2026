@@ -143,7 +143,7 @@ const virtualCourses: CourseData[] = [
       "Advanced virtual training in DMAIC. Learn to implement this proven problem-solving methodology in large-scale projects, driving process improvement and organizational excellence.",
     includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Virtual",
-    imageSrc: "/images/courses/Virtual-1.jpg",
+    imageSrc: "/images/courses/Virtual-6.jpg",
     href: "/courses",
     buttonLabel: "Learn More",
   },
