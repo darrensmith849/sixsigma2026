@@ -254,6 +254,15 @@ function NavItemDesktop({ item }: { item: NavItem }) {
 
 function DropdownItem({ item }: { item: SubMenuItem }) {
   const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
+  };
 
   if (!item.children) {
     return (
@@ -269,8 +278,8 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
   return (
     <div
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <button
         className="flex items-center justify-between w-full px-4 py-2 text-[16px] text-body hover:text-link hover:bg-light-grey transition-colors"
@@ -283,7 +292,7 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
       </button>
 
       {open && (
-        <div className="absolute left-full top-0 ml-1 min-w-[180px]">
+        <div className="absolute left-full top-0 -ml-1 pl-2 min-w-[180px]">
           <div className="bg-white rounded-md shadow-lg border border-border-grey py-2">
             {item.children.map((child) => (
               <DropdownItem key={child.label} item={child} />

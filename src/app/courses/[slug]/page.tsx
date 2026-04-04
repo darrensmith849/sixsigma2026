@@ -6,6 +6,7 @@ import { getCourseBySlug, getAllSlugs } from "@/data/courses";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import ShortCourseDetail from "@/components/ShortCourseDetail";
+import CourseAccordion from "@/components/CourseAccordion";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -106,9 +107,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 {modeBadgeLabel}
-              </span>
-              <span className="flex items-center gap-2 font-semibold text-[18px]">
-                {course.price}
               </span>
             </div>
             <Button href="/contact" variant="white" size="default">
@@ -277,38 +275,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 </FadeIn>
               )}
 
-              {/* Course Content / Outline */}
+              {/* Course Content / Outline — Accordion */}
               {course.courseContent && course.courseContent.length > 0 && (
                 <FadeIn>
-                  <div>
-                    {course.courseContentHeading && (
-                      <h2 className="font-bold mb-2" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
-                        {course.courseContentHeading}
-                      </h2>
-                    )}
-                    {course.courseContentSubheading && (
-                      <p className="font-semibold mb-6" style={{ color: "#16b24a", fontSize: "clamp(17px, 1.2vw, 20px)" }}>
-                        {course.courseContentSubheading}
-                      </p>
-                    )}
-                    <div className="space-y-8">
-                      {course.courseContent.map((section) => (
-                        <div key={section.heading}>
-                          <h3 className="font-bold mb-3" style={{ color: "#5a5a5a", fontSize: "clamp(18px, 1.2vw, 22px)" }}>
-                            {section.heading}
-                          </h3>
-                          <ul className="space-y-2 pl-1">
-                            {section.bullets.map((bullet) => (
-                              <li key={bullet} className="flex items-start gap-3 text-[16px]" style={{ color: "#5e5e5e" }}>
-                                <span className="text-green mt-1 shrink-0">&#8226;</span>
-                                {bullet}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <CourseAccordion
+                    heading={course.courseContentHeading}
+                    subheading={course.courseContentSubheading}
+                    sections={course.courseContent}
+                  />
                 </FadeIn>
               )}
 
@@ -372,10 +346,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   <div className="flex justify-between">
                     <span className="font-semibold">Duration</span>
                     <span>{course.duration}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="font-semibold">Price</span>
-                    <span className="font-semibold text-green">{course.price}</span>
                   </div>
                 </div>
 

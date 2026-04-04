@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CourseData } from "@/data/courses";
 import Button from "./Button";
 import FadeIn from "./FadeIn";
+import CourseAccordion from "./CourseAccordion";
 
 interface ShortCourseDetailProps {
   course: CourseData;
@@ -166,52 +167,14 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
                 </div>
               </FadeIn>
 
-              {/* Course Content — only if approved content exists */}
+              {/* Course Content — Accordion */}
               {course.courseContent && course.courseContent.length > 0 && (
                 <FadeIn>
-                  <div>
-                    {course.courseContentHeading && (
-                      <h2
-                        className="font-bold mb-2"
-                        style={{ color: "#2d2d2d", fontSize: "clamp(26px, 2.2vw, 36px)" }}
-                      >
-                        {course.courseContentHeading}
-                      </h2>
-                    )}
-                    {course.courseContentSubheading && (
-                      <p
-                        className="font-semibold mb-8"
-                        style={{ color: "#16b24a", fontSize: "clamp(18px, 1.3vw, 22px)" }}
-                      >
-                        {course.courseContentSubheading}
-                      </p>
-                    )}
-
-                    <div className="space-y-8">
-                      {course.courseContent.map((section) => (
-                        <div key={section.heading}>
-                          <h3
-                            className="font-bold mb-3"
-                            style={{ color: "#2d2d2d", fontSize: "clamp(18px, 1.2vw, 22px)" }}
-                          >
-                            {section.heading}
-                          </h3>
-                          <ul className="space-y-2.5 pl-1">
-                            {section.bullets.map((bullet) => (
-                              <li
-                                key={bullet}
-                                className="flex items-start gap-3 text-[16px]"
-                                style={{ color: "#5a5a5a" }}
-                              >
-                                <span className="text-green mt-1 shrink-0">&#8226;</span>
-                                {bullet}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <CourseAccordion
+                    heading={course.courseContentHeading}
+                    subheading={course.courseContentSubheading}
+                    sections={course.courseContent}
+                  />
                 </FadeIn>
               )}
             </div>
@@ -231,12 +194,6 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
                     className="object-cover"
                     sizes="400px"
                   />
-                  {/* Price overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 px-6 py-3 bg-gradient-to-t from-black/60 to-transparent">
-                    <span className="text-white font-bold" style={{ fontSize: "26px" }}>
-                      {course.price}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Card body */}
