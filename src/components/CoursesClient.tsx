@@ -206,7 +206,7 @@ const classroomCourses: CourseData[] = [
       "Expert-level classroom course in DMAIC. Focuses on deep statistical analysis and strategic project leadership. Perfect for professionals aiming to drive process improvement using DMAIC.",
     includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Classroom",
-    imageSrc: "/images/courses/Classroom-1.jpg",
+    imageSrc: "/images/courses/Classroom-6.jpg",
     href: "/courses",
     buttonLabel: "Learn More",
   },
