@@ -20,8 +20,8 @@ export default function AboutPage() {
         <section className="relative">
           <div className="relative w-full h-[300px] md:h-[450px] bg-light-grey">
             <Image
-              src="/images/about-hero.jpg"
-              alt="Six Sigma South Africa office"
+              src="/images/Consultancy-01.jpg"
+              alt="Six Sigma South Africa consultancy"
               fill
               className="object-cover"
               priority
@@ -52,7 +52,7 @@ export default function AboutPage() {
         <section className="section">
           <div className="container">
             <SectionHeading
-              subtitle="2KO Africa CC has achieved both international and local accreditation for our Six Sigma courses, providing our clients with the peace of mind that our training is of the highest standard."
+              subtitle="2KO Africa CC has achieved both International and local accreditation for our Six Sigma courses. Providing our clients with the peace of mind that our training is of the highest standard."
             >
               Accreditation
             </SectionHeading>
@@ -64,19 +64,22 @@ export default function AboutPage() {
                 </h3>
                 <p className="text-body text-[18px] leading-relaxed">
                   We are a professional accrediting body within the Six Sigma
-                  industry. Our objective is to ensure that Six Sigma Certified
-                  individuals have been exposed to the complete Six Sigma Body
-                  of Knowledge and meet a minimum standard of proficiency.
+                  industry that does not provide training, mentoring, coaching,
+                  or consulting services. Our objective is to ensure that Six
+                  Sigma Certified individuals have been exposed to the complete
+                  Six Sigma Body of Knowledge and have been required to meet a
+                  minimum standard of proficiency for Six Sigma and its
+                  implementation.
                 </p>
               </div>
               <div className="bg-light-grey rounded-lg p-6">
                 <h3 className="text-heading font-semibold mb-3">
-                  MICT SETA Accreditation
+                  MICT SETA Accreditation: 2007/01/215
                 </h3>
                 <p className="text-body text-[18px] leading-relaxed">
-                  Unit Standard: 243816 &mdash; Developing a project quality
-                  management plan for a simple to moderately complex project.
-                  Level 5. Our MICT SETA accreditation number is 2007/01/215.
+                  Unit Standard: 243816 | Developing a project quality
+                  management plan for a simple to moderately complex project |
+                  Level 5
                 </p>
               </div>
             </div>
@@ -84,11 +87,10 @@ export default function AboutPage() {
             <div className="mt-8 max-w-3xl mx-auto">
               <p className="text-body text-[18px] leading-relaxed text-center">
                 Six Sigma South Africa is aligned with the Council for Six
-                Sigma Certification (CSSC), which is known for quality
-                assurance and high standards. In South Africa, our company
-                started training Six Sigma courses in 2005, and we are
-                registered as Six Sigma South Africa, with a trade mark
-                pending.
+                Sigma Certification, which is known for quality assurance and
+                high standards. In South Africa, our company started training
+                Six Sigma courses in 2005, and we are registered as Six Sigma
+                South Africa, with a trade mark pending.
               </p>
             </div>
           </div>
@@ -111,12 +113,13 @@ export default function AboutPage() {
                 "Employee Motivation and development of staff skills",
                 "Strategic Planning",
                 "Supply Chain Management",
-                "Bottom line cost savings (5%–20% of turnover per annum)",
-                "Improved quality of product or service",
+                "Bottom line cost savings (5%\u201320% of turnover per annum)",
+                "Improved quality of product or service as perceived by the customer (internal and external customers)",
                 "Common language throughout the organisation",
                 "World class standard",
                 "Creates a competitive edge",
                 "Improve ROI",
+                "Drive sales growth",
               ].map((item) => (
                 <div
                   key={item}
@@ -133,35 +136,64 @@ export default function AboutPage() {
         </section>
       </FadeIn>
 
-      {/* ───── Why Choose Us ───── */}
+      {/* ───── What You Can Expect ───── */}
       <FadeIn>
         <section className="section">
           <div className="container">
             <SectionHeading>
-              Why Choose Six Sigma South Africa?
+              What You Can Expect
+            </SectionHeading>
+
+            <div className="grid sm:grid-cols-3 gap-6 mt-10 max-w-3xl mx-auto">
+              {[
+                "Improved knowledge and skills",
+                "Ability to use a wide range of tools and techniques",
+                "A status that is recognised world wide",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-start gap-3 bg-light-grey rounded-lg p-5"
+                >
+                  <span className="text-green text-[18px] mt-0.5 shrink-0">
+                    &#10003;
+                  </span>
+                  <span className="text-body text-[18px]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeIn>
+
+      {/* ───── Why Choose Us ───── */}
+      <FadeIn>
+        <section className="section bg-light-grey">
+          <div className="container">
+            <SectionHeading>
+              Why Choose Six Sigma South Africa as Training Provider?
             </SectionHeading>
 
             <div className="space-y-6 mt-10 max-w-3xl mx-auto">
               {[
                 {
                   heading: "Prompt response time",
-                  text: "We address the needs of your company quickly and efficiently, ensuring you get started on your Six Sigma journey without delay.",
+                  text: "2KO Africa CC has prompt response time in addressing the needs of your company.",
                 },
                 {
                   heading: "Dual certification",
-                  text: "We provide 2 sets of certifications once students have successfully completed the training and the project — both a local and an internationally recognised certificate.",
+                  text: "2KO Africa CC provides 2 sets of certifications, once students have successfully completed the training and the project.",
                 },
                 {
                   heading: "Internationally recognised",
-                  text: "Six Sigma/Lean certification is awarded by an institution that employs a certified and qualified Black Belt trainer. Certification is recognised worldwide provided it comes from a certified organisation.",
+                  text: "Worldwide, the practice is that Six Sigma/Lean certification is awarded by an institution that employs a certified and qualified Six Sigma/Lean black belt trainer (which is what we do). There is no central certifying body like there is for say Microsoft. For this reason, Six Sigma/lean certification is recognized worldwide provided it came from a certified organization.",
                 },
                 {
                   heading: "Flexible training schedule",
-                  text: "We provide a flexible training schedule to suit delegates, offering online, virtual, and classroom training options.",
+                  text: "2KO Africa CC provides a flexible training schedule to suit delegates.",
                 },
                 {
                   heading: "Well-established",
-                  text: "Six Sigma South Africa has been providing Six Sigma training since 2005 and has trained over 5,000 professionals across Africa.",
+                  text: "2KO Africa CC is well-established.",
                 },
               ].map(({ heading, text }) => (
                 <div key={heading} className="flex items-start gap-4">
@@ -185,7 +217,7 @@ export default function AboutPage() {
 
       {/* ───── Mission & Vision ───── */}
       <FadeIn>
-        <section className="section bg-light-grey">
+        <section className="section">
           <div className="container">
             <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
               <div>

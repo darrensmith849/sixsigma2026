@@ -279,8 +279,8 @@ export default function CoursesClient() {
       <section style={{ paddingBottom: "80px" }}>
         <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 24px" }}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-9">
-            {courses.map((course) => (
-              <FadeIn key={course.title}>
+            {courses.map((course, index) => (
+              <FadeIn key={`${course.title}-${index}`}>
                 <CourseCard
                   title={course.title}
                   description={course.description}
