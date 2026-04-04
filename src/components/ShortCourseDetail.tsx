@@ -16,6 +16,9 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
         ? "Virtual — Live instructor"
         : "Classroom — In person";
 
+  const primaryCta = course.ctaLabels?.primary ?? "Enquire Now";
+  const secondaryCta = course.ctaLabels?.secondary ?? "How to Book";
+
   return (
     <>
       {/* ───── Hero ───── */}
@@ -93,7 +96,7 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
 
                   {/* Hero CTA */}
                   <Button href="/contact" variant="white" size="large">
-                    Enquire Now
+                    {primaryCta}
                   </Button>
                 </div>
               </div>
@@ -162,6 +165,55 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
                   </ul>
                 </div>
               </FadeIn>
+
+              {/* Course Content — only if approved content exists */}
+              {course.courseContent && course.courseContent.length > 0 && (
+                <FadeIn>
+                  <div>
+                    {course.courseContentHeading && (
+                      <h2
+                        className="font-bold mb-2"
+                        style={{ color: "#2d2d2d", fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                      >
+                        {course.courseContentHeading}
+                      </h2>
+                    )}
+                    {course.courseContentSubheading && (
+                      <p
+                        className="font-semibold mb-8"
+                        style={{ color: "#16b24a", fontSize: "clamp(18px, 1.3vw, 22px)" }}
+                      >
+                        {course.courseContentSubheading}
+                      </p>
+                    )}
+
+                    <div className="space-y-8">
+                      {course.courseContent.map((section) => (
+                        <div key={section.heading}>
+                          <h3
+                            className="font-bold mb-3"
+                            style={{ color: "#2d2d2d", fontSize: "clamp(18px, 1.2vw, 22px)" }}
+                          >
+                            {section.heading}
+                          </h3>
+                          <ul className="space-y-2.5 pl-1">
+                            {section.bullets.map((bullet) => (
+                              <li
+                                key={bullet}
+                                className="flex items-start gap-3 text-[16px]"
+                                style={{ color: "#5a5a5a" }}
+                              >
+                                <span className="text-green mt-1 shrink-0">&#8226;</span>
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
             </div>
 
             {/* Right — Details Card */}
@@ -252,10 +304,10 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
                   {/* CTAs */}
                   <div className="space-y-3 pt-2">
                     <Button href="/contact" variant="filled" size="default" className="w-full">
-                      Enquire Now
+                      {primaryCta}
                     </Button>
                     <Button href="/book-a-course" variant="outline" size="default" className="w-full">
-                      How to Book
+                      {secondaryCta}
                     </Button>
                   </div>
 

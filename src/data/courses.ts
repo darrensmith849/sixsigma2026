@@ -1,6 +1,11 @@
 export type Mode = "Online" | "Virtual" | "Classroom";
 export type BeltLevel = "white" | "yellow" | "green" | "black" | "short";
 
+export interface CourseContentSection {
+  heading: string;
+  bullets: string[];
+}
+
 export interface CourseData {
   slug: string;
   title: string;
@@ -15,6 +20,10 @@ export interface CourseData {
   buttonLabel?: string;
   price: string;
   duration: string;
+  ctaLabels?: { primary: string; secondary: string; details?: string };
+  courseContentHeading?: string;
+  courseContentSubheading?: string;
+  courseContent?: CourseContentSection[];
 }
 
 // ─── Online Courses ─────────────────────────────────────────────
@@ -336,48 +345,140 @@ const classroomCourses: CourseData[] = [
 
 // ─── Short Courses (5S & Kaizen) ────────────────────────────────
 
+const fiveSDescription =
+  "Our Six Sigma 5S course in South Africa offers a comprehensive introduction to the 5S methodology: Sort, Set in Order, Shine, Standardize, and Sustain. Designed to enhance workplace organization and efficiency, this training equips participants with practical tools and strategies to improve quality management and reduce waste in their operations. Ideal for professionals aiming to foster a productive, safe, and high-quality work environment.";
+
+const fiveSCtaLabels = {
+  primary: "Get Quote",
+  secondary: "Book Course",
+  details: "View Full Course Details",
+};
+
+const fiveSIncludes = ["1 Day", "8 Lessons", "29 Topics", "No Exam", "No Project"];
+
+const fiveSCourseContent: CourseContentSection[] = [
+  {
+    heading: "Introduction to 5S",
+    bullets: [
+      "Overview of 5S methodology",
+      "History and origins of 5S",
+      "Benefits of implementing 5S in the workplace",
+    ],
+  },
+  {
+    heading: "Sort",
+    bullets: [
+      "Understanding the Sort phase",
+      "Identifying necessary vs. unnecessary items",
+      "Techniques for sorting and categorizing items",
+      "Implementing visual management tools for sorting",
+    ],
+  },
+  {
+    heading: "Set in Order",
+    bullets: [
+      "Importance of organization in the workplace",
+      "Principles of efficient layout and storage",
+      "Developing visual cues for item placement",
+      "Strategies for optimizing workflow through proper arrangement",
+    ],
+  },
+  {
+    heading: "Shine",
+    bullets: [
+      "Creating a culture of cleanliness and maintenance",
+      "Importance of regular cleaning and inspection",
+      "Implementing cleaning schedules and checklists",
+      "Identifying and addressing root causes of dirt and clutter",
+    ],
+  },
+  {
+    heading: "Sustain",
+    bullets: [
+      "Strategies for sustaining 5S improvements",
+      "Building employee engagement and ownership",
+      "Conducting regular audits and reviews",
+      "Continuously improving 5S practices",
+    ],
+  },
+  {
+    heading: "Case Studies and Best Practices",
+    bullets: [
+      "Examining real-world examples of successful 5S implementation",
+      "Learning from challenges and pitfalls",
+      "Identifying best practices for sustaining 5S improvements",
+    ],
+  },
+  {
+    heading: "Implementing 5S in Your Workplace",
+    bullets: [
+      "Developing an action plan for implementing 5S",
+      "Identifying key stakeholders and resources",
+      "Overcoming resistance and driving change",
+      "Measuring and evaluating the success of 5S initiatives",
+    ],
+  },
+  {
+    heading: "Conclusion and Next Steps",
+    bullets: [
+      "Review of key concepts and takeaways",
+      "Action planning for immediate implementation",
+      "Resources for ongoing support and learning",
+    ],
+  },
+];
+
 const shortCourses: CourseData[] = [
   {
     slug: "classroom-5s",
-    title: "Six Sigma 5S Classroom Course in South Africa",
+    title: "Six Sigma Classroom 5S Course in South Africa",
     shortTitle: "5S",
-    description:
-      "Hands-on classroom training in the 5S methodology: Sort, Set in Order, Shine, Standardise, and Sustain. Learn to create organised, efficient workplaces that boost productivity.",
-    includes: ["1 Day", "No Exam", "No Project"],
+    description: fiveSDescription,
+    includes: fiveSIncludes,
     mode: "Classroom",
     beltLevel: "short",
     imageSrc: "/images/courses/Classroom-1.jpg",
     buttonLabel: "Learn More",
     price: "R6,995",
     duration: "1 Day",
+    ctaLabels: fiveSCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma 5S Course",
+    courseContent: fiveSCourseContent,
   },
   {
     slug: "virtual-5s",
-    title: "Six Sigma 5S Virtual Course in South Africa",
+    title: "Six Sigma Virtual 5S Course in South Africa",
     shortTitle: "5S",
-    description:
-      "Interactive virtual training in the 5S methodology. Learn to create organised, efficient workplaces through Sort, Set in Order, Shine, Standardise, and Sustain.",
-    includes: ["1 Day", "No Exam", "No Project"],
+    description: fiveSDescription,
+    includes: fiveSIncludes,
     mode: "Virtual",
     beltLevel: "short",
     imageSrc: "/images/courses/Virtual-1.jpg",
     buttonLabel: "Learn More",
     price: "R6,995",
     duration: "1 Day",
+    ctaLabels: fiveSCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma 5S Course",
+    courseContent: fiveSCourseContent,
   },
   {
     slug: "online-5s",
-    title: "Six Sigma 5S Online Course in South Africa",
+    title: "Six Sigma Online 5S Course in South Africa",
     shortTitle: "5S",
-    description:
-      "Self-paced online training in the 5S methodology. Learn the principles of Sort, Set in Order, Shine, Standardise, and Sustain to transform your workplace.",
-    includes: ["6 hours of content", "No Exam", "No Project"],
+    description: fiveSDescription,
+    includes: fiveSIncludes,
     mode: "Online",
     beltLevel: "short",
     imageSrc: "/images/courses/Online-1.jpg",
     buttonLabel: "Learn More",
     price: "R6,995",
-    duration: "6 hours of content",
+    duration: "1 Day",
+    ctaLabels: fiveSCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma 5S Course",
+    courseContent: fiveSCourseContent,
   },
   {
     slug: "classroom-kaizen",
