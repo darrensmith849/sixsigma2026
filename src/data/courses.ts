@@ -331,16 +331,42 @@ const yellowBeltCourseOutline: CourseContentSection[] = [
   },
 ];
 
+// ─── Shared White Belt Content (from approved live pages) ───────
+
+const whiteBeltCtaLabels = {
+  primary: "Get Quote",
+  secondary: "Start Course",
+};
+
+const whiteBeltCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Module A",
+    bullets: ["Part 1", "Part 2", "Part 3"],
+  },
+  {
+    heading: "Module B",
+    bullets: ["Part 1", "Part 2"],
+  },
+  {
+    heading: "Module C",
+    bullets: ["Part 1", "Part 2"],
+  },
+  {
+    heading: "Module D",
+    bullets: ["Part 1", "Part 2", "Part 3"],
+  },
+];
+
 // ─── Online Courses ─────────────────────────────────────────────
 
 const onlineCourses: CourseData[] = [
   {
     slug: "online-white-belt",
-    title: "Six Sigma White Belt training in South Africa",
+    title: "Six Sigma Online White Belt Course in South Africa",
     shortTitle: "White Belt",
     description:
-      "Self-paced course introducing Six Sigma basics. Ideal for understanding fundamental concepts and improving workplace efficiency. No prior experience required.",
-    includes: ["6 hours of content", "No Exam", "No Project"],
+      "This online white belt six sigma course in South Africa provides a basic foundation to Six Sigma methodology. Our beginner-oriented, video sessions serve as the perfect base for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma White Belt training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Join our Six Sigma White Belt training today and embark on your journey towards process improvement and efficiency.",
+    includes: ["4 Lessons", "10 Topics", "10 Quizzes"],
     mode: "Online",
     beltLevel: "white",
     imageSrc: "/images/courses/Online-1.jpg",
@@ -349,6 +375,10 @@ const onlineCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "Free",
     duration: "6 hours of content",
+    ctaLabels: whiteBeltCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma White Belt Course",
+    courseContent: whiteBeltCourseOutline,
   },
   {
     slug: "online-yellow-belt",
