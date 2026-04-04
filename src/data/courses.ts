@@ -167,6 +167,74 @@ const leanGreenBeltCourseOutline: CourseContentSection[] = [
   },
 ];
 
+// ─── Shared Yellow Belt Content (from approved live pages) ──────
+
+const yellowBeltCtaLabels = {
+  primary: "Get Quote",
+  secondary: "Book Course",
+  details: "View Full Course Details",
+};
+
+const yellowBeltCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Introduction to Six Sigma",
+    bullets: [
+      "Six Sigma Overview",
+      "Six Sigma success factors and six sigma organisation",
+      "What does 6 sigma mean and how is it measured?",
+      "Six Sigma Roles – business and customer",
+      "Developing a cutomer-focused business strategy",
+      "Unpacking DMAIC methodology",
+    ],
+  },
+  {
+    heading: "Define Phase",
+    bullets: [
+      "Define Phase",
+      "Elements of the Project Charter",
+      "Six Sigma Teams",
+      "Process Mapping",
+      "Business Risk Management",
+    ],
+  },
+  {
+    heading: "Measure Phase",
+    bullets: [
+      "Measure Phase",
+      "How to sample correctly",
+      "Stakeholder Management",
+      "Measuring financial impact",
+    ],
+  },
+  {
+    heading: "Analyse Phase",
+    bullets: [
+      "Analyse Phase",
+      "Cause and Effect",
+    ],
+  },
+  {
+    heading: "Improve Phase",
+    bullets: [
+      "Improve Phase",
+    ],
+  },
+  {
+    heading: "Control Phase",
+    bullets: [
+      "Control Phase",
+    ],
+  },
+  {
+    heading: "Introduction to statistics",
+    bullets: [
+      "Introduction to statistics",
+      "Statistical tools",
+      "Correlation versus Causation",
+    ],
+  },
+];
+
 // ─── Online Courses ─────────────────────────────────────────────
 
 const onlineCourses: CourseData[] = [
@@ -188,17 +256,21 @@ const onlineCourses: CourseData[] = [
   },
   {
     slug: "online-yellow-belt",
-    title: "Six Sigma Yellow Belt training in South Africa",
+    title: "Six Sigma Online Yellow Belt Course in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "Course focusing on basic project management within Six Sigma. Excellent for team members seeking to support and participate in improvement projects.",
-    includes: ["14 hours of content", "1 x 90-minute Exam", "No Project"],
+      "This online yellow belt six sigma course in South Africa helps establish your six sigma methodology. Our professional videos serve as the perfect starting point for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma.",
+    includes: ["7 Lessons", "22 Topics", "22 Quizzes"],
     mode: "Online",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Online-2.jpg",
     buttonLabel: "Learn More",
     price: "From R4,998",
     duration: "14 hours of content",
+    ctaLabels: yellowBeltCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Yellow Belt Course",
+    courseContent: yellowBeltCourseOutline,
   },
   {
     slug: "online-lean-green-belt",
@@ -302,17 +374,21 @@ const virtualCourses: CourseData[] = [
   },
   {
     slug: "virtual-yellow-belt",
-    title: "Six Sigma Yellow Belt training in South Africa",
+    title: "Six Sigma Virtual Yellow Belt Course in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "Course teaching project participation and process management skills. Ideal for professionals seeking to optimize team performance.",
-    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
+      "This virtual live yellow belt six sigma course introduces you to the world of Six Sigma systems. Our engaging video sessions serve as the basis for gaining an understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful virtual live courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma.",
+    includes: ["2 Days", "7 Lessons", "22 Topics", "1 x 90-minute exam", "No Project requirement"],
     mode: "Virtual",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Virtual-2.jpg",
     buttonLabel: "Learn More",
     price: "From R4,998",
     duration: "2 Days",
+    ctaLabels: yellowBeltCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Yellow Belt Course",
+    courseContent: yellowBeltCourseOutline,
   },
   {
     slug: "virtual-lean-green-belt",
@@ -418,17 +494,21 @@ const classroomCourses: CourseData[] = [
   },
   {
     slug: "classroom-yellow-belt",
-    title: "Six Sigma Yellow Belt training in South Africa",
+    title: "Six Sigma Classroom Yellow Belt Course in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "Course exploring process improvement, project participation, and Six Sigma tools. Perfect for hands-on learners desiring active project involvement.",
-    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
+      "This in-person yellow belt course introduces you to the world of Six Sigma methodology. As a leading provider of Six Sigma Yellow Belt training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma. Join our instructor led Six Sigma Yellow Belt course today and embark on your journey towards process improvement and efficiency.",
+    includes: ["2 Days", "7 Lessons", "22 Topics", "1 x 90-minute exam", "No Project requirement"],
     mode: "Classroom",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Classroom-2.jpg",
     buttonLabel: "Learn More",
     price: "From R4,998",
     duration: "2 Days",
+    ctaLabels: yellowBeltCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Yellow Belt Course",
+    courseContent: yellowBeltCourseOutline,
   },
   {
     slug: "classroom-lean-green-belt",
