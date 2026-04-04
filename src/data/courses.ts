@@ -428,6 +428,130 @@ const fiveSCourseContent: CourseContentSection[] = [
   },
 ];
 
+const kaizenDescription =
+  "Our Kaizen course in South Africa is focused on continuous improvement principles and practices. Participants will learn to identify inefficiencies, implement small but impactful changes, and foster a culture of collective responsibility and ongoing enhancement. This training is perfect for individuals and teams looking to drive operational excellence and enhance competitiveness through incremental improvements.";
+
+const kaizenCtaLabels = {
+  primary: "Get Quote",
+  secondary: "Book Course",
+  details: "View Full Course Details",
+};
+
+const kaizenIncludes = ["1 Day", "7 Lessons", "21 Topics", "No Exam", "No Project"];
+
+const kaizenCourseContent: CourseContentSection[] = [
+  {
+    heading: "Foundations of Kaizen",
+    bullets: [
+      "Understanding the Origins and History of Kaizen",
+      "Exploring the Core Principles: Continuous Improvement, Standardization, and Elimination of Waste",
+      "The Role of Leadership in Kaizen Implementation",
+    ],
+  },
+  {
+    heading: "Kaizen Mindset and Culture",
+    bullets: [
+      "Developing a Kaizen Mindset: Embracing Change and Growth",
+      "Fostering a Culture of Continuous Improvement",
+      "Employee Engagement and Empowerment in Kaizen",
+    ],
+  },
+  {
+    heading: "Kaizen Tools and Techniques",
+    bullets: [
+      "Gemba Walks: Going to the Source for Improvement",
+      "5S Methodology: Sort, Set in Order, Shine, Standardize, Sustain",
+      "Kaizen Events: Planning and Implementing Rapid Improvement Projects",
+    ],
+  },
+  {
+    heading: "Kaizen in Action",
+    bullets: [
+      "Case Studies: Real-world Examples of Successful Kaizen Implementation",
+      "Challenges and Solutions in Kaizen Adoption",
+      "Measuring and Evaluating the Impact of Kaizen Initiatives",
+    ],
+  },
+  {
+    heading: "Kaizen in Various Sectors",
+    bullets: [
+      "Applying Kaizen in Manufacturing",
+      "Kaizen in Service Industries",
+      "Kaizen in Healthcare and Education",
+    ],
+  },
+  {
+    heading: "Continuous Learning and Adaptation",
+    bullets: [
+      "PDCA (Plan-Do-Check-Act): The Cycle of Continuous Improvement",
+      "Kaizen Kata: Building Skills for Continuous Improvement",
+      "Building a Learning Organization through Kaizen",
+    ],
+  },
+  {
+    heading: "Sustainability and Future Trends",
+    bullets: [
+      "Sustainability in Kaizen: Ensuring Long-term Success",
+      "Integrating Kaizen with Lean and Agile Methodologies",
+      "Exploring Future Trends in Kaizen and Continuous Improvement",
+    ],
+  },
+];
+
+const kaizenEntries: CourseData[] = [
+  {
+    slug: "classroom-kaizen",
+    title: "Six Sigma Classroom Kaizen Course in South Africa",
+    shortTitle: "Kaizen",
+    description: kaizenDescription,
+    includes: kaizenIncludes,
+    mode: "Classroom",
+    beltLevel: "short",
+    imageSrc: "/images/courses/Classroom-1.jpg",
+    buttonLabel: "Learn More",
+    price: "R6,995",
+    duration: "1 Day",
+    ctaLabels: kaizenCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Kaizen Course",
+    courseContent: kaizenCourseContent,
+  },
+  {
+    slug: "virtual-kaizen",
+    title: "Six Sigma Virtual Kaizen Course in South Africa",
+    shortTitle: "Kaizen",
+    description: kaizenDescription,
+    includes: kaizenIncludes,
+    mode: "Virtual",
+    beltLevel: "short",
+    imageSrc: "/images/courses/Virtual-1.jpg",
+    buttonLabel: "Learn More",
+    price: "R6,995",
+    duration: "1 Day",
+    ctaLabels: kaizenCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Kaizen Course",
+    courseContent: kaizenCourseContent,
+  },
+  {
+    slug: "online-kaizen",
+    title: "Six Sigma Online Kaizen Course in South Africa",
+    shortTitle: "Kaizen",
+    description: kaizenDescription,
+    includes: kaizenIncludes,
+    mode: "Online",
+    beltLevel: "short",
+    imageSrc: "/images/courses/Online-1.jpg",
+    buttonLabel: "Learn More",
+    price: "R6,995",
+    duration: "1 Day",
+    ctaLabels: kaizenCtaLabels,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Six Sigma Kaizen Course",
+    courseContent: kaizenCourseContent,
+  },
+];
+
 const shortCourses: CourseData[] = [
   {
     slug: "classroom-5s",
@@ -480,48 +604,7 @@ const shortCourses: CourseData[] = [
     courseContentSubheading: "Six Sigma 5S Course",
     courseContent: fiveSCourseContent,
   },
-  {
-    slug: "classroom-kaizen",
-    title: "Six Sigma Kaizen Classroom Course in South Africa",
-    shortTitle: "Kaizen",
-    description:
-      "Hands-on classroom training in Kaizen continuous improvement. Learn to facilitate Kaizen events and drive operational excellence within your organisation.",
-    includes: ["1 Day", "No Exam", "No Project"],
-    mode: "Classroom",
-    beltLevel: "short",
-    imageSrc: "/images/courses/Classroom-1.jpg",
-    buttonLabel: "Learn More",
-    price: "R6,995",
-    duration: "1 Day",
-  },
-  {
-    slug: "virtual-kaizen",
-    title: "Six Sigma Kaizen Virtual Course in South Africa",
-    shortTitle: "Kaizen",
-    description:
-      "Interactive virtual training in Kaizen continuous improvement. Learn to facilitate Kaizen events and drive operational excellence through structured improvement.",
-    includes: ["1 Day", "No Exam", "No Project"],
-    mode: "Virtual",
-    beltLevel: "short",
-    imageSrc: "/images/courses/Virtual-1.jpg",
-    buttonLabel: "Learn More",
-    price: "R6,995",
-    duration: "1 Day",
-  },
-  {
-    slug: "online-kaizen",
-    title: "Six Sigma Kaizen Online Course in South Africa",
-    shortTitle: "Kaizen",
-    description:
-      "Self-paced online training in Kaizen continuous improvement. Learn the principles and tools of Kaizen to drive ongoing operational excellence.",
-    includes: ["6 hours of content", "No Exam", "No Project"],
-    mode: "Online",
-    beltLevel: "short",
-    imageSrc: "/images/courses/Online-1.jpg",
-    buttonLabel: "Learn More",
-    price: "R6,995",
-    duration: "6 hours of content",
-  },
+  ...kaizenEntries,
 ];
 
 // ─── Combined & Helpers ─────────────────────────────────────────
