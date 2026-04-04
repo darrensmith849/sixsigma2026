@@ -23,90 +23,66 @@ interface CourseData {
 
 const onlineCourses: CourseData[] = [
   {
-    title: "White Belt Online",
+    title: "Six Sigma White Belt training in South Africa",
     description:
-      "A free introductory course providing a basic understanding of Six Sigma concepts, terminology, and the DMAIC methodology. Ideal for anyone wanting to explore Six Sigma.",
-    includes: [
-      "Self-paced online modules",
-      "Introduction to Six Sigma concepts",
-      "Basic DMAIC overview",
-      "Digital certificate of completion",
-    ],
+      "Self-paced course introducing Six Sigma basics. Ideal for understanding fundamental concepts and improving workplace efficiency. No prior experience required.",
+    includes: ["6 hours of content", "No Exam", "No Project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-1.jpg",
     href: "/courses",
     isFree: true,
     stripColor: "yellow",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Yellow Belt Online",
+    title: "Six Sigma Yellow Belt training in South Africa",
     description:
-      "Covers the understanding of the Six Sigma methodology at a foundational level. Participants learn to support Green and Black Belt project teams.",
-    includes: [
-      "Self-paced e-learning modules",
-      "Six Sigma fundamentals",
-      "Team participation techniques",
-      "CSSC internationally accredited certificate",
-    ],
+      "Course focusing on basic project management within Six Sigma. Excellent for team members seeking to support and participate in improvement projects.",
+    includes: ["14 hours of content", "1 x 90-minute Exam", "No Project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-2.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Green Belt Online",
+    title: "Six Sigma LEAN Green Belt training in South Africa",
     description:
-      "Focus on the reduction of waste in all its forms throughout the operation. Learn 5S, visual factory principles, and how to identify and eliminate waste.",
-    includes: [
-      "Lean methodology training",
-      "5S and visual factory",
-      "Waste reduction techniques",
-      "CSSC internationally accredited certificate",
-    ],
+      "Comprehensive course introducing Lean principles and tools. Learn to eliminate waste and improve efficiency in your organization's processes. Suitable for aspiring Lean practitioners.",
+    includes: ["35 hours of content", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-3.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Green Belt Online",
+    title: "Six Sigma DMAIC Green Belt training in South Africa",
     description:
-      "Learn the tips and techniques for effective Six Sigma execution. Receive fundamental training in Define, Measure, Analyse, Improve and Control.",
-    includes: [
-      "Full DMAIC methodology",
-      "Statistical analysis tools",
-      "Process capability studies",
-      "CSSC internationally accredited certificate",
-    ],
+      "In-depth online course teaching DMAIC (Define, Measure, Analyze, Improve, Control) process. Ideal for professionals seeking to implement this structured problem-solving methodology in their projects.",
+    includes: ["35 hours of content", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-4.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Black Belt Online",
+    title: "Six Sigma LEAN Black Belt training in South Africa",
     description:
-      "Advanced Lean training covering deeper waste elimination strategies, change management, and stakeholder influence across the organisation.",
-    includes: [
-      "Advanced Lean techniques",
-      "Change management training",
-      "Stakeholder influence",
-      "CSSC internationally accredited certificate",
-    ],
+      "Advanced course providing mastery in Lean methodologies. Learn to lead and drive Lean transformations in large-scale projects. Perfect for professionals desiring Lean leadership roles.",
+    includes: ["70 hours of content", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-5.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Black Belt Online",
+    title: "Six Sigma DMAIC Black Belt training in South Africa",
     description:
-      "Advanced statistical training and analysis tools for project leaders. Deeper analysis, change management, and stakeholder influence with project coaching.",
-    includes: [
-      "Advanced statistical methods",
-      "Change management & leadership",
-      "Project-based coaching",
-      "CSSC internationally accredited certificate",
-    ],
+      "Expert-level online course in DMAIC, focusing on deep statistical analysis and strategic project leadership. Ideal for leaders seeking to drive process improvement using DMAIC.",
+    includes: ["70 hours of content", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Online",
     imageSrc: "/images/courses/Online-6.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
 ];
 
