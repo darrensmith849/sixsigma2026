@@ -65,8 +65,8 @@ export default function AboutPage() {
           </div>
           <div className="flex-1 relative min-h-[380px] lg:min-h-0">
             <Image
-              src="/images/Consultancy-01.jpg"
-              alt="Six Sigma South Africa team"
+              src="/images/about-hero.jpg"
+              alt="Six Sigma South Africa training session"
               fill
               className="object-cover object-center"
               priority
@@ -145,8 +145,8 @@ export default function AboutPage() {
       <FadeIn>
         <section className="relative overflow-hidden">
           <Image
-            src="/images/hero-presentation.jpg"
-            alt="Six Sigma training session"
+            src="/images/about-dark-bg.jpg"
+            alt="Six Sigma professional environment"
             fill
             className="object-cover"
             sizes="100vw"
