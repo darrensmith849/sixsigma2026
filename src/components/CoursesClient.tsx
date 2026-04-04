@@ -339,14 +339,13 @@ export default function CoursesClient() {
                   className="mb-8 leading-relaxed"
                   style={{ color: "#5e5e5e", fontSize: "clamp(18px, 1.2vw, 22px)" }}
                 >
-                  Need a tailored training programme for your organisation? We
-                  design and deliver customised Six Sigma and Lean Management
-                  courses to meet your specific operational challenges and
-                  improvement goals. Training can be delivered on-site at your
-                  premises or virtually.
+                  Tailor your Six Sigma training experience with our custom
+                  training solutions. Collaborate with our expert trainers to
+                  develop a curriculum that meets your organization&#39;s unique
+                  needs and objectives.
                 </p>
                 <Button href="/contact" variant="filled" size="large">
-                  Enquire now
+                  Enquire Now
                 </Button>
               </div>
             </div>
