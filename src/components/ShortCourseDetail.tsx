@@ -219,7 +219,7 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
             {/* Right — Details Card */}
             <div className="mt-10 lg:mt-0 lg:w-[380px] xl:w-[400px] shrink-0">
               <div
-                className="lg:sticky lg:top-[100px] lg:-mt-[200px] bg-white rounded-xl overflow-hidden"
+                className="lg:sticky lg:top-[100px] bg-white rounded-xl overflow-hidden"
                 style={{ boxShadow: "0 12px 48px rgba(0,0,0,0.1)" }}
               >
                 {/* Card image */}
