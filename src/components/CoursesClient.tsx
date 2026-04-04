@@ -151,88 +151,64 @@ const virtualCourses: CourseData[] = [
 
 const classroomCourses: CourseData[] = [
   {
-    title: "Yellow Belt Classroom",
+    title: "Six Sigma Root Cause Analysis training in South Africa",
     description:
-      "In-person training in the fundamentals of Six Sigma. Available in Johannesburg, Cape Town, Durban, and Pretoria.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "Hands-on group exercises",
-      "Printed course materials",
-      "CSSC internationally accredited certificate",
-    ],
+      "In-person, hands-on training on uncovering the primary cause of a problem, using structured problem-solving techniques. Perfect for proactive learners.",
+    includes: ["2 Days", "No Exam", "No Project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-1.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Green Belt Classroom",
+    title: "Six Sigma Yellow Belt training in South Africa",
     description:
-      "In-person Lean Six Sigma training focused on waste reduction methodologies. Hands-on workshops and real-world case studies in a collaborative environment.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "Lean tools and workshops",
-      "Real-world case studies",
-      "CSSC internationally accredited certificate",
-    ],
+      "Course exploring process improvement, project participation, and Six Sigma tools. Perfect for hands-on learners desiring active project involvement.",
+    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-2.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Green Belt Classroom",
+    title: "Six Sigma Green Belt training in South Africa",
     description:
-      "Comprehensive in-person DMAIC training with hands-on statistical exercises. Green Belts are the problem solvers applying the right tools to maximise efficiency.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "Full DMAIC methodology",
-      "Hands-on statistical exercises",
-      "CSSC internationally accredited certificate",
-    ],
+      "In-person course on Lean principles and tools. Hands-on training to eliminate waste and improve processes within your organization. Perfect for active learners desiring Lean expertise.",
+    includes: ["5 Days", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-3.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Black Belt Classroom",
+    title: "Six Sigma Green Belt training in South Africa",
     description:
-      "Advanced in-person Lean training for project leaders and change agents. Develop expertise in managing complex improvement initiatives.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "Advanced Lean techniques",
-      "Project leadership skills",
-      "CSSC internationally accredited certificate",
-    ],
+      "In-person, comprehensive training on DMAIC process. Learn to apply this structured problem-solving methodology in your projects. Ideal for professionals seeking hands-on DMAIC training.",
+    includes: ["5 Days", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-4.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Black Belt Classroom",
+    title: "Six Sigma Black Belt training in South Africa",
     description:
-      "Advanced in-person statistical training for those leading Six Sigma projects. Deeper analysis tools, change management, and stakeholder influence.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "Advanced statistical methods",
-      "Change management & leadership",
-      "CSSC internationally accredited certificate",
-    ],
+      "Immersive course offering expert-level knowledge in Lean methodologies. Focus on strategic implementation and Lean leadership. Ideal for aspiring Lean transformation leaders.",
+    includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-5.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Root Cause Analysis Classroom",
+    title: "Six Sigma Black Belt training in South Africa",
     description:
-      "Learn systematic approaches to identifying root causes of problems and implementing effective corrective actions. Essential for any improvement professional.",
-    includes: [
-      "Face-to-face instructor-led training",
-      "RCA tools and frameworks",
-      "Real-world problem-solving exercises",
-      "Certificate of completion",
-    ],
+      "Expert-level classroom course in DMAIC. Focuses on deep statistical analysis and strategic project leadership. Perfect for professionals aiming to drive process improvement using DMAIC.",
+    includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-1.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
 ];
 
