@@ -151,7 +151,7 @@ export default function AboutPage() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/75" />
+          <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 flex flex-col lg:flex-row min-h-[440px]">
             {/* Left green panel */}
             <div
