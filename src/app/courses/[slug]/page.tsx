@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getCourseBySlug, getAllSlugs } from "@/data/courses";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
+import ShortCourseDetail from "@/components/ShortCourseDetail";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -29,6 +30,10 @@ export default async function CourseDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const course = getCourseBySlug(slug);
   if (!course) notFound();
+
+  if (course.beltLevel === "short") {
+    return <ShortCourseDetail course={course} />;
+  }
 
   const modeBadgeLabel =
     course.mode === "Online"
