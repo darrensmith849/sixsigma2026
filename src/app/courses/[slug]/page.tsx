@@ -169,63 +169,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 </div>
               </FadeIn>
 
-              {/* Curriculum */}
-              <FadeIn>
-                <div>
-                  <h2
-                    className="font-bold mb-4"
-                    style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}
-                  >
-                    Curriculum
-                  </h2>
-                  <ol className="space-y-3">
-                    {course.curriculum.map((item, i) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-[18px]"
-                        style={{ color: "#5a5a5a" }}
-                      >
-                        <span className="w-7 h-7 shrink-0 rounded-full bg-green/10 flex items-center justify-center text-green font-semibold text-[14px]">
-                          {i + 1}
-                        </span>
-                        {item}
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              </FadeIn>
-
-              {/* Outcomes */}
-              <FadeIn>
-                <div>
-                  <h2
-                    className="font-bold mb-4"
-                    style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}
-                  >
-                    What You&apos;ll Achieve
-                  </h2>
-                  <ul className="space-y-3">
-                    {course.outcomes.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-[18px]"
-                        style={{ color: "#5a5a5a" }}
-                      >
-                        <svg
-                          className="w-5 h-5 text-green shrink-0 mt-0.5"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
             </div>
 
             {/* Right: Sidebar */}
@@ -254,23 +197,6 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     <span className="font-semibold">Price</span>
                     <span className="font-semibold text-green">{course.price}</span>
                   </div>
-                </div>
-
-                <hr className="border-gray-300" />
-
-                {/* Prerequisites */}
-                <div>
-                  <p className="font-semibold mb-2" style={{ color: "#5a5a5a", fontSize: "16px" }}>
-                    Prerequisites
-                  </p>
-                  <ul className="space-y-1.5 text-[15px]" style={{ color: "#5e5e5e" }}>
-                    {course.prerequisites.map((p) => (
-                      <li key={p} className="flex items-start gap-2">
-                        <span className="text-green mt-0.5">&#8226;</span>
-                        {p}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
 
                 <hr className="border-gray-300" />
