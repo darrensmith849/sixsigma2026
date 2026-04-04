@@ -36,6 +36,7 @@ export default function WhichCoursePage() {
                     "If you are completely new to Six Sigma and want a free introduction to the basic concepts and terminology.",
                   duration: "6 hours of content",
                   price: "Free",
+                  href: "/courses/online-white-belt",
                 },
                 {
                   belt: "Yellow Belt",
@@ -44,6 +45,7 @@ export default function WhichCoursePage() {
                     "If you want to understand the Six Sigma methodology at a foundational level and learn to support project teams.",
                   duration: "2 Days / 14 hours online",
                   price: "From R4,998",
+                  href: "/courses/online-yellow-belt",
                 },
                 {
                   belt: "Green Belt",
@@ -52,6 +54,7 @@ export default function WhichCoursePage() {
                     "If you have some project management experience and want to lead improvement projects using LEAN or DMAIC methodology.",
                   duration: "5 Days / 35 hours online",
                   price: "From R16,995",
+                  href: "/courses/online-lean-green-belt",
                 },
                 {
                   belt: "Black Belt",
@@ -60,6 +63,7 @@ export default function WhichCoursePage() {
                     "If you want to lead and manage Six Sigma projects at an organisational level with advanced statistical analysis skills.",
                   duration: "10 Days / 70 hours online",
                   price: "From R26,000",
+                  href: "/courses/online-lean-black-belt",
                 },
                 {
                   belt: "5S",
@@ -68,6 +72,7 @@ export default function WhichCoursePage() {
                     "If you want to learn the 5S methodology for workplace organisation: Sort, Set in Order, Shine, Standardise, and Sustain.",
                   duration: "1 Day",
                   price: "R6,995",
+                  href: "/courses/classroom-5s",
                 },
                 {
                   belt: "Kaizen",
@@ -76,6 +81,7 @@ export default function WhichCoursePage() {
                     "If you want to learn continuous improvement principles and practices to drive operational excellence.",
                   duration: "1 Day",
                   price: "R6,995",
+                  href: "/courses/classroom-kaizen",
                 },
               ].map((course) => (
                 <div
@@ -97,8 +103,8 @@ export default function WhichCoursePage() {
                   <p className="text-green font-semibold text-[18px] mb-4">
                     {course.price}
                   </p>
-                  <Button href="/courses" variant="filled" size="default">
-                    View Courses
+                  <Button href={course.href} variant="filled" size="default">
+                    View Course
                   </Button>
                 </div>
               ))}

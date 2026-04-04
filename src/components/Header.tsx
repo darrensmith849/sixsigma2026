@@ -59,21 +59,21 @@ const navItems: NavItem[] = [
         href: "#",
         children: [
           {
-            label: "5s",
+            label: "5S",
             href: "#",
             children: [
-              { label: "Classroom", href: "/six-sigma-classroom-5s-course-in-south-africa" },
-              { label: "Virtual", href: "/six-sigma-online-5s-course-in-south-africa" },
-              { label: "Online", href: "/six-sigma-virtual-5s-course-in-south-africa" },
+              { label: "Classroom", href: "/courses/classroom-5s" },
+              { label: "Virtual", href: "/courses/virtual-5s" },
+              { label: "Online", href: "/courses/online-5s" },
             ],
           },
           {
             label: "Kaizen",
             href: "#",
             children: [
-              { label: "Classroom", href: "/six-sigma-classroom-kaizen-course-in-south-africa" },
-              { label: "Virtual", href: "/six-sigma-virtual-kaizen-course-in-south-africa" },
-              { label: "Online", href: "/six-sigma-online-kaizen-course-in-south-africa" },
+              { label: "Classroom", href: "/courses/classroom-kaizen" },
+              { label: "Virtual", href: "/courses/virtual-kaizen" },
+              { label: "Online", href: "/courses/online-kaizen" },
             ],
           },
         ],
