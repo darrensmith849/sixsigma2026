@@ -155,7 +155,7 @@ export default function AboutPage() {
           <div className="relative z-10 flex flex-col lg:flex-row min-h-[440px]">
             {/* Left green panel */}
             <div
-              className="lg:w-1/2 flex items-center bg-green"
+              className="lg:w-1/2 flex items-center bg-green/85"
               style={{ padding: "56px 48px" }}
             >
               <div style={{ maxWidth: "440px", margin: "0 auto" }}>
