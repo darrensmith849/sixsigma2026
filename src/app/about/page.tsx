@@ -143,41 +143,41 @@ export default function AboutPage() {
 
       {/* ───── 4. Dark Overlay: Team & Partners ───── */}
       <FadeIn>
-        <section className="relative overflow-hidden">
-          <Image
-            src="/images/about-dark-bg.jpg"
-            alt="Six Sigma professional environment"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 flex flex-col lg:flex-row min-h-[440px]">
-            {/* Left green panel */}
-            <div
-              className="lg:w-1/2 flex items-center bg-green/85"
-              style={{ padding: "56px 48px" }}
-            >
-              <div style={{ maxWidth: "440px", margin: "0 auto" }}>
-                <h2
-                  className="font-semibold text-inverse mb-4"
-                  style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
-                >
-                  Our Team
-                </h2>
-                <p className="text-inverse/90 text-[17px] leading-[1.75]">
-                  The Six Sigma South Africa team comprises experienced and
-                  certified professionals who are passionate about helping
-                  businesses optimize their processes. Our trainers and
-                  consultants hold industry-recognized certifications and have an
-                  extensive background in applying Six Sigma principles to a wide
-                  range of industries.
-                </p>
-              </div>
+        <section className="grid grid-cols-1 lg:grid-cols-2" style={{ alignItems: "stretch" }}>
+          {/* Left green panel */}
+          <div
+            className="relative z-[1] flex items-center bg-green/85"
+            style={{ padding: "56px 48px", minHeight: "440px" }}
+          >
+            <div style={{ maxWidth: "440px", margin: "0 auto" }}>
+              <h2
+                className="font-semibold text-inverse mb-4"
+                style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
+              >
+                Our Team
+              </h2>
+              <p className="text-inverse/90 text-[17px] leading-[1.75]">
+                The Six Sigma South Africa team comprises experienced and
+                certified professionals who are passionate about helping
+                businesses optimize their processes. Our trainers and
+                consultants hold industry-recognized certifications and have an
+                extensive background in applying Six Sigma principles to a wide
+                range of industries.
+              </p>
             </div>
-            {/* Right side on dark overlay */}
+          </div>
+          {/* Right side with own dark background */}
+          <div className="relative overflow-hidden" style={{ minHeight: "440px" }}>
+            <Image
+              src="/images/about-dark-bg.jpg"
+              alt="Six Sigma professional environment"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-black/[0.58]" />
             <div
-              className="lg:w-1/2 flex items-center"
+              className="relative z-[1] flex items-center h-full"
               style={{ padding: "56px 48px" }}
             >
               <div style={{ maxWidth: "440px", margin: "0 auto" }}>
