@@ -18,6 +18,7 @@ interface CourseData {
   href: string;
   isFree?: boolean;
   stripColor?: "green" | "yellow";
+  buttonLabel?: string;
 }
 
 const onlineCourses: CourseData[] = [
@@ -111,75 +112,64 @@ const onlineCourses: CourseData[] = [
 
 const virtualCourses: CourseData[] = [
   {
-    title: "Yellow Belt Virtual",
+    title: "Six Sigma Root Cause Analysis training in South Africa",
     description:
-      "Live instructor-led training covering the fundamentals of Six Sigma. Learn to be part of a project team and review process improvements that support the project.",
-    includes: [
-      "Live virtual instructor-led sessions",
-      "Interactive group exercises",
-      "Six Sigma fundamentals",
-      "CSSC internationally accredited certificate",
-    ],
+      "Interactive course focusing on identifying and understanding the primary cause of a problem or issue. Ideal for problem-solvers and process improvers.",
+    includes: ["2 Days", "No Exam", "No Project"],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-1.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Green Belt Virtual",
+    title: "Six Sigma Yellow Belt training in South Africa",
     description:
-      "Master Lean Six Sigma principles focused on waste reduction. Set operations to order using 5S and visual factory; identify and eliminate waste in material and information flows.",
-    includes: [
-      "Live virtual instructor-led sessions",
-      "Lean tools and techniques",
-      "Waste identification workshops",
-      "CSSC internationally accredited certificate",
-    ],
+      "Course teaching project participation and process management skills. Ideal for professionals seeking to optimize team performance.",
+    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-2.jpg",
-
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Green Belt Virtual",
+    title: "Six Sigma LEAN Green Belt training in South Africa",
     description:
-      "Comprehensive live training in the DMAIC methodology. Problem solvers learn to apply the right tools at the right time to maximise efficiency.",
-    includes: [
-      "Live virtual instructor-led sessions",
-      "Full DMAIC methodology",
-      "Statistical analysis tools",
-      "CSSC internationally accredited certificate",
-    ],
+      "Interactive course focusing on Lean principles and tools. Learn to streamline processes and eliminate waste in your organization. Ideal for professionals seeking hands-on Lean training.",
+    includes: ["5 Days", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-3.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "Lean Black Belt Virtual",
+    title: "Six Sigma DMAIC Green Belt training in South Africa",
     description:
-      "Advanced Lean training for those managing Six Sigma projects. Focus on deeper waste elimination strategies, change management, and stakeholder influence.",
-    includes: [
-      "Live virtual instructor-led sessions",
-      "Advanced Lean techniques",
-      "Change management training",
-      "CSSC internationally accredited certificate",
-    ],
+      "Comprehensive virtual course on DMAIC process. Ideal for professionals seeking to effectively define, measure, analyze, improve, and control their business processes.",
+    includes: ["5 Days", "1 x 90-minute Exam", "3 Months to write a project"],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-4.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
   },
   {
-    title: "DMAIC Black Belt Virtual",
+    title: "Six Sigma LEAN Black Belt training in South Africa",
     description:
-      "Advanced statistical training and analysis tools for project leaders. Deeper analysis, change management, and stakeholder influence with project coaching.",
-    includes: [
-      "Live virtual instructor-led sessions",
-      "Advanced statistical methods",
-      "Change management & leadership",
-      "CSSC internationally accredited certificate",
-    ],
+      "Advanced virtual training in Lean methodologies. Learn to lead Lean transformations and enhance organizational efficiency. Perfect for professionals aspiring to Lean leadership roles.",
+    includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-5.jpg",
     href: "/courses",
+    buttonLabel: "Learn More",
+  },
+  {
+    title: "Six Sigma DMAIC Black Belt training in South Africa",
+    description:
+      "Advanced virtual training in DMAIC. Learn to implement this proven problem-solving methodology in large-scale projects, driving process improvement and organizational excellence.",
+    includes: ["10 Days", "2 x 90-minute Exams", "6 Months to write a project"],
+    mode: "Virtual",
+    imageSrc: "/images/courses/Virtual-1.jpg",
+    href: "/courses",
+    buttonLabel: "Learn More",
   },
 ];
 
@@ -348,6 +338,7 @@ export default function CoursesClient() {
                   href={course.href}
                   isFree={course.isFree}
                   stripColor={course.stripColor}
+                  buttonLabel={course.buttonLabel}
                 />
               </FadeIn>
             ))}

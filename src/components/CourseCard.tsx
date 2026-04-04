@@ -11,6 +11,7 @@ interface CourseCardProps {
   href: string;
   isFree?: boolean;
   stripColor?: "green" | "yellow";
+  buttonLabel?: string;
 }
 
 export default function CourseCard({
@@ -23,6 +24,7 @@ export default function CourseCard({
   href,
   isFree = false,
   stripColor = "green",
+  buttonLabel = "Learn more",
 }: CourseCardProps) {
   return (
     <div className="flex flex-col overflow-hidden" style={{ background: "#ececeb", borderRadius: "6px" }}>
@@ -113,7 +115,7 @@ export default function CourseCard({
             href={href}
             className="inline-flex items-center justify-center w-full font-semibold rounded-[5px] transition-all duration-200 text-center bg-green text-white border-2 border-green hover:bg-green-hover hover:border-green-hover px-8 py-3.5 text-[18px]"
           >
-            Learn more
+            {buttonLabel}
           </Link>
         </div>
       </div>
