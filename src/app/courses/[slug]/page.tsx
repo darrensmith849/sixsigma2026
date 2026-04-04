@@ -139,6 +139,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   >
                     {course.description}
                   </p>
+                  {course.overviewText && (
+                    <p
+                      className="leading-relaxed mt-4"
+                      style={{ color: "#5e5e5e", fontSize: "clamp(18px, 1.2vw, 21px)" }}
+                    >
+                      {course.overviewText}
+                    </p>
+                  )}
                 </div>
               </FadeIn>
 
@@ -173,6 +181,173 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   </ul>
                 </div>
               </FadeIn>
+
+              {/* Who Should Attend */}
+              {course.whoShouldAttend && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Who Should Attend?
+                    </h2>
+                    <p className="leading-relaxed" style={{ color: "#5e5e5e", fontSize: "clamp(17px, 1.15vw, 20px)" }}>
+                      {course.whoShouldAttend}
+                    </p>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Results that your company can expect */}
+              {course.companyResults && course.companyResults.length > 0 && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Results That Your Company Can Expect
+                    </h2>
+                    <ul className="space-y-2.5">
+                      {course.companyResults.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-[17px]" style={{ color: "#5a5a5a" }}>
+                          <span className="text-green mt-0.5 shrink-0">&#8226;</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* What you can expect */}
+              {course.whatYouCanExpect && course.whatYouCanExpect.length > 0 && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      What You Can Expect
+                    </h2>
+                    <ul className="space-y-2.5">
+                      {course.whatYouCanExpect.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-[17px]" style={{ color: "#5a5a5a" }}>
+                          <svg className="w-5 h-5 text-green shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Why choose us */}
+              {course.whyChooseUs && course.whyChooseUs.length > 0 && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Why Choose Six Sigma South Africa as Training Provider?
+                    </h2>
+                    <ul className="space-y-3">
+                      {course.whyChooseUs.map((item) => (
+                        <li key={item.substring(0, 30)} className="flex items-start gap-3 text-[17px]" style={{ color: "#5a5a5a" }}>
+                          <span className="text-green mt-0.5 shrink-0">&#8226;</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Companies trained */}
+              {course.companiesTrained && course.companiesTrained.length > 0 && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Some of the Companies We&apos;ve Trained
+                    </h2>
+                    <div className="flex flex-wrap gap-2">
+                      {course.companiesTrained.map((company) => (
+                        <span
+                          key={company}
+                          className="inline-block px-3 py-1.5 text-[14px] rounded-md"
+                          style={{ background: "#f0f0f0", color: "#5a5a5a" }}
+                        >
+                          {company}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Course Content / Outline */}
+              {course.courseContent && course.courseContent.length > 0 && (
+                <FadeIn>
+                  <div>
+                    {course.courseContentHeading && (
+                      <h2 className="font-bold mb-2" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                        {course.courseContentHeading}
+                      </h2>
+                    )}
+                    {course.courseContentSubheading && (
+                      <p className="font-semibold mb-6" style={{ color: "#16b24a", fontSize: "clamp(17px, 1.2vw, 20px)" }}>
+                        {course.courseContentSubheading}
+                      </p>
+                    )}
+                    <div className="space-y-8">
+                      {course.courseContent.map((section) => (
+                        <div key={section.heading}>
+                          <h3 className="font-bold mb-3" style={{ color: "#5a5a5a", fontSize: "clamp(18px, 1.2vw, 22px)" }}>
+                            {section.heading}
+                          </h3>
+                          <ul className="space-y-2 pl-1">
+                            {section.bullets.map((bullet) => (
+                              <li key={bullet} className="flex items-start gap-3 text-[16px]" style={{ color: "#5e5e5e" }}>
+                                <span className="text-green mt-1 shrink-0">&#8226;</span>
+                                {bullet}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Classroom-specific details */}
+              {course.classroomFee && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Classroom-Based Training
+                    </h2>
+                    <div className="space-y-3 text-[17px]" style={{ color: "#5a5a5a" }}>
+                      <p><span className="font-semibold">Standard fee:</span> {course.classroomFee}</p>
+                      {course.classroomDiscounts?.map((d) => (
+                        <p key={d.substring(0, 20)}>{d}</p>
+                      ))}
+                      {course.classroomVenue && (
+                        <p><span className="font-semibold">Venue:</span> {course.classroomVenue}</p>
+                      )}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
+
+              {/* Virtual-specific details */}
+              {course.virtualFee && (
+                <FadeIn>
+                  <div>
+                    <h2 className="font-bold mb-4" style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}>
+                      Virtual Training
+                    </h2>
+                    <div className="space-y-3 text-[17px]" style={{ color: "#5a5a5a" }}>
+                      <p><span className="font-semibold">Standard fee:</span> {course.virtualFee}</p>
+                      {course.virtualHardware && (
+                        <p><span className="font-semibold">Hardware:</span> {course.virtualHardware}</p>
+                      )}
+                    </div>
+                  </div>
+                </FadeIn>
+              )}
 
             </div>
 

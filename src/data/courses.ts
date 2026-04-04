@@ -24,7 +24,148 @@ export interface CourseData {
   courseContentHeading?: string;
   courseContentSubheading?: string;
   courseContent?: CourseContentSection[];
+  /* ─── Rich detail fields (long courses) ─── */
+  overviewText?: string;
+  whoShouldAttend?: string;
+  companyResults?: string[];
+  whatYouCanExpect?: string[];
+  whyChooseUs?: string[];
+  companiesTrained?: string[];
+  classroomFee?: string;
+  classroomDiscounts?: string[];
+  classroomVenue?: string;
+  virtualFee?: string;
+  virtualHardware?: string;
 }
+
+// ─── Shared Lean Green Belt Content (from approved PDF) ────────
+
+const leanGreenBeltOverview =
+  "Green Belts play an important role in your company's Lean Six Sigma implementation strategy. They are the problem solvers assigned to Black Belt projects. Learn how to apply the right tools at the right time to maximize efficiency in defining, measuring, analyzing, improving, and controlling critical processes to increase cost savings.";
+
+const leanGreenBeltWhoShouldAttend =
+  "Problem solvers, data analysts, and project team members in manufacturing and service industries. Individuals seeking to bring significant cost savings to their organization and those interested in becoming a Six Sigma Green Belt and/or sitting for the ASQ Six Sigma Green Belt certification exam will benefit from this training.";
+
+const leanGreenBeltCompanyResults = [
+  "Improved Customer Service Loyalty",
+  "Time Management and efficiency",
+  "Reduced Cycle Time",
+  "Employee Motivation and development of staff skills",
+  "Strategic Planning",
+  "Supply Chain Management",
+  "Bottom line cost savings (5%-20% of turnover per annum)",
+  "Improved quality of product or service as perceived by the customer (internal and external customers)",
+  "Common language throughout the organisation",
+  "World class standard",
+  "Creates a competitive edge",
+  "Improve ROI",
+  "Drive sales growth",
+];
+
+const leanGreenBeltWhatYouCanExpect = [
+  "Improved knowledge and skills",
+  "Ability to use a wide range of tools and techniques",
+  "A status that is recognised world wide",
+];
+
+const leanGreenBeltWhyChooseUs = [
+  "2KO Africa CC has prompt response time in addressing the needs of your company",
+  "2KO Africa CC provides 2 sets of certifications, once students have successfully completed the training and the project.",
+  "Worldwide, the practice is that Six Sigma/Lean certification is awarded by an institution that employs a certified and qualified Six Sigma/Lean black belt trainer (which is what we do). There is no central certifying body like there is for say Microsoft. For this reason, Six Sigma/lean certification is recognized worldwide provided it came from a certified organization.",
+  "2KO Africa CC provides a flexible training schedule to suit delegates",
+  "2KO Africa CC is well-established",
+];
+
+const leanGreenBeltCompaniesTrained = [
+  "Anglo", "American", "Adcorp", "SekelaXabiso", "FNB", "Beam Suntory",
+  "Momentum", "Bridgestone", "AIG", "In2food", "Siemans", "Al3 Boerdery",
+  "JSE", "Loreal", "Protea Chemicals", "Express Angola", "WFS", "Capita",
+  "De Beers Group", "Medshield", "Defy", "Inmarsat", "Merchants", "Flex PC",
+  "Smart life", "Petra Diamonds", "Cell C", "Eskom", "Anglobal", "Verigreen",
+  "Priontex", "Dunlop-Africa", "Westfalia Fruit", "Oldmutual",
+];
+
+const leanGreenBeltCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Introduction",
+    bullets: [
+      "History",
+      "Lean Six Sigma Definitions",
+      "Understanding Six Sigma",
+      "Understanding Lean Principles",
+      'Understanding Losses Attributable to "Waste"',
+      "Interrelationship of Lean Six Sigma",
+      "Six Sigma Fundamentals",
+      "Selection of Projects",
+    ],
+  },
+  {
+    heading: "Measure Phase (Measurement System Analysis)",
+    bullets: [
+      "Process Definition",
+      "Variable Gage R&R",
+      "Attribute Agreement Analysis",
+      "Variables Data Capability Analysis",
+      "Attribute Data Capability Analysis",
+      "Process Discovery",
+      "Six Sigma Statistics",
+      "Measurement System Analysis",
+      "Process Capability",
+    ],
+  },
+  {
+    heading: "Improve Phase",
+    bullets: [
+      "Regression",
+      "Establishing Operating Tolerances",
+      "Re-evaluating the measurement system",
+      "Total Productive Maintenance",
+      "Cellular Manufacturing",
+      "5S – Visual Management",
+      "Process Modelling Regression",
+      "Designing Experiments",
+    ],
+  },
+  {
+    heading: "Define Phase",
+    bullets: [
+      'Selecting an Output Characteristic ("Y")',
+      "Defining Performance Standards",
+      "Describing the Process",
+      "Value Stream Mapping",
+      "Swim Lane Mapping",
+      "Project Charters",
+      "Cost of Poor Quality",
+      "Understanding Basic Statistics",
+    ],
+  },
+  {
+    heading: "Analyse Phase",
+    bullets: [
+      "Identification of Potential Causes",
+      "Hypothesis Testing",
+      "Chi-Square & ANOVA",
+      "Correlation Analysis",
+      "Regression Analysis",
+      "Basic Design of Experiments",
+      "Quick Changeover (SMED)",
+      "Inferential Statistics",
+    ],
+  },
+  {
+    heading: "Control Phase",
+    bullets: [
+      "Lean Controls",
+      "Principles of Statistical Process Control",
+      "Process Capability",
+      "Error Proofing",
+      "Reliability & Asset Utilization",
+      "Standardized Work",
+      "Pull Systems",
+      "Understand the 5 phases of the Control Plan",
+    ],
+  },
+];
 
 // ─── Online Courses ─────────────────────────────────────────────
 
@@ -76,6 +217,15 @@ const onlineCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "35 hours of content",
+    overviewText: leanGreenBeltOverview,
+    whoShouldAttend: leanGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "Lean Six Sigma Green Belt",
+    courseContent: leanGreenBeltCourseOutline,
   },
   {
     slug: "online-dmaic-green-belt",
@@ -181,6 +331,17 @@ const virtualCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "5 Days",
+    overviewText: leanGreenBeltOverview,
+    whoShouldAttend: leanGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "Lean Six Sigma Green Belt",
+    courseContent: leanGreenBeltCourseOutline,
+    virtualFee: "R18 995 per person | Payment required two weeks prior to the start of the course.",
+    virtualHardware: "EzTalks Software, Computer with sound, Strong Internet connection.",
   },
   {
     slug: "virtual-dmaic-green-belt",
@@ -286,6 +447,21 @@ const classroomCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "5 Days",
+    overviewText: leanGreenBeltOverview,
+    whoShouldAttend: leanGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "Lean Six Sigma Green Belt",
+    courseContent: leanGreenBeltCourseOutline,
+    classroomFee: "R25 294,25 per person. Payment required within 60 days of the start of the course.",
+    classroomDiscounts: [
+      "10% Discount: R24 194,50 per person. Payment required within 30 days of the start of the course.",
+      "15% Discount: R21 995,00 per person. Payment required two weeks prior to the start of the course.",
+    ],
+    classroomVenue: "Johannesburg, Cape Town, Durban, George and Onsite training for a group of 6 or more delegates.",
   },
   {
     slug: "classroom-dmaic-green-belt",
