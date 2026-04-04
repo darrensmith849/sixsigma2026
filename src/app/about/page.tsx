@@ -15,25 +15,26 @@ export default function AboutPage() {
     <div className="pt-[80px]">
       {/* ───── 1. Hero Split Section ───── */}
       <FadeIn>
-        <section className="flex flex-col lg:flex-row">
+        <section className="flex flex-col lg:flex-row min-h-[520px]">
           <div
-            className="flex-1 flex items-center"
-            style={{ padding: "64px 48px", background: "#f5f5f5" }}
+            className="flex-1 flex items-center justify-center"
+            style={{ padding: "72px 48px", background: "#f5f5f5" }}
           >
-            <div style={{ maxWidth: "560px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "500px" }}>
               <h1
-                className="font-bold mb-6"
+                className="font-bold mb-7"
                 style={{
-                  fontSize: "clamp(32px, 3vw, 52px)",
-                  lineHeight: 1.1,
+                  fontSize: "clamp(30px, 2.8vw, 46px)",
+                  lineHeight: 1.12,
                   color: "#5a5a5a",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 About Six Sigma South Africa&trade;
               </h1>
               <p
-                className="leading-relaxed mb-4"
-                style={{ color: "#5e5e5e", fontSize: "clamp(17px, 1.2vw, 20px)" }}
+                className="leading-[1.7] mb-5"
+                style={{ color: "#5e5e5e", fontSize: "clamp(16px, 1.1vw, 19px)" }}
               >
                 Founded in 1999, 2KO Africa developed local six sigma training
                 across the country. Six Sigma South Africa&trade; grew from 2010
@@ -45,12 +46,12 @@ export default function AboutPage() {
                 internationally accredited.
               </p>
               <p
-                className="leading-relaxed mb-1"
-                style={{ color: "#5e5e5e", fontSize: "clamp(17px, 1.2vw, 20px)" }}
+                className="leading-[1.7] mb-1"
+                style={{ color: "#5e5e5e", fontSize: "clamp(16px, 1.1vw, 19px)" }}
               >
                 Our UK Office is now open.
               </p>
-              <p style={{ fontSize: "clamp(17px, 1.2vw, 20px)" }}>
+              <p style={{ fontSize: "clamp(16px, 1.1vw, 19px)", color: "#5e5e5e" }}>
                 Click{" "}
                 <Link
                   href="/contact"
@@ -62,12 +63,12 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <div className="flex-1 relative min-h-[400px] lg:min-h-[560px]">
+          <div className="flex-1 relative min-h-[380px] lg:min-h-0">
             <Image
               src="/images/Consultancy-01.jpg"
               alt="Six Sigma South Africa team"
               fill
-              className="object-cover"
+              className="object-cover object-center"
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
@@ -77,20 +78,20 @@ export default function AboutPage() {
 
       {/* ───── 2. Green Mission & Vision Banner ───── */}
       <FadeIn>
-        <section className="bg-green" style={{ padding: "80px 0" }}>
-          <div className="container text-center">
+        <section className="bg-green" style={{ padding: "72px 0" }}>
+          <div className="container text-center" style={{ maxWidth: "860px" }}>
             <h2
-              className="font-semibold text-inverse mb-6"
-              style={{ fontSize: "clamp(32px, 3vw, 48px)" }}
+              className="font-semibold text-inverse mb-5"
+              style={{ fontSize: "clamp(28px, 2.6vw, 42px)" }}
             >
               Mission &amp; Vision
             </h2>
-            <p className="text-[21px] max-w-3xl mx-auto leading-relaxed text-inverse/90 mb-4">
+            <p className="text-[19px] leading-[1.7] text-inverse/90 mb-5">
               Our mission is to empower organizations with the knowledge and
               tools required to implement Six Sigma methodologies, enabling them
               to achieve sustainable business growth.
             </p>
-            <p className="text-[21px] max-w-3xl mx-auto leading-relaxed text-inverse/90">
+            <p className="text-[19px] leading-[1.7] text-inverse/90">
               Our vision is to become the leading provider of Six Sigma education
               and consultancy services in Africa and beyond, driving a culture of
               continuous improvement.
@@ -101,17 +102,17 @@ export default function AboutPage() {
 
       {/* ───── 3. Two-Column: Accreditations & Careers ───── */}
       <FadeIn>
-        <section className="section">
+        <section style={{ padding: "72px 0" }}>
           <div className="container">
-            <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-20 max-w-[1040px] mx-auto">
               <div>
                 <h2
-                  className="text-heading font-semibold mb-5"
-                  style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                  className="text-heading font-semibold mb-4"
+                  style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
                 >
                   Accreditations &amp; Certifications
                 </h2>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[17px] leading-[1.75]">
                   As a testament to our commitment to quality, Six Sigma South
                   Africa has earned multiple accreditations and certifications
                   from reputable industry bodies. Our courses and training
@@ -121,12 +122,12 @@ export default function AboutPage() {
               </div>
               <div>
                 <h2
-                  className="text-heading font-semibold mb-5"
-                  style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                  className="text-heading font-semibold mb-4"
+                  style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
                 >
                   Careers
                 </h2>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[17px] leading-[1.75]">
                   Join our team of passionate professionals and make a difference
                   in the world of process improvement. At Six Sigma South Africa,
                   we offer a supportive work environment, competitive
@@ -142,7 +143,7 @@ export default function AboutPage() {
 
       {/* ───── 4. Dark Overlay: Team & Partners ───── */}
       <FadeIn>
-        <section className="relative" style={{ minHeight: "420px" }}>
+        <section className="relative overflow-hidden">
           <Image
             src="/images/hero-presentation.jpg"
             alt="Six Sigma training session"
@@ -150,21 +151,21 @@ export default function AboutPage() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/70" />
-          <div className="relative z-10 flex flex-col lg:flex-row">
+          <div className="absolute inset-0 bg-black/75" />
+          <div className="relative z-10 flex flex-col lg:flex-row min-h-[440px]">
             {/* Left green panel */}
             <div
               className="lg:w-1/2 flex items-center bg-green"
-              style={{ padding: "64px 48px" }}
+              style={{ padding: "56px 48px" }}
             >
-              <div style={{ maxWidth: "480px", margin: "0 auto" }}>
+              <div style={{ maxWidth: "440px", margin: "0 auto" }}>
                 <h2
-                  className="font-semibold text-inverse mb-5"
-                  style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                  className="font-semibold text-inverse mb-4"
+                  style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
                 >
                   Our Team
                 </h2>
-                <p className="text-inverse/90 text-[18px] leading-relaxed">
+                <p className="text-inverse/90 text-[17px] leading-[1.75]">
                   The Six Sigma South Africa team comprises experienced and
                   certified professionals who are passionate about helping
                   businesses optimize their processes. Our trainers and
@@ -177,16 +178,16 @@ export default function AboutPage() {
             {/* Right side on dark overlay */}
             <div
               className="lg:w-1/2 flex items-center"
-              style={{ padding: "64px 48px" }}
+              style={{ padding: "56px 48px" }}
             >
-              <div style={{ maxWidth: "480px", margin: "0 auto" }}>
+              <div style={{ maxWidth: "440px", margin: "0 auto" }}>
                 <h2
-                  className="font-semibold text-inverse mb-5"
-                  style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                  className="font-semibold text-inverse mb-4"
+                  style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
                 >
                   Partners &amp; Affiliations
                 </h2>
-                <p className="text-inverse/90 text-[18px] leading-relaxed">
+                <p className="text-inverse/90 text-[17px] leading-[1.75]">
                   We have built strategic partnerships with renowned
                   organizations and industry leaders to ensure the quality of our
                   training and services. These collaborations also enable us to
@@ -201,21 +202,21 @@ export default function AboutPage() {
 
       {/* ───── 5. Industry Impact ───── */}
       <FadeIn>
-        <section className="section">
+        <section style={{ padding: "72px 0" }}>
           <div className="container text-center">
             <h2
-              className="text-heading font-semibold mb-4"
-              style={{ fontSize: "clamp(32px, 3vw, 48px)" }}
+              className="text-heading font-semibold mb-3"
+              style={{ fontSize: "clamp(28px, 2.6vw, 42px)" }}
             >
               Industry Impact
             </h2>
-            <p className="text-body text-[21px] leading-relaxed max-w-3xl mx-auto mb-12">
+            <p className="text-body text-[19px] leading-[1.7] max-w-[720px] mx-auto mb-10">
               Learn how Six Sigma South Africa has made a difference across
               various industries through our comprehensive training and
               consulting services.
             </p>
 
-            <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 max-w-[900px] mx-auto">
               {[
                 {
                   icon: "/images/Services-01.png",
@@ -233,20 +234,20 @@ export default function AboutPage() {
                   body: "Optimized risk management, increased operational efficiency, and improved customer satisfaction.",
                 },
               ].map((item) => (
-                <div key={item.title} className="flex flex-col items-center">
-                  <div className="w-[80px] h-[80px] rounded-lg bg-green/10 flex items-center justify-center mb-5">
+                <div key={item.title} className="flex flex-col items-center px-2">
+                  <div className="w-[72px] h-[72px] rounded-lg bg-green/10 flex items-center justify-center mb-4">
                     <Image
                       src={item.icon}
                       alt={item.title}
-                      width={48}
-                      height={48}
+                      width={42}
+                      height={42}
                       className="object-contain"
                     />
                   </div>
-                  <h3 className="text-heading font-semibold text-[22px] mb-2">
+                  <h3 className="text-heading font-semibold text-[20px] mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-body text-[17px] leading-relaxed">
+                  <p className="text-body text-[16px] leading-[1.65]">
                     {item.body}
                   </p>
                 </div>
@@ -258,35 +259,35 @@ export default function AboutPage() {
 
       {/* ───── 6. Success Stories Split Section ───── */}
       <FadeIn>
-        <section className="flex flex-col lg:flex-row">
+        <section className="flex flex-col lg:flex-row min-h-[480px]">
           {/* Left green card */}
           <div
             className="lg:w-1/2 bg-green flex items-center"
-            style={{ padding: "64px 48px" }}
+            style={{ padding: "56px 48px" }}
           >
-            <div style={{ maxWidth: "480px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "440px", margin: "0 auto" }}>
               <h2
-                className="font-semibold text-inverse mb-5"
-                style={{ fontSize: "clamp(26px, 2.2vw, 36px)" }}
+                className="font-semibold text-inverse mb-4"
+                style={{ fontSize: "clamp(24px, 2vw, 32px)" }}
               >
                 Success Stories
               </h2>
-              <p className="text-inverse/90 text-[18px] leading-relaxed mb-6">
+              <p className="text-inverse/90 text-[17px] leading-[1.7] mb-6">
                 We&rsquo;d love to hear from you! Please feel free to reach out
                 with any questions, inquiries, or concerns. You can use the
                 following information to get in touch with us or fill out the
                 contact form below.
               </p>
-              <h3 className="text-inverse font-semibold text-[20px] mb-4">
+              <h3 className="text-inverse font-semibold text-[18px] mb-3">
                 General Inquiries
               </h3>
-              <div className="space-y-2 mb-6">
-                <p className="text-inverse/90 text-[18px]">
+              <div className="space-y-1.5 mb-6">
+                <p className="text-inverse/90 text-[17px]">
                   <a href="tel:+27215270065" className="text-inverse hover:underline">
                     +27 21 527 0065
                   </a>
                 </p>
-                <p className="text-inverse/90 text-[18px]">
+                <p className="text-inverse/90 text-[17px]">
                   <a
                     href="mailto:info@sixsigmasouthafrica.co.za"
                     className="text-inverse hover:underline"
@@ -300,8 +301,8 @@ export default function AboutPage() {
               </Button>
             </div>
           </div>
-          {/* Right map/image area */}
-          <div className="lg:w-1/2 relative min-h-[400px] lg:min-h-[500px] bg-light-grey">
+          {/* Right map area */}
+          <div className="lg:w-1/2 relative min-h-[360px] lg:min-h-0 bg-light-grey">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.8!2d18.503423!3d-33.893524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDUzJzM2LjciUyAxOMKwMzAnMTIuMyJF!5e0!3m2!1sen!2sza!4v1"
               width="100%"
@@ -318,14 +319,14 @@ export default function AboutPage() {
 
       {/* ───── 7. Bottom Inquiry Grid ───── */}
       <FadeIn>
-        <section className="section">
+        <section style={{ padding: "72px 0 88px" }}>
           <div className="container">
-            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <div>
-                <h3 className="text-heading font-semibold text-[22px] mb-3">
+            <div className="grid md:grid-cols-2 gap-x-16 gap-y-10 max-w-[1000px] mx-auto">
+              <div style={{ maxWidth: "440px" }}>
+                <h3 className="text-heading font-semibold text-[20px] mb-2">
                   General Inquiries
                 </h3>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[16px] leading-[1.75]">
                   Interested in our Six Sigma courses or need help deciding which
                   one is right for you? Our dedicated team is ready to assist
                   you. Send us an email at:{" "}
@@ -338,11 +339,11 @@ export default function AboutPage() {
                   , and we&rsquo;ll get back to you as soon as possible.
                 </p>
               </div>
-              <div>
-                <h3 className="text-heading font-semibold text-[22px] mb-3">
+              <div style={{ maxWidth: "440px" }}>
+                <h3 className="text-heading font-semibold text-[20px] mb-2">
                   Partnership opportunities
                 </h3>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[16px] leading-[1.75]">
                   We&rsquo;re always open to collaborating with like-minded
                   organizations. If you&rsquo;re interested in partnering with
                   us, please contact our partnership team at:{" "}
@@ -355,11 +356,11 @@ export default function AboutPage() {
                   .
                 </p>
               </div>
-              <div>
-                <h3 className="text-heading font-semibold text-[22px] mb-3">
+              <div style={{ maxWidth: "440px" }}>
+                <h3 className="text-heading font-semibold text-[20px] mb-2">
                   Service inquiries
                 </h3>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[16px] leading-[1.75]">
                   If you have any questions about our consultancy, corporate
                   training, or other services, please feel free to reach out to
                   our service team at :{" "}
@@ -372,11 +373,11 @@ export default function AboutPage() {
                   .
                 </p>
               </div>
-              <div>
-                <h3 className="text-heading font-semibold text-[22px] mb-3">
+              <div style={{ maxWidth: "440px" }}>
+                <h3 className="text-heading font-semibold text-[20px] mb-2">
                   General inquiries
                 </h3>
-                <p className="text-body text-[18px] leading-relaxed">
+                <p className="text-body text-[16px] leading-[1.75]">
                   For any other questions or concerns, please don&rsquo;t
                   hesitate to reach out to our support team at:{" "}
                   <a
