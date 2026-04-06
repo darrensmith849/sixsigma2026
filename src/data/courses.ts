@@ -804,11 +804,11 @@ const virtualCourses: CourseData[] = [
   },
   {
     slug: "virtual-yellow-belt",
-    title: "Six Sigma Virtual Yellow Belt Course in South Africa",
+    title: "Six Sigma Yellow Belt training in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "This virtual live yellow belt six sigma course introduces you to the world of Six Sigma systems. Our engaging video sessions serve as the basis for gaining an understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful virtual live courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma.",
-    includes: ["2 Days", "7 Lessons", "22 Topics", "1 x 90-minute exam", "No Project requirement"],
+      "Course teaching project participation and process management skills. Ideal for professionals seeking to optimize team performance.",
+    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
     mode: "Virtual",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Virtual-2.jpg",
@@ -884,11 +884,15 @@ const virtualCourses: CourseData[] = [
   },
   {
     slug: "virtual-lean-black-belt",
-    title: "Six Sigma Virtual LEAN Black Belt Course in South Africa",
+    title: "Six Sigma LEAN Black Belt training in South Africa",
     shortTitle: "LEAN Black Belt",
     description:
-      "2KO Africa's six sigma black belt virtual online instructor led courses (using MS Teams) in South Africa, are taylor-made for advanced six sigma practitioners. Anyone who would like to enrol for black belt six sigma will need to have completed a green belt course or have many years of project management experience and be good at statistics. Requirements for certification: two online exams (one for each week), plus a project where you are found competent in delivering significant savings or improvements to existing processes. Booking for our black belt six sigma classes is highly recommended. We cover both the Lean and the DMAIC content streams. Virtual black belt courses are held over two non-consecutive weeks (Monday to Friday, full time).",
-    includes: ["10 Days", "17 Lessons", "152 Topics", "2 x 90-minute exam", "6 Months to submit project"],
+      "Advanced virtual training in Lean methodologies. Learn to lead Lean transformations and enhance organisational efficiency. Perfect for professionals aspiring to Lean leadership roles.",
+    includes: [
+      "10 Days",
+      "2 x 90-minute Exams",
+      "6 Months to write a project",
+    ],
     mode: "Virtual",
     beltLevel: "black",
     imageSrc: "/images/courses/Virtual-5.jpg",
@@ -960,11 +964,11 @@ const classroomCourses: CourseData[] = [
   },
   {
     slug: "classroom-yellow-belt",
-    title: "Six Sigma Classroom Yellow Belt Course in South Africa",
+    title: "Six Sigma Yellow Belt training in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "This in-person yellow belt course introduces you to the world of Six Sigma methodology. As a leading provider of Six Sigma Yellow Belt training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma. Join our instructor led Six Sigma Yellow Belt course today and embark on your journey towards process improvement and efficiency.",
-    includes: ["2 Days", "7 Lessons", "22 Topics", "1 x 90-minute exam", "No Project requirement"],
+      "Course exploring process improvement, project participation, and Six Sigma tools. Perfect for hands-on learners desiring active project involvement.",
+    includes: ["2 Days", "1 x 90-minute Exam", "No Project"],
     mode: "Classroom",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Classroom-2.jpg",
@@ -1044,11 +1048,15 @@ const classroomCourses: CourseData[] = [
   },
   {
     slug: "classroom-lean-black-belt",
-    title: "Six Sigma Classroom LEAN Black Belt Course in South Africa",
+    title: "Six Sigma Black Belt training in South Africa",
     shortTitle: "LEAN Black Belt",
     description:
-      "2KO Africa's instructor-led six sigma black belt courses in South Africa were designed with advanced six sigma practitioners in mind. Classes run for 10 days (2 x non-consecutive weeks). To be accepted onto the black belt course, you will need to have completed a green belt course or have many years of project management experience and be good at statistics. Requirements for certification: two online exams (one for each week), plus a project where you are found competent in delivering significant savings or improvements to existing processes. 2KO Africa's black belt six sigma courses in South Africa are conducted in various ways such as by live virtual online, instructor-led face-to-face classes or online eLearning self-study courses. Booking for our black belt six sigma classes is highly recommended. We cover both the Lean and the DMAIC content streams.",
-    includes: ["10 Days", "17 Lessons", "152 Topics", "2 x 90-minute exam", "6 Months to submit project"],
+      "Immersive course offering expert-level knowledge in Lean methodologies. Focus on strategic implementation and Lean leadership. Ideal for aspiring Lean transformation leaders.",
+    includes: [
+      "10 Days",
+      "2 x 90-minute Exams",
+      "6 Months to write a project",
+    ],
     mode: "Classroom",
     beltLevel: "black",
     imageSrc: "/images/courses/Classroom-5.jpg",
