@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import SectionHeading from "@/components/SectionHeading";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 
@@ -61,11 +60,15 @@ const personalResults = [
 export default function TrainingBenefitsPage() {
   return (
     <div className="pt-[80px]">
-      {/* Hero */}
-      <section className="bg-green py-16 md:py-20">
-        <div className="container text-center">
-          <h1 className="!text-inverse mb-4">Training Benefits</h1>
-          <p className="text-inverse/90 text-[18px] md:text-[22px] leading-relaxed max-w-3xl mx-auto">
+      {/* ───── Hero ───── */}
+      <section className="relative bg-green py-12 md:py-14 overflow-hidden">
+        {/* Subtle depth gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green via-green to-green-hover opacity-60" />
+        <div className="container text-center relative z-10">
+          <h1 className="!text-inverse mb-3 text-[32px] md:text-[38px]">
+            Training Benefits
+          </h1>
+          <p className="text-inverse/90 text-[16px] md:text-[18px] leading-relaxed max-w-2xl mx-auto">
             Six Sigma training has improved companies and individuals through
             proven methods. Here are the key benefits your organisation can
             expect.
@@ -73,17 +76,23 @@ export default function TrainingBenefitsPage() {
         </div>
       </section>
 
-      {/* Benefit Cards */}
+      {/* ───── Benefit Cards ───── */}
       <FadeIn>
-        <section className="section">
+        <section className="py-12 md:py-14">
           <div className="container">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[960px] mx-auto">
               {benefits.map((b) => (
-                <div key={b.title} className="bg-light-grey rounded-xl p-6">
-                  <h3 className="text-heading font-semibold text-[18px] mb-3">
-                    {b.title}
-                  </h3>
-                  <p className="text-body text-[16px] leading-relaxed">
+                <div
+                  key={b.title}
+                  className="bg-white rounded-lg border border-border-grey p-5 shadow-sm"
+                >
+                  <div className="flex items-center gap-2.5 mb-2.5">
+                    <span className="w-2 h-2 rounded-full bg-green shrink-0" />
+                    <h3 className="text-heading font-semibold text-[16px]">
+                      {b.title}
+                    </h3>
+                  </div>
+                  <p className="text-body text-[14px] md:text-[15px] leading-relaxed">
                     {b.text}
                   </p>
                 </div>
@@ -93,21 +102,29 @@ export default function TrainingBenefitsPage() {
         </section>
       </FadeIn>
 
-      {/* Results Your Company Can Expect */}
+      {/* ───── Results Your Company Can Expect ───── */}
       <FadeIn>
-        <section className="section bg-light-grey">
+        <section className="py-12 md:py-14 bg-light-grey">
           <div className="container">
-            <SectionHeading>Results Your Company Can Expect</SectionHeading>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mt-8">
+            <h2 className="text-heading font-bold text-[24px] md:text-[28px] text-center mb-6">
+              Results Your Company Can Expect
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[880px] mx-auto">
               {companyResults.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 bg-white rounded-lg p-4"
+                  className="flex items-start gap-2.5 bg-white rounded-lg px-4 py-3"
                 >
-                  <span className="text-green text-[18px] mt-0.5 shrink-0">
-                    &#10003;
-                  </span>
-                  <span className="text-body text-[16px]">{item}</span>
+                  <svg
+                    className="w-4 h-4 text-green shrink-0 mt-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-heading text-[14px] md:text-[15px]">{item}</span>
                 </div>
               ))}
             </div>
@@ -115,21 +132,29 @@ export default function TrainingBenefitsPage() {
         </section>
       </FadeIn>
 
-      {/* What You Can Expect */}
+      {/* ───── What You Can Expect ───── */}
       <FadeIn>
-        <section className="section">
+        <section className="py-12 md:py-14">
           <div className="container">
-            <SectionHeading>What You Can Expect</SectionHeading>
-            <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto mt-8">
+            <h2 className="text-heading font-bold text-[24px] md:text-[28px] text-center mb-6">
+              What You Can Expect
+            </h2>
+            <div className="grid sm:grid-cols-3 gap-4 max-w-[720px] mx-auto">
               {personalResults.map((item) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 bg-light-grey rounded-lg p-5"
+                  className="flex items-start gap-2.5 bg-light-grey rounded-lg px-4 py-3.5"
                 >
-                  <span className="text-green text-[18px] mt-0.5 shrink-0">
-                    &#10003;
-                  </span>
-                  <span className="text-body text-[16px]">{item}</span>
+                  <svg
+                    className="w-4 h-4 text-green shrink-0 mt-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-heading text-[14px] md:text-[15px]">{item}</span>
                 </div>
               ))}
             </div>
@@ -137,14 +162,14 @@ export default function TrainingBenefitsPage() {
         </section>
       </FadeIn>
 
-      {/* CTA */}
+      {/* ───── CTA ───── */}
       <FadeIn>
-        <section className="section bg-green">
+        <section className="bg-green py-12 md:py-14">
           <div className="container text-center">
-            <h2 className="font-semibold text-inverse mb-4">
+            <h2 className="font-semibold text-inverse text-[24px] md:text-[28px] mb-3">
               Ready to get started?
             </h2>
-            <p className="text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed text-inverse/90">
+            <p className="text-[16px] md:text-[17px] max-w-2xl mx-auto mb-6 leading-relaxed text-inverse/90">
               Browse our courses and find the right Six Sigma training for your
               team.
             </p>
