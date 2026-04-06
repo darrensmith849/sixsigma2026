@@ -82,7 +82,7 @@ export default function RecertificationSection({
           </div>
 
           <aside className="self-start">
-            <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-6 text-center text-white shadow-[0_18px_44px_rgba(24,182,74,0.16)]">
+            <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-5 text-center text-white shadow-[0_18px_44px_rgba(24,182,74,0.16)]">
               <div className="text-[48px] font-semibold leading-none tracking-[-0.04em]">
                 {price}
               </div>
