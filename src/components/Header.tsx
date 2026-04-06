@@ -192,6 +192,7 @@ export default function Header() {
 function NavItemDesktop({ item }: { item: NavItem }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -203,13 +204,21 @@ function NavItemDesktop({ item }: { item: NavItem }) {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const handleEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const handleLeave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
+
   const icon = navIcons[item.label];
 
   if (!item.children) {
     return (
       <Link
         href={item.href}
-        className="inline-flex items-center gap-2 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
+        className="inline-flex items-center gap-2 px-4 py-2 text-[15px] font-medium text-heading hover:text-green transition-colors duration-150"
       >
         {icon}
         {item.label}
@@ -221,17 +230,19 @@ function NavItemDesktop({ item }: { item: NavItem }) {
     <div
       ref={ref}
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
     >
       <button
-        className="inline-flex items-center gap-1 px-4 py-2 text-[18px] font-medium text-heading hover:text-link transition-colors"
+        className={`inline-flex items-center gap-1.5 px-4 py-2 text-[15px] font-medium transition-colors duration-150 ${
+          open ? "text-green" : "text-heading hover:text-green"
+        }`}
         onClick={() => setOpen(!open)}
       >
-        {icon && <span className="mr-1">{icon}</span>}
+        {icon && <span className="mr-0.5">{icon}</span>}
         {item.label}
         <svg
-          className={`w-3 h-3 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`w-3 h-3 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
           fill="none"
           viewBox="0 0 12 12"
         >
@@ -240,13 +251,13 @@ function NavItemDesktop({ item }: { item: NavItem }) {
       </button>
 
       <div
-        className={`absolute top-full left-0 pt-2 min-w-[210px] transition-all duration-200 ${
+        className={`absolute top-full left-0 pt-1.5 min-w-[200px] transition-all duration-150 ease-out ${
           open
             ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 -translate-y-1 pointer-events-none"
+            : "opacity-0 -translate-y-0.5 pointer-events-none"
         }`}
       >
-        <div className="bg-white rounded-lg shadow-lg border border-border-grey py-1.5">
+        <div className="bg-white rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-border-grey/60 py-1">
           {item.children?.map((child) => (
             <DropdownItem key={child.label} item={child} />
           ))}
@@ -265,14 +276,14 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
     setOpen(true);
   };
   const handleLeave = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 120);
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
   };
 
   if (!item.children) {
     return (
       <Link
         href={item.href}
-        className="block px-4 py-2 text-[16px] text-body hover:text-link hover:bg-light-grey transition-colors"
+        className="block px-4 py-2 text-[14px] text-body hover:text-green hover:bg-green/5 transition-colors duration-150 rounded-md mx-1"
       >
         {item.label}
       </Link>
@@ -286,23 +297,23 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
       onMouseLeave={handleLeave}
     >
       <button
-        className="flex items-center justify-between w-full px-4 py-2 text-[16px] text-body hover:text-link hover:bg-light-grey transition-colors"
+        className="flex items-center justify-between w-full px-4 py-2 text-[14px] text-body hover:text-green hover:bg-green/5 transition-colors duration-150 rounded-md mx-1"
         onClick={() => setOpen(!open)}
       >
         {item.label}
-        <svg className="w-3 h-3" fill="none" viewBox="0 0 12 12">
+        <svg className="w-3 h-3 ml-2" fill="none" viewBox="0 0 12 12">
           <path d="M5 3L8 6L5 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </button>
 
       <div
-        className={`absolute left-full top-0 -ml-1 pl-2 min-w-[180px] transition-all duration-200 ${
+        className={`absolute left-full top-0 -ml-1 pl-2 min-w-[170px] transition-all duration-150 ease-out ${
           open
             ? "opacity-100 translate-x-0 pointer-events-auto"
-            : "opacity-0 -translate-x-1 pointer-events-none"
+            : "opacity-0 -translate-x-0.5 pointer-events-none"
         }`}
       >
-        <div className="bg-white rounded-lg shadow-lg border border-border-grey py-1.5">
+        <div className="bg-white rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-border-grey/60 py-1">
           {item.children?.map((child) => (
             <DropdownItem key={child.label} item={child} />
           ))}
