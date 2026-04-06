@@ -12,14 +12,29 @@ export const metadata: Metadata = {
 export default function AccreditationPage() {
   return (
     <div className="pt-[80px]">
-      {/* ───── 1. Hero Split ───── */}
+      {/* ───── 1. Hero: Landscape Image + Text Below ───── */}
+      <section>
+        <div className="relative h-[200px] md:h-[260px]">
+          <Image
+            src="/images/accreditation-hero.jpg"
+            alt="Six Sigma accreditation and certification"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white" />
+        </div>
+      </section>
+
       <FadeIn>
-        <section className="flex flex-col lg:flex-row">
-          <div className="flex-1 flex items-center bg-light-grey">
-            <div className="px-8 md:px-10 lg:px-14 py-10 lg:py-12 max-w-[480px] mx-auto lg:mx-0 lg:ml-auto">
-              <h1 className="font-bold text-heading text-[28px] md:text-[34px] lg:text-[38px] leading-[1.12] tracking-tight mb-5">
+        <section className="bg-white py-10 md:py-14">
+          <div className="container">
+            <div className="max-w-[720px]">
+              <h1 className="font-bold text-heading text-[28px] md:text-[34px] lg:text-[38px] leading-[1.12] tracking-tight mb-4">
                 Lean &amp; Six Sigma Accreditation Body for Africa
               </h1>
+              <div className="w-[50px] h-[3px] bg-green rounded-full mb-5" />
               <p className="text-body text-[15px] md:text-[16px] leading-relaxed mb-4">
                 2KO Africa is widely recognised as the official industry standard
                 for Lean &amp; Six Sigma accreditation in Africa. Six Sigma South
@@ -35,16 +50,6 @@ export default function AccreditationPage() {
                 Learn More
               </Button>
             </div>
-          </div>
-          <div className="flex-1 relative min-h-[300px] lg:min-h-[420px]">
-            <Image
-              src="/images/accreditation-hero.jpg"
-              alt="Six Sigma accreditation and certification"
-              fill
-              className="object-cover object-center"
-              priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
           </div>
         </section>
       </FadeIn>
