@@ -27,7 +27,7 @@ export default function CourseCard({
   buttonLabel = "Learn More",
 }: CourseCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-md bg-light-grey">
+    <div className="flex flex-col overflow-hidden rounded-md bg-light-grey card-hover">
       {/* Image block */}
       <div className="relative">
         <div className="relative h-[200px]">

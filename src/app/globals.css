@@ -199,16 +199,75 @@ html {
   mix-blend-mode: multiply !important;
 }
 
-/* Scroll fade-in animation */
+/* ─── Motion System ─── */
 .fade-in {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+    transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .fade-in-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Stagger children */
+.fade-in-visible > .stagger-child {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: stagger-reveal 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+.fade-in-visible > .stagger-child:nth-child(1) { animation-delay: 0.05s; }
+.fade-in-visible > .stagger-child:nth-child(2) { animation-delay: 0.1s; }
+.fade-in-visible > .stagger-child:nth-child(3) { animation-delay: 0.15s; }
+.fade-in-visible > .stagger-child:nth-child(4) { animation-delay: 0.2s; }
+.fade-in-visible > .stagger-child:nth-child(5) { animation-delay: 0.25s; }
+.fade-in-visible > .stagger-child:nth-child(6) { animation-delay: 0.3s; }
+
+@keyframes stagger-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accordion expand */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.25s ease;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .fade-in-visible > .stagger-child {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .accordion-content {
+    transition: none;
+  }
+  .card-hover:hover {
+    transform: none;
+  }
 }
 
 /* Accessible focus ring */

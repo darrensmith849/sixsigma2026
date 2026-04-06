@@ -14,6 +14,13 @@ export default function FadeIn({ children, className = "" }: FadeInProps) {
     const el = ref.current;
     if (!el) return;
 
+    /* Respect prefers-reduced-motion */
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!motionOk) {
+      el.classList.add("fade-in-visible");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -21,7 +28,7 @@ export default function FadeIn({ children, className = "" }: FadeInProps) {
           observer.unobserve(el);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     observer.observe(el);

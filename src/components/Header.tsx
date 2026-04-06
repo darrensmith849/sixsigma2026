@@ -239,15 +239,19 @@ function NavItemDesktop({ item }: { item: NavItem }) {
         </svg>
       </button>
 
-      {open && (
-        <div className="absolute top-full left-0 pt-1 min-w-[200px]">
-          <div className="bg-white rounded-md shadow-lg border border-border-grey py-2">
-            {item.children.map((child) => (
-              <DropdownItem key={child.label} item={child} />
-            ))}
-          </div>
+      <div
+        className={`absolute top-full left-0 pt-2 min-w-[210px] transition-all duration-200 ${
+          open
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-1 pointer-events-none"
+        }`}
+      >
+        <div className="bg-white rounded-lg shadow-lg border border-border-grey py-1.5">
+          {item.children?.map((child) => (
+            <DropdownItem key={child.label} item={child} />
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -291,15 +295,19 @@ function DropdownItem({ item }: { item: SubMenuItem }) {
         </svg>
       </button>
 
-      {open && (
-        <div className="absolute left-full top-0 -ml-1 pl-2 min-w-[180px]">
-          <div className="bg-white rounded-md shadow-lg border border-border-grey py-2">
-            {item.children.map((child) => (
-              <DropdownItem key={child.label} item={child} />
-            ))}
-          </div>
+      <div
+        className={`absolute left-full top-0 -ml-1 pl-2 min-w-[180px] transition-all duration-200 ${
+          open
+            ? "opacity-100 translate-x-0 pointer-events-auto"
+            : "opacity-0 -translate-x-1 pointer-events-none"
+        }`}
+      >
+        <div className="bg-white rounded-lg shadow-lg border border-border-grey py-1.5">
+          {item.children?.map((child) => (
+            <DropdownItem key={child.label} item={child} />
+          ))}
         </div>
-      )}
+      </div>
     </div>
   );
 }
