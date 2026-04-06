@@ -120,18 +120,21 @@ export default function AccreditationPage() {
         <section className="py-12 md:py-16">
           <div className="container">
             <div className="max-w-[900px] mx-auto">
-              <div className="grid lg:grid-cols-5 gap-8">
-                <div className="lg:col-span-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green" />
-                    <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
-                      Individual
-                    </span>
-                  </div>
-                  <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-4">
-                    How to get re-certified with 2KO as an individual?
-                  </h2>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
+              {/* Intro — above the grid */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
+                  Individual
+                </span>
+              </div>
+              <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-6">
+                How to get re-certified with 2KO as an individual?
+              </h2>
+
+              {/* Content row — green box aligns with first card */}
+              <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:items-start">
+                <div>
+                  <div className="grid sm:grid-cols-2 gap-3">
                     {individualRequirements.map((req) => (
                       <div key={req.label} className="flex items-start gap-3 bg-light-grey rounded-lg p-4 border border-border-grey/40">
                         <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
@@ -145,13 +148,14 @@ export default function AccreditationPage() {
                       </div>
                     ))}
                   </div>
-                  <p className="text-body text-[14px] leading-relaxed">
+                  <p className="text-body text-[14px] leading-relaxed mt-5">
                     Accredited training providers are comprehensively reviewed to
                     ensure that they meet an extensive checklist of compliance.
                   </p>
                 </div>
-                <div className="lg:col-span-2">
-                  <div className="bg-green rounded-xl p-6 text-center ">
+
+                <aside className="self-start">
+                  <div className="bg-green rounded-xl p-6 text-center">
                     <p className="text-inverse font-bold text-[28px] mb-1">R1,900</p>
                     <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
                     <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
@@ -162,7 +166,7 @@ export default function AccreditationPage() {
                       Get Certified
                     </Button>
                   </div>
-                </div>
+                </aside>
               </div>
             </div>
           </div>
@@ -174,18 +178,21 @@ export default function AccreditationPage() {
         <section className="py-12 md:py-16 bg-light-grey">
           <div className="container">
             <div className="max-w-[900px] mx-auto">
-              <div className="grid lg:grid-cols-5 gap-8">
-                <div className="lg:col-span-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-green" />
-                    <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
-                      Trainer
-                    </span>
-                  </div>
-                  <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-4">
-                    How to get re-certified with 2KO as a trainer?
-                  </h2>
-                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
+              {/* Intro — above the grid */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
+                  Trainer
+                </span>
+              </div>
+              <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-6">
+                How to get re-certified with 2KO as a trainer?
+              </h2>
+
+              {/* Content row — green box aligns with first card */}
+              <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:items-start">
+                <div>
+                  <div className="grid sm:grid-cols-2 gap-3">
                     {trainerRequirements.map((req) => (
                       <div key={req.label} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-border-grey/40">
                         <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
@@ -199,14 +206,15 @@ export default function AccreditationPage() {
                       </div>
                     ))}
                   </div>
-                  <p className="text-body text-[14px] leading-relaxed">
+                  <p className="text-body text-[14px] leading-relaxed mt-5">
                     Trainers seeking accreditation or recertification with 2KO
                     Africa are comprehensively reviewed against an extensive
                     compliance checklist.
                   </p>
                 </div>
-                <div className="lg:col-span-2">
-                  <div className="bg-green rounded-xl p-6 text-center ">
+
+                <aside className="self-start">
+                  <div className="bg-green rounded-xl p-6 text-center">
                     <p className="text-inverse font-bold text-[28px] mb-1">R2,400</p>
                     <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
                     <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
@@ -217,7 +225,7 @@ export default function AccreditationPage() {
                       Get Certified
                     </Button>
                   </div>
-                </div>
+                </aside>
               </div>
             </div>
           </div>
