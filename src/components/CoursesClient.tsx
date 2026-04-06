@@ -29,15 +29,13 @@ export default function CoursesClient() {
             excellence.
           </p>
 
-          <p className="mt-4 text-[16px] text-body">
+          <p className="mt-3 text-[15px] text-body">
             For quick contact, you can send us an email{" "}
             <a
               href="/contact"
               className="text-green font-semibold hover:text-green-hover transition-colors"
             >
-              here
-            </a>
-            .
+              here</a>.
           </p>
         </div>
       </section>
