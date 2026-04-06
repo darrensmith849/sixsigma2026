@@ -63,22 +63,16 @@ export default function RecertificationSection({
           </h2>
         </div>
 
-        {/* Content row — CTA aligns with first card */}
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
-          <div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {items.map((item) => (
-                <RequirementTile
-                  key={item.text}
-                  icon={item.icon}
-                  text={item.text}
-                />
-              ))}
-            </div>
-
-            <p className="mt-6 max-w-2xl text-[16px] leading-8 text-neutral-600">
-              {note}
-            </p>
+        {/* Content row — CTA aligns with card grid only */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {items.map((item) => (
+              <RequirementTile
+                key={item.text}
+                icon={item.icon}
+                text={item.text}
+              />
+            ))}
           </div>
 
           <aside className="self-start">
@@ -104,6 +98,10 @@ export default function RecertificationSection({
             </div>
           </aside>
         </div>
+
+        <p className="mt-6 max-w-2xl text-[16px] leading-8 text-neutral-600">
+          {note}
+        </p>
       </div>
     </section>
   );
