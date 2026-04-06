@@ -131,27 +131,21 @@ export default function AccreditationPage() {
                 How to get re-certified with 2KO as an individual?
               </h2>
 
-              {/* Content row — green box aligns with first card */}
-              <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:items-start">
-                <div>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {individualRequirements.map((req) => (
-                      <div key={req.label} className="flex items-start gap-3 bg-light-grey rounded-lg p-4 border border-border-grey/40">
-                        <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
-                          <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
-                          </svg>
-                        </div>
-                        <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
-                          {req.label}
-                        </span>
+              {/* Content row — green box aligns with card grid only */}
+              <div className="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:items-start">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {individualRequirements.map((req) => (
+                    <div key={req.label} className="flex items-start gap-3 bg-light-grey rounded-lg p-4 border border-border-grey/40">
+                      <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
+                        <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
+                        </svg>
                       </div>
-                    ))}
-                  </div>
-                  <p className="text-body text-[14px] leading-relaxed mt-5">
-                    Accredited training providers are comprehensively reviewed to
-                    ensure that they meet an extensive checklist of compliance.
-                  </p>
+                      <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
+                        {req.label}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 <aside className="self-start">
@@ -168,6 +162,11 @@ export default function AccreditationPage() {
                   </div>
                 </aside>
               </div>
+
+              <p className="text-body text-[14px] leading-relaxed mt-5 max-w-3xl">
+                Accredited training providers are comprehensively reviewed to
+                ensure that they meet an extensive checklist of compliance.
+              </p>
             </div>
           </div>
         </section>
@@ -189,28 +188,21 @@ export default function AccreditationPage() {
                 How to get re-certified with 2KO as a trainer?
               </h2>
 
-              {/* Content row — green box aligns with first card */}
-              <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:items-start">
-                <div>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {trainerRequirements.map((req) => (
-                      <div key={req.label} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-border-grey/40">
-                        <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
-                          <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
-                          </svg>
-                        </div>
-                        <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
-                          {req.label}
-                        </span>
+              {/* Content row — green box aligns with card grid only */}
+              <div className="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-8 lg:items-start">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {trainerRequirements.map((req) => (
+                    <div key={req.label} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-border-grey/40">
+                      <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
+                        <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
+                        </svg>
                       </div>
-                    ))}
-                  </div>
-                  <p className="text-body text-[14px] leading-relaxed mt-5">
-                    Trainers seeking accreditation or recertification with 2KO
-                    Africa are comprehensively reviewed against an extensive
-                    compliance checklist.
-                  </p>
+                      <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
+                        {req.label}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 <aside className="self-start">
@@ -227,6 +219,12 @@ export default function AccreditationPage() {
                   </div>
                 </aside>
               </div>
+
+              <p className="text-body text-[14px] leading-relaxed mt-5 max-w-3xl">
+                Trainers seeking accreditation or recertification with 2KO
+                Africa are comprehensively reviewed against an extensive
+                compliance checklist.
+              </p>
             </div>
           </div>
         </section>
