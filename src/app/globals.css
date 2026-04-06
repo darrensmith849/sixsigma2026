@@ -108,7 +108,17 @@ html {
 
   a {
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.15s ease;
+  }
+
+  /* Stable image containers — prevent CLS */
+  img {
+    display: block;
+  }
+
+  /* Smooth image reveal on load */
+  img[data-nimg] {
+    transition: opacity 0.3s ease;
   }
 
   /* Inline text links only — buttons handle their own colours */

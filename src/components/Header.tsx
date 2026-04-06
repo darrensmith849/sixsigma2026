@@ -119,8 +119,8 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-        scrolled ? "shadow-md" : ""
+      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-200 ${
+        scrolled ? "shadow-[0_1px_8px_rgba(0,0,0,0.06)]" : ""
       }`}
     >
       <div className="container-wide">
