@@ -270,6 +270,32 @@ html {
   }
 }
 
+/* ─── Form Inputs ─── */
+.form-input,
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--sssa-text-heading);
+  background: var(--white);
+  border: 1px solid var(--border-grey);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(22, 178, 74, 0.12);
+}
+
+.form-input::placeholder {
+  color: #999;
+}
+
 /* Accessible focus ring */
 :focus-visible {
   outline: 2px solid var(--green);
