@@ -141,7 +141,7 @@ export default function ContactPage() {
                 {/* UK Map */}
                 <div className="w-full h-[240px] bg-border-grey">
                   <iframe
-                    src="https://maps.google.com/maps?q=EC1V+2PD+London+UK&t=&z=16&ie=UTF8&iwloc=B&output=embed"
+                    src="https://maps.google.com/maps?q=51.5265,-0.0983+(Six+Sigma+UK,+London+EC1V+2PD)&z=16&output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
