@@ -16,30 +16,12 @@ export default function CoursesClient() {
     <>
       {/* ───── Hero / Intro ───── */}
       <section className="pt-[80px]">
-        <div className="container text-center" style={{ paddingTop: "80px", paddingBottom: "20px" }}>
-          <h1
-            className="mx-auto"
-            style={{
-              fontSize: "clamp(48px, 5vw, 78px)",
-              fontWeight: 700,
-              lineHeight: 1.06,
-              letterSpacing: "-0.02em",
-              color: "#5a5a5a",
-              maxWidth: "980px",
-            }}
-          >
+        <div className="container text-center py-10 md:py-14">
+          <h1 className="mx-auto max-w-[900px] text-[38px] md:text-[48px] lg:text-[56px] font-bold leading-[1.08] tracking-tight text-heading">
             Six Sigma Courses in South Africa
           </h1>
 
-          <p
-            className="mx-auto mt-10"
-            style={{
-              fontSize: "clamp(20px, 1.4vw, 27px)",
-              lineHeight: 1.5,
-              color: "#646464",
-              maxWidth: "1060px",
-            }}
-          >
+          <p className="mx-auto mt-6 max-w-[820px] text-[17px] md:text-[19px] leading-[1.55] text-body">
             Internationally accredited Six Sigma training and certification
             courses available online, virtually, and in the classroom. Our
             courses are accredited through CSSC (USA) and delivered by
@@ -47,7 +29,7 @@ export default function CoursesClient() {
             excellence.
           </p>
 
-          <p className="mt-7" style={{ fontSize: "20px", color: "#646464" }}>
+          <p className="mt-4 text-[16px] text-body">
             For quick contact, you can send us an email{" "}
             <a
               href="/contact"
@@ -61,14 +43,14 @@ export default function CoursesClient() {
       </section>
 
       {/* ───── Mode Switcher ───── */}
-      <section style={{ paddingTop: "48px", paddingBottom: "56px" }}>
+      <section className="pb-10">
         <ModeSwitcher active={activeMode} onChange={setActiveMode} />
       </section>
 
       {/* ───── Course Card Grid ───── */}
-      <section style={{ paddingBottom: "80px" }}>
-        <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 24px" }}>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-9">
+      <section className="pb-16">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-7">
             {courses.map((course, index) => (
               <FadeIn key={`${course.slug}-${index}`}>
                 <CourseCard
@@ -90,21 +72,14 @@ export default function CoursesClient() {
 
       {/* ───── Custom Training Solutions ───── */}
       <FadeIn>
-        <section style={{ background: "#ececeb" }}>
+        <section className="bg-light-grey">
           <div className="flex flex-col lg:flex-row">
-            {/* Left text panel */}
-            <div className="flex-1 flex items-center" style={{ padding: "64px 48px" }}>
-              <div style={{ maxWidth: "540px", margin: "0 auto" }}>
-                <h2
-                  className="font-bold mb-5"
-                  style={{ color: "#5a5a5a", fontSize: "clamp(30px, 2.8vw, 48px)", lineHeight: 1.12 }}
-                >
+            <div className="flex-1 flex items-center">
+              <div className="px-8 md:px-10 lg:px-14 py-10 lg:py-12 max-w-[500px] mx-auto lg:mx-0 lg:ml-auto">
+                <h2 className="font-bold text-heading text-[28px] md:text-[34px] leading-[1.12] mb-4">
                   Custom Training Solutions
                 </h2>
-                <p
-                  className="mb-8 leading-relaxed"
-                  style={{ color: "#5e5e5e", fontSize: "clamp(18px, 1.2vw, 22px)" }}
-                >
+                <p className="text-body text-[17px] md:text-[18px] leading-relaxed mb-6">
                   Tailor your Six Sigma training experience with our custom
                   training solutions. Collaborate with our expert trainers to
                   develop a curriculum that meets your organisation&#39;s unique
@@ -116,8 +91,7 @@ export default function CoursesClient() {
               </div>
             </div>
 
-            {/* Right image panel */}
-            <div className="flex-1 relative min-h-[400px] lg:min-h-[500px]">
+            <div className="flex-1 relative min-h-[320px] lg:min-h-[400px]">
               <Image
                 src="/images/courses/custom-training.jpg"
                 alt="Custom corporate training session"
@@ -130,19 +104,19 @@ export default function CoursesClient() {
         </section>
       </FadeIn>
 
-      {/* ───── Green CTA Banner ───── */}
+      {/* ───── Course Calendar Banner ───── */}
       <FadeIn>
-        <section className="bg-green" style={{ padding: "80px 0" }}>
+        <section className="bg-green py-14 md:py-16">
           <div className="container text-center">
-            <h2 className="font-semibold text-inverse mb-4">
-              Not sure which course is right for you?
+            <h2 className="font-semibold text-inverse text-[26px] md:text-[30px] mb-3">
+              Course Calendar
             </h2>
-            <p className="text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed text-inverse/90">
-              Get in touch with our team and we will help you find the best
-              course for your career goals and organisational needs.
+            <p className="text-[17px] md:text-[18px] max-w-2xl mx-auto mb-6 leading-relaxed text-inverse/90">
+              View our upcoming course schedule for virtual and classroom
+              training across South Africa.
             </p>
-            <Button href="/contact" variant="white" size="large">
-              Enquire now
+            <Button href="/schedule" variant="white" size="large">
+              View Schedule
             </Button>
           </div>
         </section>

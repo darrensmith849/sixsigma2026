@@ -24,13 +24,13 @@ export default function CourseCard({
   href,
   isFree = false,
   stripColor = "green",
-  buttonLabel = "Learn more",
+  buttonLabel = "Learn More",
 }: CourseCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden" style={{ background: "#ececeb", borderRadius: "6px" }}>
+    <div className="flex flex-col overflow-hidden rounded-md bg-light-grey">
       {/* Image block */}
       <div className="relative">
-        <div className="relative h-[240px]">
+        <div className="relative h-[200px]">
           <Image
             src={imageSrc}
             alt={imageAlt || title}
@@ -40,12 +40,12 @@ export default function CourseCard({
           />
 
           {/* Top-right badges */}
-          <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-            <span className="inline-block px-4 py-1.5 text-[14px] font-semibold rounded-full bg-green text-white">
+          <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">
+            <span className="inline-block px-3 py-1 text-[13px] font-semibold rounded-full bg-green text-white">
               {mode}
             </span>
             {isFree && (
-              <span className="inline-block px-4 py-1.5 text-[14px] font-semibold rounded-full bg-yellow-400 text-gray-900">
+              <span className="inline-block px-3 py-1 text-[13px] font-semibold rounded-full bg-yellow-400 text-gray-900">
                 Free
               </span>
             )}
@@ -54,43 +54,36 @@ export default function CourseCard({
 
         {/* Colour strip */}
         <div
-          className={`h-[7px] w-full ${
+          className={`h-[5px] w-full ${
             stripColor === "yellow" ? "bg-yellow-400" : "bg-green"
           }`}
         />
       </div>
 
       {/* Content area */}
-      <div className="flex flex-col flex-1 px-7 pt-6 pb-7">
-        <h3
-          className="font-bold mb-3 leading-tight"
-          style={{ color: "#5a5a5a", fontSize: "clamp(22px, 1.6vw, 30px)" }}
-        >
+      <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
+        <h3 className="font-bold text-heading text-[20px] md:text-[22px] leading-tight mb-2">
           {title}
         </h3>
 
-        <p
-          className="leading-relaxed mb-5"
-          style={{ color: "#5e5e5e", fontSize: "clamp(16px, 1.1vw, 20px)" }}
-        >
+        <p className="text-body text-[15px] leading-relaxed mb-4">
           {description}
         </p>
 
         {/* What this includes */}
         {includes.length > 0 && (
-          <div className="mb-6">
-            <p className="text-green font-bold text-[17px] mb-3">
+          <div className="mb-4">
+            <p className="text-green font-bold text-[15px] mb-2">
               What this includes:
             </p>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               {includes.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-2.5 text-[16px]"
-                  style={{ color: "#5a5a5a" }}
+                  className="flex items-start gap-2 text-[14px] text-heading"
                 >
                   <svg
-                    className="w-[18px] h-[18px] text-green shrink-0 mt-0.5"
+                    className="w-4 h-4 text-green shrink-0 mt-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -110,10 +103,10 @@ export default function CourseCard({
         )}
 
         {/* CTA button — pushed to bottom */}
-        <div className="mt-auto pt-2">
+        <div className="mt-auto pt-1">
           <Link
             href={href}
-            className="inline-flex items-center justify-center w-full font-semibold rounded-[5px] transition-all duration-200 text-center bg-green text-white border-2 border-green hover:bg-green-hover hover:border-green-hover px-8 py-3.5 text-[18px]"
+            className="inline-flex items-center justify-center font-semibold rounded-[5px] transition-all duration-200 text-center bg-green text-white border-2 border-green hover:bg-green-hover hover:border-green-hover px-6 py-2.5 text-[16px]"
           >
             {buttonLabel}
           </Link>
