@@ -120,7 +120,7 @@ export default function AccreditationPage() {
         <section className="py-12 md:py-16">
           <div className="container">
             <div className="max-w-[900px] mx-auto">
-              <div className="grid lg:grid-cols-5 gap-8 items-start">
+              <div className="grid lg:grid-cols-5 gap-8">
                 <div className="lg:col-span-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-green" />
@@ -151,7 +151,7 @@ export default function AccreditationPage() {
                   </p>
                 </div>
                 <div className="lg:col-span-2">
-                  <div className="bg-green rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
+                  <div className="bg-green rounded-xl p-6 text-center ">
                     <p className="text-inverse font-bold text-[28px] mb-1">R1,900</p>
                     <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
                     <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
@@ -174,7 +174,7 @@ export default function AccreditationPage() {
         <section className="py-12 md:py-16 bg-light-grey">
           <div className="container">
             <div className="max-w-[900px] mx-auto">
-              <div className="grid lg:grid-cols-5 gap-8 items-start">
+              <div className="grid lg:grid-cols-5 gap-8">
                 <div className="lg:col-span-3">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
                     <div className="w-1.5 h-1.5 rounded-full bg-green" />
@@ -206,7 +206,7 @@ export default function AccreditationPage() {
                   </p>
                 </div>
                 <div className="lg:col-span-2">
-                  <div className="bg-green rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
+                  <div className="bg-green rounded-xl p-6 text-center ">
                     <p className="text-inverse font-bold text-[28px] mb-1">R2,400</p>
                     <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
                     <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
