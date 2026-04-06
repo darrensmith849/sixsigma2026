@@ -176,9 +176,9 @@ export default function AccreditationPage() {
             <div className="max-w-[900px] mx-auto">
               <div className="grid lg:grid-cols-5 gap-8 items-start">
                 <div className="lg:col-span-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-heading/20 bg-heading/5 mb-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-heading" />
-                    <span className="text-heading text-[11px] font-bold uppercase tracking-[0.12em]">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                    <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
                       Trainer
                     </span>
                   </div>
@@ -206,10 +206,10 @@ export default function AccreditationPage() {
                   </p>
                 </div>
                 <div className="lg:col-span-2">
-                  <div className="bg-heading rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
-                    <p className="text-white font-bold text-[28px] mb-1">R2,400</p>
-                    <p className="text-white/50 text-[13px] font-medium mb-4">inc VAT</p>
-                    <p className="text-white/70 text-[14px] leading-relaxed mb-5">
+                  <div className="bg-green rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
+                    <p className="text-inverse font-bold text-[28px] mb-1">R2,400</p>
+                    <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
+                    <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
                       Contact us to begin your trainer re-certification process
                       with 2KO Africa.
                     </p>
