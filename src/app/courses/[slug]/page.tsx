@@ -158,7 +158,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     What&apos;s Included
                   </h2>
                   <ul className="space-y-3">
-                    {course.includes.map((item) => (
+                    {(course.detailIncludes ?? course.includes).map((item) => (
                       <li
                         key={item}
                         className="flex items-start gap-3 text-[18px]"
@@ -283,6 +283,42 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     subheading={course.courseContentSubheading}
                     sections={course.courseContent}
                   />
+                </FadeIn>
+              )}
+
+              {/* Video Section */}
+              {course.videoHeading && (
+                <FadeIn>
+                  <div>
+                    <h2
+                      className="font-bold mb-4"
+                      style={{ color: "#5a5a5a", fontSize: "clamp(24px, 2vw, 32px)" }}
+                    >
+                      {course.videoHeading}
+                    </h2>
+                    {course.videoSrc ? (
+                      <div className="relative aspect-video rounded-lg overflow-hidden bg-black">
+                        <video
+                          src={course.videoSrc}
+                          controls
+                          className="w-full h-full"
+                          preload="metadata"
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+                        <div className="text-center p-8">
+                          <svg className="w-16 h-16 text-green mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                          </svg>
+                          <p className="text-muted text-[16px]">
+                            Video preview coming soon
+                          </p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </FadeIn>
               )}
 

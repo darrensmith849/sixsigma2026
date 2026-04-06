@@ -36,6 +36,10 @@ export interface CourseData {
   classroomVenue?: string;
   virtualFee?: string;
   virtualHardware?: string;
+  /* ─── Detail-page only fields (override card values) ─── */
+  detailIncludes?: string[];
+  videoHeading?: string;
+  videoSrc?: string;
 }
 
 // ─── Shared Lean Green Belt Content (from approved PDF) ────────
@@ -643,6 +647,14 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma White Belt Course",
     courseContent: whiteBeltCourseOutline,
+    detailIncludes: [
+      "30 days of online program access",
+      "Online quizzes after each module",
+      "Downloadable training manual (electronic)",
+      "White Belt certification upon completion",
+      "Upgrade to Yellow, Green, Black Belt at discounted rates",
+    ],
+    videoHeading: "Watch the \u2018Overview\u2019 module from the Online White Belt Course",
   },
   {
     slug: "online-yellow-belt",
@@ -667,6 +679,14 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Yellow Belt Course",
     courseContent: yellowBeltCourseOutline,
+    detailIncludes: [
+      "90 days of online program access",
+      "Online quizzes after every module",
+      "Electronic training manual",
+      "Yellow Belt certification upon completion",
+      "Free White Belt course access included",
+    ],
+    videoHeading: "Watch one of the \u2018Improve Phase\u2019 modules from the Online Yellow Belt Course",
   },
   {
     slug: "online-lean-green-belt",
@@ -694,6 +714,16 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Outline",
     courseContentSubheading: "Lean Six Sigma Green Belt",
     courseContent: leanGreenBeltCourseOutline,
+    detailIncludes: [
+      "1 year of on-demand access (24/7)",
+      "Professionally narrated online courses",
+      "Electronic training manual",
+      "Perpetual SigmaXL software license",
+      "Project templates and job aids",
+      "Email support from a Six Sigma expert",
+      "1 x 90-minute online exam",
+      "3 months to complete project",
+    ],
   },
   {
     slug: "online-dmaic-green-belt",
@@ -721,6 +751,16 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Outline",
     courseContentSubheading: "DMAIC Six Sigma Green Belt",
     courseContent: dmaicGreenBeltCourseOutline,
+    detailIncludes: [
+      "1 year of on-demand access (24/7)",
+      "Professionally narrated online courses",
+      "Electronic training manual",
+      "Perpetual SigmaXL software license",
+      "Project templates and job aids",
+      "Email support from a Six Sigma expert",
+      "1 x 90-minute online exam",
+      "3 months to complete project",
+    ],
   },
   {
     slug: "online-lean-black-belt",
@@ -749,6 +789,15 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Black Belt Course",
     courseContent: leanBlackBeltCourseOutline,
+    detailIncludes: [
+      "1 year of on-demand access (24/7)",
+      "Professionally narrated online courses",
+      "Electronic training manual",
+      "Project templates and job aids",
+      "Email support from Six Sigma experts",
+      "2 x 90-minute online examinations",
+      "6 months to complete project",
+    ],
   },
   {
     slug: "online-dmaic-black-belt",
@@ -777,6 +826,15 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Content",
     courseContentSubheading: "DMAIC Six Sigma Black Belt Course",
     courseContent: dmaicBlackBeltCourseOutline,
+    detailIncludes: [
+      "1 year of on-demand access (24/7)",
+      "Professionally narrated online courses",
+      "Electronic training manual",
+      "Project templates and job aids",
+      "Email support from Six Sigma experts",
+      "2 x 90-minute online examinations",
+      "6 months to complete project",
+    ],
   },
 ];
 
