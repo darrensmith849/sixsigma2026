@@ -117,37 +117,52 @@ export default function AccreditationPage() {
 
       {/* ───── Individual Re-certification ───── */}
       <FadeIn>
-        <section className="py-10 md:py-12">
+        <section className="py-12 md:py-16">
           <div className="container">
-            <div className="max-w-[820px] mx-auto">
-              <h2 className="text-heading font-bold text-[22px] md:text-[26px] mb-5">
-                How to get re-certified with 2KO as an individual?
-              </h2>
-
-              {/* Icon-led requirements row */}
-              <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                {individualRequirements.map((req) => (
-                  <div key={req.label} className="flex items-start gap-3 bg-light-grey rounded-lg p-4">
-                    <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
-                      <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
-                      </svg>
-                    </div>
-                    <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
-                      {req.label}
+            <div className="max-w-[900px] mx-auto">
+              <div className="grid lg:grid-cols-5 gap-8 items-start">
+                <div className="lg:col-span-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green/30 bg-green/10 mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                    <span className="text-green text-[11px] font-bold uppercase tracking-[0.12em]">
+                      Individual
                     </span>
                   </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <p className="text-body text-[14px] leading-relaxed flex-1">
-                  Accredited training providers are comprehensively reviewed to
-                  ensure that they meet an extensive checklist of compliance.
-                </p>
-                <Button href="/contact" variant="filled" size="default">
-                  Get Certified
-                </Button>
+                  <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-4">
+                    How to get re-certified with 2KO as an individual?
+                  </h2>
+                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                    {individualRequirements.map((req) => (
+                      <div key={req.label} className="flex items-start gap-3 bg-light-grey rounded-lg p-4 border border-border-grey/40">
+                        <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
+                          <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
+                          </svg>
+                        </div>
+                        <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
+                          {req.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-body text-[14px] leading-relaxed">
+                    Accredited training providers are comprehensively reviewed to
+                    ensure that they meet an extensive checklist of compliance.
+                  </p>
+                </div>
+                <div className="lg:col-span-2">
+                  <div className="bg-green rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
+                    <p className="text-inverse font-bold text-[28px] mb-1">R1,900</p>
+                    <p className="text-inverse/60 text-[13px] font-medium mb-4">inc VAT</p>
+                    <p className="text-inverse/80 text-[14px] leading-relaxed mb-5">
+                      Contact us to begin your individual re-certification
+                      process with 2KO Africa.
+                    </p>
+                    <Button href="/contact" variant="white" size="default" className="w-full">
+                      Get Certified
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -156,38 +171,53 @@ export default function AccreditationPage() {
 
       {/* ───── Trainer Re-certification ───── */}
       <FadeIn>
-        <section className="py-10 md:py-12 bg-light-grey">
+        <section className="py-12 md:py-16 bg-light-grey">
           <div className="container">
-            <div className="max-w-[820px] mx-auto">
-              <h2 className="text-heading font-bold text-[22px] md:text-[26px] mb-5">
-                How to get re-certified with 2KO as a trainer?
-              </h2>
-
-              {/* Icon-led requirements row */}
-              <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                {trainerRequirements.map((req) => (
-                  <div key={req.label} className="flex items-start gap-3 bg-white rounded-lg p-4">
-                    <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
-                      <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
-                      </svg>
-                    </div>
-                    <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
-                      {req.label}
+            <div className="max-w-[900px] mx-auto">
+              <div className="grid lg:grid-cols-5 gap-8 items-start">
+                <div className="lg:col-span-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-heading/20 bg-heading/5 mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-heading" />
+                    <span className="text-heading text-[11px] font-bold uppercase tracking-[0.12em]">
+                      Trainer
                     </span>
                   </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <p className="text-body text-[14px] leading-relaxed flex-1">
-                  Trainers seeking accreditation or recertification with 2KO
-                  Africa are comprehensively reviewed against an extensive
-                  compliance checklist.
-                </p>
-                <Button href="/contact" variant="filled" size="default">
-                  Get Certified
-                </Button>
+                  <h2 className="text-heading font-bold text-[24px] md:text-[28px] mb-4">
+                    How to get re-certified with 2KO as a trainer?
+                  </h2>
+                  <div className="grid sm:grid-cols-2 gap-3 mb-5">
+                    {trainerRequirements.map((req) => (
+                      <div key={req.label} className="flex items-start gap-3 bg-white rounded-lg p-4 border border-border-grey/40">
+                        <div className="w-9 h-9 rounded-lg bg-green/10 flex items-center justify-center shrink-0">
+                          <svg className="w-[18px] h-[18px] text-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                            <path strokeLinecap="round" strokeLinejoin="round" d={req.icon} />
+                          </svg>
+                        </div>
+                        <span className="text-heading font-medium text-[14px] leading-snug pt-1.5">
+                          {req.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-body text-[14px] leading-relaxed">
+                    Trainers seeking accreditation or recertification with 2KO
+                    Africa are comprehensively reviewed against an extensive
+                    compliance checklist.
+                  </p>
+                </div>
+                <div className="lg:col-span-2">
+                  <div className="bg-heading rounded-xl p-6 text-center lg:sticky lg:top-[100px]">
+                    <p className="text-white font-bold text-[28px] mb-1">R2,400</p>
+                    <p className="text-white/50 text-[13px] font-medium mb-4">inc VAT</p>
+                    <p className="text-white/70 text-[14px] leading-relaxed mb-5">
+                      Contact us to begin your trainer re-certification process
+                      with 2KO Africa.
+                    </p>
+                    <Button href="/contact" variant="white" size="default" className="w-full">
+                      Get Certified
+                    </Button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
