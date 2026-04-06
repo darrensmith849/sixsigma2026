@@ -37,6 +37,8 @@ export interface CourseData {
   virtualFee?: string;
   virtualHardware?: string;
   /* ─── Detail-page only fields (override card values) ─── */
+  detailTitle?: string;
+  detailDescription?: string;
   detailIncludes?: string[];
   videoHeading?: string;
   videoSrc?: string;
@@ -642,19 +644,16 @@ const onlineCourses: CourseData[] = [
     price: "Free",
     duration: "6 hours of content",
     ctaLabels: whiteBeltCtaLabels,
+    detailTitle: "Six Sigma Online White Belt Course in South Africa",
+    detailDescription:
+      "This online white belt six sigma course in South Africa provides a basic foundation to Six Sigma methodology. Our beginner-oriented, video sessions serve as the perfect base for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma White Belt training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company\u2019s processes. Join our Six Sigma White Belt training today and embark on your journey towards process improvement and efficiency.",
     overviewText: whiteBeltOverview,
     whoShouldAttend: whiteBeltWhoShouldAttend,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma White Belt Course",
     courseContent: whiteBeltCourseOutline,
-    detailIncludes: [
-      "30 days of online program access",
-      "Online quizzes after each module",
-      "Downloadable training manual (electronic)",
-      "White Belt certification upon completion",
-      "Upgrade to Yellow, Green, Black Belt at discounted rates",
-    ],
-    videoHeading: "Watch the \u2018Overview\u2019 module from the Online White Belt Course",
+    detailIncludes: ["4 Lessons", "10 Topics", "10 Quizzes"],
+    videoHeading: "Watch the \u201cOverview\u201d module from the Online White Belt Course",
   },
   {
     slug: "online-yellow-belt",
@@ -670,6 +669,9 @@ const onlineCourses: CourseData[] = [
     price: "From R4,998",
     duration: "14 hours of content",
     ctaLabels: yellowBeltCtaLabels,
+    detailTitle: "Six Sigma Online Yellow Belt Course in South Africa",
+    detailDescription:
+      "This online yellow belt six sigma course in South Africa helps establish your six sigma methodology. Our professional videos serve as the perfect starting point for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company\u2019s processes. Our certified trainers deliver engaging and insightful courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma.",
     overviewText: yellowBeltOverview,
     whoShouldAttend: yellowBeltWhoShouldAttend,
     companyResults: yellowBeltCompanyResults,
@@ -679,14 +681,9 @@ const onlineCourses: CourseData[] = [
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Yellow Belt Course",
     courseContent: yellowBeltCourseOutline,
-    detailIncludes: [
-      "90 days of online program access",
-      "Online quizzes after every module",
-      "Electronic training manual",
-      "Yellow Belt certification upon completion",
-      "Free White Belt course access included",
+    detailIncludes: ["7 Lessons", "22 Topics", "22 Quizzes",
     ],
-    videoHeading: "Watch one of the \u2018Improve Phase\u2019 modules from the Online Yellow Belt Course",
+    videoHeading: "Watch one of the \u201cImprove Phase\u201d modules from the Online Yellow Belt Course",
   },
   {
     slug: "online-lean-green-belt",

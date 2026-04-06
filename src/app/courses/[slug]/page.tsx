@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!course) return { title: "Course Not Found" };
 
   return {
-    title: `${course.title} | Six Sigma South Africa`,
-    description: course.description,
+    title: `${course.detailTitle ?? course.title} | Six Sigma South Africa`,
+    description: course.detailDescription ?? course.description,
   };
 }
 
@@ -83,7 +83,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  {course.title}
+                  {course.detailTitle ?? course.title}
                 </h1>
               </div>
             </div>
@@ -135,7 +135,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                     className="leading-relaxed"
                     style={{ color: "#5e5e5e", fontSize: "clamp(18px, 1.2vw, 21px)" }}
                   >
-                    {course.description}
+                    {course.detailDescription ?? course.description}
                   </p>
                   {course.overviewText && (
                     <p
