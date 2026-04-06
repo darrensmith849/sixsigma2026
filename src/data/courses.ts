@@ -167,6 +167,59 @@ const leanGreenBeltCourseOutline: CourseContentSection[] = [
   },
 ];
 
+// ─── Shared DMAIC Green Belt Content (from sixsigmacertification.co.za) ───
+
+const dmaicGreenBeltOverview =
+  "Green Belts play an important role in your company's Six Sigma DMAIC implementation strategy. They use the Define, Measure, Analyze, Improve, Control methodology as problem solvers on Six Sigma projects. Learn how to apply the right statistical tools at the right time to maximize efficiency in defining, measuring, analyzing, improving, and controlling critical processes to increase cost savings.";
+
+const dmaicGreenBeltWhoShouldAttend =
+  "Process engineers and managers, Quality Engineers and managers, Manufacturing/Production engineers and managers, Service Process Improvement personnel, Customer Service Officers, and professionals seeking to bring significant cost savings to their organization through the DMAIC methodology and those interested in sitting for the ASQ Six Sigma Green Belt certification exam.";
+
+const dmaicGreenBeltCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Introduction",
+    bullets: [
+      "What is Six Sigma?",
+      "Project Selection",
+      "Project Planning and Charters",
+      "Internal Process Measures",
+      "Introduction to DMAIC project management",
+    ],
+  },
+  {
+    heading: "Define and Measure Phase",
+    bullets: [
+      "Basic Statistical Concepts",
+      "Control Charts",
+      "The Define Phase",
+      "Process Mapping",
+      "Measuring System Analysis",
+      "Process Capability Analysis",
+    ],
+  },
+  {
+    heading: "Analyse Phase",
+    bullets: [
+      "Root Cause Problem Solving Tools",
+      "Basic Experimental Design (Hypothesis Testing)",
+      "Linear Regression",
+      "Introduction to DOE",
+      "The Improve Phase",
+    ],
+  },
+  {
+    heading: "Control Phase",
+    bullets: [
+      "The Control Phase",
+      "Basic Cost Benefit Analysis",
+      "The Control Plan Strategy",
+      "Error Proofing",
+      "Levels of Control",
+      "Review and Wrap-up",
+    ],
+  },
+];
+
 // ─── Shared Lean Black Belt Content (from approved live pages) ──
 
 const leanBlackBeltCtaLabels = {
@@ -263,6 +316,128 @@ const leanBlackBeltCourseOutline: CourseContentSection[] = [
   },
 ];
 
+// ─── Shared Black Belt Enrichment (from sixsigmacertification.co.za) ──
+
+const blackBeltOverview =
+  "Black Belts are the Six Sigma experts who lead projects and drive significant improvements across an organisation. This comprehensive training covers both Lean and DMAIC content streams, providing the advanced tools and techniques needed to identify, analyze, and solve complex business problems. To be accepted onto the Black Belt course, you will need to have completed a Green Belt course or have many years of project management experience and be good at statistics.";
+
+const blackBeltWhoShouldAttend =
+  "Advanced Six Sigma practitioners, project managers with Green Belt certification or equivalent experience, and professionals who are proficient in statistics and seeking to lead Six Sigma projects that deliver significant savings or improvements to existing processes.";
+
+const blackBeltCompanyResults = [
+  "Focus on Customers – decreasing customer complaints",
+  "Increase in customer loyalty and relations",
+  "Breakdown barriers between departments and functions",
+  "Reductions of incidents – better safety performance",
+  "Customer satisfaction",
+  "Reduce turnaround time",
+  "Increased bottom line",
+  "Time Management",
+  "Effective supply chain management",
+  "Data analysis before decision making",
+  "Shareholder value",
+  "Employee satisfaction – team building",
+  "Strategic Planning",
+  "Huge cost benefit",
+  "Sustained improvements",
+  "Improving staff skills – better decision making",
+];
+
+const blackBeltWhatYouCanExpect = [
+  "Mastery of advanced Six Sigma tools and techniques",
+  "Ability to lead and manage complex improvement projects",
+  "A status that is recognised world wide",
+];
+
+const blackBeltCompaniesTrained = [
+  "Standard Bank", "Sasol", "SAPPI", "Monviso", "Eskom", "Rotolabel",
+  "SARS", "GE Oil and Gas", "McCain", "Earthworks Engineering", "Neotel",
+  "MSA Africa", "Spear System Packing Africa", "Mondipak Namibia (PTY) Ltd",
+  "Palabora Mining", "Debswana", "Chevron", "Anglo American", "BMW",
+  "Nedbank", "Coca Cola", "Transnet",
+];
+
+const dmaicBlackBeltCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Lean Black Belt Principles and Overview",
+    bullets: [
+      "7 Wastes (MUDA)",
+      "Kaizen Pre-Event Planning",
+      "Kaizen Blitz",
+      "Brainstorming Techniques",
+      "Cell Design & Factory Layout",
+      "5S & SMED",
+      "Poke Yoke",
+      "Lean Office",
+      "Introduction to Six Sigma (DMAIC methodology)",
+      "Introduction to Change Management",
+    ],
+  },
+  {
+    heading: "Problem Solving Process & Tools",
+    bullets: [
+      "Cause & Effect Diagrams",
+      "Plan, Do, Check, Act (PDCA)",
+      "5 Why",
+      "Pareto Analysis (80/20 rule)",
+    ],
+  },
+  {
+    heading: "Total Productive Maintenance (TPM)",
+    bullets: [
+      "Planned Maintenance",
+      "Education and Training",
+      "Equipment Improvement",
+      "Early Management",
+      "Autonomous Maintenance",
+    ],
+  },
+  {
+    heading: "Standard Operations",
+    bullets: [
+      "Standard Work Sequence",
+      "Takt Time",
+      "Line Balancing",
+      "Standard Work-In-Process",
+    ],
+  },
+  {
+    heading: "Material Replenishment Systems",
+    bullets: [
+      "Direct Pull",
+      "Signal Pull",
+      "Two-bin Pull",
+      "Kanban Pull",
+      "Supermarket Pull",
+    ],
+  },
+  {
+    heading: "Value Stream Mapping",
+    bullets: [
+      "Current State Mapping",
+      "Future State Mapping",
+    ],
+  },
+  {
+    heading: "Process Mapping Tools",
+    bullets: [
+      "SIPOC Diagrams",
+      "Process Flow Charts",
+      "Process Sequence Charts",
+      "Brown Paper Exercise",
+      "Waste Walking",
+    ],
+  },
+  {
+    heading: "Measurable Customer Requirements",
+    bullets: [
+      "Quality",
+      "Cost",
+      "Delivery",
+    ],
+  },
+];
+
 // ─── Shared Yellow Belt Content (from approved live pages) ──────
 
 const yellowBeltCtaLabels = {
@@ -331,7 +506,35 @@ const yellowBeltCourseOutline: CourseContentSection[] = [
   },
 ];
 
+const yellowBeltOverview =
+  "Yellow Belts serve as valued team members on Six Sigma projects, supporting Green and Black Belts in implementing process improvements. This course introduces you to the world of Six Sigma methodology, equipping you with a solid understanding of Six Sigma principles and the DMAIC framework that can be applied to improve your company's processes.";
+
+const yellowBeltWhoShouldAttend =
+  "Team members, supervisors, and individuals new to Six Sigma who want to understand the fundamentals and be able to support process improvement projects. Ideal for anyone seeking to build a foundation in Six Sigma methodology and contribute to improvement initiatives within their organisation.";
+
+const yellowBeltCompanyResults = [
+  "Common language throughout the organisation",
+  "Improved understanding of process improvement",
+  "Employee Motivation and development of staff skills",
+  "Foundation for further Six Sigma certification",
+  "Improved quality awareness across teams",
+  "Better data-driven decision making",
+  "Support for Green and Black Belt projects",
+];
+
+const yellowBeltWhatYouCanExpect = [
+  "Solid understanding of Six Sigma fundamentals and DMAIC",
+  "Ability to participate in and support improvement projects",
+  "A status that is recognised world wide",
+];
+
 // ─── Shared White Belt Content (from approved live pages) ───────
+
+const whiteBeltOverview =
+  "This on-demand online White Belt Six Sigma course offers an overview and introduction to Six Sigma and the DMAIC methodology. It is designed for beginners seeking to start their Six Sigma professional journey and those wanting to become qualified team members on Six Sigma projects. Upon completion, participants can upgrade to Yellow, Green, and Black Belt programs.";
+
+const whiteBeltWhoShouldAttend =
+  "Beginners seeking to start their Six Sigma professional journey and anyone wanting to become a qualified team member on Six Sigma projects. No prior Six Sigma experience is required.";
 
 const whiteBeltCtaLabels = {
   primary: "Get Quote",
@@ -340,20 +543,79 @@ const whiteBeltCtaLabels = {
 
 const whiteBeltCourseOutline: CourseContentSection[] = [
   {
-    heading: "Module A",
-    bullets: ["Part 1", "Part 2", "Part 3"],
+    heading: "Six Sigma Overview",
+    bullets: [
+      "What is Six Sigma?",
+      "History and evolution of Six Sigma",
+      "Six Sigma roles and responsibilities",
+      "Benefits of Six Sigma in organisations",
+    ],
   },
   {
-    heading: "Module B",
-    bullets: ["Part 1", "Part 2"],
+    heading: "Six Sigma Define Phase",
+    bullets: [
+      "Understanding the Define phase",
+      "Project selection and scoping",
+      "Voice of the Customer",
+      "Problem and goal statements",
+    ],
   },
   {
-    heading: "Module C",
-    bullets: ["Part 1", "Part 2"],
+    heading: "Six Sigma Project Deployment",
+    bullets: [
+      "Introduction to DMAIC methodology",
+      "Project planning fundamentals",
+      "Basic quality tools",
+      "Team dynamics and communication",
+    ],
+  },
+];
+
+// ─── Shared Root Cause Analysis Content ─────────────────────────
+
+const rcaOverview =
+  "This intensive 2-day Root Cause Analysis course is designed to equip participants with the knowledge and skills required to effectively perform Root Cause Analysis (RCA) in their organisations. The course covers key RCA concepts, methodologies, and practical tools to help identify and address the underlying causes of problems through interactive lectures, group discussions, and hands-on exercises.";
+
+const rcaWhoShouldAttend =
+  "Process improvers, quality professionals, team leaders, and anyone responsible for investigating and resolving recurring problems in their organisation. Ideal for proactive learners seeking structured problem-solving techniques.";
+
+const rcaCourseOutline: CourseContentSection[] = [
+  {
+    heading: "Introduction to Root Cause Analysis",
+    bullets: [
+      "What is Root Cause Analysis?",
+      "Importance of identifying root causes",
+      "Overview of RCA methodologies",
+      "When to use Root Cause Analysis",
+    ],
   },
   {
-    heading: "Module D",
-    bullets: ["Part 1", "Part 2", "Part 3"],
+    heading: "RCA Tools and Techniques",
+    bullets: [
+      "5 Why Analysis",
+      "Fishbone (Ishikawa) Diagrams",
+      "Fault Tree Analysis",
+      "Pareto Analysis",
+      "Failure Mode and Effects Analysis (FMEA)",
+    ],
+  },
+  {
+    heading: "Data Collection and Analysis",
+    bullets: [
+      "Gathering relevant data",
+      "Identifying contributing factors",
+      "Analysing incident patterns",
+      "Evidence-based problem solving",
+    ],
+  },
+  {
+    heading: "Developing Corrective Actions",
+    bullets: [
+      "Developing effective solutions",
+      "Implementing preventive measures",
+      "Monitoring and sustaining improvements",
+      "Documentation and reporting",
+    ],
   },
 ];
 
@@ -376,6 +638,8 @@ const onlineCourses: CourseData[] = [
     price: "Free",
     duration: "6 hours of content",
     ctaLabels: whiteBeltCtaLabels,
+    overviewText: whiteBeltOverview,
+    whoShouldAttend: whiteBeltWhoShouldAttend,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma White Belt Course",
     courseContent: whiteBeltCourseOutline,
@@ -394,6 +658,12 @@ const onlineCourses: CourseData[] = [
     price: "From R4,998",
     duration: "14 hours of content",
     ctaLabels: yellowBeltCtaLabels,
+    overviewText: yellowBeltOverview,
+    whoShouldAttend: yellowBeltWhoShouldAttend,
+    companyResults: yellowBeltCompanyResults,
+    whatYouCanExpect: yellowBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Yellow Belt Course",
     courseContent: yellowBeltCourseOutline,
@@ -442,6 +712,15 @@ const onlineCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "35 hours of content",
+    overviewText: dmaicGreenBeltOverview,
+    whoShouldAttend: dmaicGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "DMAIC Six Sigma Green Belt",
+    courseContent: dmaicGreenBeltCourseOutline,
   },
   {
     slug: "online-lean-black-belt",
@@ -457,6 +736,12 @@ const onlineCourses: CourseData[] = [
     price: "From R26,000",
     duration: "70 hours of content",
     ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Black Belt Course",
     courseContent: leanBlackBeltCourseOutline,
@@ -478,6 +763,16 @@ const onlineCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R26,000",
     duration: "70 hours of content",
+    ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "DMAIC Six Sigma Black Belt Course",
+    courseContent: dmaicBlackBeltCourseOutline,
   },
 ];
 
@@ -497,6 +792,11 @@ const virtualCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "R6,995",
     duration: "2 Days",
+    overviewText: rcaOverview,
+    whoShouldAttend: rcaWhoShouldAttend,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Root Cause Analysis Course",
+    courseContent: rcaCourseOutline,
   },
   {
     slug: "virtual-yellow-belt",
@@ -512,6 +812,12 @@ const virtualCourses: CourseData[] = [
     price: "From R4,998",
     duration: "2 Days",
     ctaLabels: yellowBeltCtaLabels,
+    overviewText: yellowBeltOverview,
+    whoShouldAttend: yellowBeltWhoShouldAttend,
+    companyResults: yellowBeltCompanyResults,
+    whatYouCanExpect: yellowBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Yellow Belt Course",
     courseContent: yellowBeltCourseOutline,
@@ -562,6 +868,15 @@ const virtualCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "5 Days",
+    overviewText: dmaicGreenBeltOverview,
+    whoShouldAttend: dmaicGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "DMAIC Six Sigma Green Belt",
+    courseContent: dmaicGreenBeltCourseOutline,
   },
   {
     slug: "virtual-lean-black-belt",
@@ -577,6 +892,12 @@ const virtualCourses: CourseData[] = [
     price: "From R26,000",
     duration: "10 Days",
     ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Black Belt Course",
     courseContent: leanBlackBeltCourseOutline,
@@ -598,6 +919,16 @@ const virtualCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R26,000",
     duration: "10 Days",
+    ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "DMAIC Six Sigma Black Belt Course",
+    courseContent: dmaicBlackBeltCourseOutline,
   },
 ];
 
@@ -617,6 +948,11 @@ const classroomCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "R6,995",
     duration: "2 Days",
+    overviewText: rcaOverview,
+    whoShouldAttend: rcaWhoShouldAttend,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "Root Cause Analysis Course",
+    courseContent: rcaCourseOutline,
   },
   {
     slug: "classroom-yellow-belt",
@@ -632,6 +968,12 @@ const classroomCourses: CourseData[] = [
     price: "From R4,998",
     duration: "2 Days",
     ctaLabels: yellowBeltCtaLabels,
+    overviewText: yellowBeltOverview,
+    whoShouldAttend: yellowBeltWhoShouldAttend,
+    companyResults: yellowBeltCompanyResults,
+    whatYouCanExpect: yellowBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Yellow Belt Course",
     courseContent: yellowBeltCourseOutline,
@@ -686,6 +1028,15 @@ const classroomCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R16,995",
     duration: "5 Days",
+    overviewText: dmaicGreenBeltOverview,
+    whoShouldAttend: dmaicGreenBeltWhoShouldAttend,
+    companyResults: leanGreenBeltCompanyResults,
+    whatYouCanExpect: leanGreenBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: leanGreenBeltCompaniesTrained,
+    courseContentHeading: "Course Outline",
+    courseContentSubheading: "DMAIC Six Sigma Green Belt",
+    courseContent: dmaicGreenBeltCourseOutline,
   },
   {
     slug: "classroom-lean-black-belt",
@@ -701,6 +1052,12 @@ const classroomCourses: CourseData[] = [
     price: "From R26,000",
     duration: "10 Days",
     ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
     courseContentHeading: "Course Content",
     courseContentSubheading: "Six Sigma Black Belt Course",
     courseContent: leanBlackBeltCourseOutline,
@@ -722,6 +1079,16 @@ const classroomCourses: CourseData[] = [
     buttonLabel: "Learn More",
     price: "From R26,000",
     duration: "10 Days",
+    ctaLabels: leanBlackBeltCtaLabels,
+    overviewText: blackBeltOverview,
+    whoShouldAttend: blackBeltWhoShouldAttend,
+    companyResults: blackBeltCompanyResults,
+    whatYouCanExpect: blackBeltWhatYouCanExpect,
+    whyChooseUs: leanGreenBeltWhyChooseUs,
+    companiesTrained: blackBeltCompaniesTrained,
+    courseContentHeading: "Course Content",
+    courseContentSubheading: "DMAIC Six Sigma Black Belt Course",
+    courseContent: dmaicBlackBeltCourseOutline,
   },
 ];
 
