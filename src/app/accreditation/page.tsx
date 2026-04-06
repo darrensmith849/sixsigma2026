@@ -38,7 +38,7 @@ export default function AccreditationPage() {
           </div>
           <div className="flex-1 relative min-h-[300px] lg:min-h-[420px]">
             <Image
-              src="/images/about-hero.jpg"
+              src="/images/accreditation-hero.jpg"
               alt="Six Sigma accreditation and certification"
               fill
               className="object-cover object-center"
