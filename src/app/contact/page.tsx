@@ -3,6 +3,364 @@ import SectionHeading from "@/components/SectionHeading";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
+import FaqAccordion, { type FaqItem } from "@/components/FaqAccordion";
+
+/* eslint-disable react/jsx-key */
+const faqItems: FaqItem[] = [
+  {
+    q: "Where should beginners/newbies begin?",
+    a: (
+      <p>
+        If you are completely new to six sigma, you could potentially start with
+        white, yellow or green belt. We recommend beginning with yellow belt,
+        because the yellow belt covers the full content of the white belt anyway.
+        If you have project management experience, we recommend starting with
+        green belt or you may make use of our self-service tool that will guide
+        you in choosing the correct course for you, please use the link{" "}
+        <a href="/which-course" className="text-link hover:text-link-hover">
+          https://sixsigmasouthafrica.co.za/which-course
+        </a>
+      </p>
+    ),
+  },
+  {
+    q: "Do I have to begin with white belt?",
+    a: (
+      <p>
+        No, you can begin with yellow or green, even if you are new to six
+        sigma. See the question Where should beginners/newbies begin.
+      </p>
+    ),
+  },
+  {
+    q: "I am an engineer. Can I begin with green belt?",
+    a: (
+      <p>
+        Yes, it is possible. If you have some solid project management
+        experience and you are an engineer, you can skip yellow belt, and begin
+        with green belt.
+      </p>
+    ),
+  },
+  {
+    q: "I have a master\u2019s degree, with excellent stats and lots of project management experience. Can I go direct to black belt?",
+    a: (
+      <p>
+        In theory yes, and we do have some delegates who choose this path. We do
+        not recommend skipping green belt, because as a black belt you will need
+        to manage a team of green belt practitioners, and if you have never been
+        through the process of understanding and experiencing green belt, you
+        will possibly be ill-equipped for the task. If however, you insist, we
+        will permit it at your own risk.
+      </p>
+    ),
+  },
+  {
+    q: "Who should sign up for Six Sigma?",
+    a: (
+      <p>
+        Six Sigma Certification can be applied to many aspects of business, and
+        therefore can benefit almost all companies. By signing up your employees,
+        Six Sigma can drastically improve your organization, and at the same time
+        help your employees climb the corporate ladder. Six Sigma has become the
+        flagship method for separating your organization from its competition.
+      </p>
+    ),
+  },
+  {
+    q: "Why Six Sigma?",
+    a: (
+      <p>
+        Six Sigma is a highly disciplined approach that allows us to focus on
+        creating and delivering nearly perfect products and services. The
+        underlying idea being that if you can measure how many &ldquo;defects&rdquo; you
+        have in a process, you can systematically figure out a way to eliminate
+        them and get as close to &ldquo;zero defects&rdquo; as possible. This concept is
+        the motivating factor why employers today are increasingly searching for
+        candidates with this type of certification.
+      </p>
+    ),
+  },
+  {
+    q: "What is the difference between Virtual and Online training?",
+    a: (
+      <>
+        <p>
+          We classify &ldquo;Online&rdquo; training as self-study, self-paced eLearning
+          over the internet. This is where you can study your course anywhere,
+          any time by using the internet. Your course comprises pre-recorded
+          video lectures, quizzes and tests.
+        </p>
+        <p>
+          We classify &ldquo;Virtual&rdquo; training as live instructor-led training that
+          takes place on specific, scheduled dates. You need to login to MS
+          Teams (we will send you the link), to join the class, during class
+          times. Although you are learning via the internet, you can ask
+          questions of the lecturer, and you can interact with classmates.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "What is the difference between Lean and DMAIC?",
+    a: (
+      <>
+        <p>
+          Lean uses tools and techniques to improve efficiency. Major
+          improvements can be achieved by working on the value provided to
+          customers. DMAIC focuses on reducing variation by finding and fixing
+          the root cause. This improves effectiveness and focuses on doing things
+          right the first time.
+        </p>
+        <p>
+          Both Lean Six Sigma and DMAIC Six Sigma use the same DMAIC framework
+          for solving complex process issues. The primary focus areas are
+          different though. Lean Six Sigma focus on identifying and eliminating
+          the sources of waste, and thus improving process flow. Six Sigma focus
+          on identifying and eliminating sources of variation and defects, and
+          thus improving quality and capability.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "Is 2KO Africa certification internationally recognised?",
+    a: (
+      <p>
+        2KO Africa is the most recognised certification body for Africa. We are
+        the only company that is authorised by MICT SETA in South Africa for six
+        sigma certifications. We are a member of CSSC (Council for Six Sigma
+        Certification), which is USA based. Typically, however, six sigma
+        accreditation is dependent on the black belt trainer who certifies you.
+        Our trainers are IASSC and CSSC certified.{" "}
+        <a href="/accreditation" className="text-link hover:text-link-hover">
+          See here
+        </a>
+        .
+      </p>
+    ),
+  },
+  {
+    q: "Why is 2KO not aligned with IASSC?",
+    a: (
+      <>
+        <p>
+          We spent many years aligned with IASSC, and recently decided that we
+          prefer CSSC. The IASSC Certification is exam based, where industry
+          primarily requires experience-based certifications. 2KO Africa students
+          actually apply the learning and the 6+ month journey of certification
+          is the evidence-based part of the training and certification.
+        </p>
+        <p>
+          If 2KO Africa students want to sit the IASSC exam, they are welcome,
+          but it will require extensive preparation as it is a closed book 4-hour
+          exam with a strong focus on advanced statistical analysis. It will give
+          them an additional certificate, but only evidence of ability to study
+          and memorize material, not the ability to apply. 2KO Africa students
+          will not be certified by our master trainers, unless they prove
+          themselves capable of implementing the stats and tools gained in their
+          training, by means of actual evidence-based project, which they can
+          prove will have a massive impact on waste reduction and impact on
+          bottom line.
+        </p>
+      </>
+    ),
+  },
+  {
+    q: "Is there a brochure which covers all courses and pricing with pre-requisites and course outlines?",
+    a: (
+      <p>
+        Yes there is.{" "}
+        <a href="/brochure" className="text-link hover:text-link-hover">
+          Click here
+        </a>{" "}
+        to request the latest course brochure
+      </p>
+    ),
+  },
+  {
+    q: "What are the prerequisites/do I have to take the \u201cbelts\u201d in order?",
+    a: (
+      <p>
+        You can request our brochure which will give you pre-requisites for each
+        course. See Q11. You do not need to start from white belt &ndash; see Q1
+        and Q2.
+      </p>
+    ),
+  },
+  {
+    q: "Do I get a certificate after I complete this course?",
+    a: (
+      <p>
+        When you complete a course of any kind with us, you will receive a
+        certificate of completion.
+      </p>
+    ),
+  },
+  {
+    q: "Are there any hidden costs?",
+    a: (
+      <p>
+        The price you see when we send you a formal quote, is the price which
+        includes course, manuals, logistics, and certification. There are no
+        additional costs.
+      </p>
+    ),
+  },
+  {
+    q: "I work full time and cannot take time off for courses. Can I study after hours?",
+    a: (
+      <p>
+        The only type of course which accommodates any time learning are our
+        &ldquo;online&rdquo; courses &ndash; see Q7. We would however schedule weekend or
+        after-hours courses for groups.
+      </p>
+    ),
+  },
+  {
+    q: "How long will it take me to complete the course?",
+    a: (
+      <>
+        <p>
+          Virtual courses and Instructor led courses have the same duration.
+        </p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>Yellow belt courses (virtual and instructor led) are 2 days full time</li>
+          <li>Green belt courses (virtual and instructor led) are 5 days full time</li>
+          <li>Black belt courses (virtual and instructor led) are 10 days full time (2 non-consecutive weeks)</li>
+        </ul>
+        <p>Online self-study courses have the following duration</p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>White belt &ndash; 30 days access</li>
+          <li>Yellow belt &ndash; 90 days access</li>
+          <li>Green belt &ndash; 1 year access</li>
+          <li>Black belt &ndash; 1 year access</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    q: "What is the difference between SigmaXL and Minitab for online green and black belt courses?",
+    a: (
+      <p>
+        All six sigma courses contain sections on stats. To do these stats, you
+        will need statistical software. SigmaXL and Minitab are the two
+        different types of statistical software packages that the online courses
+        use.
+      </p>
+    ),
+  },
+  {
+    q: "Is the software included in your online course fee? Or do I need to purchase the statistical software?",
+    a: (
+      <p>
+        If you choose for an online course with SigmaXL, we include a perpetual
+        license for SigmaXL with your course purchase. If you choose a course
+        with Minitab, you will get a 30-day free trial for Minitab software.
+        Thereafter you will need to purchase the software yourself. An annual
+        Minitab license for an individual costs around R25,000. We do not
+        include the cost of Minitab software in the online minitab course, but
+        this is made clear in our quotes and invoices.
+      </p>
+    ),
+  },
+  {
+    q: "How long do I have to complete a project for green or black belt?",
+    a: (
+      <ul className="list-disc pl-5 space-y-1">
+        <li>Green belt students are given 3 months to submit their project.</li>
+        <li>Black belt students are given 6 months to submit their project.</li>
+      </ul>
+    ),
+  },
+  {
+    q: "What happens if I run out of time to complete my project?",
+    a: (
+      <p>
+        If you run out of time, and need additional time, you may contact our
+        staff who will request an extension for you from the instructor. This is
+        usually given for a few weeks, when requested. A subsequent extension
+        will require some direct correspondence with the instructor before
+        given.
+      </p>
+    ),
+  },
+  {
+    q: "What happens if I run out of time to complete my online course?",
+    a: (
+      <p>
+        If you run out of time, and need additional time, you will need to
+        purchase an extension. Extensions can be 3 months or 6 months.
+      </p>
+    ),
+  },
+  {
+    q: "Can I pay off my course in instalments?",
+    a: (
+      <p>
+        We have payment terms for individuals who are funding their own courses.
+        To qualify, the invoice will need to be made in your personal name. You
+        may request payment terms from any of our staff. We allow all courses to
+        be paid off in 3 or 6 months usually, but we are flexible and will try
+        to accommodate students where possible.
+      </p>
+    ),
+  },
+  {
+    q: "Do you offer free courses?",
+    a: (
+      <p>
+        Yes, follow the link by clicking{" "}
+        <a
+          href="/courses/online-white-belt"
+          className="text-link hover:text-link-hover"
+        >
+          here
+        </a>{" "}
+        to our free white belt course, found on this page
+      </p>
+    ),
+  },
+  {
+    q: "Do I require to do Green Belt in order to do Black Belt?",
+    a: (
+      <p>
+        We judge each delegate on their own experience before deciding about
+        whether they should attend green belt before the black belt or go
+        straight to black belt. In rare cases where there has been vast
+        pre-requisite experience in the project and engineering field, we will
+        enrol a student directly on Black belt. Usually, a student is required
+        to attend green belt before the black belt. No specific six sigma
+        experience is required before enrolling for green belt, if a delegate
+        has stats and project management experience.
+      </p>
+    ),
+  },
+  {
+    q: "Do I have to take an exam with six sigma courses?",
+    a: (
+      <p>
+        No exam is necessary for a course completion certificate. Simply
+        completing the course whether online, virtual, or face-to-face,
+        qualifies you for a course completion certificate. To obtain
+        certification, you will need to take an exam.
+      </p>
+    ),
+  },
+  {
+    q: "Where can I see your course schedule?",
+    a: (
+      <p>
+        Our course schedule is available on our website for all our instructor
+        led and virtual training courses. See link:{" "}
+        <a href="/schedule" className="text-link hover:text-link-hover">
+          https://sixsigmasouthafrica.co.za/google-calendar
+        </a>
+      </p>
+    ),
+  },
+];
+/* eslint-enable react/jsx-key */
 
 export const metadata: Metadata = {
   title: "Contact Six Sigma South Africa | Training Enquiries",
@@ -198,51 +556,14 @@ export default function ContactPage() {
 
       {/* ───── FAQ Section ───── */}
       <FadeIn>
-        <section className="section bg-light-grey">
+        <section id="faqs" className="section bg-light-grey scroll-mt-[80px]">
           <div className="container">
-            <SectionHeading>Frequently Asked Questions</SectionHeading>
+            <h2 className="text-heading text-[28px] md:text-[34px] font-bold text-center mb-10">
+              FAQ&rsquo;s
+            </h2>
 
-            <div id="faqs" className="max-w-3xl mx-auto mt-10 space-y-4">
-              {[
-                { q: "Where should beginners/newbies begin?", a: "If you are completely new to six sigma, you could potentially start with white, yellow or green belt. We recommend beginning with yellow belt, because the yellow belt covers the full content of the white belt anyway. If you have project management experience, we recommend starting with green belt." },
-                { q: "Do I have to begin with white belt?", a: "No, you can begin with yellow or green, even if you are new to six sigma." },
-                { q: "I am an engineer. Can I begin with green belt?", a: "Yes, it is possible. If you have some solid project management experience and you are an engineer, you can skip yellow belt, and begin with green belt." },
-                { q: "I have a master\u2019s degree, with excellent stats and lots of project management experience. Can I go direct to black belt?", a: "In theory yes, and we do have some delegates who choose this path. We do not recommend skipping green belt, because as a black belt you will need to manage a team of green belt practitioners. If however, you insist, we will permit it at your own risk." },
-                { q: "Who should sign up for Six Sigma?", a: "Six Sigma Certification can be applied to many aspects of business, and therefore can benefit almost all companies. By signing up your employees, Six Sigma can drastically improve your organisation, and at the same time help your employees climb the corporate ladder." },
-                { q: "Why Six Sigma?", a: "Six Sigma is a highly disciplined approach that allows us to focus on creating and delivering nearly perfect products and services. The underlying idea being that if you can measure how many \u201cdefects\u201d you have in a process, you can systematically figure out a way to eliminate them and get as close to \u201czero defects\u201d as possible." },
-                { q: "What is the difference between Virtual and Online training?", a: "We classify \u201cOnline\u201d training as self-study, self-paced eLearning over the internet. Your course comprises pre-recorded video lectures, quizzes and tests. We classify \u201cVirtual\u201d training as live instructor-led training that takes place on specific, scheduled dates via MS Teams." },
-                { q: "What is the difference between Lean and DMAIC?", a: "Lean uses tools and techniques to improve efficiency by identifying and eliminating the sources of waste, improving process flow. DMAIC focuses on reducing variation by finding and fixing the root cause, improving effectiveness and focusing on doing things right the first time." },
-                { q: "Is 2KO Africa certification internationally recognised?", a: "2KO Africa is the most recognised certification body for Africa. We are the only company that is authorised by MICT SETA in South Africa for six sigma certifications. We are a member of CSSC (Council for Six Sigma Certification), which is USA based. Our trainers are IASSC and CSSC certified." },
-                { q: "Why is 2KO not aligned with IASSC?", a: "We spent many years aligned with IASSC, and recently decided that we prefer CSSC. The IASSC Certification is exam based, where industry primarily requires experience-based certifications. 2KO Africa students actually apply the learning and the 6+ month journey of certification is the evidence-based part of the training and certification." },
-                { q: "Is there a brochure which covers all courses and pricing?", a: "Yes there is. Contact us to request the latest course brochure with all pricing and pre-requisites." },
-                { q: "What are the prerequisites / do I have to take the \u201cbelts\u201d in order?", a: "You do not need to start from white belt. You can request our brochure which will give you pre-requisites for each course." },
-                { q: "Do I get a certificate after I complete this course?", a: "When you complete a course of any kind with us, you will receive a certificate of completion." },
-                { q: "Are there any hidden costs?", a: "The price you see when we send you a formal quote, is the price which includes course, manuals, logistics, and certification. There are no additional costs." },
-                { q: "I work full time and cannot take time off. Can I study after hours?", a: "The only type of course which accommodates any time learning are our \u201conline\u201d courses (self-paced eLearning). We would however schedule weekend or after-hours courses for groups." },
-                { q: "How long will it take me to complete the course?", a: "Yellow belt courses are 2 days full time. Green belt courses are 5 days full time. Black belt courses are 10 days full time (2 non-consecutive weeks). Online self-study: White belt \u2013 30 days access, Yellow belt \u2013 90 days access, Green belt \u2013 1 year access, Black belt \u2013 1 year access." },
-                { q: "What is the difference between SigmaXL and Minitab?", a: "SigmaXL and Minitab are two different types of statistical software packages that the online courses use for the statistical analysis sections of six sigma training." },
-                { q: "Is the software included in your online course fee?", a: "If you choose an online course with SigmaXL, we include a perpetual license with your course purchase. If you choose Minitab, you will get a 30-day free trial. An annual Minitab license costs around R25,000." },
-                { q: "How long do I have to complete a project for green or black belt?", a: "Green belt students are given 3 months to submit their project. Black belt students are given 6 months to submit their project." },
-                { q: "What happens if I run out of time to complete my project?", a: "If you run out of time, you may contact our staff who will request an extension for you from the instructor. This is usually given for a few weeks when requested." },
-                { q: "What happens if I run out of time to complete my online course?", a: "If you run out of time, you will need to purchase an extension. Extensions can be 3 months or 6 months." },
-                { q: "Can I pay off my course in instalments?", a: "We have payment terms for individuals who are funding their own courses. We allow all courses to be paid off in 3 or 6 months usually, but we are flexible and will try to accommodate students where possible." },
-                { q: "Do you offer free courses?", a: "Yes, we offer a free White Belt course. Visit our courses page to enrol." },
-                { q: "Do I require Green Belt in order to do Black Belt?", a: "We judge each delegate on their own experience. In rare cases where there has been vast pre-requisite experience in the project and engineering field, we will enrol a student directly on Black Belt. Usually, a student is required to attend green belt before the black belt." },
-                { q: "Do I have to take an exam with six sigma courses?", a: "No exam is necessary for a course completion certificate. Simply completing the course qualifies you for a course completion certificate. To obtain full certification, you will need to take an exam." },
-                { q: "Where can I see your course schedule?", a: "Our course schedule is available on our website for all our instructor led and virtual training courses. Visit the Schedule page for details." },
-              ].map(({ q, a }) => (
-                <details key={q} className="bg-white rounded-lg">
-                  <summary className="cursor-pointer px-6 py-4 text-heading font-semibold text-[18px] list-none flex items-center justify-between">
-                    {q}
-                    <svg className="w-4 h-4 shrink-0 ml-4 transition-transform" fill="none" viewBox="0 0 12 12">
-                      <path d="M3 5L6 8L9 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
-                  </summary>
-                  <div className="px-6 pb-4">
-                    <p className="text-body text-[17px] leading-relaxed">{a}</p>
-                  </div>
-                </details>
-              ))}
+            <div className="max-w-6xl mx-auto">
+              <FaqAccordion items={faqItems} />
             </div>
           </div>
         </section>
