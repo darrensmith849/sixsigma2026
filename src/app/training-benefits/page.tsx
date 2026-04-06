@@ -125,33 +125,52 @@ export default function TrainingBenefitsPage() {
 
       {/* ───── Results Your Company Can Expect ───── */}
       <FadeIn>
-        <section className="relative py-14 md:py-16 overflow-hidden">
-          <div className="absolute inset-0 bg-light-grey" />
+        <section className="relative py-16 md:py-20 overflow-hidden">
+          {/* Dark premium background */}
+          <div className="absolute inset-0 bg-heading" />
+          {/* Subtle atmospheric glow */}
+          <div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              background: "radial-gradient(ellipse at 30% 50%, #16b24a 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, #16b24a 0%, transparent 50%)",
+            }}
+          />
+
           <div className="container relative z-10">
-            <div className="text-center mb-8">
-              <p className="text-green text-[13px] font-semibold uppercase tracking-wider mb-2">
-                Proven Results
-              </p>
-              <h2 className="text-heading font-bold text-[24px] md:text-[28px]">
+            {/* Header */}
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green/30 bg-green/10 mb-4">
+                <div className="w-1.5 h-1.5 rounded-full bg-green" />
+                <span className="text-green text-[11px] font-bold uppercase tracking-[0.15em]">
+                  Proven Results
+                </span>
+              </div>
+              <h2 className="text-white font-bold text-[26px] md:text-[32px] leading-tight">
                 Results Your Company Can Expect
               </h2>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[880px] mx-auto">
-              {companyResults.map((item) => (
+
+            {/* Results grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-[920px] mx-auto">
+              {companyResults.map((item, i) => (
                 <div
                   key={item}
-                  className="flex items-start gap-3 bg-white rounded-lg px-4 py-3 border border-border-grey/40"
+                  className="stagger-child flex items-start gap-3 rounded-lg px-5 py-4 bg-white/[0.06] border border-white/[0.08] backdrop-blur-sm"
                 >
-                  <svg
-                    className="w-4 h-4 text-green shrink-0 mt-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span className="text-heading text-[14px] md:text-[15px]">{item}</span>
+                  <div className="w-5 h-5 rounded-full bg-green/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg
+                      className="w-3 h-3 text-green"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-white/90 text-[14px] md:text-[15px] font-medium leading-snug">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
