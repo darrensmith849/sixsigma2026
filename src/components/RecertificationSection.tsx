@@ -51,20 +51,23 @@ export default function RecertificationSection({
   return (
     <section className={`py-16 lg:py-20 ${bgClass}`}>
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* Single row: left content + right CTA */}
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
-          {/* Left — all content */}
+        {/* 1. Intro block — badge + heading, ABOVE the grid */}
+        <div>
+          <span className="inline-flex items-center rounded-full border border-[#18B64A]/25 bg-[#EAF8EE] px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#18B64A]">
+            <span className="mr-2 h-2 w-2 rounded-full bg-[#18B64A]" />
+            {badge}
+          </span>
+
+          <h2 className="mt-5 max-w-3xl text-[28px] md:text-[34px] font-semibold tracking-[-0.03em] text-neutral-900">
+            {title}
+          </h2>
+        </div>
+
+        {/* 2. Content row — starts AFTER intro so green box aligns with first card */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+          {/* Left: cards + paragraph */}
           <div>
-            <span className="inline-flex items-center rounded-full border border-[#18B64A]/25 bg-[#EAF8EE] px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#18B64A]">
-              <span className="mr-2 h-2 w-2 rounded-full bg-[#18B64A]" />
-              {badge}
-            </span>
-
-            <h2 className="mt-5 text-[28px] md:text-[34px] font-semibold tracking-[-0.03em] text-neutral-900">
-              {title}
-            </h2>
-
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               {items.map((item) => (
                 <RequirementTile
                   key={item.text}
@@ -79,7 +82,7 @@ export default function RecertificationSection({
             </p>
           </div>
 
-          {/* Right — green CTA card */}
+          {/* Right: green CTA — top-aligned with first card row */}
           <aside className="self-start">
             <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-5 text-center text-white shadow-[0_18px_44px_rgba(24,182,74,0.16)]">
               <div className="text-[48px] font-semibold leading-none tracking-[-0.04em]">
