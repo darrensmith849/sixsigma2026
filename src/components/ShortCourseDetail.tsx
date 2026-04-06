@@ -19,8 +19,8 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
       <section className="pt-[80px]">
         <div className="relative h-[200px] md:h-[260px]">
           <Image
-            src={course.imageSrc}
-            alt={course.title}
+            src="/images/courses/short-course-hero.jpg"
+            alt="Six Sigma training"
             fill
             className="object-cover"
             sizes="100vw"
