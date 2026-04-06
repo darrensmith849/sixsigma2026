@@ -20,8 +20,8 @@ export default function Button({
 
   const sizeClass =
     size === "large"
-      ? "px-10 py-4 text-[22px]"
-      : "px-7 py-3 text-[18px]";
+      ? "px-8 py-3.5 text-[18px]"
+      : "px-6 py-2.5 text-[16px]";
 
   const variantClass = {
     filled:

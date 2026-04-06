@@ -57,14 +57,14 @@ export default function CTASection({
           </div>
         )}
         <h2
-          className={`font-semibold mb-4 ${
+          className={`font-semibold text-[26px] md:text-[30px] mb-3 ${
             isGreen ? "text-inverse" : "text-heading"
           }`}
         >
           {heading}
         </h2>
         <p
-          className={`text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed ${
+          className={`text-[17px] md:text-[18px] max-w-2xl mx-auto mb-6 leading-relaxed ${
             isGreen ? "text-inverse/90" : "text-body"
           }`}
         >

@@ -27,8 +27,8 @@
   /* Layout */
   --container-max: 1200px;
   --container-wide: 1400px;
-  --section-padding: 80px;
-  --section-padding-mobile: 48px;
+  --section-padding: 64px;
+  --section-padding-mobile: 40px;
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;

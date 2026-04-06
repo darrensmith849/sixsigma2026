@@ -23,26 +23,26 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
     <section className="section bg-white">
       <div className="container">
         {showHeading && (
-          <div className="text-center mb-8">
-            <h2 className="text-heading font-semibold">Client List</h2>
-            <p className="mt-4 text-body text-[21px] max-w-3xl mx-auto leading-relaxed">
+          <div className="text-center mb-6">
+            <h2 className="text-heading font-semibold text-[26px] md:text-[30px]">Client List</h2>
+            <p className="mt-3 text-body text-[17px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
               Discover some of the esteemed organizations that have chosen us as
               their training and consultancy partner:
             </p>
           </div>
         )}
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8 items-center justify-items-center py-6">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6 items-center justify-items-center max-w-4xl mx-auto py-4">
           {logos.map((logo) => (
             <div
               key={logo.alt}
-              className="logo-item w-full max-w-[120px] flex items-center justify-center"
+              className="logo-item w-full max-w-[100px] flex items-center justify-center"
             >
               <Image
                 src={logo.src}
                 alt={logo.alt}
-                width={130}
-                height={130}
+                width={110}
+                height={110}
                 className="object-contain"
               />
             </div>
@@ -50,7 +50,7 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
         </div>
 
         {showHeading && (
-          <p className="text-center text-[24px] font-semibold text-heading mt-6">
+          <p className="text-center text-[20px] font-semibold text-heading mt-4">
             And over 5,000 more!
           </p>
         )}

@@ -19,28 +19,30 @@ export default function HeroSection({
     <section className="relative bg-white pt-[80px] overflow-hidden">
       {/* Background image — right-aligned, sits behind everything */}
       {imageSrc && (
-        <div className="hidden lg:block absolute top-0 right-0 w-[55%] h-full">
+        <div className="hidden lg:block absolute top-0 right-0 w-[50%] h-full">
           <Image
             src={imageSrc}
             alt={imageAlt}
             fill
             className="object-cover object-center"
             priority
-            sizes="55vw"
+            sizes="50vw"
           />
         </div>
       )}
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-[120px]">
-        <div className="py-10 lg:py-14">
-          {/* Text Side — overlaps the image slightly */}
-          <div className="lg:max-w-[50%]">
-            <h1 className="mb-6">{heading}</h1>
-            <div className="text-[21px] text-body leading-[1.55] space-y-4">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-16 xl:px-24">
+        <div className="py-8 lg:py-10">
+          {/* Text Side */}
+          <div className="lg:max-w-[46%]">
+            <h1 className="text-[32px] md:text-[38px] lg:text-[42px] leading-[1.15] mb-4">
+              {heading}
+            </h1>
+            <div className="text-[17px] md:text-[18px] text-body leading-[1.6] space-y-3">
               {children}
             </div>
             {actions && (
-              <div className="flex flex-wrap gap-4 mt-8">{actions}</div>
+              <div className="flex flex-wrap gap-3 mt-6">{actions}</div>
             )}
           </div>
         </div>
@@ -48,7 +50,7 @@ export default function HeroSection({
 
       {/* Mobile image — shown below text on small screens */}
       {imageSrc && (
-        <div className="relative lg:hidden w-full h-[300px]">
+        <div className="relative lg:hidden w-full h-[260px]">
           <Image
             src={imageSrc}
             alt={imageAlt}

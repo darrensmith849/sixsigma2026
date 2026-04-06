@@ -52,7 +52,7 @@ export default function Home() {
       {/* Kickstart Section — 2-column: image left, green text right */}
       <FadeIn>
         <section className="flex flex-col lg:flex-row">
-          <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px]">
+          <div className="relative w-full lg:w-1/2 min-h-[320px] lg:min-h-[400px]">
             <Image
               src="/images/kickstart-businessman.jpg"
               alt="Six Sigma professional"
@@ -62,11 +62,11 @@ export default function Home() {
             />
           </div>
           <div className="w-full lg:w-1/2 bg-green flex items-center">
-            <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px]">
-              <h2 className="text-inverse font-semibold mb-4">
+            <div className="px-8 md:px-10 lg:px-14 py-10 lg:py-12 max-w-[520px]">
+              <h2 className="text-inverse font-semibold text-[26px] md:text-[30px] mb-3">
                 Kickstart your Six Sigma journey
               </h2>
-              <p className="text-inverse/90 text-[21px] leading-relaxed mb-8">
+              <p className="text-inverse/90 text-[17px] md:text-[18px] leading-relaxed mb-6">
                 Explore our comprehensive range of courses, from White Belt to
                 Black Belt. Our curriculum includes Lean Management and Root Cause
                 Analysis as well. Embark on a path to success with our
@@ -93,8 +93,6 @@ export default function Home() {
           buttonText="View our courses"
           buttonHref="/courses"
           variant="green"
-          iconSrc="/images/Success-stories-01.png"
-          iconAlt="Process improvement"
         />
       </FadeIn>
 
@@ -102,11 +100,11 @@ export default function Home() {
       <FadeIn>
         <section className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 bg-white flex items-center">
-            <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px] lg:ml-auto">
-              <h2 className="text-heading font-semibold mb-4">
+            <div className="px-8 md:px-10 lg:px-14 py-10 lg:py-12 max-w-[520px] lg:ml-auto">
+              <h2 className="text-heading font-semibold text-[26px] md:text-[30px] mb-3">
                 Stay ahead with our events and workshops
               </h2>
-              <p className="text-body text-[21px] leading-relaxed mb-8">
+              <p className="text-body text-[17px] md:text-[18px] leading-relaxed mb-6">
                 Join our upcoming webinars, workshops, and training sessions to
                 stay up-to-date on the latest Six Sigma methodologies and industry
                 best practices. Learn from experienced professionals and enhance
@@ -117,7 +115,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[500px]">
+          <div className="relative w-full lg:w-1/2 min-h-[320px] lg:min-h-[400px]">
             <Image
               src="/images/events-certification.jpg"
               alt="Six Sigma Green Belt certification ceremony"
