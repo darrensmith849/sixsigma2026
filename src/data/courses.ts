@@ -624,11 +624,11 @@ const rcaCourseOutline: CourseContentSection[] = [
 const onlineCourses: CourseData[] = [
   {
     slug: "online-white-belt",
-    title: "Six Sigma Online White Belt Course in South Africa",
+    title: "Six Sigma White Belt training in South Africa",
     shortTitle: "White Belt",
     description:
-      "This online white belt six sigma course in South Africa provides a basic foundation to Six Sigma methodology. Our beginner-oriented, video sessions serve as the perfect base for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma White Belt training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Join our Six Sigma White Belt training today and embark on your journey towards process improvement and efficiency.",
-    includes: ["4 Lessons", "10 Topics", "10 Quizzes"],
+      "Self-paced course introducing Six Sigma basics. Ideal for understanding fundamental concepts and improving workplace efficiency. No prior experience required.",
+    includes: ["6 hours of content", "No Exam", "No Project"],
     mode: "Online",
     beltLevel: "white",
     imageSrc: "/images/courses/Online-1.jpg",
@@ -646,11 +646,11 @@ const onlineCourses: CourseData[] = [
   },
   {
     slug: "online-yellow-belt",
-    title: "Six Sigma Online Yellow Belt Course in South Africa",
+    title: "Six Sigma Yellow Belt training in South Africa",
     shortTitle: "Yellow Belt",
     description:
-      "This online yellow belt six sigma course in South Africa helps establish your six sigma methodology. Our professional videos serve as the perfect starting point for individuals and organizations seeking to enhance their understanding of Six Sigma and its practical applications. As a leading provider of Six Sigma training, 2KO Africa equips you with entry-level knowledge that can be applied to improve your company's processes. Our certified trainers deliver engaging and insightful courses, ensuring a solid foundation in the principles and potential benefits of Six Sigma.",
-    includes: ["7 Lessons", "22 Topics", "22 Quizzes"],
+      "Course focusing on basic project management within Six Sigma. Excellent for team members seeking to support and participate in improvement projects.",
+    includes: ["14 hours of content", "1 x 90-minute Exam", "No Project"],
     mode: "Online",
     beltLevel: "yellow",
     imageSrc: "/images/courses/Online-2.jpg",
@@ -724,11 +724,15 @@ const onlineCourses: CourseData[] = [
   },
   {
     slug: "online-lean-black-belt",
-    title: "Six Sigma Online LEAN Black Belt Course in South Africa",
+    title: "Six Sigma LEAN Black Belt training in South Africa",
     shortTitle: "LEAN Black Belt",
     description:
-      "2KO Africa's online six sigma black belt courses were designed with advanced six sigma practitioners in mind. Students who enrol for six sigma black belt (self-paced) have a year to complete the course. To be accepted onto the black belt course, you will need to have completed a green belt course or have many years of project management experience and be good at statistics. Requirements for certification: two online exams (one for each week), plus a project where you are found competent in delivering significant savings or improvements to existing processes. Booking for our black belt six sigma classes is highly recommended. We cover both the Lean and the DMAIC content streams.",
-    includes: ["31 Lessons", "152 Topics", "31 Quizzes"],
+      "Advanced course providing mastery in Lean methodologies. Learn to lead and drive Lean transformations in large-scale projects. Perfect for professionals desiring Lean leadership roles.",
+    includes: [
+      "70 hours of content",
+      "2 x 90-minute Exams",
+      "6 Months to write a project",
+    ],
     mode: "Online",
     beltLevel: "black",
     imageSrc: "/images/courses/Online-5.jpg",
