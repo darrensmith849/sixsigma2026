@@ -64,7 +64,7 @@ export default function RecertificationSection({
         </div>
 
         {/* Content row — CTA aligns with first card */}
-        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
           <div>
             <div className="grid gap-4 sm:grid-cols-2">
               {items.map((item) => (
@@ -82,8 +82,8 @@ export default function RecertificationSection({
           </div>
 
           <aside className="self-start">
-            <div className="w-full rounded-[28px] bg-[#18B64A] px-7 py-6 text-center text-white shadow-[0_18px_44px_rgba(24,182,74,0.16)]">
-              <div className="text-[46px] font-semibold leading-none tracking-[-0.04em]">
+            <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-6 text-center text-white shadow-[0_18px_44px_rgba(24,182,74,0.16)]">
+              <div className="text-[48px] font-semibold leading-none tracking-[-0.04em]">
                 {price}
               </div>
 
@@ -91,13 +91,13 @@ export default function RecertificationSection({
                 inc VAT
               </div>
 
-              <p className="mx-auto mt-4 max-w-[220px] text-[15px] leading-6 text-white/90">
+              <p className="mx-auto mt-4 max-w-[230px] text-[15px] leading-6 text-white/90">
                 {description}
               </p>
 
               <Link
                 href={ctaHref}
-                className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-2xl bg-white px-6 text-[15px] font-semibold text-[#18B64A] transition hover:bg-neutral-50"
+                className="mt-5 inline-flex h-[52px] w-full items-center justify-center rounded-2xl bg-white px-6 text-[15px] font-semibold text-[#18B64A] transition hover:bg-neutral-50"
               >
                 Get Certified
               </Link>
