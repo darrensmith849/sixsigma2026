@@ -25,97 +25,137 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ───── Contact Details ───── */}
+      {/* ───── Two-Office Contact Blocks with Maps ───── */}
       <FadeIn>
         <section className="section">
           <div className="container">
-            <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
               {/* South Africa */}
-              <div className="bg-light-grey rounded-lg p-8">
-                <h2 className="text-heading font-semibold mb-6">
-                  South Africa
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Company
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Six Sigma South Africa&trade; &mdash; 2KO Africa CC
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Phone
-                    </p>
-                    <p className="text-body text-[18px]">
-                      <a
-                        href="tel:+27214265300"
-                        className="text-link hover:text-link-hover"
-                      >
-                        021 426 5300
+              <div className="bg-light-grey rounded-xl overflow-hidden">
+                <div className="p-8">
+                  <h2 className="text-heading text-[24px] md:text-[28px] font-bold mb-4">
+                    Contact Six Sigma South Africa
+                  </h2>
+                  <p className="text-body text-[16px] leading-relaxed mb-6">
+                    Questions, inquiries, or concerns? We train mostly in Joburg
+                    and Tshwane, but also nationally and internationally. Fill
+                    out the contact form below.
+                  </p>
+
+                  <a
+                    href="#enquiry-form"
+                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-green text-inverse font-semibold rounded-lg hover:brightness-110 transition mb-6 text-[16px]"
+                  >
+                    Enquire Now
+                  </a>
+
+                  <p className="text-[13px] text-muted font-semibold uppercase tracking-wider mb-4">
+                    General Inquiries
+                  </p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <a href="tel:+27215270065" className="text-body text-[17px] hover:text-link transition-colors">
+                        +27 21 527 0065
                       </a>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Email
-                    </p>
-                    <p className="text-body text-[18px]">
-                      <a
-                        href="mailto:info@2ko.co.za"
-                        className="text-link hover:text-link-hover"
-                      >
-                        info@2ko.co.za
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <a href="mailto:info@sixsigmasouthafrica.co.za" className="text-body text-[17px] hover:text-link transition-colors break-all">
+                        info@sixsigmasouthafrica.co.za
                       </a>
-                    </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Training Locations
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Johannesburg, Cape Town, Durban, Pretoria, Port
-                      Elizabeth &amp; on-site nationwide
-                    </p>
-                  </div>
+                </div>
+
+                {/* SA Map */}
+                <div className="w-full h-[240px] bg-border-grey">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.9!2d18.5109!3d-33.8889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5e2dba2f4b0b%3A0x9e0a1a1c1c1c1c1c!2sThe+Colosseum%2C+Century+Way%2C+Century+City%2C+Cape+Town%2C+7441!5e0!3m2!1sen!2sza!4v1700000000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Six Sigma South Africa Office — The Colosseum, Century Way, Century City, Cape Town 7441"
+                  />
+                </div>
+                <div className="px-8 py-4 border-t border-border-grey">
+                  <p className="text-[14px] text-muted leading-relaxed">
+                    2KO Africa / Six Sigma South Africa<br />
+                    1st Floor, Foyer 3, The Colosseum<br />
+                    Century Way, Century City<br />
+                    Cape Town, 7441
+                  </p>
                 </div>
               </div>
 
               {/* United Kingdom */}
-              <div className="bg-light-grey rounded-lg p-8">
-                <h2 className="text-heading font-semibold mb-6">
-                  United Kingdom
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Company
-                    </p>
-                    <p className="text-body text-[18px]">2KO International</p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Email
-                    </p>
-                    <p className="text-body text-[18px]">
-                      <a
-                        href="mailto:info@2ko.co.za"
-                        className="text-link hover:text-link-hover"
-                      >
-                        info@2ko.co.za
+              <div className="bg-light-grey rounded-xl overflow-hidden">
+                <div className="p-8">
+                  <h2 className="text-heading text-[24px] md:text-[28px] font-bold mb-4">
+                    Contact Six Sigma United Kingdom
+                  </h2>
+                  <p className="text-body text-[16px] leading-relaxed mb-6">
+                    Use this form to enquire about training in the United
+                    Kingdom, or Europe. Fill out the contact form below.
+                  </p>
+
+                  <a
+                    href="#enquiry-form"
+                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-green text-inverse font-semibold rounded-lg hover:brightness-110 transition mb-6 text-[16px]"
+                  >
+                    Enquire Now
+                  </a>
+
+                  <p className="text-[13px] text-muted font-semibold uppercase tracking-wider mb-4">
+                    General Inquiries
+                  </p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <a href="tel:+27215270065" className="text-body text-[17px] hover:text-link transition-colors">
+                        +27 21 527 0065
                       </a>
-                    </p>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      <a href="mailto:info@sixsigmauk.com" className="text-body text-[17px] hover:text-link transition-colors">
+                        info@sixsigmauk.com
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Services
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Virtual and online Six Sigma training for UK-based
-                      professionals and organisations
-                    </p>
-                  </div>
+                </div>
+
+                {/* UK Map */}
+                <div className="w-full h-[240px] bg-border-grey">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.4!2d-0.0887!3d51.5246!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b5e1c1c1c1c%3A0x1c1c1c1c1c1c1c1c!2sLondon+EC1V+2PD!5e0!3m2!1sen!2suk!4v1700000000000"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Six Sigma United Kingdom Office — London EC1V 2PD"
+                  />
+                </div>
+                <div className="px-8 py-4 border-t border-border-grey">
+                  <p className="text-[14px] text-muted leading-relaxed">
+                    London<br />
+                    EC1V 2PD
+                  </p>
                 </div>
               </div>
             </div>
@@ -125,7 +165,7 @@ export default function ContactPage() {
 
       {/* ───── Enquiry Form ───── */}
       <FadeIn>
-        <section className="section bg-light-grey">
+        <section id="enquiry-form" className="section bg-light-grey scroll-mt-[80px]">
           <div className="container">
             <SectionHeading subtitle="Fill in the form below and our team will get back to you within 24 hours.">
               Send Us an Enquiry
