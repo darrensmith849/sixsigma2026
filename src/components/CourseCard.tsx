@@ -40,12 +40,12 @@ export default function CourseCard({
           />
 
           {/* Top-right badges */}
-          <div className="absolute top-3 right-3 flex flex-col gap-1.5 z-10">
-            <span className="inline-block px-3 py-1 text-[13px] font-semibold rounded-full bg-green text-white">
+          <div className="absolute top-3 right-3 flex flex-col items-end gap-1 z-10">
+            <span className="inline-block px-3.5 py-1 text-[13px] font-semibold rounded-full bg-green text-white leading-tight">
               {mode}
             </span>
             {isFree && (
-              <span className="inline-block px-3 py-1 text-[13px] font-semibold rounded-full bg-yellow-400 text-gray-900">
+              <span className="inline-block px-3.5 py-1 text-[13px] font-semibold rounded-full bg-yellow-400 text-gray-900 leading-tight">
                 Free
               </span>
             )}
