@@ -51,6 +51,7 @@ export default function RecertificationSection({
   return (
     <section className={`py-16 lg:py-20 ${bgClass}`}>
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* Intro — above the grid */}
         <div className="max-w-3xl">
           <span className="inline-flex items-center rounded-full border border-[#18B64A]/25 bg-[#EAF8EE] px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#18B64A]">
             <span className="mr-2 h-2 w-2 rounded-full bg-[#18B64A]" />
@@ -62,8 +63,8 @@ export default function RecertificationSection({
           </h2>
         </div>
 
-        <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px]">
-          {/* Left — requirement cards */}
+        {/* Content row — CTA aligns with first card */}
+        <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
           <div>
             <div className="grid gap-4 sm:grid-cols-2">
               {items.map((item) => (
@@ -75,26 +76,28 @@ export default function RecertificationSection({
               ))}
             </div>
 
-            <p className="mt-6 max-w-2xl text-[15px] leading-7 text-neutral-600">
+            <p className="mt-6 max-w-2xl text-[16px] leading-8 text-neutral-600">
               {note}
             </p>
           </div>
 
-          {/* Right — pricing CTA card */}
           <aside className="self-start">
-            <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-8 text-center text-white shadow-[0_24px_60px_rgba(24,182,74,0.18)]">
+            <div className="w-full rounded-[28px] bg-[#18B64A] px-8 py-7 text-center text-white shadow-[0_24px_60px_rgba(24,182,74,0.18)]">
               <div className="text-[48px] font-semibold leading-none tracking-[-0.04em]">
                 {price}
               </div>
-              <div className="mt-3 text-[15px] font-medium text-white/85">
+
+              <div className="mt-2 text-[15px] font-medium text-white/85">
                 inc VAT
               </div>
-              <p className="mx-auto mt-6 max-w-[240px] text-[15px] leading-7 text-white/90">
+
+              <p className="mx-auto mt-4 max-w-[230px] text-[15px] leading-7 text-white/90">
                 {description}
               </p>
+
               <Link
                 href={ctaHref}
-                className="mt-6 inline-flex h-14 w-full items-center justify-center rounded-2xl bg-white px-6 text-[15px] font-semibold text-[#18B64A] transition hover:bg-neutral-50"
+                className="mt-5 inline-flex h-13 w-full items-center justify-center rounded-2xl bg-white px-6 text-[15px] font-semibold text-[#18B64A] transition hover:bg-neutral-50"
               >
                 Get Certified
               </Link>
