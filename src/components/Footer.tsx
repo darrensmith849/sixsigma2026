@@ -49,11 +49,11 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/sssa-logo-full.jpg"
+                src="/images/sssa-logo-full-dark.png"
                 alt="Six Sigma South Africa"
                 width={280}
                 height={70}
-                className="h-[44px] w-auto object-contain bg-white rounded-[8px] p-1.5"
+                className="h-[44px] w-auto object-contain"
               />
             </Link>
             <p className="mt-6 text-[15px] text-white/70 leading-relaxed max-w-[320px]">

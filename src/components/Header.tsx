@@ -85,7 +85,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
             <Image
-              src="/images/sssa-logo-full.jpg"
+              src="/images/sssa-logo-full.png"
               alt="Six Sigma South Africa"
               width={280}
               height={70}
