@@ -6,11 +6,14 @@ import ClientLogoGrid from "@/components/ClientLogoGrid";
 import CTASection from "@/components/CTASection";
 import FadeIn from "@/components/FadeIn";
 
-export const metadata: Metadata = {
-  title: "About Six Sigma South Africa | 2KO Africa CC",
+import { buildMetadata, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: `About | ${SITE_NAME}`,
   description:
     "Six Sigma South Africa is the leading Six Sigma training provider for many of the largest companies in South Africa and neighbouring African countries.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

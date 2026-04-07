@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
+import { buildMetadata, SITE_NAME } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: `Six Sigma Training & Certification in South Africa | ${SITE_NAME}`,
+  description:
+    "Internationally accredited Six Sigma training and certification across South Africa. White, Yellow, Green and Black Belt courses in Johannesburg, Cape Town, Durban, Pretoria and Port Elizabeth.",
+  path: "/",
+});
+
 import Button from "@/components/Button";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import CTASection from "@/components/CTASection";

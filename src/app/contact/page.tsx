@@ -3,16 +3,32 @@ import SectionHeading from "@/components/SectionHeading";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Six Sigma South Africa | Training Enquiries",
+export const metadata: Metadata = buildMetadata({
+  title: `Contact | ${SITE_NAME}`,
   description:
     "Contact Six Sigma South Africa on 021 426 5300 or info@2ko.co.za for accredited Six Sigma training, consultancy, and corporate training enquiries.",
+  path: "/contact",
+});
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  url: `${SITE_URL}/contact`,
+  mainEntity: {
+    "@type": "Organization",
+    name: SITE_NAME,
+    telephone: "+27-21-426-5300",
+    email: "info@2ko.co.za",
+  },
 };
 
 export default function ContactPage() {
   return (
     <div className="pt-[80px]">
+      <JsonLd data={contactJsonLd} />
       {/* ───── Green Hero ───── */}
       <section className="bg-green py-16 md:py-24">
         <div className="container text-center">

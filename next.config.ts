@@ -1,32 +1,28 @@
 import type { NextConfig } from "next";
 
-const legacyCourseRedirects = [
-  "/six-sigma-classroom-5s-course-in-south-africa",
-  "/six-sigma-online-5s-course-in-south-africa",
-  "/six-sigma-virtual-5s-course-in-south-africa",
-  "/six-sigma-classroom-kaizen-course-in-south-africa",
-  "/six-sigma-virtual-kaizen-course-in-south-africa",
-  "/six-sigma-online-kaizen-course-in-south-africa",
-];
+const legacyCourseMap: Record<string, string> = {
+  "/six-sigma-classroom-5s-course-in-south-africa": "/courses/5s-classroom",
+  "/six-sigma-virtual-5s-course-in-south-africa": "/courses/5s-virtual",
+  "/six-sigma-online-5s-course-in-south-africa": "/courses/5s-online",
+  "/six-sigma-classroom-kaizen-course-in-south-africa":
+    "/courses/kaizen-classroom",
+  "/six-sigma-virtual-kaizen-course-in-south-africa": "/courses/kaizen-virtual",
+  "/six-sigma-online-kaizen-course-in-south-africa": "/courses/kaizen-online",
+};
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      // Legacy course slugs → courses listing (until individual pages exist)
-      ...legacyCourseRedirects.map((source) => ({
+      // Legacy course slugs → new canonical pages (301, preserves SEO equity)
+      ...Object.entries(legacyCourseMap).map(([source, destination]) => ({
         source,
-        destination: "/courses",
+        destination,
         permanent: true,
       })),
-      // Legacy support pages
-      { source: "/schedule", destination: "/courses", permanent: true },
+      // Legacy support pages → closest live equivalent
       { source: "/book-a-course", destination: "/contact", permanent: true },
       { source: "/which-course", destination: "/courses", permanent: true },
-      { source: "/calendar", destination: "/courses", permanent: true },
-      { source: "/training-benefits", destination: "/about", permanent: true },
-      { source: "/brochure", destination: "/contact", permanent: true },
-      { source: "/accreditation", destination: "/about", permanent: true },
-      { source: "/faqs", destination: "/contact", permanent: true },
+      { source: "/calendar", destination: "/schedule", permanent: true },
     ];
   },
 };

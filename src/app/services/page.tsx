@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import ServiceBlock from "@/components/ServiceBlock";
+import { buildMetadata, SITE_NAME } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title:
-    "Our Services | Six Sigma South Africa Consulting Services & Training",
+export const metadata: Metadata = buildMetadata({
+  title: `Our Services | ${SITE_NAME}`,
   description:
     "Discover services offered in the Six Sigma space through world-leading experts. Consultancy, process improvement, quality management, project management, eLearning and corporate training.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

@@ -54,8 +54,14 @@ const navItems: NavItem[] = [
     href: "/courses",
     children: [
       { label: "All Courses", href: "/courses" },
-      { label: "Book a course", href: "/contact" },
-      { label: "Which course is right for me", href: "/courses" },
+      { label: "5S · Classroom", href: "/courses/5s-classroom" },
+      { label: "5S · Virtual", href: "/courses/5s-virtual" },
+      { label: "5S · Online", href: "/courses/5s-online" },
+      { label: "Kaizen · Classroom", href: "/courses/kaizen-classroom" },
+      { label: "Kaizen · Virtual", href: "/courses/kaizen-virtual" },
+      { label: "Kaizen · Online", href: "/courses/kaizen-online" },
+      { label: "Schedule", href: "/schedule" },
+      { label: "Training Benefits", href: "/training-benefits" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -64,7 +70,9 @@ const navItems: NavItem[] = [
     href: "/contact",
     children: [
       { label: "General enquiries", href: "/contact" },
-      { label: "Accreditation", href: "/about" },
+      { label: "Request brochure", href: "/brochure" },
+      { label: "Accreditation", href: "/accreditation" },
+      { label: "FAQ\u2019s", href: "/faqs" },
     ],
   },
 ];
