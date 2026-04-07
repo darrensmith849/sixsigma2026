@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Marquee from "./Marquee";
+import Eyebrow from "./Eyebrow";
 
 const logos = [
   { src: "/images/client-logos/Colour-Logo-Anglo-American.png", alt: "Anglo American" },
@@ -16,23 +18,58 @@ const logos = [
 
 interface ClientLogoGridProps {
   showHeading?: boolean;
+  /** "marquee" = horizontal infinite scroll, "grid" = static grid */
+  variant?: "marquee" | "grid";
 }
 
-export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridProps) {
+export default function ClientLogoGrid({
+  showHeading = true,
+  variant = "marquee",
+}: ClientLogoGridProps) {
+  if (variant === "marquee") {
+    return (
+      <section className="bg-white py-16 border-y border-ink-100">
+        <div className="container-wide">
+          {showHeading && (
+            <div className="mb-10 text-center">
+              <Eyebrow>Trusted by South Africa&rsquo;s leaders</Eyebrow>
+              <p className="mt-4 text-[15px] text-ink-500">
+                And over 5,000 more organisations across the continent
+              </p>
+            </div>
+          )}
+          <Marquee>
+            {logos.map((logo) => (
+              <div
+                key={logo.alt}
+                className="logo-item flex h-16 w-[140px] items-center justify-center shrink-0"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={140}
+                  height={64}
+                  className="object-contain"
+                />
+              </div>
+            ))}
+          </Marquee>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="section bg-white">
       <div className="container">
         {showHeading && (
-          <div className="text-center mb-8">
-            <h2 className="text-heading font-semibold">Client List</h2>
-            <p className="mt-4 text-body text-[21px] max-w-3xl mx-auto leading-relaxed">
-              Discover some of the esteemed organizations that have chosen us as
-              their training and consultancy partner:
-            </p>
+          <div className="text-center mb-12">
+            <Eyebrow>Trusted partners</Eyebrow>
+            <h2 className="mt-4">Some of the organisations who train with us</h2>
           </div>
         )}
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-8 items-center justify-items-center py-6">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-12 items-center justify-items-center py-6">
           {logos.map((logo) => (
             <div
               key={logo.alt}
@@ -48,12 +85,6 @@ export default function ClientLogoGrid({ showHeading = true }: ClientLogoGridPro
             </div>
           ))}
         </div>
-
-        {showHeading && (
-          <p className="text-center text-[24px] font-semibold text-heading mt-6">
-            And over 5,000 more!
-          </p>
-        )}
       </div>
     </section>
   );

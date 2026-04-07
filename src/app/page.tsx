@@ -21,16 +21,18 @@ export default function Home() {
       {/* Hero Section */}
       <FadeIn>
         <HeroSection
-          heading="Six Sigma training and certification in South Africa"
+          eyebrow="Internationally accredited · CSSC USA"
+          heading="Master Six Sigma in South Africa"
           imageSrc="/images/hero-presentation.jpg"
           imageAlt="Six Sigma training presentation"
+          badge={{ value: "12,000+", label: "Professionals trained" }}
           actions={
             <>
-              <Button href="/contact" variant="filled" size="large">
-                Enquire Now
+              <Button href="/contact" variant="filled" size="large" trailingArrow>
+                Enquire now
               </Button>
-              <Button href="/courses" variant="outline" size="large">
-                FREE White Belt
+              <Button href="/courses" variant="white" size="large">
+                Free White Belt
               </Button>
             </>
           }
