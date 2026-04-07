@@ -1,32 +1,36 @@
+import Eyebrow from "./Eyebrow";
+
 interface SectionHeadingProps {
   children: React.ReactNode;
+  eyebrow?: string;
   subtitle?: string;
-  centered?: boolean;
+  align?: "left" | "center";
   light?: boolean;
   className?: string;
 }
 
 export default function SectionHeading({
   children,
+  eyebrow,
   subtitle,
-  centered = true,
+  align = "center",
   light = false,
   className = "",
 }: SectionHeadingProps) {
+  const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
   return (
-    <div className={`${centered ? "text-center" : ""} mb-8 ${className}`}>
-      <h2
-        className={`font-semibold ${
-          light ? "text-inverse" : "text-heading"
-        }`}
-      >
-        {children}
-      </h2>
+    <div className={`mb-14 max-w-3xl ${alignClass} ${className}`}>
+      {eyebrow && (
+        <Eyebrow tone={light ? "white" : "green"} className="mb-5">
+          {eyebrow}
+        </Eyebrow>
+      )}
+      <h2 className={light ? "!text-white" : ""}>{children}</h2>
       {subtitle && (
         <p
-          className={`mt-4 text-[21px] leading-relaxed max-w-3xl ${
-            centered ? "mx-auto" : ""
-          } ${light ? "text-inverse/90" : "text-body"}`}
+          className={`mt-6 text-[20px] leading-[1.6] ${
+            light ? "text-white/80" : "text-ink-500"
+          }`}
         >
           {subtitle}
         </p>

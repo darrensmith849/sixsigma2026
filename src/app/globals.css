@@ -1,46 +1,121 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand greens */
-  --green: #16b24a;
-  --green-hover: #11913c;
-  --green-dark: #0d8535;
+  /* ─── Brand greens (extended scale) ─── */
+  --green-50:  #ecfdf3;
+  --green-100: #d1fadf;
+  --green-200: #a6f4c5;
+  --green-300: #6ce9a6;
+  --green-400: #32d583;
+  --green-500: #16b24a;   /* primary */
+  --green-600: #11913c;
+  --green-700: #0d6e2f;
+  --green-800: #095224;
+  --green-900: #06381a;   /* deep, premium dark sections */
 
-  /* Locked text-colour system */
-  --sssa-text-display: #262626;
-  --sssa-text-heading: #2d2d2d;
-  --sssa-text-body: #5f5f5f;
-  --sssa-text-muted: #7a7a7a;
-  --sssa-text-link: #16b24a;
-  --sssa-text-link-hover: #11913c;
+  /* Backwards-compat aliases (legacy code) */
+  --green: var(--green-500);
+  --green-hover: var(--green-600);
+  --green-dark: var(--green-700);
+
+  /* ─── Ink (refined neutrals) ─── */
+  --ink-900: #0a1e14;
+  --ink-700: #2d3a32;
+  --ink-500: #5b6b62;
+  --ink-300: #9ba8a1;
+  --ink-100: #e8ece9;
+  --ink-50:  #f6f8f7;
+
+  /* ─── Accent ─── */
+  --accent: #f5b800;
+  --accent-soft: #fff4d1;
+
+  /* ─── Locked text-colour system (now mapped to ink) ─── */
+  --sssa-text-display: var(--ink-900);
+  --sssa-text-heading: var(--ink-900);
+  --sssa-text-body: var(--ink-500);
+  --sssa-text-muted: var(--ink-300);
+  --sssa-text-link: var(--green-600);
+  --sssa-text-link-hover: var(--green-700);
   --sssa-text-inverse: #ffffff;
-  --sssa-text-button-light: #262626;
+  --sssa-text-button-light: var(--ink-900);
   --sssa-text-button-dark: #ffffff;
 
-  /* Surfaces / neutrals */
-  --black: #111111;
+  /* ─── Surfaces ─── */
+  --black: #0a1e14;
   --white: #FFFFFF;
-  --light-grey: #F3F3F3;
-  --border-grey: #E6E6E6;
-  --footer-bg: #FAFBFD;
+  --light-grey: var(--ink-50);
+  --border-grey: var(--ink-100);
+  --footer-bg: var(--green-900);
+  --surface-card: #ffffff;
+  --surface-muted: var(--ink-50);
+  --surface-dark: var(--green-900);
 
-  /* Layout */
+  /* ─── Layout ─── */
   --container-max: 1200px;
   --container-wide: 1400px;
-  --section-padding: 80px;
-  --section-padding-mobile: 48px;
+  --section-padding: 96px;
+  --section-padding-mobile: 64px;
 
-  /* Typography */
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  /* ─── Radii ─── */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-2xl: 36px;
+
+  /* ─── Shadows ─── */
+  --shadow-sm: 0 1px 2px rgba(10,30,20,.06), 0 1px 3px rgba(10,30,20,.04);
+  --shadow-md: 0 4px 12px rgba(10,30,20,.06), 0 2px 4px rgba(10,30,20,.04);
+  --shadow-lg: 0 12px 32px rgba(10,30,20,.08), 0 4px 8px rgba(10,30,20,.05);
+  --shadow-xl: 0 24px 56px rgba(10,30,20,.12), 0 8px 16px rgba(10,30,20,.06);
+  --shadow-glow: 0 0 0 4px rgba(22,178,74,.16);
+
+  /* ─── Motion ─── */
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --dur-fast: 160ms;
+  --dur: 240ms;
+  --dur-slow: 480ms;
+
+  /* ─── Typography ─── */
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-serif), Georgia, "Times New Roman", serif;
+
+  /* ─── Background texture ─── */
+  --bg-dots: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+  --bg-dots-dark: radial-gradient(circle, rgba(10,30,20,.06) 1px, transparent 1px);
+  --bg-dots-size: 24px 24px;
 }
 
 @theme inline {
   /* Brand greens */
-  --color-green: var(--green);
-  --color-green-hover: var(--green-hover);
-  --color-green-dark: var(--green-dark);
+  --color-green: var(--green-500);
+  --color-green-50: var(--green-50);
+  --color-green-100: var(--green-100);
+  --color-green-200: var(--green-200);
+  --color-green-300: var(--green-300);
+  --color-green-400: var(--green-400);
+  --color-green-500: var(--green-500);
+  --color-green-600: var(--green-600);
+  --color-green-700: var(--green-700);
+  --color-green-800: var(--green-800);
+  --color-green-900: var(--green-900);
+  --color-green-hover: var(--green-600);
+  --color-green-dark: var(--green-700);
 
-  /* Text system — use these for all text colours */
+  /* Ink */
+  --color-ink-50: var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-300: var(--ink-300);
+  --color-ink-500: var(--ink-500);
+  --color-ink-700: var(--ink-700);
+  --color-ink-900: var(--ink-900);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  /* Text system */
   --color-display: var(--sssa-text-display);
   --color-heading: var(--sssa-text-heading);
   --color-body: var(--sssa-text-body);
@@ -50,10 +125,24 @@
   --color-inverse: var(--sssa-text-inverse);
 
   /* Surfaces */
-  --color-sssa-black: var(--black);
-  --color-light-grey: var(--light-grey);
-  --color-border-grey: var(--border-grey);
-  --color-footer-bg: var(--footer-bg);
+  --color-sssa-black: var(--ink-900);
+  --color-light-grey: var(--ink-50);
+  --color-border-grey: var(--ink-100);
+  --color-footer-bg: var(--green-900);
+  --color-surface-card: var(--surface-card);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-dark: var(--surface-dark);
+
+  /* Fonts */
+  --font-sans: var(--font-jakarta);
+  --font-serif: var(--font-serif);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
 }
 
 * {
@@ -67,48 +156,54 @@ html {
 @layer base {
   body {
     font-family: var(--font-sans);
-    font-size: 20px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.65;
     color: var(--sssa-text-body);
     background: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
-  /* ── Locked typography scale ── */
+  /* ─── Refined typography scale ─── */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sans);
-    color: var(--sssa-text-heading);
-    line-height: 1.12;
-    font-weight: 700;
-  }
-
-  /* 1. Hero / primary display — bold, confident, commanding */
-  h1 {
-    font-size: clamp(42px, 4.6vw, 72px);
-    line-height: 1.08;
-    letter-spacing: -0.02em;
     color: var(--sssa-text-display);
+    line-height: 1.1;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
-  /* 2. Large section headings — strong, authoritative */
+  h1 {
+    font-size: clamp(48px, 5vw, 84px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
   h2 {
-    font-size: clamp(32px, 3.2vw, 52px);
-    line-height: 1.12;
-    letter-spacing: -0.015em;
+    font-size: clamp(36px, 3.4vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     font-weight: 700;
   }
 
-  /* 3. Standard headings / card titles */
   h3 {
-    font-size: clamp(24px, 2.1vw, 36px);
+    font-size: clamp(24px, 2vw, 32px);
     line-height: 1.2;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: clamp(20px, 1.4vw, 22px);
+    line-height: 1.3;
     font-weight: 600;
   }
 
   a {
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color var(--dur-fast) var(--ease);
   }
 
   /* Inline text links only — buttons handle their own colours */
@@ -116,6 +211,7 @@ html {
   li a,
   td a {
     color: var(--sssa-text-link);
+    font-weight: 500;
   }
 
   p a:hover,
@@ -130,7 +226,7 @@ html {
   }
 }
 
-/* Container utility */
+/* ─── Container utilities ─── */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -145,7 +241,14 @@ html {
   padding: 0 24px;
 }
 
-/* Section spacing */
+@media (min-width: 768px) {
+  .container,
+  .container-wide {
+    padding: 0 40px;
+  }
+}
+
+/* ─── Section spacing ─── */
 .section {
   padding: var(--section-padding) 0;
 }
@@ -156,7 +259,17 @@ html {
   }
 }
 
-/* Client logo strip — transparent dark monochrome treatment */
+/* ─── Dot-grid background utilities ─── */
+.bg-dots {
+  background-image: var(--bg-dots);
+  background-size: var(--bg-dots-size);
+}
+.bg-dots-dark {
+  background-image: var(--bg-dots-dark);
+  background-size: var(--bg-dots-size);
+}
+
+/* ─── Client logo strip — desaturated treatment ─── */
 .client-logo-item,
 .client-logo-card,
 .client-logo-tile,
@@ -167,43 +280,32 @@ html {
   outline: none !important;
 }
 
-.client-logo-item::before,
-.client-logo-item::after,
-.client-logo-card::before,
-.client-logo-card::after,
-.client-logo-tile::before,
-.client-logo-tile::after,
-.logo-item::before,
-.logo-item::after {
-  display: none !important;
-  content: none !important;
-}
-
 .client-logo-item img,
 .client-logo-card img,
 .client-logo-tile img,
 .logo-item img {
   background: transparent !important;
-  filter: grayscale(1) brightness(0.35) contrast(1.4) !important;
-  opacity: 0.88 !important;
+  filter: grayscale(1) brightness(0.4) contrast(1.4) !important;
+  opacity: 0.78 !important;
   mix-blend-mode: multiply !important;
   object-fit: contain !important;
+  transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease);
 }
 
 .client-logo-item:hover img,
 .client-logo-card:hover img,
 .client-logo-tile:hover img,
 .logo-item:hover img {
-  filter: grayscale(1) brightness(0.35) contrast(1.4) !important;
-  opacity: 0.88 !important;
-  mix-blend-mode: multiply !important;
+  filter: grayscale(0) brightness(1) contrast(1) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
 }
 
-/* Scroll fade-in animation */
+/* ─── Scroll fade-in animation ─── */
 .fade-in {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
 }
 
 .fade-in-visible {
@@ -211,14 +313,40 @@ html {
   transform: translateY(0);
 }
 
-/* Accessible focus ring */
-:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 2px;
+/* ─── Marquee (infinite logo scroll) ─── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
 }
 
-/* Selection colour */
+/* ─── Accessible focus ring ─── */
+:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Selection colour ─── */
 ::selection {
-  background: var(--green);
+  background: var(--green-500);
   color: var(--white);
+}
+
+/* ─── Surface card utility (used inline by Card) ─── */
+.surface-dark {
+  background: var(--surface-dark);
+  color: var(--sssa-text-inverse);
+}
+.surface-dark h1,
+.surface-dark h2,
+.surface-dark h3,
+.surface-dark h4 {
+  color: #ffffff;
 }

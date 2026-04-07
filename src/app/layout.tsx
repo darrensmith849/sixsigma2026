@@ -1,7 +1,23 @@
 import type { Metadata } from "next";
+import { Plus_Jakarta_Sans, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-jakarta",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-serif",
+});
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL, buildMetadata } from "@/lib/seo";
@@ -63,8 +79,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col">
+    <html lang="en" className={`${jakarta.variable} ${sourceSerif.variable}`}>
+      <body className="min-h-screen flex flex-col font-sans">
         <JsonLd data={[organizationJsonLd, localBusinessJsonLd]} />
         <Header />
         <main className="flex-1">{children}</main>
