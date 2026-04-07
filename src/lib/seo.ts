@@ -5,7 +5,7 @@ export const SITE_URL =
 
 export const SITE_NAME = "Six Sigma South Africa";
 
-export const DEFAULT_OG_IMAGE = "/images/hero-presentation.jpg";
+export const DEFAULT_OG_IMAGE = "/og-image.jpg";
 
 interface BuildMetadataArgs {
   title: string;
