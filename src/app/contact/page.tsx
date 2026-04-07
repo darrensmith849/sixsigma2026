@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import SectionHeading from "@/components/SectionHeading";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
+import Eyebrow from "@/components/Eyebrow";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -25,206 +25,149 @@ const contactJsonLd = {
   },
 };
 
+const cities = [
+  "Johannesburg",
+  "Cape Town",
+  "Durban",
+  "Pretoria",
+  "Port Elizabeth",
+  "On-site nationwide",
+];
+
 export default function ContactPage() {
   return (
-    <div className="pt-[80px]">
+    <>
       <JsonLd data={contactJsonLd} />
-      {/* ───── Green Hero ───── */}
-      <section className="bg-green py-16 md:py-24">
-        <div className="container text-center">
-          <h1 className="!text-inverse mb-6">Contact / Resources</h1>
-          <p className="text-inverse/90 text-[20px] md:text-[24px] leading-relaxed max-w-4xl mx-auto">
-            Get in touch with our team for course enquiries, consultancy
-            requests, partnership opportunities, or general questions about
-            Six Sigma training in South Africa.
+
+      {/* ─── Hero ─── */}
+      <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 container-wide py-20 lg:py-28 text-center">
+          <Eyebrow tone="white" className="mb-6 mx-auto">
+            Get in touch
+          </Eyebrow>
+          <h1 className="!text-white mx-auto max-w-4xl">
+            Talk to South Africa&rsquo;s leading Six Sigma trainers
+          </h1>
+          <p className="mx-auto mt-8 max-w-3xl text-[19px] md:text-[21px] text-white/80 leading-[1.65]">
+            Whether you&rsquo;re booking a course, requesting a quote for
+            corporate training, or asking about consultancy — we reply within
+            one business day.
           </p>
         </div>
       </section>
 
-      {/* ───── Contact Details ───── */}
-      <FadeIn>
-        <section className="section">
-          <div className="container">
-            <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-              {/* South Africa */}
-              <div className="bg-light-grey rounded-lg p-8">
-                <h2 className="text-heading font-semibold mb-6">
-                  South Africa
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Company
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Six Sigma South Africa&trade; &mdash; 2KO Africa CC
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Phone
-                    </p>
-                    <p className="text-body text-[18px]">
+      {/* ─── Form + Contact card ─── */}
+      <section className="bg-ink-50 py-24 md:py-32">
+        <div className="container-wide">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            {/* Form card */}
+            <FadeIn className="lg:col-span-7">
+              <div className="rounded-[24px] border border-ink-100 bg-white p-8 md:p-12 [box-shadow:var(--shadow-lg)]">
+                <Eyebrow className="mb-5">Send an enquiry</Eyebrow>
+                <h2 className="mb-3">How can we help?</h2>
+                <p className="text-[16px] text-ink-500 mb-10">
+                  Fill in the form and our team will get back to you within
+                  one business day.
+                </p>
+                <ContactForm />
+              </div>
+            </FadeIn>
+
+            {/* Contact details card */}
+            <FadeIn className="lg:col-span-5">
+              <div className="relative overflow-hidden rounded-[24px] bg-green-900 p-10 text-white [box-shadow:var(--shadow-lg)] h-full">
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.10]"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1px)",
+                    backgroundSize: "26px 26px",
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="relative z-10">
+                  <Eyebrow tone="white" className="mb-5">
+                    Contact details
+                  </Eyebrow>
+                  <h3 className="!text-white mb-8">Six Sigma South Africa</h3>
+
+                  <div className="space-y-6">
+                    <div>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/55 mb-1.5">
+                        Phone
+                      </div>
                       <a
                         href="tel:+27214265300"
-                        className="text-link hover:text-link-hover"
+                        className="text-[20px] font-semibold text-white hover:text-green-200 transition-colors"
                       >
                         021 426 5300
                       </a>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Email
-                    </p>
-                    <p className="text-body text-[18px]">
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/55 mb-1.5">
+                        Email
+                      </div>
                       <a
                         href="mailto:info@2ko.co.za"
-                        className="text-link hover:text-link-hover"
+                        className="text-[20px] font-semibold text-white hover:text-green-200 transition-colors"
                       >
                         info@2ko.co.za
                       </a>
-                    </p>
+                    </div>
+                    <div>
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.14em] text-white/55 mb-3">
+                        We train in
+                      </div>
+                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5">
+                        {cities.map((c) => (
+                          <li
+                            key={c}
+                            className="flex items-center gap-2 text-[14px] text-white/85"
+                          >
+                            <span className="inline-block h-1.5 w-1.5 rounded-full bg-green-300" />
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Training Locations
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Johannesburg, Cape Town, Durban, Pretoria, Port
-                      Elizabeth &amp; on-site nationwide
+
+                  <div className="mt-10 pt-8 border-t border-white/15">
+                    <Eyebrow tone="white" className="mb-3">
+                      Become a trainer
+                    </Eyebrow>
+                    <p className="text-[14px] text-white/75 leading-[1.65]">
+                      Certified Six Sigma Black Belt or Master Black Belt? Send
+                      your CV to{" "}
+                      <a
+                        href="mailto:info@2ko.co.za"
+                        className="font-semibold text-white underline-offset-2 hover:underline"
+                      >
+                        info@2ko.co.za
+                      </a>{" "}
+                      with the subject &ldquo;Trainer Application&rdquo;.
                     </p>
                   </div>
                 </div>
               </div>
-
-              {/* United Kingdom */}
-              <div className="bg-light-grey rounded-lg p-8">
-                <h2 className="text-heading font-semibold mb-6">
-                  United Kingdom
-                </h2>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Company
-                    </p>
-                    <p className="text-body text-[18px]">2KO International</p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Email
-                    </p>
-                    <p className="text-body text-[18px]">
-                      <a
-                        href="mailto:info@2ko.co.za"
-                        className="text-link hover:text-link-hover"
-                      >
-                        info@2ko.co.za
-                      </a>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[15px] text-muted font-medium mb-1">
-                      Services
-                    </p>
-                    <p className="text-body text-[18px]">
-                      Virtual and online Six Sigma training for UK-based
-                      professionals and organisations
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </FadeIn>
           </div>
-        </section>
-      </FadeIn>
+        </div>
+      </section>
 
-      {/* ───── Enquiry Form ───── */}
-      <FadeIn>
-        <section className="section bg-light-grey">
-          <div className="container">
-            <SectionHeading subtitle="Fill in the form below and our team will get back to you within 24 hours.">
-              Send Us an Enquiry
-            </SectionHeading>
-            <ContactForm />
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ───── Become a Trainer ───── */}
-      <FadeIn>
-        <section className="section">
-          <div className="container text-center max-w-3xl mx-auto">
-            <SectionHeading subtitle="Are you a certified Six Sigma Black Belt or Master Black Belt looking for training opportunities? We are always looking for experienced trainers to join our network.">
-              Become a Trainer
-            </SectionHeading>
-            <p className="text-body text-[18px] leading-relaxed mt-4">
-              If you are interested in becoming a Six Sigma trainer with us,
-              please send your CV and a brief cover letter to{" "}
-              <a
-                href="mailto:info@2ko.co.za"
-              >
-                info@2ko.co.za
-              </a>{" "}
-              with the subject line &ldquo;Trainer Application&rdquo;.
-            </p>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ───── FAQ Section ───── */}
-      <FadeIn>
-        <section className="section bg-light-grey">
-          <div className="container">
-            <SectionHeading>Frequently Asked Questions</SectionHeading>
-
-            <div className="max-w-3xl mx-auto mt-10 space-y-6">
-              {[
-                {
-                  q: "What is Six Sigma?",
-                  a: "Six Sigma is a data-driven methodology for eliminating defects and reducing variation in any process. It uses statistical tools and techniques to improve quality, efficiency, and customer satisfaction.",
-                },
-                {
-                  q: "Are your certifications internationally recognised?",
-                  a: "Yes. All our certifications are accredited through the Council for Six Sigma Certification (CSSC) based in the USA. We also hold MICT SETA accreditation locally in South Africa.",
-                },
-                {
-                  q: "What is the difference between Lean and DMAIC?",
-                  a: "Lean Six Sigma focuses on waste reduction using 5S and visual factory methods, best suited for manufacturing. DMAIC Six Sigma focuses on variation reduction using statistical methods, best suited for process environments.",
-                },
-                {
-                  q: "Which belt level should I start with?",
-                  a: "If you are new to Six Sigma, we recommend starting with the free White Belt online course. For those with some process improvement experience, Yellow Belt is a good starting point. Green Belt is ideal for project team members.",
-                },
-                {
-                  q: "Do you offer in-house or on-site training?",
-                  a: "Yes, we offer customised corporate training at your premises anywhere in South Africa. Contact us for a tailored quote based on your team size and requirements.",
-                },
-                {
-                  q: "How long does each course take?",
-                  a: "Course duration varies by belt level and delivery mode. Online courses are self-paced. Virtual and classroom courses typically range from 1 day (Yellow Belt) to 5 days (Black Belt). Contact us for specific schedules.",
-                },
-                {
-                  q: "What software is used in training?",
-                  a: "For Green Belt and Black Belt courses, we use SigmaXL, a statistical analysis add-in for Microsoft Excel. A trial version is included with these courses.",
-                },
-              ].map(({ q, a }) => (
-                <div key={q} className="bg-white rounded-lg p-6">
-                  <h3 className="text-heading font-semibold mb-2">
-                    {q}
-                  </h3>
-                  <p className="text-body text-[18px] leading-relaxed">{a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ───── Client Logos ───── */}
+      {/* ─── Client Logos ─── */}
       <FadeIn>
         <ClientLogoGrid />
       </FadeIn>
-    </div>
+    </>
   );
 }

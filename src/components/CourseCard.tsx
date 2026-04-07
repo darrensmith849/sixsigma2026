@@ -10,7 +10,6 @@ interface CourseCardProps {
   imageAlt?: string;
   href: string;
   isFree?: boolean;
-  stripColor?: "green" | "yellow";
 }
 
 export default function CourseCard({
@@ -22,101 +21,92 @@ export default function CourseCard({
   imageAlt = "",
   href,
   isFree = false,
-  stripColor = "green",
 }: CourseCardProps) {
   return (
-    <div className="flex flex-col overflow-hidden" style={{ background: "#ececeb", borderRadius: "6px" }}>
-      {/* Image block */}
-      <div className="relative">
-        <div className="relative h-[240px]">
-          <Image
-            src={imageSrc}
-            alt={imageAlt || title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-
-          {/* Top-right badges */}
-          <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-            <span className="inline-block px-4 py-1.5 text-[14px] font-semibold rounded-full bg-green text-white">
-              {mode}
-            </span>
-            {isFree && (
-              <span className="inline-block px-4 py-1.5 text-[14px] font-semibold rounded-full bg-yellow-400 text-gray-900">
-                Free
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Colour strip */}
-        <div
-          className={`h-[7px] w-full ${
-            stripColor === "yellow" ? "bg-yellow-400" : "bg-green"
-          }`}
+    <Link
+      href={href}
+      className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-ink-100 bg-white [box-shadow:var(--shadow-md)] transition-all duration-[var(--dur)] ease-[var(--ease)] hover:-translate-y-1 hover:[box-shadow:var(--shadow-xl)]"
+    >
+      {/* Image */}
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <Image
+          src={imageSrc}
+          alt={imageAlt || title}
+          fill
+          className="object-cover transition-transform duration-[var(--dur-slow)] ease-[var(--ease)] group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-green-900/40 via-transparent to-transparent"
+          aria-hidden="true"
+        />
+
+        {/* Badges */}
+        <div className="absolute top-4 left-4 flex gap-2">
+          <span className="inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-ink-900 backdrop-blur-sm [box-shadow:var(--shadow-sm)]">
+            {mode}
+          </span>
+          {isFree && (
+            <span className="inline-flex items-center rounded-full bg-accent px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.08em] text-ink-900 [box-shadow:var(--shadow-sm)]">
+              Free
+            </span>
+          )}
+        </div>
       </div>
 
-      {/* Content area */}
-      <div className="flex flex-col flex-1 px-7 pt-6 pb-7">
-        <h3
-          className="font-bold mb-3 leading-tight"
-          style={{ color: "#5a5a5a", fontSize: "clamp(22px, 1.6vw, 30px)" }}
-        >
+      {/* Content */}
+      <div className="flex flex-1 flex-col p-7">
+        <h3 className="text-[22px] font-bold leading-[1.2] text-ink-900 mb-3">
           {title}
         </h3>
-
-        <p
-          className="leading-relaxed mb-5"
-          style={{ color: "#5e5e5e", fontSize: "clamp(16px, 1.1vw, 20px)" }}
-        >
+        <p className="text-[15px] leading-[1.6] text-ink-500 mb-6 line-clamp-3">
           {description}
         </p>
 
-        {/* What this includes */}
         {includes.length > 0 && (
-          <div className="mb-6">
-            <p className="text-green font-bold text-[17px] mb-3">
-              What this includes:
-            </p>
-            <ul className="space-y-2.5">
-              {includes.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2.5 text-[16px]"
-                  style={{ color: "#5a5a5a" }}
+          <ul className="mb-7 space-y-2.5">
+            {includes.slice(0, 3).map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-2.5 text-[14px] text-ink-700"
+              >
+                <svg
+                  className="mt-0.5 h-4 w-4 shrink-0 text-green-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  aria-hidden="true"
                 >
-                  <svg
-                    className="w-[18px] h-[18px] text-green shrink-0 mt-0.5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
         )}
 
-        {/* CTA button — pushed to bottom */}
-        <div className="mt-auto pt-2">
-          <Link
-            href={href}
-            className="inline-flex items-center justify-center w-full font-semibold rounded-[5px] transition-all duration-200 text-center bg-green text-white border-2 border-green hover:bg-green-hover hover:border-green-hover px-8 py-3.5 text-[18px]"
-          >
-            Learn more
-          </Link>
+        {/* Footer with arrow */}
+        <div className="mt-auto flex items-center justify-between border-t border-ink-100 pt-5">
+          <span className="text-[13px] font-semibold uppercase tracking-[0.12em] text-ink-500">
+            View course
+          </span>
+          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-green-50 text-green-700 transition-all duration-[var(--dur)] ease-[var(--ease)] group-hover:bg-green-500 group-hover:text-white">
+            <svg
+              className="h-4 w-4 transition-transform duration-[var(--dur)] ease-[var(--ease)] group-hover:translate-x-0.5"
+              viewBox="0 0 16 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

@@ -1,15 +1,15 @@
-import Image from "next/image";
 import Button from "./Button";
+import Eyebrow from "./Eyebrow";
 
 interface CTASectionProps {
   heading: string;
   description: string;
   buttonText: string;
   buttonHref: string;
-  variant?: "green" | "light";
-  iconSrc?: string;
-  iconAlt?: string;
-  backgroundSrc?: string;
+  eyebrow?: string;
+  variant?: "dark" | "light";
+  secondaryHref?: string;
+  secondaryText?: string;
 }
 
 export default function CTASection({
@@ -17,66 +17,76 @@ export default function CTASection({
   description,
   buttonText,
   buttonHref,
-  variant = "green",
-  iconSrc,
-  iconAlt = "",
-  backgroundSrc,
+  eyebrow = "Ready to start?",
+  variant = "dark",
+  secondaryHref,
+  secondaryText,
 }: CTASectionProps) {
-  const isGreen = variant === "green";
+  const isDark = variant === "dark";
 
   return (
     <section
-      className={`section relative ${isGreen ? "bg-green" : "bg-light-grey"}`}
-      style={
-        backgroundSrc
-          ? {
-              backgroundImage: `url(${backgroundSrc})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }
-          : undefined
-      }
+      className={`relative overflow-hidden py-24 md:py-32 ${
+        isDark ? "bg-green-900 text-white" : "bg-ink-50"
+      }`}
     >
-      {backgroundSrc && (
-        <div
-          className={`absolute inset-0 ${
-            isGreen ? "bg-green/85" : "bg-light-grey/85"
-          }`}
-        />
+      {isDark && (
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.12]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1px)",
+              backgroundSize: "26px 26px",
+            }}
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at 50% 100%, rgba(22,178,74,.30), transparent 60%)",
+            }}
+            aria-hidden="true"
+          />
+        </>
       )}
-      <div className="container text-center relative z-10">
-        {iconSrc && (
-          <div className="mb-6 flex justify-center">
-            <Image
-              src={iconSrc}
-              alt={iconAlt}
-              width={80}
-              height={80}
-              className="rounded-lg"
-            />
-          </div>
-        )}
+
+      <div className="relative z-10 container-wide text-center">
+        <Eyebrow tone={isDark ? "white" : "green"} className="mb-6">
+          {eyebrow}
+        </Eyebrow>
         <h2
-          className={`font-semibold mb-4 ${
-            isGreen ? "text-inverse" : "text-heading"
-          }`}
+          className={`mx-auto max-w-3xl ${isDark ? "!text-white" : ""}`}
         >
           {heading}
         </h2>
         <p
-          className={`text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed ${
-            isGreen ? "text-inverse/90" : "text-body"
+          className={`mx-auto mt-6 max-w-2xl text-[19px] leading-[1.6] ${
+            isDark ? "text-white/80" : "text-ink-500"
           }`}
         >
           {description}
         </p>
-        <Button
-          href={buttonHref}
-          variant={isGreen ? "white" : "filled"}
-          size="large"
-        >
-          {buttonText}
-        </Button>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Button
+            href={buttonHref}
+            variant={isDark ? "white" : "filled"}
+            size="large"
+            trailingArrow
+          >
+            {buttonText}
+          </Button>
+          {secondaryHref && secondaryText && (
+            <Button
+              href={secondaryHref}
+              variant={isDark ? "ghost" : "outline"}
+              size="large"
+            >
+              {secondaryText}
+            </Button>
+          )}
+        </div>
       </div>
     </section>
   );

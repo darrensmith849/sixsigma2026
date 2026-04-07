@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import ModeSwitcher from "./ModeSwitcher";
 import CourseCard from "./CourseCard";
 import Button from "./Button";
 import FadeIn from "./FadeIn";
+import Eyebrow from "./Eyebrow";
 
 type Mode = "Online" | "Virtual" | "Classroom";
 
@@ -280,64 +280,58 @@ export default function CoursesClient() {
   const [activeMode, setActiveMode] = useState<Mode>("Online");
   const courses = courseMap[activeMode];
 
+  const modes: Mode[] = ["Online", "Virtual", "Classroom"];
+
   return (
     <>
-      {/* ───── Hero / Intro ───── */}
-      <section className="pt-[80px]">
-        <div className="container text-center" style={{ paddingTop: "80px", paddingBottom: "20px" }}>
-          <h1
-            className="mx-auto"
-            style={{
-              fontSize: "clamp(48px, 5vw, 78px)",
-              fontWeight: 700,
-              lineHeight: 1.06,
-              letterSpacing: "-0.02em",
-              color: "#5a5a5a",
-              maxWidth: "980px",
-            }}
-          >
-            Six Sigma Courses in South Africa
+      {/* ─── Hero ─── */}
+      <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,.55) 1px, transparent 1px)",
+            backgroundSize: "26px 26px",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 container-wide py-20 lg:py-28 text-center">
+          <Eyebrow tone="white" className="mb-6 mx-auto">
+            All courses · CSSC accredited
+          </Eyebrow>
+          <h1 className="!text-white mx-auto max-w-4xl">
+            Six Sigma courses in South Africa
           </h1>
-
-          <p
-            className="mx-auto mt-10"
-            style={{
-              fontSize: "clamp(20px, 1.4vw, 27px)",
-              lineHeight: 1.5,
-              color: "#646464",
-              maxWidth: "1060px",
-            }}
-          >
-            Internationally accredited Six Sigma training and certification
-            courses available online, virtually, and in the classroom. Our
-            courses are accredited through CSSC (USA) and delivered by
-            experienced professionals committed to helping you achieve process
-            excellence.
+          <p className="mx-auto mt-8 max-w-3xl text-[19px] md:text-[21px] text-white/80 leading-[1.65]">
+            Internationally accredited Six Sigma training delivered online,
+            virtually and in the classroom. Choose the format that fits your
+            schedule and learning style.
           </p>
 
-          <p className="mt-7" style={{ fontSize: "20px", color: "#646464" }}>
-            For quick contact, you can send us an email{" "}
-            <a
-              href="/contact"
-              className="text-green font-semibold hover:text-green-hover transition-colors"
-            >
-              here
-            </a>
-            .
-          </p>
+          {/* Mode pills inside hero */}
+          <div className="mt-12 inline-flex rounded-full border border-white/15 bg-white/5 p-1.5 backdrop-blur-sm">
+            {modes.map((m) => (
+              <button
+                key={m}
+                onClick={() => setActiveMode(m)}
+                className={`relative px-7 py-3 text-[14px] font-semibold uppercase tracking-[0.10em] rounded-full transition-all duration-[var(--dur)] ease-[var(--ease)] ${
+                  activeMode === m
+                    ? "bg-white text-ink-900"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ───── Mode Switcher ───── */}
-      <section style={{ paddingTop: "48px", paddingBottom: "56px" }}>
-        <ModeSwitcher active={activeMode} onChange={setActiveMode} />
-      </section>
-
-      {/* ───── Course Card Grid ───── */}
-      <section style={{ paddingBottom: "80px" }}>
-        <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 24px" }}>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-9">
-            {courses.map((course) => (
+      {/* ─── Course grid on soft surface ─── */}
+      <section className="bg-ink-50 py-24 md:py-32">
+        <div className="container-wide">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.map((course, i) => (
               <FadeIn key={course.title}>
                 <CourseCard
                   title={course.title}
@@ -347,71 +341,60 @@ export default function CoursesClient() {
                   imageSrc={course.imageSrc}
                   href={course.href}
                   isFree={course.isFree}
-                  stripColor={course.stripColor}
                 />
               </FadeIn>
             ))}
+
+            {/* "Not sure which" inline card */}
+            <FadeIn>
+              <div className="flex h-full flex-col justify-center rounded-[20px] border border-dashed border-green-500/40 bg-green-50 p-10">
+                <Eyebrow className="mb-5">Need help?</Eyebrow>
+                <h3 className="mb-4 text-ink-900">
+                  Not sure which course is right for you?
+                </h3>
+                <p className="text-[15px] text-ink-700 leading-[1.6] mb-7">
+                  Tell us your role, your goals and your team size, and
+                  we&rsquo;ll recommend the best fit within one business day.
+                </p>
+                <Button href="/contact" variant="filled" size="default" trailingArrow>
+                  Talk to us
+                </Button>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* ───── Custom Training Solutions ───── */}
+      {/* ─── Custom training split ─── */}
       <FadeIn>
-        <section style={{ background: "#ececeb" }}>
-          <div className="flex flex-col lg:flex-row">
-            {/* Left text panel */}
-            <div className="flex-1 flex items-center" style={{ padding: "64px 48px" }}>
-              <div style={{ maxWidth: "540px", margin: "0 auto" }}>
-                <h2
-                  className="font-bold mb-5"
-                  style={{ color: "#5a5a5a", fontSize: "clamp(30px, 2.8vw, 48px)", lineHeight: 1.12 }}
-                >
-                  Custom Training Solutions
-                </h2>
-                <p
-                  className="mb-8 leading-relaxed"
-                  style={{ color: "#5e5e5e", fontSize: "clamp(18px, 1.2vw, 22px)" }}
-                >
-                  Need a tailored training programme for your organisation? We
-                  design and deliver customised Six Sigma and Lean Management
-                  courses to meet your specific operational challenges and
-                  improvement goals. Training can be delivered on-site at your
-                  premises or virtually.
+        <section className="bg-white py-24 md:py-32">
+          <div className="container-wide">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+              <div className="lg:col-span-6 relative">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-ink-100 [box-shadow:var(--shadow-xl)]">
+                  <Image
+                    src="/images/courses/custom-training.jpg"
+                    alt="Custom corporate training session"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+              <div className="lg:col-span-6">
+                <Eyebrow className="mb-5">Bespoke programmes</Eyebrow>
+                <h2 className="mb-6">Custom training, tailored to your team</h2>
+                <p className="text-[18px] text-ink-500 leading-[1.65] mb-10 max-w-[540px]">
+                  Need a programme designed for your specific operational
+                  challenges? We design and deliver customised Six Sigma and
+                  Lean Management courses on-site at your premises or virtually,
+                  anywhere in South Africa.
                 </p>
-                <Button href="/contact" variant="filled" size="large">
-                  Enquire now
+                <Button href="/contact" variant="filled" size="large" trailingArrow>
+                  Enquire about custom training
                 </Button>
               </div>
             </div>
-
-            {/* Right image panel */}
-            <div className="flex-1 relative min-h-[400px] lg:min-h-[500px]">
-              <Image
-                src="/images/courses/custom-training.jpg"
-                alt="Custom corporate training session"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-        </section>
-      </FadeIn>
-
-      {/* ───── Green CTA Banner ───── */}
-      <FadeIn>
-        <section className="bg-green" style={{ padding: "80px 0" }}>
-          <div className="container text-center">
-            <h2 className="font-semibold text-inverse mb-4">
-              Not sure which course is right for you?
-            </h2>
-            <p className="text-[21px] max-w-3xl mx-auto mb-8 leading-relaxed text-inverse/90">
-              Get in touch with our team and we will help you find the best
-              course for your career goals and organisational needs.
-            </p>
-            <Button href="/contact" variant="white" size="large">
-              Enquire now
-            </Button>
           </div>
         </section>
       </FadeIn>
