@@ -30,6 +30,11 @@ export default function Footer() {
                 { label: "Courses", href: "/courses" },
                 { label: "About Us", href: "/about" },
                 { label: "Contact", href: "/contact" },
+                { label: "Schedule", href: "/schedule" },
+                { label: "Training Benefits", href: "/training-benefits" },
+                { label: "Accreditation", href: "/accreditation" },
+                { label: "Brochure", href: "/brochure" },
+                { label: "FAQs", href: "/faqs" },
               ].map(({ label, href }) => (
                 <li key={href}>
                   <Link
@@ -50,20 +55,20 @@ export default function Footer() {
             </h4>
             <ul className="space-y-4">
               {[
-                "White Belt",
-                "Yellow Belt",
-                "Lean Green Belt",
-                "DMAIC Green Belt",
-                "Lean Black Belt",
-                "DMAIC Black Belt",
-                "Root Cause Analysis",
-              ].map((course) => (
-                <li key={course}>
+                { label: "White Belt", href: "/courses/white-belt-classroom" },
+                { label: "Yellow Belt", href: "/courses/yellow-belt-classroom" },
+                { label: "Lean Green Belt", href: "/courses/lean-green-belt-classroom" },
+                { label: "DMAIC Green Belt", href: "/courses/dmaic-green-belt-classroom" },
+                { label: "Lean Black Belt", href: "/courses/lean-black-belt-classroom" },
+                { label: "DMAIC Black Belt", href: "/courses/dmaic-black-belt-classroom" },
+                { label: "Root Cause Analysis", href: "/courses/root-cause-analysis-classroom" },
+              ].map(({ label, href }) => (
+                <li key={href}>
                   <Link
-                    href="/courses"
+                    href={href}
                     className="text-[16px] text-body leading-relaxed hover:text-link transition-colors"
                   >
-                    {course}
+                    {label}
                   </Link>
                 </li>
               ))}

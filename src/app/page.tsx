@@ -54,7 +54,11 @@ export default function Home() {
             <a href="/courses">South Africa</a>.
           </p>
           <p>
-            We also offer <a href="/courses">Root Cause Analysis</a> training.
+            We also offer{" "}
+            <a href="/courses/root-cause-analysis-classroom">
+              Root Cause Analysis
+            </a>{" "}
+            training.
           </p>
         </HeroSection>
       </FadeIn>

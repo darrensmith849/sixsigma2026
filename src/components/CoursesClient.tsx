@@ -33,7 +33,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-1.jpg",
-    href: "/courses",
+    href: "/courses/white-belt-online",
     isFree: true,
     stripColor: "yellow",
   },
@@ -49,7 +49,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-2.jpg",
-    href: "/courses",
+    href: "/courses/yellow-belt-online",
   },
   {
     title: "Lean Green Belt Online",
@@ -63,7 +63,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-3.jpg",
-    href: "/courses",
+    href: "/courses/lean-green-belt-online",
   },
   {
     title: "DMAIC Green Belt Online",
@@ -77,7 +77,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-4.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-green-belt-online",
   },
   {
     title: "Lean Black Belt Online",
@@ -91,7 +91,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-5.jpg",
-    href: "/courses",
+    href: "/courses/lean-black-belt-online",
   },
   {
     title: "DMAIC Black Belt Online",
@@ -105,7 +105,7 @@ const onlineCourses: CourseData[] = [
     ],
     mode: "Online",
     imageSrc: "/images/courses/Online-6.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-black-belt-online",
   },
 ];
 
@@ -122,7 +122,7 @@ const virtualCourses: CourseData[] = [
     ],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-1.jpg",
-    href: "/courses",
+    href: "/courses/yellow-belt-virtual",
   },
   {
     title: "Lean Green Belt Virtual",
@@ -137,7 +137,7 @@ const virtualCourses: CourseData[] = [
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-2.jpg",
 
-    href: "/courses",
+    href: "/courses/lean-green-belt-virtual",
   },
   {
     title: "DMAIC Green Belt Virtual",
@@ -151,7 +151,7 @@ const virtualCourses: CourseData[] = [
     ],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-3.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-green-belt-virtual",
   },
   {
     title: "Lean Black Belt Virtual",
@@ -165,7 +165,7 @@ const virtualCourses: CourseData[] = [
     ],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-4.jpg",
-    href: "/courses",
+    href: "/courses/lean-black-belt-virtual",
   },
   {
     title: "DMAIC Black Belt Virtual",
@@ -179,7 +179,7 @@ const virtualCourses: CourseData[] = [
     ],
     mode: "Virtual",
     imageSrc: "/images/courses/Virtual-5.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-black-belt-virtual",
   },
 ];
 
@@ -196,7 +196,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-1.jpg",
-    href: "/courses",
+    href: "/courses/yellow-belt-classroom",
   },
   {
     title: "Lean Green Belt Classroom",
@@ -210,7 +210,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-2.jpg",
-    href: "/courses",
+    href: "/courses/lean-green-belt-classroom",
   },
   {
     title: "DMAIC Green Belt Classroom",
@@ -224,7 +224,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-3.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-green-belt-classroom",
   },
   {
     title: "Lean Black Belt Classroom",
@@ -238,7 +238,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-4.jpg",
-    href: "/courses",
+    href: "/courses/lean-black-belt-classroom",
   },
   {
     title: "DMAIC Black Belt Classroom",
@@ -252,7 +252,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-5.jpg",
-    href: "/courses",
+    href: "/courses/dmaic-black-belt-classroom",
   },
   {
     title: "Root Cause Analysis Classroom",
@@ -266,7 +266,7 @@ const classroomCourses: CourseData[] = [
     ],
     mode: "Classroom",
     imageSrc: "/images/courses/Classroom-1.jpg",
-    href: "/courses",
+    href: "/courses/root-cause-analysis-classroom",
   },
 ];
 
