@@ -32,15 +32,15 @@ export default function HeroSection({
       )}
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-[120px]">
-        <div className="py-10 lg:py-14">
+        <div className="py-14 lg:py-24">
           {/* Text Side — overlaps the image slightly */}
-          <div className="lg:max-w-[50%]">
-            <h1 className="mb-6">{heading}</h1>
-            <div className="text-[21px] text-body leading-[1.55] space-y-4">
+          <div className="lg:max-w-[52%]">
+            <h1 className="mb-8">{heading}</h1>
+            <div className="text-[21px] text-body leading-[1.55] space-y-6">
               {children}
             </div>
             {actions && (
-              <div className="flex flex-wrap gap-4 mt-8">{actions}</div>
+              <div className="flex flex-wrap gap-4 mt-10">{actions}</div>
             )}
           </div>
         </div>

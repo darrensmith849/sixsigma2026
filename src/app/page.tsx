@@ -62,7 +62,7 @@ export default function Home() {
             />
           </div>
           <div className="w-full lg:w-1/2 bg-green flex items-center">
-            <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px]">
+            <div className="px-8 md:px-12 lg:px-20 py-16 lg:py-24 max-w-[680px]">
               <h2 className="text-inverse font-semibold mb-4">
                 Kickstart your Six Sigma journey
               </h2>
@@ -102,7 +102,7 @@ export default function Home() {
       <FadeIn>
         <section className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 bg-white flex items-center">
-            <div className="px-8 md:px-12 lg:px-16 py-12 lg:py-16 max-w-[600px] lg:ml-auto">
+            <div className="px-8 md:px-12 lg:px-20 py-16 lg:py-24 max-w-[680px] lg:ml-auto">
               <h2 className="text-heading font-semibold mb-4">
                 Stay ahead with our events and workshops
               </h2>
