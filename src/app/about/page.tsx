@@ -20,7 +20,7 @@ export default function AboutPage() {
         <section className="relative">
           <div className="relative w-full h-[300px] md:h-[450px] bg-light-grey">
             <Image
-              src="/images/about-hero.jpg"
+              src="/images/hero-presentation.jpg"
               alt="Six Sigma South Africa office"
               fill
               className="object-cover"

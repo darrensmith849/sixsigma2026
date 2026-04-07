@@ -54,33 +54,8 @@ const navItems: NavItem[] = [
     href: "/courses",
     children: [
       { label: "All Courses", href: "/courses" },
-      {
-        label: "Short Courses",
-        href: "#",
-        children: [
-          {
-            label: "5s",
-            href: "#",
-            children: [
-              { label: "Classroom", href: "/six-sigma-classroom-5s-course-in-south-africa" },
-              { label: "Virtual", href: "/six-sigma-online-5s-course-in-south-africa" },
-              { label: "Online", href: "/six-sigma-virtual-5s-course-in-south-africa" },
-            ],
-          },
-          {
-            label: "Kaizen",
-            href: "#",
-            children: [
-              { label: "Classroom", href: "/six-sigma-classroom-kaizen-course-in-south-africa" },
-              { label: "Virtual", href: "/six-sigma-virtual-kaizen-course-in-south-africa" },
-              { label: "Online", href: "/six-sigma-online-kaizen-course-in-south-africa" },
-            ],
-          },
-        ],
-      },
-      { label: "Schedule", href: "/schedule" },
-      { label: "Book a course", href: "/book-a-course" },
-      { label: "Which course", href: "/which-course" },
+      { label: "Book a course", href: "/contact" },
+      { label: "Which course is right for me", href: "/courses" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -89,11 +64,7 @@ const navItems: NavItem[] = [
     href: "/contact",
     children: [
       { label: "General enquiries", href: "/contact" },
-      { label: "Calendar", href: "/calendar" },
-      { label: "Training Benefits", href: "/training-benefits" },
-      { label: "Brochure", href: "/brochure" },
-      { label: "Accreditation", href: "/accreditation" },
-      { label: "FAQ\u2019s", href: "/faqs" },
+      { label: "Accreditation", href: "/about" },
     ],
   },
 ];
