@@ -42,7 +42,7 @@ export default function HeroSection({
       />
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 md:px-10 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 py-28 lg:py-40">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 py-20 md:py-28 lg:py-40">
           {/* Text column */}
           <div className="lg:col-span-7">
             <Eyebrow tone="white" className="mb-6">
@@ -59,8 +59,8 @@ export default function HeroSection({
 
           {/* Image column */}
           {imageSrc && (
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[24px] border border-white/10 [box-shadow:var(--shadow-xl)]">
+            <div className="lg:col-span-5 relative mb-8 lg:mb-0">
+              <div className="relative aspect-[4/3] lg:aspect-[4/5] w-full overflow-hidden rounded-[20px] lg:rounded-[24px] border border-white/10 [box-shadow:var(--shadow-xl)]">
                 <Image
                   src={imageSrc}
                   alt={imageAlt}
@@ -75,11 +75,11 @@ export default function HeroSection({
                 />
               </div>
               {badge && (
-                <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-[20px] border border-white/10 bg-white p-6 [box-shadow:var(--shadow-xl)]">
-                  <div className="text-[40px] font-extrabold leading-none tracking-[-0.025em] text-ink-900">
+                <div className="absolute bottom-4 left-4 lg:-bottom-6 lg:-left-6 max-w-[220px] lg:max-w-[260px] rounded-[16px] lg:rounded-[20px] border border-white/10 bg-white p-5 lg:p-6 [box-shadow:var(--shadow-xl)]">
+                  <div className="text-[32px] lg:text-[40px] font-extrabold leading-none tracking-[-0.025em] text-ink-900">
                     {badge.value}
                   </div>
-                  <div className="mt-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-500">
+                  <div className="mt-2 text-[11px] lg:text-[12px] font-semibold uppercase tracking-[0.14em] text-ink-500">
                     {badge.label}
                   </div>
                 </div>

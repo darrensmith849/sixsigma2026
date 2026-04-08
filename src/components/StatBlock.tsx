@@ -14,12 +14,12 @@ export default function StatBlock({
   return (
     <div>
       <div
-        className={`text-[clamp(48px,4.5vw,72px)] font-extrabold tracking-[-0.03em] leading-none ${valueColour}`}
+        className={`text-[clamp(32px,6vw,72px)] font-extrabold tracking-[-0.03em] leading-[1] ${valueColour}`}
       >
         {value}
       </div>
       <div
-        className={`mt-3 text-[13px] font-semibold uppercase tracking-[0.14em] ${labelColour}`}
+        className={`mt-3 text-[12px] md:text-[13px] font-semibold uppercase tracking-[0.14em] ${labelColour}`}
       >
         {label}
       </div>

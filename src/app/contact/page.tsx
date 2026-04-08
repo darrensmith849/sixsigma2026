@@ -50,7 +50,7 @@ export default function ContactPage() {
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 container-wide py-28 lg:py-40 text-center">
+        <div className="relative z-10 container-wide py-20 md:py-28 lg:py-40 text-center">
           <Eyebrow tone="white" className="mb-6 mx-auto">
             Get in touch
           </Eyebrow>
