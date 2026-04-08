@@ -133,11 +133,15 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       <div
-        className={`lg:hidden fixed inset-0 top-[68px] bg-white z-40 overflow-y-auto transition-transform duration-300 ${
+        className={`lg:hidden fixed left-0 right-0 bottom-0 bg-white z-40 overflow-y-auto transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{
+          top: scrolled ? 68 : 80,
+          height: `calc(100vh - ${scrolled ? 68 : 80}px)`,
+        }}
       >
-        <nav className="p-6">
+        <nav className="p-6 pb-12">
           {navItems.map((item) => (
             <MobileNavItem
               key={item.label}
