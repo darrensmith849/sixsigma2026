@@ -290,8 +290,8 @@ html {
 .client-logo-tile img,
 .logo-item img {
   background: transparent !important;
-  filter: grayscale(1) brightness(0.4) contrast(1.4) !important;
-  opacity: 0.78 !important;
+  filter: grayscale(1) brightness(0.55) contrast(1.05) !important;
+  opacity: 0.85 !important;
   mix-blend-mode: multiply !important;
   object-fit: contain !important;
   transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease);

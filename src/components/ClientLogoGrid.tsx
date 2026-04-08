@@ -28,10 +28,10 @@ export default function ClientLogoGrid({
 }: ClientLogoGridProps) {
   if (variant === "marquee") {
     return (
-      <section className="bg-white py-16 border-y border-ink-100">
+      <section className="bg-white py-20 border-y border-ink-100">
         <div className="container-wide">
           {showHeading && (
-            <div className="mb-10 text-center">
+            <div className="mb-12 text-center">
               <Eyebrow>Trusted by South Africa&rsquo;s leaders</Eyebrow>
               <p className="mt-4 text-[15px] text-ink-500">
                 And over 5,000 more organisations across the continent
@@ -42,14 +42,15 @@ export default function ClientLogoGrid({
             {logos.map((logo) => (
               <div
                 key={logo.alt}
-                className="logo-item flex h-16 w-[140px] items-center justify-center shrink-0"
+                className="logo-item flex h-24 w-[200px] items-center justify-center shrink-0 px-4"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
-                  width={140}
-                  height={64}
-                  className="object-contain"
+                  width={200}
+                  height={96}
+                  quality={95}
+                  className="max-h-full max-w-full object-contain"
                 />
               </div>
             ))}
