@@ -6,6 +6,22 @@ import Field, { TextareaField } from "./Field";
 const baseInput =
   "w-full rounded-[12px] border border-ink-100 bg-white px-4 py-4 text-[16px] text-ink-900 transition-all duration-[var(--dur)] ease-[var(--ease)] focus:border-green-500 focus:outline-none focus:[box-shadow:var(--shadow-glow)]";
 
+type WindowGtag = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
+
+function collectUtm(): Record<string, string> | undefined {
+  if (typeof window === "undefined") return undefined;
+  const params = new URLSearchParams(window.location.search);
+  const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const utm: Record<string, string> = {};
+  for (const k of keys) {
+    const v = params.get(k);
+    if (v) utm[k] = v;
+  }
+  return Object.keys(utm).length > 0 ? utm : undefined;
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,13 +33,51 @@ export default function ContactForm() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitted(true);
-    setSubmitting(false);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formData,
+          sourcePage:
+            typeof window !== "undefined"
+              ? window.location.pathname + window.location.search
+              : undefined,
+          utm: collectUtm(),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error ?? "Something went wrong. Please try again.");
+      }
+
+      // Fire a GA4 conversion event so the enquiry shows up in the funnel.
+      const w = window as WindowGtag;
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "generate_lead", {
+          form_subject: formData.subject,
+          form_company: formData.company || undefined,
+        });
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again or email info@2ko.co.za directly."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -114,6 +168,15 @@ export default function ContactForm() {
         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
         placeholder="How can we help you?"
       />
+
+      {error && (
+        <div
+          role="alert"
+          className="rounded-[12px] border border-red-200 bg-red-50 px-5 py-4 text-[14px] text-red-700"
+        >
+          {error}
+        </div>
+      )}
 
       <div className="pt-2">
         <button
