@@ -38,7 +38,7 @@ export default function NotFound() {
           <Button href="/courses" variant="white" size="large" trailingArrow>
             Browse courses
           </Button>
-          <Button href="/" variant="ghost" size="large">
+          <Button href="/" variant="ghost-white" size="large">
             Back to home
           </Button>
         </div>

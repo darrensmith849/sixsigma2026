@@ -49,7 +49,7 @@ export default function HeroSection({
               {eyebrow}
             </Eyebrow>
             <h1 className="!text-white mb-8">{heading}</h1>
-            <div className="text-[19px] md:text-[21px] text-white/80 leading-[1.65] space-y-5 max-w-[640px]">
+            <div className="text-[19px] md:text-[21px] text-white/80 leading-[1.65] space-y-5 max-w-[640px] [&_a]:text-white [&_a]:underline [&_a]:decoration-white/40 [&_a]:underline-offset-4 [&_a]:font-medium [&_a]:transition-colors hover:[&_a]:decoration-white">
               {children}
             </div>
             {actions && (

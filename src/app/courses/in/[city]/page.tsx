@@ -127,7 +127,7 @@ export default async function CityPage({
             <Button href="/contact" variant="filled" size="large" trailingArrow>
               Enquire about {found.name} courses
             </Button>
-            <Button href="/courses" variant="ghost" size="large">
+            <Button href="/courses" variant="ghost-white" size="large">
               View all courses
             </Button>
           </div>

@@ -80,7 +80,7 @@ export default function CTASection({
           {secondaryHref && secondaryText && (
             <Button
               href={secondaryHref}
-              variant={isDark ? "ghost" : "outline"}
+              variant={isDark ? "ghost-white" : "outline"}
               size="large"
             >
               {secondaryText}

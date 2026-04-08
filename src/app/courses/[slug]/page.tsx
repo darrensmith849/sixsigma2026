@@ -98,7 +98,7 @@ export default async function CourseDetailPage({
                 <Button href="/contact" variant="filled" size="large" trailingArrow>
                   Enquire now
                 </Button>
-                <Button href="/courses" variant="ghost" size="large">
+                <Button href="/courses" variant="ghost-white" size="large">
                   All courses
                 </Button>
               </div>

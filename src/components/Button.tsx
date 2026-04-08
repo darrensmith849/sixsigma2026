@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type Variant = "filled" | "outline" | "white" | "ghost" | "dark";
+type Variant = "filled" | "outline" | "white" | "ghost" | "ghost-white" | "dark";
 type Size = "default" | "large" | "small";
 
 interface ButtonProps {
@@ -28,6 +28,8 @@ const variantClass: Record<Variant, string> = {
     "bg-white text-ink-900 border border-white hover:bg-ink-50 [box-shadow:var(--shadow-md)]",
   ghost:
     "bg-transparent text-green-700 border border-transparent hover:text-green-800",
+  "ghost-white":
+    "bg-transparent text-white border border-transparent hover:bg-white/10",
   dark:
     "bg-ink-900 text-white border border-ink-900 hover:bg-green-900 hover:border-green-900 [box-shadow:var(--shadow-md)]",
 };
