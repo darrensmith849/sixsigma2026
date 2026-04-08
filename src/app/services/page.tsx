@@ -102,8 +102,28 @@ export default function ServicesPage() {
           </h1>
           <p className="mx-auto mt-8 max-w-3xl text-[19px] md:text-[21px] text-white/80 leading-[1.65]">
             From hands-on consultancy to enterprise corporate training. We
-            deliver Six Sigma services across South Africa and the wider
-            African continent.
+            deliver Six Sigma services in{" "}
+            <a href="/courses/in/johannesburg" className="!text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              Johannesburg
+            </a>
+            ,{" "}
+            <a href="/courses/in/cape-town" className="!text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              Cape Town
+            </a>
+            ,{" "}
+            <a href="/courses/in/durban" className="!text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              Durban
+            </a>
+            ,{" "}
+            <a href="/courses/in/pretoria" className="!text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              Pretoria
+            </a>{" "}
+            and{" "}
+            <a href="/courses/in/port-elizabeth" className="!text-white underline decoration-white/30 underline-offset-4 hover:decoration-white">
+              Port Elizabeth
+            </a>
+            {" "}
+            — plus on-site across the African continent.
           </p>
         </div>
       </section>

@@ -38,6 +38,17 @@ const navItems: NavItem[] = [
   },
   { label: "About", href: "/about" },
   {
+    label: "Locations",
+    href: "/courses/in/johannesburg",
+    children: [
+      { label: "Johannesburg", href: "/courses/in/johannesburg", description: "Gauteng \u00b7 Sandton, Rosebank, Midrand" },
+      { label: "Cape Town", href: "/courses/in/cape-town", description: "Western Cape \u00b7 CBD, Bellville, Stellenbosch" },
+      { label: "Durban", href: "/courses/in/durban", description: "KwaZulu-Natal \u00b7 Umhlanga, Pinetown" },
+      { label: "Pretoria", href: "/courses/in/pretoria", description: "Gauteng \u00b7 Tshwane region" },
+      { label: "Port Elizabeth", href: "/courses/in/port-elizabeth", description: "Eastern Cape \u00b7 Gqeberha, Coega" },
+    ],
+  },
+  {
     label: "Resources",
     href: "/contact",
     children: [

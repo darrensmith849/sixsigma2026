@@ -27,6 +27,14 @@ const resourceLinks = [
   { label: "FAQs", href: "/faqs" },
 ];
 
+const cityLinks = [
+  { label: "Johannesburg", href: "/courses/in/johannesburg" },
+  { label: "Cape Town", href: "/courses/in/cape-town" },
+  { label: "Durban", href: "/courses/in/durban" },
+  { label: "Pretoria", href: "/courses/in/pretoria" },
+  { label: "Port Elizabeth", href: "/courses/in/port-elizabeth" },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -124,6 +132,22 @@ export default function Footer() {
             </ul>
 
             <h4 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60 mb-5">
+              Locations
+            </h4>
+            <ul className="space-y-3">
+              {cityLinks.map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-[15px] text-white/85 hover:text-white transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="mt-10 text-[13px] font-semibold uppercase tracking-[0.14em] text-white/60 mb-5">
               Get in touch
             </h4>
             <ul className="space-y-3 text-[15px] text-white/85">
@@ -136,10 +160,6 @@ export default function Footer() {
                 <a href="mailto:info@2ko.co.za" className="hover:text-white transition-colors">
                   info@2ko.co.za
                 </a>
-              </li>
-              <li className="text-white/60 leading-relaxed pt-2">
-                Johannesburg · Cape Town · Durban<br />
-                Pretoria · Port Elizabeth · On-site
               </li>
             </ul>
           </div>

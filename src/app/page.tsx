@@ -90,11 +90,13 @@ export default function Home() {
           online formats.
         </p>
         <p>
-          We train teams in <a href="/courses">Johannesburg</a>,{" "}
-          <a href="/courses">Cape Town</a>,{" "}
-          <a href="/courses">Durban</a>, <a href="/courses">Pretoria</a> and{" "}
-          <a href="/courses">Port Elizabeth</a> — and on-site anywhere in South
-          Africa.
+          We train teams in{" "}
+          <a href="/courses/in/johannesburg">Johannesburg</a>,{" "}
+          <a href="/courses/in/cape-town">Cape Town</a>,{" "}
+          <a href="/courses/in/durban">Durban</a>,{" "}
+          <a href="/courses/in/pretoria">Pretoria</a> and{" "}
+          <a href="/courses/in/port-elizabeth">Port Elizabeth</a> — and on-site
+          anywhere in South Africa.
         </p>
       </HeroSection>
 

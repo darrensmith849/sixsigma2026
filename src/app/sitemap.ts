@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { courses } from "./courses/[slug]/courseData";
+import { cities } from "./courses/in/[city]/cityData";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://sixsigmasouthafrica.co.za";
@@ -25,7 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...courseRoutes].map((r) => ({
+  const cityRoutes = cities.map((c) => ({
+    path: `/courses/in/${c.slug}`,
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...courseRoutes, ...cityRoutes].map((r) => ({
     url: `${SITE_URL}${r.path}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
