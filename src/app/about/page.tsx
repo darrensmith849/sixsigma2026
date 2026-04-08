@@ -68,7 +68,7 @@ export default function AboutPage() {
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 container-wide py-20 lg:py-28">
+        <div className="relative z-10 container-wide py-28 lg:py-40">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7">
               <Eyebrow tone="white" className="mb-6">

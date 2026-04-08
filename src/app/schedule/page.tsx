@@ -35,7 +35,7 @@ export default function SchedulePage() {
           }}
           aria-hidden="true"
         />
-        <div className="relative z-10 container-wide py-20 lg:py-28 text-center">
+        <div className="relative z-10 container-wide py-28 lg:py-40 text-center">
           <Eyebrow tone="white" className="mb-6 mx-auto">
             Upcoming sessions
           </Eyebrow>
