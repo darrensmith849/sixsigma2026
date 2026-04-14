@@ -47,7 +47,7 @@ new token in Sigmafy and updating the env var — no code deploy needed.
   "sourcePage": "/courses/in/johannesburg",
   "name": "Darren Smith",
   "email": "darren@example.com",
-  "phone": "021 426 5300",
+  "phone": "021 527 0065",
   "company": "Example Corp",
   "subject": "course-enquiry",
   "message": "I'd like to book 3 delegates on Green Belt in Joburg.",

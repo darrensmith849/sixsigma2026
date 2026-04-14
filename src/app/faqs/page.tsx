@@ -119,7 +119,7 @@ export default function FaqsPage() {
                 <h3 className="mb-4">We&rsquo;re happy to help</h3>
                 <p className="text-[15px] text-ink-500 leading-[1.65] mb-8">
                   Our team replies to every enquiry within one business day.
-                  Or call us directly on <a href="tel:+27214265300" className="font-semibold text-green-700">021 426 5300</a>.
+                  Or call us directly on <a href="tel:+27215270065" className="font-semibold text-green-700">021 527 0065</a>.
                 </p>
                 <Button href="/contact" variant="filled" size="default" trailingArrow className="w-full">
                   Contact us

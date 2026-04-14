@@ -225,8 +225,8 @@ export default async function CourseDetailPage({
 
                   <p className="mt-5 text-center text-[13px] text-ink-500">
                     Or call{" "}
-                    <a href="tel:+27214265300" className="font-semibold text-green-700">
-                      021 426 5300
+                    <a href="tel:+27215270065" className="font-semibold text-green-700">
+                      021 527 0065
                     </a>
                   </p>
                 </div>

@@ -9,7 +9,7 @@ import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: `Contact | ${SITE_NAME}`,
   description:
-    "Contact Six Sigma South Africa on 021 426 5300 or info@2ko.co.za for accredited Six Sigma training, consultancy, and corporate training enquiries.",
+    "Contact Six Sigma South Africa on 021 527 0065 or info@2ko.co.za for accredited Six Sigma training, consultancy, and corporate training enquiries.",
   path: "/contact",
 });
 
@@ -106,10 +106,10 @@ export default function ContactPage() {
                         Phone
                       </div>
                       <a
-                        href="tel:+27214265300"
+                        href="tel:+27215270065"
                         className="text-[20px] font-semibold text-white hover:text-green-200 transition-colors"
                       >
-                        021 426 5300
+                        021 527 0065
                       </a>
                     </div>
                     <div>

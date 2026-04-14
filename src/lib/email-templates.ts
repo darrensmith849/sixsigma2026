@@ -58,7 +58,7 @@ function wrapper(inner: string): string {
             <td align="center" style="padding-top:24px;">
               <p style="margin:0;font-size:12px;color:#9ba8a1;">
                 Six Sigma South Africa &mdash; 2KO Africa CC<br/>
-                021 426 5300 &middot; info@2ko.co.za
+                021 527 0065 &middot; info@2ko.co.za
               </p>
             </td>
           </tr>
@@ -115,7 +115,7 @@ export function buildConfirmationEmail({
     </p>
     <p style="margin:0 0 20px;font-size:16px;color:#0a1e14;">
       In the meantime, if your enquiry is urgent you can reach us directly on
-      <a href="tel:+27214265300" style="color:#16b24a;font-weight:600;">021 426 5300</a> or
+      <a href="tel:+27215270065" style="color:#16b24a;font-weight:600;">021 527 0065</a> or
       <a href="mailto:info@2ko.co.za" style="color:#16b24a;font-weight:600;">info@2ko.co.za</a>.
     </p>
     <p style="margin:24px 0 0;font-size:16px;color:#0a1e14;">
