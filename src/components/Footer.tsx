@@ -10,7 +10,7 @@ const quickLinks = [
 ];
 
 const courseLinks = [
-  { label: "White Belt", href: "/courses/white-belt-classroom" },
+  { label: "White Belt", href: "/courses/white-belt-online" },
   { label: "Yellow Belt", href: "/courses/yellow-belt-classroom" },
   { label: "Lean Green Belt", href: "/courses/lean-green-belt-classroom" },
   { label: "DMAIC Green Belt", href: "/courses/dmaic-green-belt-classroom" },

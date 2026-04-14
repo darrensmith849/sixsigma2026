@@ -77,7 +77,7 @@ export default function Home() {
             <Button href="/contact" variant="filled" size="large" trailingArrow>
               Enquire now
             </Button>
-            <Button href="/courses" variant="white" size="large">
+            <Button href="/courses/white-belt-online" variant="white" size="large">
               Free White Belt
             </Button>
           </>

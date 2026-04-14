@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
     href: "/courses",
     children: [
       { label: "All Courses", href: "/courses", description: "Browse the full belt catalogue" },
-      { label: "White Belt", href: "/courses/white-belt-classroom", description: "Foundation introduction · free" },
+      { label: "White Belt", href: "/courses/white-belt-online", description: "Foundation introduction · free" },
       { label: "Yellow Belt", href: "/courses/yellow-belt-classroom", description: "Team-member fundamentals" },
       { label: "Lean Green Belt", href: "/courses/lean-green-belt-classroom", description: "Lean tools and waste reduction" },
       { label: "DMAIC Green Belt", href: "/courses/dmaic-green-belt-classroom", description: "Lead small to medium projects" },
