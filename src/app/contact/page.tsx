@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import SectionHeading from "@/components/SectionHeading";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import ContactForm from "@/components/ContactForm";
@@ -528,7 +529,9 @@ export default function ContactPage() {
             <SectionHeading subtitle="Fill in the form below and our team will get back to you within 24 hours.">
               Send Us an Enquiry
             </SectionHeading>
-            <ContactForm />
+            <Suspense fallback={<div className="max-w-2xl mx-auto mt-10 h-[400px]" />}>
+              <ContactForm />
+            </Suspense>
           </div>
         </section>
       </FadeIn>

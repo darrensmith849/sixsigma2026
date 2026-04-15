@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import Button from "@/components/Button";
@@ -103,7 +104,9 @@ export default function BookACoursePage() {
               <h2 className="text-heading font-bold text-[22px] md:text-[26px] mb-6">
                 Booking Form
               </h2>
-              <BookingForm />
+              <Suspense fallback={<div className="h-[400px]" />}>
+                <BookingForm />
+              </Suspense>
             </div>
           </div>
         </section>

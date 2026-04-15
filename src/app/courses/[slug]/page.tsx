@@ -104,7 +104,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 {modeBadgeLabel}
               </span>
             </div>
-            <Button href="/contact" variant="white" size="default">
+            <Button href={`/contact?course=${course.slug}`} variant="white" size="default">
               Enquire Now
             </Button>
           </div>
@@ -359,17 +359,17 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 <hr className="border-border-grey" />
 
                 <div className="space-y-2.5">
-                  <Button href="/contact" variant="filled" size="default" className="w-full">
+                  <Button href={`/contact?course=${course.slug}`} variant="filled" size="default" className="w-full">
                     Enquire Now
                   </Button>
-                  <Button href="/book-a-course" variant="outline" size="default" className="w-full">
+                  <Button href={`/book-a-course?course=${course.slug}`} variant="outline" size="default" className="w-full">
                     How to Book
                   </Button>
                 </div>
 
                 <p className="text-center text-[13px] text-muted">
                   Or{" "}
-                  <Link href="/contact" className="text-green font-semibold hover:underline">
+                  <Link href={`/contact?course=${course.slug}`} className="text-green font-semibold hover:underline">
                     get in touch
                   </Link>
                 </p>
@@ -413,7 +413,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
               Get in touch with our team to book your course or request a custom
               quote for your organisation.
             </p>
-            <Button href="/contact" variant="white" size="large">
+            <Button href={`/contact?course=${course.slug}`} variant="white" size="large">
               Contact Us
             </Button>
           </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { getCourseBySlug } from "@/data/courses";
 
 const STEPS = [
   "Course Details",
@@ -20,14 +22,38 @@ const beltOptions = [
 const methodOptions = ["Online", "Virtual", "Classroom"];
 const trackOptions = ["LEAN", "DMAIC"];
 
-export default function BookingForm() {
-  const [step, setStep] = useState(0);
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    beltColour: "",
-    trainingMethod: "",
+function inferTrackFromSlug(slug: string | undefined): string {
+  if (!slug) return "";
+  if (slug.includes("lean")) return "LEAN";
+  if (slug.includes("dmaic")) return "DMAIC";
+  return "";
+}
+
+function getInitialBookingState(searchParams: URLSearchParams) {
+  const courseSlug = searchParams.get("course") ?? "";
+  const course = courseSlug ? getCourseBySlug(courseSlug) : undefined;
+
+  const rawMode = searchParams.get("mode");
+  const methodParam =
+    rawMode && methodOptions.includes(rawMode) ? rawMode : "";
+
+  const rawBelt = searchParams.get("belt");
+  const validBelts = beltOptions.map((b) => b.value);
+  const beltParam =
+    rawBelt && validBelts.includes(rawBelt) && rawBelt !== "short"
+      ? rawBelt
+      : "";
+
+  const rawTrack = searchParams.get("track");
+  const trackParam =
+    rawTrack === "LEAN" || rawTrack === "DMAIC" ? rawTrack : "";
+
+  return {
+    beltColour:
+      course && course.beltLevel !== "short" ? course.beltLevel : beltParam,
+    trainingMethod: course?.mode ?? methodParam,
     coupon: "",
-    track: "",
+    track: trackParam || inferTrackFromSlug(course?.slug),
     location: "",
     courseDate: "",
     dietary: "",
@@ -47,7 +73,14 @@ export default function BookingForm() {
     bookingTerms: false,
     cancellationPolicy: false,
     onlineTcs: false,
-  });
+  };
+}
+
+export default function BookingForm() {
+  const searchParams = useSearchParams();
+  const [step, setStep] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState(() => getInitialBookingState(searchParams));
 
   const update = (field: string, value: string | boolean) => {
     setForm((prev) => ({ ...prev, [field]: value }));

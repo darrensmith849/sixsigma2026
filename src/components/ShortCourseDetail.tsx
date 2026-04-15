@@ -89,10 +89,10 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
                   </ul>
 
                   <div className="flex gap-2.5 pt-1">
-                    <Button href="/contact" variant="outline" size="default" className="flex-1">
+                    <Button href={`/contact?course=${course.slug}`} variant="outline" size="default" className="flex-1">
                       {primaryCta === "Get Quote" ? "Get Quote" : primaryCta}
                     </Button>
-                    <Button href="/book-a-course" variant="filled" size="default" className="flex-1">
+                    <Button href={`/book-a-course?course=${course.slug}`} variant="filled" size="default" className="flex-1">
                       {secondaryCta === "Book Course" ? "Book Course" : secondaryCta}
                     </Button>
                   </div>
@@ -154,7 +154,7 @@ export default function ShortCourseDetail({ course }: ShortCourseDetailProps) {
               Get in touch with our team to book your course or request a custom
               quote for your organisation.
             </p>
-            <Button href="/contact" variant="white" size="large">
+            <Button href={`/contact?course=${course.slug}`} variant="white" size="large">
               Contact Us
             </Button>
           </div>
