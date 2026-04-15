@@ -77,7 +77,7 @@ export default function SchedulePage() {
                     Public course dates available throughout the year. On-site
                     training also offered.
                   </p>
-                  <Button href="/contact" variant="ghost" size="small" trailingArrow>
+                  <Button href="/contact#enquiry-form" variant="ghost" size="small" trailingArrow>
                     Enquire for dates
                   </Button>
                 </div>

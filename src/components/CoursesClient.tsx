@@ -356,7 +356,7 @@ export default function CoursesClient() {
                   Tell us your role, your goals and your team size, and
                   we&rsquo;ll recommend the best fit within one business day.
                 </p>
-                <Button href="/contact" variant="filled" size="default" trailingArrow>
+                <Button href="/contact#enquiry-form" variant="filled" size="default" trailingArrow>
                   Talk to us
                 </Button>
               </div>
@@ -390,7 +390,7 @@ export default function CoursesClient() {
                   Lean Management courses on-site at your premises or virtually,
                   anywhere in South Africa.
                 </p>
-                <Button href="/contact" variant="filled" size="large" trailingArrow>
+                <Button href="/contact#enquiry-form" variant="filled" size="large" trailingArrow>
                   Enquire about custom training
                 </Button>
               </div>

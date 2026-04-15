@@ -48,7 +48,7 @@ export default function BrochurePage() {
                 programme — outlines, pricing, dates and delivery formats — in
                 one downloadable PDF.
               </p>
-              <Button href="/contact" variant="filled" size="large" trailingArrow>
+              <Button href="/contact#enquiry-form" variant="filled" size="large" trailingArrow>
                 Request brochure
               </Button>
             </div>

@@ -121,7 +121,7 @@ export default function FaqsPage() {
                   Our team replies to every enquiry within one business day.
                   Or call us directly on <a href="tel:+27215270065" className="font-semibold text-green-700">021 527 0065</a>.
                 </p>
-                <Button href="/contact" variant="filled" size="default" trailingArrow className="w-full">
+                <Button href="/contact#enquiry-form" variant="filled" size="default" trailingArrow className="w-full">
                   Contact us
                 </Button>
               </div>

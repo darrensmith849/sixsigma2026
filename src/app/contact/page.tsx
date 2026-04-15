@@ -67,7 +67,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── Form + Contact card ─── */}
-      <section className="bg-ink-50 py-24 md:py-32">
+      <section id="enquiry-form" className="bg-ink-50 py-24 md:py-32 scroll-mt-24">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Form card */}

@@ -74,7 +74,7 @@ export default function Home() {
         badge={{ value: "12,000+", label: "Professionals trained" }}
         actions={
           <>
-            <Button href="/contact" variant="filled" size="large" trailingArrow>
+            <Button href="/contact#enquiry-form" variant="filled" size="large" trailingArrow>
               Enquire now
             </Button>
             <Button href="/courses/white-belt-online" variant="white" size="large">

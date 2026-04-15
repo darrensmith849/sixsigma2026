@@ -124,7 +124,7 @@ export default async function CityPage({
             {found.shortIntro}
           </p>
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/contact" variant="filled" size="large" trailingArrow>
+            <Button href="/contact#enquiry-form" variant="filled" size="large" trailingArrow>
               Enquire about {found.name} courses
             </Button>
             <Button href="/courses" variant="ghost-white" size="large">
@@ -194,7 +194,7 @@ export default async function CityPage({
                     </div>
                   </dl>
                   <Button
-                    href="/contact"
+                    href="/contact#enquiry-form"
                     variant="filled"
                     size="default"
                     trailingArrow
