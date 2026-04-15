@@ -250,3 +250,4 @@ export function getCourse(slug: string): CourseDetail | undefined {
 
 export const TOPIC_SLUGS = topics.map((t) => t.slug);
 export const MODE_SLUGS = ["classroom", "virtual", "online"] as const;
+export const MODES = modeDetails.map((m) => ({ slug: m.slug, name: m.name }));

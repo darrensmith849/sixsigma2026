@@ -95,7 +95,7 @@ export default async function CourseDetailPage({
                 {course.summary}
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button href="/contact" variant="filled" size="large" trailingArrow>
+                <Button href={`/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}`} variant="filled" size="large" trailingArrow>
                   Enquire now
                 </Button>
                 <Button href="/courses" variant="ghost-white" size="large">
@@ -214,7 +214,7 @@ export default async function CourseDetailPage({
                   </dl>
 
                   <Button
-                    href="/contact"
+                    href={`/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}`}
                     variant="filled"
                     size="large"
                     trailingArrow

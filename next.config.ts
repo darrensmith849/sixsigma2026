@@ -96,7 +96,9 @@ const nextConfig: NextConfig = {
       { source: "/book-a-course", destination: "/contact", permanent: true },
       { source: "/which-course", destination: "/courses", permanent: true },
       { source: "/calendar", destination: "/schedule", permanent: true },
-      { source: "/news-feed", destination: "/", permanent: true },
+      // /news-feed had indexed content — redirect to a content page rather
+      // than "/" to avoid soft-404 signals.
+      { source: "/news-feed", destination: "/about", permanent: true },
       { source: "/home-page-2", destination: "/", permanent: true },
       { source: "/sample-page", destination: "/", permanent: true },
       { source: "/test-page", destination: "/", permanent: true },

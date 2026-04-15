@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ClientLogoGrid from "@/components/ClientLogoGrid";
 import ContactForm from "@/components/ContactForm";
 import FadeIn from "@/components/FadeIn";
@@ -78,7 +79,9 @@ export default function ContactPage() {
                   Fill in the form and our team will get back to you within
                   one business day.
                 </p>
-                <ContactForm />
+                <Suspense fallback={<div className="h-96 animate-pulse rounded-[20px] bg-ink-100" />}>
+                  <ContactForm />
+                </Suspense>
               </div>
             </FadeIn>
 

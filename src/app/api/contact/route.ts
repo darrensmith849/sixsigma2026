@@ -30,6 +30,11 @@ interface ContactPayload {
   company?: string;
   subject: string;
   message: string;
+  courseTopic?: string;
+  courseMode?: string;
+  delegates?: string;
+  preferredCity?: string;
+  industry?: string;
   sourcePage?: string;
   utm?: Record<string, string>;
   userAgent?: string;
@@ -45,6 +50,11 @@ function validate(body: unknown): ContactPayload | { error: string } {
   const subject = typeof b.subject === "string" ? b.subject.trim() : "";
   const message = typeof b.message === "string" ? b.message.trim() : "";
   const sourcePage = typeof b.sourcePage === "string" ? b.sourcePage : undefined;
+  const courseTopic = typeof b.courseTopic === "string" ? b.courseTopic.trim() : undefined;
+  const courseMode = typeof b.courseMode === "string" ? b.courseMode.trim() : undefined;
+  const delegates = typeof b.delegates === "string" ? b.delegates.trim() : undefined;
+  const preferredCity = typeof b.preferredCity === "string" ? b.preferredCity.trim() : undefined;
+  const industry = typeof b.industry === "string" ? b.industry.trim() : undefined;
   const utm =
     b.utm && typeof b.utm === "object"
       ? (b.utm as Record<string, string>)
@@ -58,7 +68,7 @@ function validate(body: unknown): ContactPayload | { error: string } {
   if (!subject) return { error: "Subject is required" };
   if (!message) return { error: "Message is required" };
 
-  return { name, email, phone, company, subject, message, sourcePage, utm, userAgent };
+  return { name, email, phone, company, subject, message, courseTopic, courseMode, delegates, preferredCity, industry, sourcePage, utm, userAgent };
 }
 
 async function brevoFetch(path: string, init: RequestInit) {
@@ -129,6 +139,11 @@ async function upsertContact(payload: ContactPayload) {
     LAST_ENQUIRY_PAGE: payload.sourcePage ?? "",
     LAST_ENQUIRY_AT: new Date().toISOString(),
   };
+  if (payload.courseTopic) attributes.LAST_COURSE_TOPIC = payload.courseTopic;
+  if (payload.courseMode) attributes.LAST_COURSE_MODE = payload.courseMode;
+  if (payload.delegates) attributes.LAST_DELEGATES = payload.delegates;
+  if (payload.preferredCity) attributes.LAST_PREFERRED_CITY = payload.preferredCity;
+  if (payload.industry) attributes.INDUSTRY = payload.industry;
   // Only include phone when it parses as valid E.164 (Brevo SMS field
   // rejects anything else). Otherwise store it as a plain text attribute
   // so lead reps still have it to call.
@@ -172,6 +187,11 @@ async function sendToSigmafy(payload: ContactPayload) {
       company: payload.company,
       subject: payload.subject,
       message: payload.message,
+      courseTopic: payload.courseTopic,
+      courseMode: payload.courseMode,
+      delegates: payload.delegates,
+      preferredCity: payload.preferredCity,
+      industry: payload.industry,
       utm: payload.utm,
       userAgent: payload.userAgent,
       receivedAt: new Date().toISOString(),

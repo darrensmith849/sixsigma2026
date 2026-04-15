@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Field, { TextareaField } from "./Field";
+import { useSearchParams } from "next/navigation";
+import Field, { TextareaField, SelectField } from "./Field";
+import { MODES } from "@/app/courses/[slug]/courseData";
 
 const baseInput =
   "w-full rounded-[12px] border border-ink-100 bg-white px-4 py-4 text-[16px] text-ink-900 transition-all duration-[var(--dur)] ease-[var(--ease)] focus:border-green-500 focus:outline-none focus:[box-shadow:var(--shadow-glow)]";
@@ -9,6 +11,43 @@ const baseInput =
 type WindowGtag = Window & {
   gtag?: (...args: unknown[]) => void;
 };
+
+const COURSE_OPTIONS = [
+  { slug: "yellow-belt", name: "Yellow Belt" },
+  { slug: "green-belt", name: "Green Belt" },
+  { slug: "black-belt", name: "Black Belt" },
+];
+
+const MODE_LABELS: Record<string, string> = {
+  classroom: "Classroom (in-person)",
+  virtual: "Virtual Classroom (live online)",
+  online: "Online (self-paced)",
+};
+
+const CITIES = [
+  "Johannesburg",
+  "Cape Town",
+  "Durban",
+  "Pretoria",
+  "Port Elizabeth",
+  "Other",
+];
+
+const INDUSTRIES = [
+  "Manufacturing",
+  "Mining",
+  "Financial Services",
+  "Healthcare",
+  "Retail",
+  "Government",
+  "Technology",
+  "Automotive",
+  "FMCG",
+  "Logistics",
+  "Energy",
+  "Telecoms",
+  "Other",
+];
 
 function collectUtm(): Record<string, string> | undefined {
   if (typeof window === "undefined") return undefined;
@@ -22,18 +61,41 @@ function collectUtm(): Record<string, string> | undefined {
   return Object.keys(utm).length > 0 ? utm : undefined;
 }
 
+/** Map a topicSlug from course pages to the simplified belt option slug. */
+function mapTopicToCourse(topicSlug: string): string {
+  if (topicSlug.includes("yellow")) return "yellow-belt";
+  if (topicSlug.includes("green")) return "green-belt";
+  if (topicSlug.includes("black")) return "black-belt";
+  return "";
+}
+
 export default function ContactForm() {
+  const searchParams = useSearchParams();
+
+  const paramSubject = searchParams.get("subject") ?? "";
+  const paramCourse = searchParams.get("course") ?? "";
+  const paramMode = searchParams.get("mode") ?? "";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     company: "",
-    subject: "",
+    subject: paramSubject || "",
     message: "",
+    courseTopic: mapTopicToCourse(paramCourse),
+    courseMode: paramMode,
+    delegates: "",
+    preferredCity: "",
+    industry: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const showCourseFields =
+    formData.subject === "course-enquiry" ||
+    formData.subject === "corporate-training";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,7 +107,24 @@ export default function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          subject: formData.subject,
+          message: formData.message,
+          industry: formData.industry || undefined,
+          ...(showCourseFields && {
+            courseTopic: formData.courseTopic || undefined,
+            courseMode: formData.courseMode || undefined,
+          }),
+          ...(formData.subject === "corporate-training" && {
+            delegates: formData.delegates || undefined,
+          }),
+          ...(showCourseFields &&
+            formData.courseMode === "classroom" && {
+              preferredCity: formData.preferredCity || undefined,
+            }),
           sourcePage:
             typeof window !== "undefined"
               ? window.location.pathname + window.location.search
@@ -65,6 +144,9 @@ export default function ContactForm() {
         w.gtag("event", "generate_lead", {
           form_subject: formData.subject,
           form_company: formData.company || undefined,
+          form_course_topic: formData.courseTopic || undefined,
+          form_course_mode: formData.courseMode || undefined,
+          form_industry: formData.industry || undefined,
         });
       }
 
@@ -79,6 +161,10 @@ export default function ContactForm() {
       setSubmitting(false);
     }
   };
+
+  const set = (field: string) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => setFormData({ ...formData, [field]: e.target.value });
 
   if (submitted) {
     return (
@@ -111,7 +197,7 @@ export default function ContactForm() {
           type="text"
           required
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onChange={set("name")}
           placeholder="Your full name"
         />
         <Field
@@ -119,7 +205,7 @@ export default function ContactForm() {
           type="email"
           required
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={set("email")}
           placeholder="you@company.co.za"
         />
       </div>
@@ -129,43 +215,119 @@ export default function ContactForm() {
           label="Phone number"
           type="tel"
           value={formData.phone}
-          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          onChange={set("phone")}
           placeholder="021 000 0000"
         />
         <Field
           label="Company"
           type="text"
           value={formData.company}
-          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+          onChange={set("company")}
           placeholder="Your company name"
         />
       </div>
 
-      <label className="block">
-        <span className="mb-2 block text-[14px] font-semibold text-ink-700">
-          Subject *
-        </span>
-        <select
-          required
-          value={formData.subject}
-          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-          className={baseInput}
+      <div className="grid sm:grid-cols-2 gap-5">
+        <label className="block">
+          <span className="mb-2 block text-[14px] font-semibold text-ink-700">
+            Subject *
+          </span>
+          <select
+            required
+            value={formData.subject}
+            onChange={set("subject")}
+            className={baseInput}
+          >
+            <option value="">Select a subject</option>
+            <option value="course-enquiry">Course Enquiry</option>
+            <option value="corporate-training">Corporate Training</option>
+            <option value="consultancy">Consultancy Services</option>
+            <option value="partnership">Partnership</option>
+            <option value="general">General Enquiry</option>
+          </select>
+        </label>
+
+        <SelectField
+          label="Industry"
+          value={formData.industry}
+          onChange={set("industry")}
         >
-          <option value="">Select a subject</option>
-          <option value="course-enquiry">Course Enquiry</option>
-          <option value="corporate-training">Corporate Training</option>
-          <option value="consultancy">Consultancy Services</option>
-          <option value="partnership">Partnership</option>
-          <option value="general">General Enquiry</option>
-        </select>
-      </label>
+          <option value="">Select your industry</option>
+          {INDUSTRIES.map((ind) => (
+            <option key={ind} value={ind}>
+              {ind}
+            </option>
+          ))}
+        </SelectField>
+      </div>
+
+      {/* ─── Course-specific fields ─── */}
+      {showCourseFields && (
+        <>
+          <div className="grid sm:grid-cols-2 gap-5">
+            <SelectField
+              label="Course"
+              value={formData.courseTopic}
+              onChange={set("courseTopic")}
+            >
+              <option value="">Select a course</option>
+              {COURSE_OPTIONS.map((c) => (
+                <option key={c.slug} value={c.slug}>
+                  {c.name}
+                </option>
+              ))}
+            </SelectField>
+
+            <SelectField
+              label="Delivery method"
+              value={formData.courseMode}
+              onChange={set("courseMode")}
+            >
+              <option value="">Select delivery method</option>
+              {MODES.map((m) => (
+                <option key={m.slug} value={m.slug}>
+                  {MODE_LABELS[m.slug] ?? m.name}
+                </option>
+              ))}
+            </SelectField>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            {formData.subject === "corporate-training" && (
+              <Field
+                label="Number of delegates"
+                type="number"
+                min={1}
+                value={formData.delegates}
+                onChange={set("delegates")}
+                placeholder="e.g. 10"
+              />
+            )}
+
+            {formData.courseMode === "classroom" && (
+              <SelectField
+                label="Preferred city"
+                value={formData.preferredCity}
+                onChange={set("preferredCity")}
+              >
+                <option value="">Select a city</option>
+                {CITIES.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </SelectField>
+            )}
+          </div>
+        </>
+      )}
 
       <TextareaField
         label="Message *"
         required
         rows={5}
         value={formData.message}
-        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        onChange={set("message")}
         placeholder="How can we help you?"
       />
 

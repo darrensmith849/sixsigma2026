@@ -66,3 +66,32 @@ export const TextareaField = forwardRef<
   );
 });
 TextareaField.displayName = "TextareaField";
+
+interface SelectFieldProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  label: string;
+  error?: string;
+}
+
+export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
+  ({ label, error, className = "", children, ...props }, ref) => {
+    return (
+      <label className="block">
+        <span className="mb-2 block text-[14px] font-semibold text-ink-700">
+          {label}
+        </span>
+        <select
+          ref={ref}
+          className={`${baseInput} ${error ? "border-red-400" : ""} ${className}`}
+          {...props}
+        >
+          {children}
+        </select>
+        {error && (
+          <span className="mt-1.5 block text-[13px] text-red-600">{error}</span>
+        )}
+      </label>
+    );
+  }
+);
+SelectField.displayName = "SelectField";

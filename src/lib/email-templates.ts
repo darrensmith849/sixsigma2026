@@ -141,10 +141,27 @@ export interface NotificationParams {
   company?: string;
   subject: string;
   message: string;
+  courseTopic?: string;
+  courseMode?: string;
+  delegates?: string;
+  preferredCity?: string;
+  industry?: string;
   sourcePage?: string;
   utm?: Record<string, string>;
   userAgent?: string;
 }
+
+const courseTopicLabels: Record<string, string> = {
+  "yellow-belt": "Yellow Belt",
+  "green-belt": "Green Belt",
+  "black-belt": "Black Belt",
+};
+
+const courseModeLabels: Record<string, string> = {
+  classroom: "Classroom (in-person)",
+  virtual: "Virtual Classroom (live online)",
+  online: "Online (self-paced)",
+};
 
 export function buildNotificationEmail(
   p: NotificationParams
@@ -191,6 +208,11 @@ export function buildNotificationEmail(
       )}
       ${row("Company", p.company ? escape(p.company) : '<span style="color:#9ba8a1;">—</span>')}
       ${row("Subject", escape(subjectLabel))}
+      ${p.courseTopic ? row("Course", escape(courseTopicLabels[p.courseTopic] ?? p.courseTopic)) : ""}
+      ${p.courseMode ? row("Delivery", escape(courseModeLabels[p.courseMode] ?? p.courseMode)) : ""}
+      ${p.delegates ? row("Delegates", escape(p.delegates)) : ""}
+      ${p.preferredCity ? row("City", escape(p.preferredCity)) : ""}
+      ${p.industry ? row("Industry", escape(p.industry)) : ""}
       ${row("Source page", p.sourcePage ? escape(p.sourcePage) : '<span style="color:#9ba8a1;">—</span>')}
       ${utmRows}
     </table>
