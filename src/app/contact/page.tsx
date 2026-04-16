@@ -143,23 +143,6 @@ export default function ContactPage() {
                       </ul>
                     </div>
                   </div>
-
-                  <div className="mt-10 pt-8 border-t border-white/15">
-                    <Eyebrow tone="white" className="mb-3">
-                      Become a trainer
-                    </Eyebrow>
-                    <p className="text-[14px] text-white/75 leading-[1.65]">
-                      Certified Six Sigma Black Belt or Master Black Belt? Send
-                      your CV to{" "}
-                      <a
-                        href="mailto:info@2ko.co.za"
-                        className="font-semibold text-white underline-offset-2 hover:underline"
-                      >
-                        info@2ko.co.za
-                      </a>{" "}
-                      with the subject &ldquo;Trainer Application&rdquo;.
-                    </p>
-                  </div>
                 </div>
               </div>
             </FadeIn>
