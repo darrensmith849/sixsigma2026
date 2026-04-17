@@ -146,7 +146,7 @@ export default function AccreditationPage() {
         description="Talk to our team about which course is the right fit for you or your organisation."
         buttonText="Browse courses"
         buttonHref="/courses"
-        secondaryHref="/contact"
+        secondaryHref="/contact#enquiry-form"
         secondaryText="Contact us"
         variant="dark"
       />

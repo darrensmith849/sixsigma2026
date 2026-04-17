@@ -92,7 +92,7 @@ export default function SchedulePage() {
         heading="Find a date that works for you"
         description="Public course dates fill up fast. Get in touch and we'll confirm the next available slot in your preferred city within one business day."
         buttonText="Enquire for dates"
-        buttonHref="/contact"
+        buttonHref="/contact#enquiry-form"
         secondaryHref="/courses"
         secondaryText="Browse courses"
         variant="dark"

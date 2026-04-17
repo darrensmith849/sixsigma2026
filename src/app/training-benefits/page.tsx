@@ -112,7 +112,7 @@ export default function TrainingBenefitsPage() {
         description="Talk to us about a tailored training plan for individuals, teams or your whole organisation."
         buttonText="Browse courses"
         buttonHref="/courses"
-        secondaryHref="/contact"
+        secondaryHref="/contact#enquiry-form"
         secondaryText="Talk to us"
         variant="dark"
       />

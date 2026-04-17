@@ -21,7 +21,7 @@ const services = [
       "Maximise efficiency and productivity with our expert consultancy. Our team of certified Six Sigma professionals works with your organisation to identify areas for improvement, develop strategies, and implement solutions for long-term success.",
     image: "/images/Consultancy-01.jpg",
     cta: "Enquire now",
-    href: "/contact",
+    href: "/contact#enquiry-form",
   },
   {
     eyebrow: "Operations",
@@ -176,7 +176,7 @@ export default function ServicesPage() {
         heading="Tell us about your improvement challenge"
         description="We'll match the right service and the right team to your goal — whether it's a single workshop or a multi-year transformation."
         buttonText="Get in touch"
-        buttonHref="/contact"
+        buttonHref="/contact#enquiry-form"
         secondaryHref="/courses"
         secondaryText="View courses"
         variant="dark"

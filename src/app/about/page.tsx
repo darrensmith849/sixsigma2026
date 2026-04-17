@@ -255,7 +255,7 @@ export default function AboutPage() {
         heading="Transform your organisation with Six Sigma"
         description="Get in touch to discuss how Six Sigma training can benefit your team and drive measurable results."
         buttonText="Contact us"
-        buttonHref="/contact"
+        buttonHref="/contact#enquiry-form"
         secondaryHref="/courses"
         secondaryText="Browse courses"
         variant="dark"

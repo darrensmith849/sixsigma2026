@@ -231,7 +231,7 @@ export default function Home() {
         heading="Train with the most accredited Six Sigma provider in Africa"
         description="Whether you're an individual exploring Six Sigma or a team leader rolling out an enterprise programme, we have a course that fits."
         buttonText="Enquire now"
-        buttonHref="/contact"
+        buttonHref="/contact#enquiry-form"
         secondaryText="Browse courses"
         secondaryHref="/courses"
         variant="dark"

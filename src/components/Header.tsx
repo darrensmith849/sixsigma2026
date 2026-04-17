@@ -111,7 +111,7 @@ export default function Header() {
               <NavItemDesktop key={item.label} item={item} pathname={pathname} />
             ))}
             <Link
-              href="/contact"
+              href="/contact#enquiry-form"
               className="ml-4 inline-flex items-center justify-center rounded-[12px] bg-green-500 px-5 py-2.5 text-[14px] font-semibold text-white transition-all duration-[var(--dur)] ease-[var(--ease)] [box-shadow:var(--shadow-md),inset_0_1px_0_rgba(255,255,255,.18)] hover:-translate-y-[1px] hover:bg-green-600"
             >
               Enquire now
@@ -150,7 +150,7 @@ export default function Header() {
             />
           ))}
           <Link
-            href="/contact"
+            href="/contact#enquiry-form"
             onClick={() => setMobileOpen(false)}
             className="mt-6 block w-full rounded-[12px] bg-green-500 px-6 py-4 text-center text-[16px] font-semibold text-white"
           >

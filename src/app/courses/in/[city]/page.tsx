@@ -294,7 +294,7 @@ export default async function CityPage({
         heading={`Train your team in ${found.name}`}
         description="Tell us your role, your team size and your preferred dates and we'll come back to you within one business day with available course slots."
         buttonText="Get in touch"
-        buttonHref="/contact"
+        buttonHref="/contact#enquiry-form"
         secondaryHref="/courses"
         secondaryText="Browse courses"
         variant="dark"
