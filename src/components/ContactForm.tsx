@@ -88,6 +88,10 @@ export default function ContactForm() {
     delegates: "",
     preferredCity: "",
     industry: "",
+    // Honeypot — real humans never fill this (the input is visually hidden
+    // and aria-hidden). Bots that blindly populate every field expose
+    // themselves and the server silently drops the submission.
+    website: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -130,6 +134,7 @@ export default function ContactForm() {
               ? window.location.pathname + window.location.search
               : undefined,
           utm: collectUtm(),
+          website: formData.website,
         }),
       });
 
@@ -191,6 +196,36 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {/*
+        Honeypot field. Hidden from humans (off-screen, no pointer events,
+        aria-hidden, tabIndex=-1, autoComplete=off) but present in the DOM
+        so naive form-filling bots populate it. The API silently drops any
+        submission where this field is non-empty.
+      */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          top: "auto",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+      >
+        <label>
+          Website (leave blank)
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={formData.website}
+            onChange={set("website")}
+          />
+        </label>
+      </div>
+
       <div className="grid sm:grid-cols-2 gap-5">
         <Field
           label="Full name *"

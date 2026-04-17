@@ -3,6 +3,7 @@ import {
   buildConfirmationEmail,
   buildNotificationEmail,
 } from "@/lib/email-templates";
+import { classifyAsJobApplication } from "@/lib/job-filter";
 
 /**
  * Contact form sink.
@@ -38,6 +39,8 @@ interface ContactPayload {
   sourcePage?: string;
   utm?: Record<string, string>;
   userAgent?: string;
+  /** Honeypot — if non-empty, the submission is treated as spam. */
+  website?: string;
 }
 
 function validate(body: unknown): ContactPayload | { error: string } {
@@ -61,6 +64,7 @@ function validate(body: unknown): ContactPayload | { error: string } {
       : undefined;
   const userAgent =
     typeof b.userAgent === "string" ? b.userAgent : undefined;
+  const website = typeof b.website === "string" ? b.website : undefined;
 
   if (!name) return { error: "Name is required" };
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
@@ -68,7 +72,7 @@ function validate(body: unknown): ContactPayload | { error: string } {
   if (!subject) return { error: "Subject is required" };
   if (!message) return { error: "Message is required" };
 
-  return { name, email, phone, company, subject, message, courseTopic, courseMode, delegates, preferredCity, industry, sourcePage, utm, userAgent };
+  return { name, email, phone, company, subject, message, courseTopic, courseMode, delegates, preferredCity, industry, sourcePage, utm, userAgent, website };
 }
 
 async function brevoFetch(path: string, init: RequestInit) {
@@ -219,6 +223,34 @@ export async function POST(req: NextRequest) {
 
   // Attach the User-Agent header automatically (useful for spam filtering).
   validated.userAgent = req.headers.get("user-agent") ?? undefined;
+
+  // ─── Honeypot gate ──────────────────────────────────────────────────
+  // The ContactForm renders a visually-hidden <input name="website"> that
+  // humans leave empty. Bots that auto-fill every field will populate it;
+  // when they do, we silently return 200 OK without sending anything.
+  if (validated.website && validated.website.trim().length > 0) {
+    console.warn(
+      `[contact] honeypot triggered — silent drop (email=${validated.email}, value="${validated.website}")`
+    );
+    return NextResponse.json({ ok: true, delivered: {} });
+  }
+
+  // ─── Job-application gate ───────────────────────────────────────────
+  // Hybrid filter: regex pre-screen → OpenAI adjudication. If the filter
+  // flags the submission we silently drop it (the user sees the normal
+  // "Thank you" screen; no email, no CRM upsert, no Sigmafy push). The
+  // filter fails open on any error so real enquiries are never lost.
+  const jobCheck = await classifyAsJobApplication({
+    subject: validated.subject,
+    message: validated.message,
+    company: validated.company,
+  });
+  if (jobCheck.isJob) {
+    console.warn(
+      `[contact] job application filtered — silent drop (email=${validated.email}, stage=${jobCheck.stage}, reason=${jobCheck.reason})`
+    );
+    return NextResponse.json({ ok: true, delivered: {} });
+  }
 
   // Fan out. Notification is the critical path — if it throws we return 500.
   // Confirmation, contact upsert and Sigmafy are best-effort (logged).
