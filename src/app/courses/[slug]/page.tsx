@@ -51,6 +51,13 @@ export default async function CourseDetailPage({
     .filter((c) => c.topicSlug === course.topicSlug && c.slug !== course.slug)
     .slice(0, 3);
 
+  // White Belt Online enrols directly via the Sigmafy portal instead of the enquiry form.
+  const isStartOnPortal = course.slug === "white-belt-online";
+  const ctaHref = isStartOnPortal
+    ? "https://portal.sigmafy.co/courses/16/preview"
+    : `/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}#enquiry-form`;
+  const ctaLabel = isStartOnPortal ? "Start free course" : "Enquire now";
+
   const courseJsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -95,8 +102,8 @@ export default async function CourseDetailPage({
                 {course.summary}
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <Button href={`/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}#enquiry-form`} variant="filled" size="large" trailingArrow>
-                  Enquire now
+                <Button href={ctaHref} variant="filled" size="large" trailingArrow external={isStartOnPortal}>
+                  {ctaLabel}
                 </Button>
                 <Button href="/courses" variant="ghost-white" size="large">
                   All courses
@@ -214,13 +221,14 @@ export default async function CourseDetailPage({
                   </dl>
 
                   <Button
-                    href={`/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}#enquiry-form`}
+                    href={ctaHref}
                     variant="filled"
                     size="large"
                     trailingArrow
+                    external={isStartOnPortal}
                     className="w-full"
                   >
-                    Enquire now
+                    {ctaLabel}
                   </Button>
 
                   <p className="mt-5 text-center text-[13px] text-ink-500">
