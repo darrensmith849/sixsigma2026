@@ -43,7 +43,11 @@ const STRONG_JOB_KEYWORDS: RegExp[] = [
   /\bseeking\s+(employment|a\s+job|a\s+position|new\s+opportunities)\b/i,
   /\bsearching\s+for\s+(a\s+)?(job|employment|position)\b/i,
   /\bavailable\s+for\s+(employment|hire|a\s+position)\b/i,
-  /\bi\s+am\s+looking\s+for\s+(a\s+)?(job|employment|work)\b/i,
+  /\blooking\s+for\s+(a\s+)?(job|jobs|employment|permanent\s+(work|employment|position)|full[-\s]?time\s+(work|employment|position)|part[-\s]?time\s+(work|employment|position))\b/i,
+  /\bin\s+need\s+of\s+(a\s+)?(job|employment|work)\b/i,
+  /\b(i\s+am|i'm|am)\s+(currently\s+)?unemployed\b/i,
+  /\bunemployed\s+(graduate|youth|and)\b/i,
+  /\byouth\s+looking\s+for\s+(a\s+)?(job|work|employment|opportunity|opportunities)\b/i,
 
   // Vacancy / hiring inquiries
   /\bare\s+you\s+hiring\b/i,
