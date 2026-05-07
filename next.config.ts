@@ -274,6 +274,24 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
+      // Legacy pre-WordPress static .html pages still hit by old Google Ads
+      // and external backlinks. /six-sigma-courses.html is the destination
+      // of an active Google Ads campaign.
+      {
+        source: "/six-sigma-courses.html",
+        destination: "/courses",
+        permanent: true,
+      },
+      {
+        source: "/booking.html",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/Accredited_Nqoba_Manana.html",
+        destination: "/about",
+        permanent: true,
+      },
 
       // Catch-all WordPress feed and category URLs
       {
