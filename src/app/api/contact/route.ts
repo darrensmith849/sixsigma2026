@@ -244,10 +244,13 @@ export async function POST(req: NextRequest) {
     subject: validated.subject,
     message: validated.message,
     company: validated.company,
+    name: validated.name,
+    email: validated.email,
   });
   if (jobCheck.isJob) {
+    const snippet = validated.message.replace(/\s+/g, " ").slice(0, 80);
     console.warn(
-      `[contact] job application filtered — silent drop (email=${validated.email}, stage=${jobCheck.stage}, reason=${jobCheck.reason})`
+      `[contact] job application filtered — silent drop (email=${validated.email}, stage=${jobCheck.stage}, reason=${jobCheck.reason}, message="${snippet}")`
     );
     return NextResponse.json({ ok: true, delivered: {} });
   }
