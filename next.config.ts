@@ -258,12 +258,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // Misc legacy WordPress assets and capitalised paths
-      {
-        source: "/Accreditation",
-        destination: "/accreditation",
-        permanent: true,
-      },
+      // Misc legacy WordPress assets
+      // (No /Accreditation case-fix redirect: Vercel matches sources
+      // case-insensitively, so /Accreditation → /accreditation would
+      // also match /accreditation and create an infinite redirect loop.)
       {
         source: "/2KO_Course_Guide_2023.pdf",
         destination: "/brochure",
