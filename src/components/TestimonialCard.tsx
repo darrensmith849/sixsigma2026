@@ -25,7 +25,7 @@ export default function TestimonialCard({
       >
         <path d="M14 10c-4 0-8 3-8 8v14h12V20h-6c0-3 2-6 6-6V10zm20 0c-4 0-8 3-8 8v14h12V20h-6c0-3 2-6 6-6V10z" />
       </svg>
-      <blockquote className="relative z-10 font-serif text-[22px] leading-[1.5] text-ink-900">
+      <blockquote className="relative z-10 pr-16 font-serif text-[22px] leading-[1.5] text-ink-900">
         &ldquo;{quote}&rdquo;
       </blockquote>
       <figcaption className="mt-8 flex items-center justify-between">
