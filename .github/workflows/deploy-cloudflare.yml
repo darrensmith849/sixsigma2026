@@ -1,0 +1,27 @@
+name: Deploy to Cloudflare (preview)
+
+# Builds OpenNext and deploys to a PREVIEW Worker (sixsigma2026-cfprev) with
+# no custom domain — the live Vercel site is unaffected. Runs on GitHub's
+# Node-22 runners because wrangler 4 requires Node >=22. Once verified, a
+# production variant (custom domain) can be added on the main branch.
+on:
+  push:
+    branches: [cf-migration]
+  workflow_dispatch:
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx opennextjs-cloudflare build
+      - name: Deploy worker (production name from wrangler.jsonc)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
