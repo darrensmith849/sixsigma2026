@@ -19,9 +19,9 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx opennextjs-cloudflare build
-      - name: Deploy preview worker
+      - name: Deploy worker (production name from wrangler.jsonc)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --name sixsigma2026-cfprev
+          command: deploy
