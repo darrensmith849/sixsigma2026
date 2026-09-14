@@ -153,6 +153,28 @@ export default function ContactForm() {
           form_course_mode: formData.courseMode || undefined,
           form_industry: formData.industry || undefined,
         });
+
+        /*
+         * And the Google Ads conversion.
+         *
+         * gtag.js is already on the page from <GoogleAnalytics> in the root
+         * layout, but it is configured for the GA4 stream only — a send_to for
+         * an Ads destination silently does nothing without its own config line.
+         * gtag processes the queue in order, so configuring immediately before
+         * the event is safe.
+         *
+         * This lives here rather than in the root layout deliberately: the
+         * layout currently carries an unfinished seo-kit refactor that imports
+         * untracked files, so committing it would break the build.
+         *
+         * Until this existed, the SixSigma and PMax campaigns were bidding
+         * toward a conversion goal whose two actions could not physically fire,
+         * which is how R23,600 a month came to be spent against no signal.
+         */
+        w.gtag("config", "AW-1006361911");
+        w.gtag("event", "conversion", {
+          send_to: "AW-1006361911/p4UGCLvviPQcELe6798D",
+        });
       }
 
       setSubmitted(true);
