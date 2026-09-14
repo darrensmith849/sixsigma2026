@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sixsigma2026",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+  // Env vars (BREVO_API_KEY, OPENAI_API_KEY, BREVO_*, SIGMAFY_*, NEXT_PUBLIC_SITE_URL)
+  // are set in the Cloudflare dashboard (Workers & Pages → Settings → Variables),
+  // not committed here. See sixsigma2026-cloudflare-migration runbook.
+}
