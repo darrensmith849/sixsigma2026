@@ -444,6 +444,19 @@ const legacyPageRedirects: Record<string, string> = {
   "/Why Choose 2KO As Your Training Provider.html": "/training-benefits",
   "/locations/six-sigma-courses-SA.html": "/courses",
   "/2ko-offices-1": "/contact",
+
+  // Filenames with spaces, percent-encoded. Next matches the raw pathname, so
+  // a source written with a literal space never fires for a browser request —
+  // these eight were verified 404 in production before being added this way.
+  // The literal-space forms above are kept for a client that sends it decoded.
+  "/Six%20Sigma%20White%20Belt.html": "/courses/white-belt-classroom",
+  "/onlineblackBelt%20MinitabTraining.html": "/courses/dmaic-black-belt-online",
+  "/onlinegreenBelt%20MinitabTraining.html": "/courses/dmaic-green-belt-online",
+  "/schedule%202017.html": "/schedule",
+  "/schedule%202018.html": "/schedule",
+  "/What%20Your%20Company%20Can%20Expect.html": "/training-benefits",
+  "/Why%20Choose%202KO%20As%20Your%20Training%20Provider.html": "/training-benefits",
+  "/Introduction%20to%20Public%20Relations,%20Communication%20and%20Media%20Studies.html": TRAINING,
 };
 
 /**
