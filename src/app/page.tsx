@@ -71,7 +71,7 @@ export default function Home() {
         heading="Master Six Sigma in South Africa"
         imageSrc="/images/hero-presentation.jpg"
         imageAlt="Six Sigma training presentation"
-        badge={{ value: "12,000+", label: "Professionals trained" }}
+        badge={{ value: "R80bn+", label: "In client savings since\u00A02005" }}
         actions={
           <>
             <Button href="/contact#enquiry-form" variant="filled" size="large" trailingArrow>
