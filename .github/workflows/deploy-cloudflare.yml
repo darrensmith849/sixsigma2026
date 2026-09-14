@@ -1,25 +1,38 @@
-name: Deploy to Cloudflare (preview)
+name: Deploy to Cloudflare
 
-# Builds OpenNext and deploys to a PREVIEW Worker (sixsigma2026-cfprev) with
-# no custom domain — the live Vercel site is unaffected. Runs on GitHub's
-# Node-22 runners because wrangler 4 requires Node >=22. Once verified, a
-# production variant (custom domain) can be added on the main branch.
+# Builds OpenNext and deploys the production Worker (sixsigma2026), which is
+# what serves sixsigmasouthafrica.co.za. The custom domain is attached to the
+# Worker in the Cloudflare dashboard rather than declared in wrangler.jsonc, so
+# it survives a deploy; Worker secrets (BREVO_*, SIGMAFY_INGEST_TOKEN) do too.
+#
+# Runs on Node 22 because wrangler 4 requires >=22.
+#
+# This trigger used to be the cf-migration branch, which is how the site came
+# to be frozen for three months: the migration was never merged, so main built
+# on Vercel — which no longer serves the domain — and nothing reached visitors.
+# main is the deploy branch now. Keep it that way.
 on:
   push:
-    branches: [cf-migration]
+    branches: [main]
   workflow_dispatch:
 
+# A second push while one deploy is mid-flight would race to upload assets.
+concurrency:
+  group: cloudflare-deploy
+  cancel-in-progress: false
+
 jobs:
-  deploy-preview:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
       - run: npm ci
       - run: npx opennextjs-cloudflare build
-      - name: Deploy worker (production name from wrangler.jsonc)
+      - name: Deploy worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
