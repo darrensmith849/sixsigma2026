@@ -9,7 +9,15 @@
 
 const LOGO_URL =
   "https://sixsigmasouthafrica.co.za/images/sssa-logo-full.png";
-const SIGMAFY_URL = "https://sigmafy.com";
+// sigmafy.CO. The .com is not ours — it is parked at eNom and redirects to a
+// domain-sale lander, so every confirmation email was sending warm leads to a
+// stranger's parking page.
+//
+// Pointed at the portal rather than the sigmafy.co apex because the apex
+// currently redirects to wp-login.php; a login wall is no better a destination
+// than a parking page. Move this to https://sigmafy.co once that becomes the
+// brochure site.
+const SIGMAFY_URL = "https://portal.sigmafy.co";
 
 const baseStyles = `
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
