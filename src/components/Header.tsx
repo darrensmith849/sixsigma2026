@@ -55,6 +55,7 @@ const navItems: NavItem[] = [
       { label: "Contact", href: "/contact", description: "Talk to our team" },
       { label: "Schedule", href: "/schedule", description: "Upcoming course dates" },
       { label: "Training Benefits", href: "/training-benefits", description: "Why invest in Six Sigma" },
+      { label: "After Your Certification", href: "/after-certification", description: "What happens when the course ends" },
       { label: "Accreditation", href: "/accreditation", description: "Our CSSC credentials" },
       { label: "Brochure", href: "/brochure", description: "Get the course catalogue" },
       { label: "FAQs", href: "/faqs", description: "Common questions answered" },

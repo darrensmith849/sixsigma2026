@@ -26,6 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/faqs", priority: 0.6 },
     { path: "/accreditation", priority: 0.6 },
     { path: "/training-benefits", priority: 0.6 },
+    // The post-certification question. High intent: the person asking has
+    // already bought training once.
+    { path: "/after-certification", priority: 0.7 },
     { path: "/brochure", priority: 0.5 },
     { path: "/schedule", priority: 0.6 },
   ];

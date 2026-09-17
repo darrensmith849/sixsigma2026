@@ -22,6 +22,7 @@ const courseLinks = [
 const resourceLinks = [
   { label: "Schedule", href: "/schedule" },
   { label: "Training Benefits", href: "/training-benefits" },
+  { label: "After Your Certification", href: "/after-certification" },
   { label: "Accreditation", href: "/accreditation" },
   { label: "Brochure", href: "/brochure" },
   { label: "FAQs", href: "/faqs" },
