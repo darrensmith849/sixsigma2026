@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
@@ -10,9 +11,60 @@ import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 export const metadata: Metadata = buildMetadata({
   title: `Our Services | ${SITE_NAME}`,
   description:
-    "Discover services offered in the Six Sigma space through world-leading experts. Consultancy, process improvement, quality management, project management, eLearning and corporate training.",
+    "Six Sigma training is the entry point: certification, Sigmafy Statistics for the measurement, Integrated Improvement Partnerships to sustain the cadence, and systems work when the process itself is the constraint.",
   path: "/services",
 });
+
+/**
+ * The four stages, as the page's spine.
+ *
+ * The site sells training and ranks on training, so Train leads and the rest
+ * follow as the sequence after it — not as a menu of equals. Sustain and Build
+ * link to 2ko.co.za rather than describing themselves here: 2KO owns that
+ * content and two sites competing for the same terms would cost both.
+ *
+ * The existing service list below is kept intact underneath. It carries real
+ * body copy and probably real rankings, and with Search Console still
+ * unverified there is no way to see what removing it would cost.
+ */
+const capabilities = [
+  {
+    stage: "Train",
+    title: "Six Sigma certification",
+    body:
+      "White through Black Belt, internationally accredited through CSSC USA, delivered in classroom, virtual and self-paced formats across South Africa. This is the entry point and the thing most organisations need first.",
+    href: "/courses",
+    cta: "Browse courses",
+    external: false,
+  },
+  {
+    stage: "Measure",
+    title: "Sigmafy Statistics",
+    body:
+      "312 statistical tools that run in the browser, with projects, gates and verified benefit in one place. Green Belt certification includes twelve months and Black Belt twenty-four, at no extra cost — so there is no separate licence to buy to finish a project.",
+    href: "/courses",
+    cta: "See which courses include it",
+    external: false,
+  },
+  {
+    stage: "Sustain",
+    title: "Integrated Improvement Partnerships",
+    body:
+      "For organisations that would rather buy the improvement cadence than build it internally. Run by 2KO on an annual basis, combining senior process consulting, a training allowance for further cohorts, bounded automation capacity and Sigmafy for the benefit evidence.",
+    href: "https://www.2ko.co.za/managed-improvement",
+    cta: "How the partnerships work",
+    external: true,
+  },
+  {
+    stage: "Build",
+    title: "Systems and automation",
+    body:
+      "Sometimes DMAIC concludes that the process cannot improve much further while it runs on spreadsheets and email. Building the system the improved process needs is different work, and 2KO does it separately.",
+    href: "https://www.2ko.co.za/systems",
+    cta: "Systems and automation",
+    external: true,
+  },
+];
 
 const services = [
   {
@@ -136,6 +188,56 @@ export default function ServicesPage() {
           </p>
         </div>
       </section>
+
+      {/* ─── The four stages ─── */}
+      <FadeIn>
+        <section className="bg-ink-50 py-24 md:py-32">
+          <div className="container-wide">
+            <Eyebrow className="mb-5">What we do</Eyebrow>
+            <h2 className="max-w-3xl">
+              Training is the entry point, not the whole job
+            </h2>
+            <p className="mt-6 max-w-3xl text-[17px] leading-[1.7] text-ink-600">
+              Certified people are the start. Keeping the improvement running
+              needs somewhere to hold the measurement, and sometimes a partner
+              or a system underneath it. Here is the whole sequence, in order.
+            </p>
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8">
+              {capabilities.map((c) => (
+                <div
+                  key={c.stage}
+                  className="flex flex-col rounded-[24px] border border-ink-100 bg-white p-10 [box-shadow:var(--shadow-md)]"
+                >
+                  <div className="text-[13px] font-semibold uppercase tracking-[0.1em] text-green-700">
+                    {c.stage}
+                  </div>
+                  <h3 className="mt-3 text-[22px] font-bold tracking-[-0.02em]">
+                    {c.title}
+                  </h3>
+                  <p className="mt-4 flex-1 text-[16px] leading-[1.7] text-ink-600">
+                    {c.body}
+                  </p>
+                  {c.external ? (
+                    <a
+                      href={c.href}
+                      className="mt-6 font-semibold text-green-700 hover:text-green-800"
+                    >
+                      {c.cta} on 2ko.co.za →
+                    </a>
+                  ) : (
+                    <Link
+                      href={c.href}
+                      className="mt-6 font-semibold text-green-700 hover:text-green-800"
+                    >
+                      {c.cta} →
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </FadeIn>
 
       {/* ─── Services list ─── */}
       <section className="bg-white py-24 md:py-32">
