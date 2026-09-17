@@ -2,7 +2,29 @@ import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
 import CTASection from "@/components/CTASection";
-import { buildMetadata, SITE_NAME } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import {
+  buildMetadata,
+  LASTMOD_CACHE,
+  PUBLISHER_ORG,
+  SITE_LAUNCH_DATE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
+import { buildArticleSchema } from "@/seo-kit/schema/article";
+
+const articleJsonLd = buildArticleSchema({
+  headline: `Six Sigma Accreditation — CSSC (USA) & MICT SETA`,
+  description:
+    "Our Six Sigma courses are internationally accredited through the Council for Six Sigma Certification (CSSC) in the USA, plus MICT SETA Unit Standard 243816 locally.",
+  url: `${SITE_URL}/accreditation`,
+  image: `${SITE_URL}/og-image.jpg`,
+  datePublished: LASTMOD_CACHE["/accreditation"] ?? SITE_LAUNCH_DATE,
+  dateModified: LASTMOD_CACHE["/accreditation"] ?? SITE_LAUNCH_DATE,
+  author: PUBLISHER_ORG,
+  publisher: PUBLISHER_ORG,
+});
 
 export const metadata: Metadata = buildMetadata({
   title: `Accreditation | ${SITE_NAME}`,
@@ -35,6 +57,15 @@ const benefits = [
 export default function AccreditationPage() {
   return (
     <>
+      <JsonLd data={articleJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Accreditation", url: "/accreditation" },
+        ]}
+      />
+
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
         <div

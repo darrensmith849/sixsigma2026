@@ -4,7 +4,8 @@ import Button from "@/components/Button";
 import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
 import CTASection from "@/components/CTASection";
-import { buildMetadata, SITE_NAME } from "@/lib/seo";
+import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 
 export const metadata: Metadata = buildMetadata({
   title: `Our Services | ${SITE_NAME}`,
@@ -82,6 +83,14 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+        ]}
+      />
+
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
         <div

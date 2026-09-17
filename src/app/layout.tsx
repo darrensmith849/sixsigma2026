@@ -21,6 +21,11 @@ const sourceSerif = Source_Serif_4({
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL, buildMetadata } from "@/lib/seo";
+import {
+  buildOrganizationSchema,
+  buildEducationalOrganizationSchema,
+} from "@/seo-kit/schema/organization";
+import { buildWebsiteSchema } from "@/seo-kit/schema/website";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,31 +38,46 @@ export const metadata: Metadata = {
   }),
 };
 
-const organizationJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
+/**
+ * `sameAs` is the highest-leverage AI-entity binding field. Add verified URLs
+ * that identify Six Sigma South Africa / 2KO Africa CC on other authoritative
+ * sites. Empty entries are intentionally omitted — 404s degrade trust.
+ *
+ * TODO (user-supplied):
+ *   - LinkedIn company page (e.g. https://www.linkedin.com/company/six-sigma-south-africa/)
+ *   - CSSC accredited-provider profile (https://www.sixsigmacouncil.org/...)
+ *   - MICT SETA / SAQA provider listing
+ *   - Wikidata entity (create in Phase D.2, then add the Q-ID URL)
+ *   - YouTube / Facebook / X channels if active
+ */
+const SAME_AS: string[] = [
+  // Populate with verified URLs only.
+];
+
+const ORG_DESCRIPTION =
+  "Six Sigma South Africa is the premier provider of internationally accredited Six Sigma training and certification on the African continent.";
+
+const organizationJsonLd = buildOrganizationSchema({
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/sssa-logo-full.jpg`,
-  description:
-    "Six Sigma South Africa is the premier provider of internationally accredited Six Sigma training and certification on the African continent.",
+  logoUrl: `${SITE_URL}/images/sssa-logo-full.jpg`,
+  description: ORG_DESCRIPTION,
+  sameAs: SAME_AS,
   contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+27-21-426-5300",
+    telephone: "+27-21-527-0065",
     email: "info@2ko.co.za",
     contactType: "customer service",
     areaServed: "ZA",
     availableLanguage: "en",
   },
-};
+});
 
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
+const localBusinessJsonLd = buildEducationalOrganizationSchema({
   name: SITE_NAME,
   url: SITE_URL,
-  logo: `${SITE_URL}/images/sssa-logo-full.jpg`,
-  telephone: "+27-21-426-5300",
+  logoUrl: `${SITE_URL}/images/sssa-logo-full.jpg`,
+  description: ORG_DESCRIPTION,
+  telephone: "+27-21-527-0065",
   email: "info@2ko.co.za",
   areaServed: [
     "Johannesburg",
@@ -67,11 +87,32 @@ const localBusinessJsonLd = {
     "Port Elizabeth",
     "South Africa",
   ],
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "ZA",
-  },
-};
+  addressCountry: "ZA",
+  sameAs: SAME_AS,
+  hasCredential: [
+    {
+      name: "Council for Six Sigma Certification (CSSC) accredited training provider",
+      credentialCategory: "Accreditation",
+      recognizedBy: {
+        name: "Council for Six Sigma Certification",
+        url: "https://www.sixsigmacouncil.org/",
+      },
+    },
+    {
+      name: "MICT SETA accredited training provider (Unit Standard 243816, accreditation #2007/01/215)",
+      credentialCategory: "Accreditation",
+      recognizedBy: {
+        name: "Media, Information and Communication Technologies SETA",
+      },
+    },
+  ],
+});
+
+const websiteJsonLd = buildWebsiteSchema({
+  name: SITE_NAME,
+  url: SITE_URL,
+  searchUrlPattern: `${SITE_URL}/courses?q={search_term_string}`,
+});
 
 export default function RootLayout({
   children,
@@ -81,7 +122,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${jakarta.variable} ${sourceSerif.variable}`}>
       <body className="min-h-screen flex flex-col font-sans">
-        <JsonLd data={[organizationJsonLd, localBusinessJsonLd]} />
+        <JsonLd data={[organizationJsonLd, localBusinessJsonLd, websiteJsonLd]} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

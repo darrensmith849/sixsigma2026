@@ -9,6 +9,7 @@ import StatBlock from "@/components/StatBlock";
 import CourseCard from "@/components/CourseCard";
 import CTASection from "@/components/CTASection";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 import { cities, getCity } from "./cityData";
 import { courses } from "../../[slug]/courseData";
 
@@ -58,7 +59,7 @@ export default async function CityPage({
       name: SITE_NAME,
       url: SITE_URL,
     },
-    telephone: "+27-21-426-5300",
+    telephone: "+27-21-527-0065",
     email: "info@2ko.co.za",
     areaServed: {
       "@type": "City",
@@ -76,31 +77,22 @@ export default async function CityPage({
     },
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Courses",
-        item: `${SITE_URL}/courses`,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: `Six Sigma Training in ${found.name}`,
-        item: `${SITE_URL}/courses/in/${found.slug}`,
-      },
-    ],
-  };
-
   const otherCities = cities.filter((c) => c.slug !== found.slug);
 
   return (
     <>
-      <JsonLd data={[localBusinessJsonLd, breadcrumbJsonLd]} />
+      <JsonLd data={localBusinessJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Courses", url: "/courses" },
+          {
+            name: `Six Sigma Training in ${found.name}`,
+            url: `/courses/in/${found.slug}`,
+          },
+        ]}
+      />
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">

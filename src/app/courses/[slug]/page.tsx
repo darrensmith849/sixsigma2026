@@ -8,7 +8,16 @@ import JsonLd from "@/components/JsonLd";
 import Eyebrow from "@/components/Eyebrow";
 import CourseCard from "@/components/CourseCard";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
-import { courses, getCourse } from "./courseData";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
+import {
+  buildCourseSchema,
+  toCourseModeKeyword,
+  type CourseInstanceInput,
+} from "@/seo-kit/schema/course";
+import { getSessionsForCourse } from "@/data/sessions";
+import { getInstructor } from "@/data/instructors";
+import { cities as cityData } from "../in/[city]/cityData";
+import { courses, getCourse, toolsBundleFor } from "./courseData";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ slug: c.slug }));
@@ -30,12 +39,31 @@ export async function generateMetadata({
   });
 }
 
-const benefits = [
+const baseBenefits = [
   { title: "CSSC accredited certificate", body: "Internationally recognised through CSSC USA on successful completion." },
   { title: "Experienced practitioners", body: "Trained and led by certified Six Sigma Black Belts with industry experience." },
   { title: "Flexible delivery", body: "Available in classroom, virtual instructor-led and self-paced online formats." },
   { title: "On-site available", body: "We deliver this course at your premises anywhere in South Africa or beyond." },
 ];
+
+/**
+ * Green and Black Belt fees include Sigmafy Statistics, and that leads the
+ * list rather than sitting fourth: it is the one thing here a competitor
+ * cannot match, and a delegate needs statistical software to run the project
+ * the certification requires. Everything else on this list is table stakes.
+ */
+function benefitsFor(slug: string) {
+  const bundle = toolsBundleFor(slug);
+  if (!bundle) return baseBenefits;
+  const years = bundle.months / 12;
+  return [
+    {
+      title: `Sigmafy Statistics included — ${bundle.months} months`,
+      body: `312 statistical tools in your browser, free for ${years === 1 ? "a year" : `${years} years`} with this course. Bought separately that is $${bundle.worthLabel}. No Minitab licence required to complete your project.`,
+    },
+    ...baseBenefits,
+  ];
+}
 
 export default async function CourseDetailPage({
   params,
@@ -58,27 +86,82 @@ export default async function CourseDetailPage({
     : `/contact?subject=course-enquiry&course=${course.topicSlug}&mode=${course.modeSlug}#enquiry-form`;
   const ctaLabel = isStartOnPortal ? "Start free course" : "Enquire now";
 
-  const courseJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Course",
+  // Dated instances for any upcoming sessions of this course. Empty array →
+  // we fall back to a single generic CourseInstance (always-on offering).
+  const courseSessions = getSessionsForCourse(course.slug);
+  const datedInstances: CourseInstanceInput[] = courseSessions.map((s) => {
+    const isOnline = s.city === "online" || s.city === "virtual";
+    const city = isOnline ? null : cityData.find((c) => c.slug === s.city);
+    const instructor = s.instructorSlug
+      ? getInstructor(s.instructorSlug)
+      : undefined;
+    return {
+      courseMode: toCourseModeKeyword(course.mode),
+      courseWorkload: course.duration,
+      startDate: s.startDate,
+      endDate: s.endDate,
+      inLanguage: "en",
+      location: isOnline
+        ? undefined
+        : {
+            name: s.location ?? `${city?.name ?? "Venue"} — Six Sigma South Africa`,
+            addressLocality: city?.locality,
+            addressRegion: city?.region,
+            addressCountry: "ZA",
+          },
+      instructorUrl: instructor
+        ? `${SITE_URL}/about/instructors/${instructor.slug}`
+        : undefined,
+    };
+  });
+  const genericInstance: CourseInstanceInput = {
+    courseMode: toCourseModeKeyword(course.mode),
+    courseWorkload: course.duration,
+    inLanguage: "en",
+  };
+
+  // The bundled software belongs in the schema description, not in `teaches`
+  // — it is included with the course, not taught by it. The description is
+  // also the field answer engines quote when asked what a course includes.
+  const bundle = toolsBundleFor(course.slug);
+  const schemaDescription = bundle
+    ? `${course.description} Includes ${bundle.months} months of Sigmafy Statistics — 312 browser-based statistical tools, worth $${bundle.worthLabel} — at no extra cost, so no separate Minitab licence is needed to complete the certification project.`
+    : course.description;
+
+  const courseJsonLd = buildCourseSchema({
     name: course.title,
-    description: course.description,
+    description: schemaDescription,
+    url: `${SITE_URL}/courses/${course.slug}`,
+    image: course.image.startsWith("http")
+      ? course.image
+      : `${SITE_URL}${course.image}`,
     provider: {
       "@type": "Organization",
       name: SITE_NAME,
-      sameAs: SITE_URL,
+      url: SITE_URL,
+      logo: `${SITE_URL}/images/sssa-logo-full.jpg`,
     },
-    url: `${SITE_URL}/courses/${course.slug}`,
-    hasCourseInstance: {
-      "@type": "CourseInstance",
-      courseMode: course.mode,
-      courseWorkload: course.duration,
-    },
-  };
+    educationalCredentialAwarded: course.credentialAwarded,
+    teaches: course.outline,
+    coursePrerequisites: course.prerequisites || undefined,
+    inLanguage: "en",
+    educationalLevel: course.level,
+    audienceRole: "student",
+    instances:
+      datedInstances.length > 0 ? datedInstances : [genericInstance],
+  });
 
   return (
     <>
       <JsonLd data={courseJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Courses", url: "/courses" },
+          { name: course.shortTitle, url: `/courses/${course.slug}` },
+        ]}
+      />
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
@@ -152,7 +235,7 @@ export default async function CourseDetailPage({
                 <Eyebrow className="mb-5">What you&rsquo;ll get</Eyebrow>
                 <h2 className="mb-12">Included with this course</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {benefits.map((b) => (
+                  {benefitsFor(course.slug).map((b) => (
                     <div
                       key={b.title}
                       className="rounded-[20px] border border-ink-100 bg-white p-7 [box-shadow:var(--shadow-sm)]"

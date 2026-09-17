@@ -3,7 +3,8 @@ import FadeIn from "@/components/FadeIn";
 import JsonLd from "@/components/JsonLd";
 import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
-import { buildMetadata, SITE_NAME } from "@/lib/seo";
+import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 
 export const metadata: Metadata = buildMetadata({
   title: `Six Sigma FAQs | ${SITE_NAME}`,
@@ -61,6 +62,13 @@ export default function FaqsPage() {
   return (
     <>
       <JsonLd data={faqJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "FAQs", url: "/faqs" },
+        ]}
+      />
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">

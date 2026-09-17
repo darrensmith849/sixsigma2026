@@ -7,7 +7,31 @@ import CTASection from "@/components/CTASection";
 import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
 import StatBlock from "@/components/StatBlock";
-import { buildMetadata, SITE_NAME } from "@/lib/seo";
+import JsonLd from "@/components/JsonLd";
+import {
+  buildMetadata,
+  LASTMOD_CACHE,
+  PUBLISHER_ORG,
+  SITE_LAUNCH_DATE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
+import { buildArticleSchema } from "@/seo-kit/schema/article";
+import Link from "next/link";
+import { instructors } from "@/data/instructors";
+
+const articleJsonLd = buildArticleSchema({
+  headline: `About ${SITE_NAME}`,
+  description:
+    "Six Sigma South Africa is the leading Six Sigma training provider for many of the largest companies in South Africa and neighbouring African countries.",
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/og-image.jpg`,
+  datePublished: LASTMOD_CACHE["/about"] ?? SITE_LAUNCH_DATE,
+  dateModified: LASTMOD_CACHE["/about"] ?? SITE_LAUNCH_DATE,
+  author: PUBLISHER_ORG,
+  publisher: PUBLISHER_ORG,
+});
 
 export const metadata: Metadata = buildMetadata({
   title: `About | ${SITE_NAME}`,
@@ -57,6 +81,15 @@ const results = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={articleJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ]}
+      />
+
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
         <div
@@ -114,6 +147,34 @@ export default function AboutPage() {
           </div>
         </section>
       </FadeIn>
+
+      {/* ─── Meet the team — only renders when src/data/instructors.ts is
+            populated. Empty array → section hidden, no broken link. ─── */}
+      {instructors.length > 0 && (
+        <FadeIn>
+          <section className="bg-white py-20">
+            <div className="container-wide">
+              <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+                <div className="max-w-xl">
+                  <Eyebrow className="mb-5">Our team</Eyebrow>
+                  <h2>Trainers with industry experience</h2>
+                  <p className="mt-5 text-[17px] text-ink-500 leading-[1.65]">
+                    Every Six Sigma South Africa course is led by a
+                    CSSC-certified practitioner with real-world South African
+                    industry experience.
+                  </p>
+                </div>
+                <Link
+                  href="/about/instructors"
+                  className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-3 text-[14px] font-semibold text-ink-900 hover:border-green-500 hover:text-green-700"
+                >
+                  Meet the instructors →
+                </Link>
+              </div>
+            </div>
+          </section>
+        </FadeIn>
+      )}
 
       {/* ─── Accreditation ─── */}
       <FadeIn>

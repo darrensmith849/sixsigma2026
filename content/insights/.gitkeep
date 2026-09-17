@@ -1,0 +1,26 @@
+# content/insights
+
+Source-of-truth folder for /insights articles. Each .md / .mdx file becomes a
+static page at /insights/<filename-without-extension>.
+
+Required frontmatter (YAML between ---):
+
+  title:         string
+  summary:       string (1-2 sentences)
+  datePublished: YYYY-MM-DD or ISO 8601 datetime
+  dateModified:  YYYY-MM-DD (optional)
+  authorSlug:    slug from src/data/instructors.ts, or omit for Organization
+  image:         /path/to/og-or-hero.jpg (optional)
+  tags:          [Six Sigma, DMAIC, ...]
+  draft:         true to keep in repo but hide from /insights and sitemap
+  citations:     [{ url, title }] — external sources you cite (Article.citation)
+  mentions:      [{ url, name }] — on-site entities you reference (Article.mentions)
+
+Body is regular Markdown. MDX (component embedding) is supported via the file
+extension but requires extra wiring — start with plain .md.
+
+Editorial pillars (Phase D.1 of the SEO plan):
+  1. Six Sigma in SA industries (mining, automotive, banking, public sector)
+  2. Comparison content (Six Sigma vs ISO 9001, Lean vs Agile in SA call centres)
+  3. Original SA-specific data (State of Quality Management in SA — annual)
+  4. Regulatory framing (MICT SETA, SAQA, B-BBEE skills-spend implications)

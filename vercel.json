@@ -1,4 +1,14 @@
 {
   "framework": "nextjs",
-  "ignoreCommand": "bash .vercel-guard.sh"
+  "ignoreCommand": "bash .vercel-guard.sh",
+  "crons": [
+    {
+      "path": "/api/cron/indexnow",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/llm-monitor",
+      "schedule": "0 7 * * 1"
+    }
+  ]
 }

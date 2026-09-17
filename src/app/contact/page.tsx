@@ -6,6 +6,7 @@ import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 
 export const metadata: Metadata = buildMetadata({
   title: `Contact | ${SITE_NAME}`,
@@ -21,7 +22,7 @@ const contactJsonLd = {
   mainEntity: {
     "@type": "Organization",
     name: SITE_NAME,
-    telephone: "+27-21-426-5300",
+    telephone: "+27-21-527-0065",
     email: "info@2ko.co.za",
   },
 };
@@ -39,6 +40,13 @@ export default function ContactPage() {
   return (
     <>
       <JsonLd data={contactJsonLd} />
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" },
+        ]}
+      />
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">

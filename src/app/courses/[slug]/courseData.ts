@@ -11,6 +11,12 @@ export interface CourseDetail {
   duration: string;
   summary: string;
   outline: string[];
+  /** Schema.org `educationalCredentialAwarded`. */
+  credentialAwarded: string;
+  /** Schema.org `coursePrerequisites`. Empty string for no prerequisites. */
+  prerequisites: string;
+  /** Schema.org `educationalLevel`. */
+  level: "Beginner" | "Intermediate" | "Advanced";
 }
 
 interface TopicSpec {
@@ -19,6 +25,9 @@ interface TopicSpec {
   summary: string;
   outline: string[];
   duration: { classroom: string; virtual: string; online: string };
+  credentialAwarded: string;
+  prerequisites: string;
+  level: "Beginner" | "Intermediate" | "Advanced";
 }
 
 const topics: TopicSpec[] = [
@@ -37,6 +46,10 @@ const topics: TopicSpec[] = [
       "Auditing and measuring a 5S programme",
     ],
     duration: { classroom: "1 day", virtual: "1 day (live online)", online: "Self-paced (approx 4 hours)" },
+    credentialAwarded:
+      "5S Foundations certificate issued by Six Sigma South Africa",
+    prerequisites: "",
+    level: "Beginner",
   },
   {
     slug: "kaizen",
@@ -52,6 +65,10 @@ const topics: TopicSpec[] = [
       "Sustaining improvements and measuring impact",
     ],
     duration: { classroom: "1 day", virtual: "1 day (live online)", online: "Self-paced (approx 4 hours)" },
+    credentialAwarded:
+      "Kaizen Practitioner certificate issued by Six Sigma South Africa",
+    prerequisites: "",
+    level: "Beginner",
   },
   {
     slug: "white-belt",
@@ -67,6 +84,10 @@ const topics: TopicSpec[] = [
       "Next steps in your Six Sigma journey",
     ],
     duration: { classroom: "Half day", virtual: "Half day (live online)", online: "Self-paced (approx 2 hours)" },
+    credentialAwarded:
+      "Six Sigma White Belt certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites: "",
+    level: "Beginner",
   },
   {
     slug: "yellow-belt",
@@ -82,6 +103,11 @@ const topics: TopicSpec[] = [
       "Supporting a Green or Black Belt project",
     ],
     duration: { classroom: "2 days", virtual: "2 days (live online)", online: "Self-paced (approx 10 hours)" },
+    credentialAwarded:
+      "Six Sigma Yellow Belt certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "None — White Belt awareness recommended but not required.",
+    level: "Beginner",
   },
   {
     slug: "core-green-belt",
@@ -97,6 +123,11 @@ const topics: TopicSpec[] = [
       "Leading an improvement project",
     ],
     duration: { classroom: "5 days", virtual: "5 days (live online)", online: "Self-paced (approx 40 hours)" },
+    credentialAwarded:
+      "Six Sigma Green Belt (Core) certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "Yellow Belt or equivalent working knowledge of Six Sigma recommended.",
+    level: "Intermediate",
   },
   {
     slug: "dmaic-green-belt",
@@ -112,6 +143,11 @@ const topics: TopicSpec[] = [
       "Control phase — sustaining the gains",
     ],
     duration: { classroom: "5 days", virtual: "5 days (live online)", online: "Self-paced (approx 40 hours)" },
+    credentialAwarded:
+      "Six Sigma Green Belt (DMAIC) certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "Yellow Belt or equivalent working knowledge of Six Sigma recommended.",
+    level: "Intermediate",
   },
   {
     slug: "lean-green-belt",
@@ -127,6 +163,11 @@ const topics: TopicSpec[] = [
       "Combining Lean with DMAIC",
     ],
     duration: { classroom: "5 days", virtual: "5 days (live online)", online: "Self-paced (approx 40 hours)" },
+    credentialAwarded:
+      "Lean Six Sigma Green Belt certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "Yellow Belt or equivalent working knowledge of Lean / Six Sigma recommended.",
+    level: "Intermediate",
   },
   {
     slug: "dmaic-black-belt",
@@ -142,6 +183,11 @@ const topics: TopicSpec[] = [
       "Coaching Green Belts",
     ],
     duration: { classroom: "10 days", virtual: "10 days (live online)", online: "Self-paced (approx 80 hours)" },
+    credentialAwarded:
+      "Six Sigma Black Belt (DMAIC) certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "Green Belt or equivalent demonstrable Six Sigma project experience.",
+    level: "Advanced",
   },
   {
     slug: "lean-black-belt",
@@ -157,6 +203,11 @@ const topics: TopicSpec[] = [
       "Sustaining Lean at scale",
     ],
     duration: { classroom: "10 days", virtual: "10 days (live online)", online: "Self-paced (approx 80 hours)" },
+    credentialAwarded:
+      "Lean Six Sigma Black Belt certificate accredited by the Council for Six Sigma Certification (CSSC, USA)",
+    prerequisites:
+      "Green Belt or equivalent demonstrable Lean / Six Sigma experience.",
+    level: "Advanced",
   },
   {
     slug: "root-cause-analysis",
@@ -172,6 +223,10 @@ const topics: TopicSpec[] = [
       "Running an RCA investigation end to end",
     ],
     duration: { classroom: "1 day", virtual: "1 day (live online)", online: "Self-paced (approx 4 hours)" },
+    credentialAwarded:
+      "Root Cause Analysis Practitioner certificate issued by Six Sigma South Africa",
+    prerequisites: "",
+    level: "Beginner",
   },
 ];
 
@@ -240,6 +295,9 @@ export const courses: CourseDetail[] = topics.flatMap((topic, tIdx) =>
       duration: topic.duration[mode.slug],
       summary: topic.summary,
       outline: topic.outline,
+      credentialAwarded: topic.credentialAwarded,
+      prerequisites: topic.prerequisites,
+      level: topic.level,
     };
   })
 );
@@ -251,3 +309,36 @@ export function getCourse(slug: string): CourseDetail | undefined {
 export const TOPIC_SLUGS = topics.map((t) => t.slug);
 export const MODE_SLUGS = ["classroom", "virtual", "online"] as const;
 export const MODES = modeDetails.map((m) => ({ slug: m.slug, name: m.name }));
+
+/**
+ * Sigmafy Statistics access bundled with a course.
+ *
+ * Green Belt delegates get twelve months, Black Belt twenty-four. At the
+ * product's list price of $50 per person per month that is $600 and $1,200 of
+ * software included in the course fee — and until 2026-09-17 no page selling
+ * these belts mentioned it at all.
+ *
+ * Keyed off the topic slug rather than a per-course flag so a new delivery
+ * mode of an existing belt inherits it automatically and cannot be forgotten.
+ */
+export type ToolsBundle = {
+  months: number;
+  /** List price of the same access, bought separately. */
+  worthUsd: number;
+  /** Thousands-separated, so it reads as money rather than a part number. */
+  worthLabel: string;
+};
+
+const TOOLS_MONTHLY_USD = 50;
+
+export function toolsBundleFor(slug: string): ToolsBundle | null {
+  const bundle = (months: number): ToolsBundle => {
+    const worthUsd = months * TOOLS_MONTHLY_USD;
+    return { months, worthUsd, // en-US, not en-ZA: this is a dollar figure, and en-ZA separates
+    // thousands with a space — "$1 200" reads like a typo.
+    worthLabel: worthUsd.toLocaleString("en-US") };
+  };
+  if (/black-belt/.test(slug)) return bundle(24);
+  if (/green-belt/.test(slug)) return bundle(12);
+  return null;
+}

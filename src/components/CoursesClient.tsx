@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import CourseCard from "./CourseCard";
 import Button from "./Button";
 import FadeIn from "./FadeIn";
@@ -276,9 +277,30 @@ const courseMap: Record<Mode, CourseData[]> = {
   Classroom: classroomCourses,
 };
 
-export default function CoursesClient() {
+interface CoursesClientProps {
+  /**
+   * Search-term param from /courses?q=… , read server-side and passed in as
+   * a prop so the courses list renders into SSR HTML (essential for AI
+   * crawlers and SEO). This wires up the WebSite SearchAction JSON-LD
+   * emitted from src/app/layout.tsx.
+   */
+  initialQuery?: string;
+}
+
+export default function CoursesClient({ initialQuery = "" }: CoursesClientProps) {
   const [activeMode, setActiveMode] = useState<Mode>("Online");
-  const courses = courseMap[activeMode];
+  const query = initialQuery.trim();
+
+  const courses = useMemo(() => {
+    const list = courseMap[activeMode];
+    if (!query) return list;
+    const needle = query.toLowerCase();
+    return list.filter(
+      (c) =>
+        c.title.toLowerCase().includes(needle) ||
+        c.description.toLowerCase().includes(needle),
+    );
+  }, [activeMode, query]);
 
   const modes: Mode[] = ["Online", "Virtual", "Classroom"];
 
@@ -330,6 +352,43 @@ export default function CoursesClient() {
       {/* ─── Course grid on soft surface ─── */}
       <section className="bg-ink-50 py-24 md:py-32">
         <div className="container-wide">
+          {query && (
+            <div className="mb-10 flex flex-wrap items-center gap-3 text-[14px] text-ink-700">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 [box-shadow:var(--shadow-sm)]">
+                <span className="font-semibold">Filtered by:</span>
+                <span>&ldquo;{query}&rdquo;</span>
+              </span>
+              <Link
+                href="/courses"
+                className="text-[13px] font-semibold text-green-700 underline-offset-4 hover:underline"
+              >
+                Clear filter
+              </Link>
+            </div>
+          )}
+
+          {courses.length === 0 ? (
+            <div className="rounded-[20px] border border-dashed border-ink-200 bg-white p-10 text-center">
+              <h3 className="text-ink-900 mb-3">
+                No {activeMode.toLowerCase()} courses match &ldquo;{query}&rdquo;
+              </h3>
+              <p className="text-[15px] text-ink-500 leading-[1.6] mb-6 max-w-[480px] mx-auto">
+                Try a different format above, clear the filter, or talk to us
+                and we&rsquo;ll point you to the right course.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  href="/courses"
+                  className="inline-flex items-center rounded-full border border-ink-200 px-5 py-2.5 text-[14px] font-semibold text-ink-900 hover:bg-ink-50"
+                >
+                  Clear filter
+                </Link>
+                <Button href="/contact#enquiry-form" variant="filled" size="default">
+                  Talk to us
+                </Button>
+              </div>
+            </div>
+          ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course, i) => (
               <FadeIn key={course.title}>
@@ -362,6 +421,7 @@ export default function CoursesClient() {
               </div>
             </FadeIn>
           </div>
+          )}
         </div>
       </section>
 

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import FadeIn from "@/components/FadeIn";
 import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
-import { buildMetadata, SITE_NAME } from "@/lib/seo";
+import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
+import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
 
 export const metadata: Metadata = buildMetadata({
   title: `Request a Brochure | ${SITE_NAME}`,
@@ -23,6 +24,14 @@ const includes = [
 export default function BrochurePage() {
   return (
     <>
+      <BreadcrumbsJsonLd
+        siteUrl={SITE_URL}
+        crumbs={[
+          { name: "Home", url: "/" },
+          { name: "Request a brochure", url: "/brochure" },
+        ]}
+      />
+
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-green-900 text-white pt-[80px]">
         <div
