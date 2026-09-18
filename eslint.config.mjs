@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // OpenNext's bundle. Not in eslint-config-next's defaults, and it is
+    // ~187 generated files — linting it buries the src findings under
+    // fourteen thousand problems.
+    ".open-next/**",
   ]),
 ]);
 

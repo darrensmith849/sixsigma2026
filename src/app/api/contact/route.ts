@@ -13,7 +13,7 @@ import { classifyAsJobApplication } from "@/lib/job-filter";
  *   1. Brevo Transactional Email → internal notification to contact@2ko.co.za
  *   2. Brevo Transactional Email → confirmation back to the enquirer
  *   3. Brevo Contacts → upsert into the "Website Enquiries" list
- *   4. Sigmafy leads endpoint (optional, gated on env var)
+ *   4. The estate enquiries database, via the ingest endpoint on 2ko.co.za
  *
  * Each outbound call runs in parallel via Promise.allSettled so a single
  * failure doesn't block the others. The user only sees an error if the
@@ -171,19 +171,45 @@ async function upsertContact(payload: ContactPayload) {
   });
 }
 
-async function sendToSigmafy(payload: ContactPayload) {
-  const url = process.env.SIGMAFY_API_URL;
-  const key = process.env.SIGMAFY_API_KEY;
-  if (!url || !key) return { skipped: true };
+/**
+ * Record the enquiry in the estate's own database, via the ingest endpoint on
+ * 2ko.co.za.
+ *
+ * This replaces a call to a Sigmafy endpoint that never ran here. It read
+ * SIGMAFY_API_URL and SIGMAFY_API_KEY; this Worker has neither, so it took the
+ * `if (!url || !key) return { skipped: true }` branch on every submission,
+ * resolved successfully, and the route answered `delivered: { sigmafy: true }`.
+ * Every enquiry this site has taken since then exists only as email.
+ *
+ * So this one throws when it is not configured. A missing secret is a broken
+ * deployment and should look like one.
+ */
+async function recordEnquiry(payload: ContactPayload) {
+  const url = process.env.ENQUIRY_INGEST_URL;
+  const token = process.env.ENQUIRY_INGEST_TOKEN;
+  if (!url || !token) {
+    throw new Error(
+      "Enquiry ingest is not configured (ENQUIRY_INGEST_URL / ENQUIRY_INGEST_TOKEN missing)",
+    );
+  }
+
+  // The form collects UTMs under their full query-string names; the ingest
+  // schema wants them bare.
+  const utm = Object.fromEntries(
+    Object.entries(payload.utm ?? {}).map(([k, v]) => [k.replace(/^utm_/, ""), v]),
+  );
 
   const res = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${key}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      source: "sixsigmasouthafrica.co.za",
+      site: "sixsigmasouthafrica.co.za",
+      // A course enquiry is the thing this site mostly takes, and it is worth
+      // separating from a general one in the dashboard.
+      kind: payload.courseTopic ? "course" : "contact",
       sourcePage: payload.sourcePage,
       name: payload.name,
       email: payload.email,
@@ -196,14 +222,14 @@ async function sendToSigmafy(payload: ContactPayload) {
       delegates: payload.delegates,
       preferredCity: payload.preferredCity,
       industry: payload.industry,
-      utm: payload.utm,
+      utm: Object.keys(utm).length ? utm : undefined,
       userAgent: payload.userAgent,
-      receivedAt: new Date().toISOString(),
     }),
   });
+
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Sigmafy lead POST failed ${res.status}: ${text}`);
+    const text = await res.text().catch(() => "");
+    throw new Error(`Enquiry ingest failed ${res.status}: ${text.slice(0, 200)}`);
   }
   return res.json().catch(() => ({}));
 }
@@ -256,15 +282,18 @@ export async function POST(req: NextRequest) {
   }
 
   // Fan out. Notification is the critical path — if it throws we return 500.
-  // Confirmation, contact upsert and Sigmafy are best-effort (logged).
+  // Confirmation, contact upsert and the enquiry record are best-effort, and
+  // every one of them is logged when it fails. The record throws rather than
+  // skipping when unconfigured, so a missing secret shows up here instead of
+  // reporting success and losing the lead.
   const results = await Promise.allSettled([
     sendNotificationEmail(validated), // 0 — critical
     sendConfirmationEmail(validated), // 1
     upsertContact(validated),         // 2
-    sendToSigmafy(validated),         // 3
+    recordEnquiry(validated),         // 3
   ]);
 
-  const labels = ["notification", "confirmation", "contact-upsert", "sigmafy"];
+  const labels = ["notification", "confirmation", "contact-upsert", "enquiry-record"];
   results.forEach((r, i) => {
     if (r.status === "rejected") {
       // eslint-disable-next-line no-console
@@ -285,7 +314,7 @@ export async function POST(req: NextRequest) {
       notification: results[0].status === "fulfilled",
       confirmation: results[1].status === "fulfilled",
       contact: results[2].status === "fulfilled",
-      sigmafy: results[3].status === "fulfilled",
+      recorded: results[3].status === "fulfilled",
     },
   });
 }
