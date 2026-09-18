@@ -19,7 +19,7 @@ export interface CourseDetail {
   level: "Beginner" | "Intermediate" | "Advanced";
 }
 
-interface TopicSpec {
+export interface TopicSpec {
   slug: string;
   name: string;
   summary: string;
@@ -30,7 +30,9 @@ interface TopicSpec {
   level: "Beginner" | "Intermediate" | "Advanced";
 }
 
-const topics: TopicSpec[] = [
+// Exported so /courses can build a belt comparison from the same source
+// the course pages use, rather than a second copy that drifts.
+export const topics: TopicSpec[] = [
   {
     slug: "5s",
     name: "5S",

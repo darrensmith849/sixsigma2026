@@ -3,12 +3,21 @@ import CoursesClient from "@/components/CoursesClient";
 import JsonLd from "@/components/JsonLd";
 import { buildMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
 import BreadcrumbsJsonLd from "@/seo-kit/schema/breadcrumbs";
+import { buildFaqSchema } from "@/seo-kit/schema/faq";
+import BeltComparison, { COMPARISON_FAQS } from "@/components/courses/BeltComparison";
 import { courses } from "./[slug]/courseData";
 
+/**
+ * Titled for the decision, not the category. "Six Sigma Courses in South
+ * Africa" put this page in a fight with the homepage, which ranks 2.1 for
+ * "six sigma" and 1.5 for "six sigma certification" against this page's 8.8
+ * and 2.5 — and the duplicate converted the overlap at 0.5%. Comparison
+ * queries are this page's to win and nothing else on the site targets them.
+ */
 export const metadata: Metadata = buildMetadata({
-  title: `Six Sigma Courses in South Africa | ${SITE_NAME}`,
+  title: `Compare Six Sigma Belts — Which Course Should You Do? | ${SITE_NAME}`,
   description:
-    "Internationally accredited Six Sigma courses in South Africa. White Belt, Yellow Belt, Green Belt, Black Belt certification training available online, virtually, and in the classroom.",
+    "White Belt to Black Belt compared side by side: level, duration, prerequisites and what each belt qualifies you to do. CSSC-accredited, online, virtual or classroom in South Africa.",
   path: "/courses",
 });
 
@@ -44,7 +53,8 @@ export default async function CoursesPage({
           { name: "Courses", url: "/courses" },
         ]}
       />
-      <CoursesClient initialQuery={q ?? ""} />
+      <JsonLd data={buildFaqSchema(COMPARISON_FAQS)} />
+      <CoursesClient initialQuery={q ?? ""} comparison={<BeltComparison />} />
     </>
   );
 }

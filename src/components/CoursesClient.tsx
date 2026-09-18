@@ -285,9 +285,15 @@ interface CoursesClientProps {
    * emitted from src/app/layout.tsx.
    */
   initialQuery?: string;
+  /**
+   * Rendered between the course grid and the custom-training block. A server
+   * component passed down as a prop, so the belt comparison stays out of the
+   * client bundle and lands in the HTML crawlers see.
+   */
+  comparison?: React.ReactNode;
 }
 
-export default function CoursesClient({ initialQuery = "" }: CoursesClientProps) {
+export default function CoursesClient({ initialQuery = "", comparison }: CoursesClientProps) {
   const [activeMode, setActiveMode] = useState<Mode>("Online");
   const query = initialQuery.trim();
 
@@ -424,6 +430,8 @@ export default function CoursesClient({ initialQuery = "" }: CoursesClientProps)
           )}
         </div>
       </section>
+
+      {comparison}
 
       {/* ─── Custom training split ─── */}
       <FadeIn>
