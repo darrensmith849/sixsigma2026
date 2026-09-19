@@ -1,15 +1,21 @@
 /**
  * Vercel weekly cron: run the LLM citation monitor and email the report.
  *
- * Uses the existing Brevo wiring (BREVO_API_KEY env) to send the markdown
- * report to the address configured via MONITOR_REPORT_TO (defaults to
- * contact@2ko.co.za). Writes raw snapshot JSON + markdown to disk so
- * subsequent runs can diff against it.
+ * Sends the markdown report via the Cloudflare Email binding to the address
+ * configured via MONITOR_REPORT_TO (defaults to contact@2ko.co.za). Writes raw
+ * snapshot JSON + markdown to disk so subsequent runs can diff against it.
+ *
+ * NOTE: this route is a leftover from Vercel and does not currently run. It
+ * writes with `writeFileSync`, which has no filesystem on Workers, and
+ * wrangler.jsonc declares no cron trigger, so nothing invokes it. The send is
+ * converted here only so the repository holds no Brevo dependency; the route
+ * itself needs rethinking before it can run on Cloudflare.
  *
  * Protected by `CRON_SECRET` Vercel env. Engines without API keys are
  * silently skipped — the report still ships with whichever engines responded.
  */
 import { writeFileSync } from "node:fs";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { join } from "node:path";
 import {
   DEFAULT_SNAPSHOT_DIR,
@@ -23,34 +29,32 @@ import {
 const REPORT_TO = process.env.MONITOR_REPORT_TO ?? "contact@2ko.co.za";
 const REPORT_FROM = process.env.MONITOR_REPORT_FROM ?? "noreply@2ko.co.za";
 
-async function sendBrevoEmail(subject: string, body: string): Promise<{ ok: boolean; status: number; text?: string }> {
-  if (!process.env.BREVO_API_KEY) {
-    return { ok: false, status: 0, text: "BREVO_API_KEY not set" };
-  }
-  const res = await fetch("https://api.brevo.com/v3/smtp/email", {
-    method: "POST",
-    headers: {
-      "api-key": process.env.BREVO_API_KEY,
-      "content-type": "application/json",
-      accept: "application/json",
-    },
-    body: JSON.stringify({
-      sender: { email: REPORT_FROM, name: "Six Sigma SA — AI Monitor" },
-      to: [{ email: REPORT_TO }],
-      subject,
-      htmlContent: `<pre style="font-family: ui-monospace, monospace; white-space: pre-wrap;">${escapeHtml(
-        body,
-      )}</pre>`,
-      textContent: body,
-    }),
-  });
-  let text: string | undefined;
+async function sendReportEmail(subject: string, body: string): Promise<{ ok: boolean; status: number; text?: string }> {
   try {
-    text = await res.text();
-  } catch {
-    // ignore
+    const env = getCloudflareContext().env as unknown as {
+      EMAIL?: {
+        send: (m: {
+          to: string | string[];
+          from: { email: string; name?: string };
+          subject: string;
+          html: string;
+          text: string;
+        }) => Promise<unknown>;
+      };
+    };
+    if (!env.EMAIL) return { ok: false, status: 0, text: "EMAIL binding not configured" };
+
+    await env.EMAIL.send({
+      to: REPORT_TO,
+      from: { email: REPORT_FROM, name: "Six Sigma SA — AI Monitor" },
+      subject,
+      html: `<pre style="font-family: ui-monospace, monospace; white-space: pre-wrap;">${escapeHtml(body)}</pre>`,
+      text: body,
+    });
+    return { ok: true, status: 202 };
+  } catch (e) {
+    return { ok: false, status: 500, text: e instanceof Error ? e.message : String(e) };
   }
-  return { ok: res.ok, status: res.status, text };
 }
 
 function escapeHtml(s: string): string {
@@ -89,7 +93,7 @@ export async function GET(req: Request): Promise<Response> {
 
   const md = renderMarkdownReport(snapshot, diff);
   const subject = `[ai-monitor] ${date} — ${Object.values(snapshot.citationCountByEngine).reduce((a, b) => a + b, 0)} citations`;
-  const sent = await sendBrevoEmail(subject, md);
+  const sent = await sendReportEmail(subject, md);
 
   return Response.json({
     ok: true,

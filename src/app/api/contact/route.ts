@@ -4,15 +4,16 @@ import {
   buildNotificationEmail,
 } from "@/lib/email-templates";
 import { classifyAsJobApplication } from "@/lib/job-filter";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 /**
  * Contact form sink.
  *
  * Accepts a POST from the ContactForm component, validates the payload,
  * and fans it out to:
- *   1. Brevo Transactional Email → internal notification to contact@2ko.co.za
- *   2. Brevo Transactional Email → confirmation back to the enquirer
- *   3. Brevo Contacts → upsert into the "Website Enquiries" list
+ *   1. Cloudflare Email → internal notification to contact@2ko.co.za
+ *   2. Cloudflare Email → confirmation back to the enquirer
+ *   3. D1 `contacts` → upsert the person's record
  *   4. The estate enquiries database, via the ingest endpoint on 2ko.co.za
  *
  * Each outbound call runs in parallel via Promise.allSettled so a single
@@ -22,7 +23,6 @@ import { classifyAsJobApplication } from "@/lib/job-filter";
 
 export const runtime = "nodejs";
 
-const BREVO_API = "https://api.brevo.com/v3";
 
 interface ContactPayload {
   name: string;
@@ -75,40 +75,73 @@ function validate(body: unknown): ContactPayload | { error: string } {
   return { name, email, phone, company, subject, message, courseTopic, courseMode, delegates, preferredCity, industry, sourcePage, utm, userAgent, website };
 }
 
-async function brevoFetch(path: string, init: RequestInit) {
-  const apiKey = process.env.BREVO_API_KEY;
-  if (!apiKey) throw new Error("BREVO_API_KEY not set");
-  const res = await fetch(`${BREVO_API}${path}`, {
-    ...init,
-    headers: {
-      "api-key": apiKey,
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      ...(init.headers || {}),
-    },
-  });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Brevo ${path} failed ${res.status}: ${text}`);
-  }
-  if (res.status === 204) return null;
-  return res.json();
+/**
+ * Cloudflare Email Service, replacing Brevo.
+ *
+ * The binding is the credential — there is no API key to go missing, which is
+ * the failure that took sixsigmauk.com's form down for fourteen weeks. It only
+ * exists at request time on the Worker, so it is fetched per call rather than
+ * held in module scope, which is shared across requests.
+ *
+ * `from` must be on a domain onboarded for Email Sending;
+ * sixsigmasouthafrica.co.za was onboarded 2026-09-19.
+ */
+/** Only the part of D1 this route uses; the project has no generated Worker types. */
+type D1Binding = {
+  prepare: (sql: string) => {
+    bind: (...values: unknown[]) => { run: () => Promise<unknown> };
+  };
+};
+
+type EmailBinding = {
+  send: (m: {
+    to: string | string[];
+    from: { email: string; name?: string };
+    replyTo?: string;
+    subject: string;
+    html: string;
+    text: string;
+  }) => Promise<unknown>;
+};
+
+function emailBinding(): EmailBinding {
+  const env = getCloudflareContext().env as unknown as { EMAIL?: EmailBinding };
+  if (!env.EMAIL) throw new Error("EMAIL binding is not configured on this Worker");
+  return env.EMAIL;
 }
+
+const SENDER_EMAIL = "sales@sixsigmasouthafrica.co.za";
+const SENDER_NAME = "Six Sigma South Africa";
+const NOTIFY_TO = "contact@2ko.co.za";
+
+/** A plain-text fallback, because HTML-only mail scores worse and some clients show nothing else. */
+function textFromHtml(html: string): string {
+  return html
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|tr|h[1-6])>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 
 async function sendNotificationEmail(payload: ContactPayload) {
   const { subject, html } = buildNotificationEmail(payload);
-  return brevoFetch("/smtp/email", {
-    method: "POST",
-    body: JSON.stringify({
-      sender: {
-        name: process.env.BREVO_SENDER_NAME ?? "Six Sigma South Africa",
-        email: process.env.BREVO_SENDER_EMAIL,
-      },
-      to: [{ email: process.env.BREVO_NOTIFY_TO, name: "Six Sigma South Africa" }],
-      replyTo: { email: payload.email, name: payload.name },
-      subject,
-      htmlContent: html,
-    }),
+  return emailBinding().send({
+    to: NOTIFY_TO,
+    from: { email: SENDER_EMAIL, name: SENDER_NAME },
+    // Replying to the notification reaches the enquirer directly, which is how
+    // the team has always used it.
+    replyTo: payload.email,
+    subject,
+    html,
+    text: textFromHtml(html),
   });
 }
 
@@ -117,58 +150,83 @@ async function sendConfirmationEmail(payload: ContactPayload) {
     name: payload.name,
     subject: payload.subject,
   });
-  return brevoFetch("/smtp/email", {
-    method: "POST",
-    body: JSON.stringify({
-      sender: {
-        name: process.env.BREVO_SENDER_NAME ?? "Six Sigma South Africa",
-        email: process.env.BREVO_SENDER_EMAIL,
-      },
-      to: [{ email: payload.email, name: payload.name }],
-      subject,
-      htmlContent: html,
-    }),
+  return emailBinding().send({
+    to: payload.email,
+    from: { email: SENDER_EMAIL, name: SENDER_NAME },
+    subject,
+    html,
+    text: textFromHtml(html),
   });
 }
 
+/**
+ * Upsert the person into the estate's own contacts table.
+ *
+ * Replaces the Brevo contact upsert. Cloudflare Email Sending has no contact
+ * store, so this either disappeared or moved somewhere we control; it moved.
+ * One row per person per site — the same address enquiring on two brands is
+ * two relationships, not one.
+ *
+ * Worth recording: BREVO_LIST_ID was empty in production, so every contact
+ * Brevo held from this form was created outside any list. Nothing was
+ * segmenting them; nothing is lost by the move.
+ */
 async function upsertContact(payload: ContactPayload) {
-  const listIdRaw = process.env.BREVO_LIST_ID;
-  const listIds = listIdRaw ? [Number(listIdRaw)] : undefined;
+  const env = getCloudflareContext().env as unknown as { DB?: D1Binding };
+  const db = env.DB;
+  if (!db) throw new Error("D1 binding DB is not configured on this Worker");
 
-  const attributes: Record<string, string> = {
-    FIRSTNAME: payload.name.split(/\s+/)[0] ?? "",
-    LASTNAME: payload.name.split(/\s+/).slice(1).join(" "),
-    COMPANY: payload.company ?? "",
-    LAST_ENQUIRY_SUBJECT: payload.subject,
-    LAST_ENQUIRY_PAGE: payload.sourcePage ?? "",
-    LAST_ENQUIRY_AT: new Date().toISOString(),
-  };
-  if (payload.courseTopic) attributes.LAST_COURSE_TOPIC = payload.courseTopic;
-  if (payload.courseMode) attributes.LAST_COURSE_MODE = payload.courseMode;
-  if (payload.delegates) attributes.LAST_DELEGATES = payload.delegates;
-  if (payload.preferredCity) attributes.LAST_PREFERRED_CITY = payload.preferredCity;
-  if (payload.industry) attributes.INDUSTRY = payload.industry;
-  // Only include phone when it parses as valid E.164 (Brevo SMS field
-  // rejects anything else). Otherwise store it as a plain text attribute
-  // so lead reps still have it to call.
-  if (payload.phone) {
-    const digits = payload.phone.replace(/[^\d+]/g, "");
-    if (/^\+\d{8,15}$/.test(digits)) {
-      attributes.SMS = digits;
-    } else {
-      attributes.PHONE = payload.phone;
-    }
-  }
+  const now = new Date().toISOString();
+  const parts = payload.name.trim().split(/\s+/);
+  const firstName = parts[0] ?? "";
+  const lastName = parts.slice(1).join(" ");
 
-  return brevoFetch("/contacts", {
-    method: "POST",
-    body: JSON.stringify({
-      email: payload.email,
-      attributes,
-      listIds,
-      updateEnabled: true,
-    }),
-  });
+  // INSERT ... ON CONFLICT keeps first_seen from the original row and bumps the
+  // counter, so a returning enquirer reads as one person who asked twice
+  // rather than two people.
+  await db
+    .prepare(
+      `INSERT INTO contacts (
+         id, email, site, first_name, last_name, phone, company, industry,
+         last_subject, last_source_page, last_course_topic, last_course_mode,
+         last_delegates, last_preferred_city, enquiry_count, first_seen, last_seen
+       ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,?,?)
+       ON CONFLICT(email, site) DO UPDATE SET
+         first_name          = COALESCE(NULLIF(excluded.first_name, ''), contacts.first_name),
+         last_name           = COALESCE(NULLIF(excluded.last_name, ''), contacts.last_name),
+         phone               = COALESCE(excluded.phone, contacts.phone),
+         company             = COALESCE(excluded.company, contacts.company),
+         industry            = COALESCE(excluded.industry, contacts.industry),
+         last_subject        = excluded.last_subject,
+         last_source_page    = excluded.last_source_page,
+         last_course_topic   = COALESCE(excluded.last_course_topic, contacts.last_course_topic),
+         last_course_mode    = COALESCE(excluded.last_course_mode, contacts.last_course_mode),
+         last_delegates      = COALESCE(excluded.last_delegates, contacts.last_delegates),
+         last_preferred_city = COALESCE(excluded.last_preferred_city, contacts.last_preferred_city),
+         enquiry_count       = contacts.enquiry_count + 1,
+         last_seen           = excluded.last_seen`,
+    )
+    .bind(
+      crypto.randomUUID(),
+      payload.email,
+      "sixsigmasouthafrica.co.za",
+      firstName,
+      lastName,
+      payload.phone ?? null,
+      payload.company ?? null,
+      payload.industry ?? null,
+      payload.subject,
+      payload.sourcePage ?? null,
+      payload.courseTopic ?? null,
+      payload.courseMode ?? null,
+      payload.delegates ?? null,
+      payload.preferredCity ?? null,
+      now,
+      now,
+    )
+    .run();
+
+  return { ok: true };
 }
 
 /**

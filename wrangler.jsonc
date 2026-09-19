@@ -7,7 +7,22 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  // Cloudflare Email Service, replacing Brevo. No API key — the binding is the
+  // credential, so there is nothing to forget or rotate. sixsigmasouthafrica.co.za
+  // was onboarded for Email Sending on 2026-09-19.
+  "send_email": [
+    { "name": "EMAIL" }
+  ],
+  // The estate enquiries database, shared with the 2kosystems Worker. Holds the
+  // `contacts` table that replaced the Brevo contact list.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "2ko-enquiries",
+      "database_id": "7300d129-8c81-468d-8077-c5ced9782a8f"
+    }
+  ]
   // Env vars (BREVO_API_KEY, OPENAI_API_KEY, BREVO_*, SIGMAFY_*, NEXT_PUBLIC_SITE_URL)
   // are set in the Cloudflare dashboard (Workers & Pages → Settings → Variables),
   // not committed here. See sixsigma2026-cloudflare-migration runbook.
