@@ -203,9 +203,15 @@ async function sendNotificationEmail(payload: ContactPayload, enquiryId?: string
 }
 
 async function sendConfirmationEmail(payload: ContactPayload, enquiryId?: string) {
-  const { subject, html } = buildConfirmationEmail({
+  // The course fields go in so a Black Belt classroom enquiry can be answered
+  // as one, instead of getting the same paragraph as "please call me".
+  const { subject, html, template } = buildConfirmationEmail({
     name: payload.name,
     subject: payload.subject,
+    courseTopic: payload.courseTopic,
+    courseMode: payload.courseMode,
+    preferredCity: payload.preferredCity,
+    delegates: payload.delegates,
   });
   const messageId = crypto.randomUUID();
 
@@ -221,7 +227,10 @@ async function sendConfirmationEmail(payload: ContactPayload, enquiryId?: string
     id: messageId,
     toAddress: payload.email,
     subject,
-    template: "enquiry-confirmation",
+    // The variant that actually went, not a single name for all of them —
+    // otherwise the dashboard shows "confirmation" against every enquiry and
+    // cannot tell you which one the person received.
+    template,
     kind: "transactional",
     enquiryId,
   });

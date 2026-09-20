@@ -94,6 +94,11 @@ function escape(str: string): string {
 export interface ConfirmationParams {
   name: string;
   subject: string;
+  /** Course fields, present on a course or corporate-training enquiry. */
+  courseTopic?: string;
+  courseMode?: string;
+  preferredCity?: string;
+  delegates?: string;
 }
 
 const subjectLabels: Record<string, string> = {
@@ -104,22 +109,123 @@ const subjectLabels: Record<string, string> = {
   "general": "enquiry",
 };
 
-export function buildConfirmationEmail({
-  name,
-  subject,
-}: ConfirmationParams): { subject: string; html: string } {
-  const firstName = escape(name.trim().split(/\s+/)[0] || "there").toUpperCase();
-  const subjectLabel = subjectLabels[subject] ?? "enquiry";
+/** "master-black-belt" → "Master Black Belt". */
+function titleCase(slug: string): string {
+  return slug
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+/**
+ * What the confirmation actually says, chosen by what was asked.
+ *
+ * Sixteen of the last twenty-one enquiries were about a specific belt in a
+ * specific delivery mode, and every one of them got the same paragraph as a
+ * general "please call me" message. Reading back what somebody asked for is
+ * the cheapest way to show a real enquiry landed somewhere real, and it saves
+ * the follow-up that starts "did you get my message about Black Belt?".
+ *
+ * Each variant carries its own template name. That is what the estate ledger
+ * files against the enquiry, so the dashboard can show which of these went out
+ * rather than recording every reply as one undifferentiated "confirmation".
+ */
+function confirmationCopy(p: ConfirmationParams): {
+  template: string;
+  subject: string;
+  lead: string;
+  next: string;
+} {
+  // A slug the label map has not caught up with reads as "master-black-belt" in
+  // the customer's inbox, so unknown values are title-cased rather than shown raw.
+  const belt = p.courseTopic
+    ? courseTopicLabels[p.courseTopic] ?? titleCase(p.courseTopic)
+    : "";
+  const mode = p.courseMode ? courseModeLabels[p.courseMode] ?? p.courseMode : "";
+  const city = p.preferredCity?.trim() ?? "";
+  const delegates = p.delegates?.trim() ?? "";
+
+  switch (p.subject) {
+    case "course-enquiry": {
+      // Named when we know it, generic when we do not — never a blank space
+      // where a course title should be.
+      const about = belt
+        ? `your enquiry about the <strong>${escape(belt)}</strong> course${mode ? ` (${escape(mode)})` : ""}`
+        : "your Six Sigma course enquiry";
+
+      return {
+        template: "confirmation-course-enquiry",
+        subject: belt
+          ? `Your ${belt} enquiry · Six Sigma South Africa`
+          : "Your course enquiry · Six Sigma South Africa",
+        lead: `We have ${about}.`,
+        next: "One of the team will be in touch within one business day with upcoming dates, what the course covers and what it costs.",
+      };
+    }
+
+    case "corporate-training": {
+      const scope = [
+        delegates ? `around ${escape(delegates)} delegates` : "",
+        city ? `in ${escape(city)}` : "",
+      ].filter(Boolean).join(" ");
+
+      return {
+        template: "confirmation-corporate-training",
+        subject: "Your corporate training enquiry · Six Sigma South Africa",
+        lead: `We have your enquiry about training for your team${scope ? ` — ${scope}` : ""}.`,
+        next: "One of the team will be in touch within one business day to talk through group size, dates, and whether in-house or public courses suit you better.",
+      };
+    }
+
+    case "consultancy":
+      return {
+        template: "confirmation-consultancy",
+        subject: "Your consultancy enquiry · Six Sigma South Africa",
+        lead: "We have your consultancy enquiry.",
+        next: "One of the team will be in touch within one business day. The first conversation is about the process you are trying to improve — we would rather understand that than propose anything before we do.",
+      };
+
+    case "partnership":
+      return {
+        template: "confirmation-partnership",
+        subject: "Your partnership enquiry · Six Sigma South Africa",
+        lead: "We have your partnership enquiry.",
+        next: "One of the team will be in touch within one business day to find out what you have in mind.",
+      };
+
+    default:
+      return {
+        template: "confirmation-general",
+        subject: "Thank you for your enquiry · Six Sigma South Africa",
+        lead: "We have your enquiry.",
+        next: "One of the team will be in touch within one business day.",
+      };
+  }
+}
+
+export function buildConfirmationEmail(
+  p: ConfirmationParams,
+): { subject: string; html: string; template: string } {
+  // Upper-cased before escaping, not after. The other way round turns "&lt;"
+  // into "&LT;", which only renders because HTML5 happens to define the
+  // upper-case aliases too — true for all five characters escape() emits, and
+  // not something to keep relying on.
+  const firstName = escape((p.name.trim().split(/\s+/)[0] || "there").toUpperCase());
+  const copy = confirmationCopy(p);
 
   const html = wrapper(`
     <h1 style="margin:0 0 24px;font-size:28px;font-weight:800;color:#0a1e14;letter-spacing:-0.02em;">
-      Thank you for your inquiry!
+      Thank you for your enquiry!
     </h1>
     <p style="margin:0 0 20px;font-size:16px;color:#0a1e14;">
       Hi ${firstName},
     </p>
     <p style="margin:0 0 20px;font-size:16px;color:#0a1e14;">
-      We have received your ${escape(subjectLabel)} and one of our team will be in touch within one business day.
+      ${copy.lead}
+    </p>
+    <p style="margin:0 0 20px;font-size:16px;color:#0a1e14;">
+      ${copy.next}
     </p>
     <p style="margin:0 0 20px;font-size:16px;color:#0a1e14;">
       In the meantime, if your enquiry is urgent you can reach us directly on
@@ -132,10 +238,7 @@ export function buildConfirmationEmail({
     </p>
   `);
 
-  return {
-    subject: "Thank you for your inquiry · Six Sigma South Africa",
-    html,
-  };
+  return { subject: copy.subject, html, template: copy.template };
 }
 
 /* ────────────────────────────────────────────────
