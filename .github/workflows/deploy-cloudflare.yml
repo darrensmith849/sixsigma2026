@@ -31,6 +31,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+
+      # The signature this site produces has to match the verifier that serves
+      # go.sixsigmasouthafrica.co.za, and a third implementation in PHP. Drift
+      # is silent — links simply start returning 400 when recipients click
+      # them — so it stops the deploy rather than shipping broken mail.
+      - name: Check the tracking signature still matches the verifier
+        run: npx tsx scripts/check-tracking-signature.ts
+
       - run: npx opennextjs-cloudflare build
       - name: Deploy worker
         uses: cloudflare/wrangler-action@v3
