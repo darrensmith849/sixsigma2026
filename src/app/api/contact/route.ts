@@ -131,9 +131,57 @@ function textFromHtml(html: string): string {
 }
 
 
-async function sendNotificationEmail(payload: ContactPayload) {
+/**
+ * File a sent email in the estate ledger.
+ *
+ * This site has no binding for the messages table, so it posts to the same host
+ * as the enquiry record. The path is derived from ENQUIRY_INGEST_URL rather
+ * than taking a second environment variable, which would be one more thing set
+ * on one deploy and forgotten on the next.
+ *
+ * Best-effort, and never throws. The ledger records what already happened: an
+ * email that has left must not come back as a failure the caller retries,
+ * because the retry would send it a second time.
+ */
+async function recordSentMessage(m: {
+  id: string;
+  toAddress: string;
+  subject: string;
+  template: string;
+  kind: "transactional" | "notification";
+  enquiryId?: string;
+}) {
+  const ingest = process.env.ENQUIRY_INGEST_URL;
+  const token = process.env.ENQUIRY_INGEST_TOKEN;
+  if (!ingest || !token) return;
+
+  try {
+    await fetch(new URL("/api/messages", ingest).toString(), {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        ...m,
+        site: "sixsigmasouthafrica.co.za",
+        provider: "cloudflare",
+        fromAddress: SENDER_EMAIL,
+        fromName: SENDER_NAME,
+        contactEmail: m.toAddress,
+        status: "sent",
+      }),
+    });
+  } catch (error) {
+    console.error("[contact] ledger record failed:", error);
+  }
+}
+
+async function sendNotificationEmail(payload: ContactPayload, enquiryId?: string) {
   const { subject, html } = buildNotificationEmail(payload);
-  return emailBinding().send({
+  const messageId = crypto.randomUUID();
+
+  await emailBinding().send({
     to: NOTIFY_TO,
     from: { email: SENDER_EMAIL, name: SENDER_NAME },
     // Replying to the notification reaches the enquirer directly, which is how
@@ -143,19 +191,39 @@ async function sendNotificationEmail(payload: ContactPayload) {
     html,
     text: textFromHtml(html),
   });
+
+  await recordSentMessage({
+    id: messageId,
+    toAddress: NOTIFY_TO,
+    subject,
+    template: "enquiry-notification",
+    kind: "notification",
+    enquiryId,
+  });
 }
 
-async function sendConfirmationEmail(payload: ContactPayload) {
+async function sendConfirmationEmail(payload: ContactPayload, enquiryId?: string) {
   const { subject, html } = buildConfirmationEmail({
     name: payload.name,
     subject: payload.subject,
   });
-  return emailBinding().send({
+  const messageId = crypto.randomUUID();
+
+  await emailBinding().send({
     to: payload.email,
     from: { email: SENDER_EMAIL, name: SENDER_NAME },
     subject,
     html,
     text: textFromHtml(html),
+  });
+
+  await recordSentMessage({
+    id: messageId,
+    toAddress: payload.email,
+    subject,
+    template: "enquiry-confirmation",
+    kind: "transactional",
+    enquiryId,
   });
 }
 
@@ -344,14 +412,29 @@ export async function POST(req: NextRequest) {
   // every one of them is logged when it fails. The record throws rather than
   // skipping when unconfigured, so a missing secret shows up here instead of
   // reporting success and losing the lead.
+  // The enquiry is recorded first so both emails can carry its id into the
+  // ledger. That is what lets the dashboard answer "what did we send this
+  // person?" — until now the enquiry and the reply were written to two tables
+  // with nothing joining them.
+  //
+  // Failure is still only logged, exactly as it was inside the fan-out below:
+  // a lost link must not cost the enquiry or the reply.
+  let enquiryId: string | undefined;
+
+  try {
+    const recorded = (await recordEnquiry(validated)) as { id?: unknown };
+    enquiryId = typeof recorded?.id === "string" ? recorded.id : undefined;
+  } catch (error) {
+    console.error("[contact] enquiry-record failed:", error);
+  }
+
   const results = await Promise.allSettled([
-    sendNotificationEmail(validated), // 0 — critical
-    sendConfirmationEmail(validated), // 1
-    upsertContact(validated),         // 2
-    recordEnquiry(validated),         // 3
+    sendNotificationEmail(validated, enquiryId), // 0 — critical
+    sendConfirmationEmail(validated, enquiryId), // 1
+    upsertContact(validated),                    // 2
   ]);
 
-  const labels = ["notification", "confirmation", "contact-upsert", "enquiry-record"];
+  const labels = ["notification", "confirmation", "contact-upsert"];
   results.forEach((r, i) => {
     if (r.status === "rejected") {
       // eslint-disable-next-line no-console
@@ -372,7 +455,7 @@ export async function POST(req: NextRequest) {
       notification: results[0].status === "fulfilled",
       confirmation: results[1].status === "fulfilled",
       contact: results[2].status === "fulfilled",
-      recorded: results[3].status === "fulfilled",
+      recorded: enquiryId !== undefined,
     },
   });
 }
