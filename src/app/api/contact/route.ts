@@ -3,6 +3,7 @@ import {
   buildConfirmationEmail,
   buildNotificationEmail,
 } from "@/lib/email-templates";
+import { instrument } from "@/lib/tracking/links";
 import { classifyAsJobApplication } from "@/lib/job-filter";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
@@ -113,6 +114,8 @@ function emailBinding(): EmailBinding {
 const SENDER_EMAIL = "sales@sixsigmasouthafrica.co.za";
 const SENDER_NAME = "Six Sigma South Africa";
 const NOTIFY_TO = "contact@2ko.co.za";
+/** This brand's own tracking host, so a recipient hovering a link sees Six Sigma. */
+const TRACKING_BASE = "https://go.sixsigmasouthafrica.co.za";
 
 /** A plain-text fallback, because HTML-only mail scores worse and some clients show nothing else. */
 function textFromHtml(html: string): string {
@@ -215,11 +218,30 @@ async function sendConfirmationEmail(payload: ContactPayload, enquiryId?: string
   });
   const messageId = crypto.randomUUID();
 
+  // Only the confirmation is instrumented. The notification goes to our own
+  // inbox, where a pixel would record the team reading their mail as
+  // engagement — a number that looks like interest and measures nothing.
+  //
+  // Without TRACKING_SECRET the email still sends, untracked. A missing secret
+  // costing measurement is the right trade; costing the reply is not.
+  const secret = process.env.TRACKING_SECRET;
+  let body = html;
+
+  if (secret) {
+    try {
+      body = await instrument(html, { base: TRACKING_BASE, secret, messageId });
+    } catch (error) {
+      console.error("[contact] instrumenting failed, sending plain:", error);
+    }
+  }
+
   await emailBinding().send({
     to: payload.email,
     from: { email: SENDER_EMAIL, name: SENDER_NAME },
     subject,
-    html,
+    html: body,
+    // Built from the original HTML on purpose: the plain-text alternative
+    // should carry real destinations, not a wall of redirect URLs.
     text: textFromHtml(html),
   });
 
