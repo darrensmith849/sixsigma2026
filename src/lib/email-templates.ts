@@ -274,6 +274,27 @@ const courseModeLabels: Record<string, string> = {
   online: "Online (self-paced)",
 };
 
+/*
+ * The form's values as a person would write them, for anything outside this
+ * file that has to describe an enquiry: the same labels the team sees in the
+ * notification, so an enquiry reads the same wherever it turns up.
+ */
+
+/** "course-enquiry" → "Six Sigma course enquiry". */
+export function enquiryTypeLabel(slug: string): string {
+  return subjectLabels[slug] ?? slug;
+}
+
+/** "green-belt" → "Green Belt", and a belt the map has not caught up with is title-cased. */
+export function courseLabel(slug: string): string {
+  return courseTopicLabels[slug] ?? titleCase(slug);
+}
+
+/** "online" → "Online (self-paced)". */
+export function deliveryLabel(slug: string): string {
+  return courseModeLabels[slug] ?? slug;
+}
+
 export function buildNotificationEmail(
   p: NotificationParams
 ): { subject: string; html: string } {
