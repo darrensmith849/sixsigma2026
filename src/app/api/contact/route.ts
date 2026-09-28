@@ -5,6 +5,7 @@ import {
 } from "@/lib/email-templates";
 import { instrument } from "@/lib/tracking/links";
 import { classifyAsJobApplication } from "@/lib/job-filter";
+import { sendToEmailAgent } from "@/lib/email-agent";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 /**
@@ -16,6 +17,8 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
  *   2. Cloudflare Email → confirmation back to the enquirer
  *   3. D1 `contacts` → upsert the person's record
  *   4. The estate enquiries database, via the ingest endpoint on 2ko.co.za
+ *   5. The Sigmafy portal's email agent, which drafts a reply for the team to
+ *      check — after the response, so it can neither slow the form nor fail it
  *
  * Each outbound call runs in parallel via Promise.allSettled so a single
  * failure doesn't block the others. The user only sees an error if the
@@ -104,6 +107,19 @@ type EmailBinding = {
     text: string;
   }) => Promise<unknown>;
 };
+
+/**
+ * Keep the Worker alive for a task that finishes after the response. Outside
+ * the Worker — `next dev` — there is no context to hand it to, and it simply
+ * runs as an ordinary promise.
+ */
+function inBackground(task: Promise<unknown>) {
+  try {
+    getCloudflareContext().ctx.waitUntil(task);
+  } catch {
+    // Not on the Worker; the task is already running.
+  }
+}
 
 function emailBinding(): EmailBinding {
   const env = getCloudflareContext().env as unknown as { EMAIL?: EmailBinding };
@@ -458,6 +474,13 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("[contact] enquiry-record failed:", error);
   }
+
+  // The email agent drafts a reply for the team to check. Handed to waitUntil
+  // so it runs on after the response: the enquirer is not kept waiting on the
+  // portal, and nothing that happens there can turn their submission into an
+  // error. It goes whether or not the notification below succeeds: if that
+  // fails, the team can still find the enquiry drafted in the portal.
+  inBackground(sendToEmailAgent(validated, enquiryId));
 
   const results = await Promise.allSettled([
     sendNotificationEmail(validated, enquiryId), // 0 — critical
