@@ -73,6 +73,18 @@ const STRONG_JOB_KEYWORDS: RegExp[] = [
   /\bplease\s+(hire|employ|consider)\s+me\b/i,
   /\b(am|i'm|i\s+am)\s+(looking|searching)\s+for\s+work\b/i,
   /\bplease\s+help\s+me\s+(with\s+)?(a\s+)?(job|work)\b/i,
+
+  // Seen in the October 2026 wave, which the patterns above missed while each
+  // one still counted as a Google Ads conversion: Xhosa/Zulu for "jobs" and
+  // "work", "help me with a job", "some general work", and loan requests.
+  /\bijob\w*/i,
+  /\bumsebenzi\b/i,
+  /\bjobs?\s+(pl[sz]+|please)\b/i,
+  /\bhelp\s+me\s+(with|to\s+(get|find))\s+(a\s+)?(job|work|employment)\b/i,
+  /\bgeneral\s+work\b/i,
+  /\bloans?\b/i,
+  /\b(learnerships|internships|bursaries)\b/i,
+  /\bstipend\b/i,
 ];
 
 const WEAK_JOB_KEYWORDS: RegExp[] = [
