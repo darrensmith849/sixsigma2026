@@ -431,7 +431,7 @@ export async function POST(req: NextRequest) {
     console.warn(
       `[contact] honeypot triggered — silent drop (email=${validated.email}, value="${validated.website}")`
     );
-    return NextResponse.json({ ok: true, delivered: {} });
+    return NextResponse.json({ ok: true, delivered: {}, counted: false });
   }
 
   // ─── Job-application gate ───────────────────────────────────────────
@@ -451,7 +451,10 @@ export async function POST(req: NextRequest) {
     console.warn(
       `[contact] job application filtered — silent drop (email=${validated.email}, stage=${jobCheck.stage}, reason=${jobCheck.reason}, message="${snippet}")`
     );
-    return NextResponse.json({ ok: true, delivered: {} });
+    // `counted: false` tells the form not to report this to GA4 or Google Ads.
+    // Before it, every dropped job seeker still fired the Ads conversion, and
+    // Smart Bidding learned to buy more of them.
+    return NextResponse.json({ ok: true, delivered: {}, counted: false });
   }
 
   // Fan out. Notification is the critical path — if it throws we return 500.
@@ -505,6 +508,7 @@ export async function POST(req: NextRequest) {
 
   return NextResponse.json({
     ok: true,
+    counted: true,
     delivered: {
       notification: results[0].status === "fulfilled",
       confirmation: results[1].status === "fulfilled",

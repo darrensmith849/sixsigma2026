@@ -118,8 +118,11 @@ export default function ContactForm() {
     formData.subject === "course-enquiry" ||
     formData.subject === "corporate-training";
 
+  const isJobSeeker = formData.subject === "job-seeker";
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isJobSeeker) return;
     setSubmitting(true);
     setError(null);
 
@@ -155,14 +158,16 @@ export default function ContactForm() {
         }),
       });
 
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         throw new Error(data.error ?? "Something went wrong. Please try again.");
       }
 
-      // Fire a GA4 conversion event so the enquiry shows up in the funnel.
+      // Fire a GA4 conversion event so the enquiry shows up in the funnel —
+      // unless the server filtered it out (a job seeker or a bot). Those were
+      // counted as Google Ads conversions, and the campaigns bid for more.
       const w = window as WindowGtag;
-      if (typeof w.gtag === "function") {
+      if (data.counted !== false && typeof w.gtag === "function") {
         w.gtag("event", "generate_lead", {
           form_subject: formData.subject,
           form_company: formData.company || undefined,
@@ -318,6 +323,7 @@ export default function ContactForm() {
             <option value="consultancy">Consultancy Services</option>
             <option value="partnership">Partnership</option>
             <option value="general">General Enquiry</option>
+            <option value="job-seeker">Looking for a job, learnership, bursary or loan</option>
           </select>
         </label>
 
@@ -405,6 +411,17 @@ export default function ContactForm() {
         placeholder="How can we help you?"
       />
 
+      {isJobSeeker && (
+        <div
+          role="status"
+          className="rounded-[12px] border border-amber-200 bg-amber-50 px-5 py-4 text-[14px] text-ink-700"
+        >
+          We&rsquo;re a training provider, so we don&rsquo;t offer jobs, learnerships,
+          bursaries or loans, and we can&rsquo;t take applications here. If you&rsquo;d like
+          to study Six Sigma yourself, choose &ldquo;Course Enquiry&rdquo; instead.
+        </div>
+      )}
+
       {error && (
         <div
           role="alert"
@@ -417,7 +434,7 @@ export default function ContactForm() {
       <div className="pt-2">
         <button
           type="submit"
-          disabled={submitting}
+          disabled={submitting || isJobSeeker}
           className="group inline-flex items-center justify-center gap-2 rounded-[12px] bg-green-500 px-8 py-4 text-[16px] font-semibold text-white transition-all duration-[var(--dur)] ease-[var(--ease)] hover:-translate-y-[1px] hover:bg-green-600 disabled:opacity-60 [box-shadow:var(--shadow-md),inset_0_1px_0_rgba(255,255,255,.18)] hover:[box-shadow:var(--shadow-lg),inset_0_1px_0_rgba(255,255,255,.18)]"
         >
           {submitting ? (
