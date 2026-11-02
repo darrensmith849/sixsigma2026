@@ -506,9 +506,18 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Delivered either way; reported to GA4 and Google Ads only when it reads as
+  // a lead. A course chosen on the form is enough on its own.
+  const counted = jobCheck.countable || Boolean(validated.courseTopic);
+  if (!counted) {
+    console.warn(
+      `[contact] delivered but not counted as a lead (email=${validated.email}, stage=${jobCheck.stage})`
+    );
+  }
+
   return NextResponse.json({
     ok: true,
-    counted: true,
+    counted,
     delivered: {
       notification: results[0].status === "fulfilled",
       confirmation: results[1].status === "fulfilled",
