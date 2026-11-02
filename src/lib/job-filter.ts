@@ -85,6 +85,11 @@ const STRONG_JOB_KEYWORDS: RegExp[] = [
   /\bloans?\b/i,
   /\b(learnerships|internships|bursaries)\b/i,
   /\bstipend\b/i,
+
+  // November 2026: "I'M interested jobs". The OpenAI key never made the move to
+  // Cloudflare, so the AI tier below has been failing open on every short
+  // message since — this has to be caught without it.
+  /\binterested\s+(in\s+)?(a\s+|any\s+|the\s+)?(jobs?|work|employment|vacanc(y|ies))\b/i,
 ];
 
 const WEAK_JOB_KEYWORDS: RegExp[] = [
@@ -112,7 +117,7 @@ const WEAK_JOB_KEYWORDS: RegExp[] = [
 
   // Bare nouns that frequently appear in job spam but occasionally in
   // legit B2B context — AI adjudication handles disambiguation.
-  /\bjob\b/i,
+  /\bjobs?\b/i,
   /\bvacanc(y|ies)\b/i,
   /\b(employment|employ)\b/i,
   /\bhiring\b/i,
@@ -125,8 +130,21 @@ const SHORT_MESSAGE_CHAR_THRESHOLD = 60;
 const SHORT_MESSAGE_WORD_THRESHOLD = 10;
 const GENERIC_SUBJECTS = new Set(["general", "enquiry", ""]);
 
+/** Words a real enquiry to a training company almost always contains. A
+ *  message with none of them is not trusted as a lead unless the AI vouches
+ *  for it — see `countable`. */
+const TRAINING_WORDS =
+  /\b(six\s*sigma|6\s*sigma|sigma|lean|belts?|courses?|training|train|certif\w*|kaizen|consult\w*|partner\w*|quot(e|es|ation)|delegates?|workshops?|in[-\s]house|on[-\s]site|price|pricing|costs?|fees?|enrol\w*|booking|dmaic|process\s+improvement|root\s+cause)\b/i;
+
 export interface JobFilterResult {
   isJob: boolean;
+  /**
+   * Whether this is trusted enough to report to GA4 and Google Ads as a lead.
+   * A message that gets through only because the AI was unavailable, and that
+   * never mentions training, is still delivered — a person reads it — but it
+   * must not teach Smart Bidding to buy more of whatever sent it.
+   */
+  countable: boolean;
   /** Which stage made the decision — useful for logs / audit. */
   stage:
     | "strong-keyword"
@@ -234,6 +252,23 @@ export async function classifyAsJobApplication(input: {
   name?: string;
   email?: string;
 }): Promise<JobFilterResult> {
+  const result = await classify(input);
+  const text = [input.subject, input.message, input.company ?? ""].join(" \n ");
+  // The "+ai" stages only let a message through when the AI said ENQUIRY.
+  const aiVouched = result.stage === "weak-keyword+ai" || result.stage === "short-message+ai";
+  return {
+    ...result,
+    countable: !result.isJob && (aiVouched || TRAINING_WORDS.test(text)),
+  };
+}
+
+async function classify(input: {
+  subject: string;
+  message: string;
+  company?: string;
+  name?: string;
+  email?: string;
+}): Promise<Omit<JobFilterResult, "countable">> {
   const haystack = [input.subject, input.message, input.company ?? ""]
     .join(" \n ")
     .toLowerCase();
