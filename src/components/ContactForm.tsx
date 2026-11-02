@@ -61,21 +61,12 @@ function collectUtm(): Record<string, string> | undefined {
   return Object.keys(utm).length > 0 ? utm : undefined;
 }
 
-/**
- * Map a topicSlug from course pages to the simplified belt option slug. A
- * course outside the belts, such as root-cause-analysis, is kept as it came:
- * dropping it sent the enquiry to the agent with no course, and it guessed.
- */
+/** Map a topicSlug from course pages to the simplified belt option slug. */
 function mapTopicToCourse(topicSlug: string): string {
   if (topicSlug.includes("yellow")) return "yellow-belt";
   if (topicSlug.includes("green")) return "green-belt";
   if (topicSlug.includes("black")) return "black-belt";
-  return /^[a-z0-9-]{1,60}$/.test(topicSlug) ? topicSlug : "";
-}
-
-/** "root-cause-analysis" → "Root Cause Analysis". */
-function courseName(slug: string): string {
-  return slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  return "";
 }
 
 export default function ContactForm() {
@@ -105,14 +96,6 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // The linked course is one of the choices even when it is not a belt, so
-  // the select shows it and it is sent with the enquiry.
-  const linkedCourse = mapTopicToCourse(paramCourse);
-  const courseOptions =
-    linkedCourse && !COURSE_OPTIONS.some((c) => c.slug === linkedCourse)
-      ? [...COURSE_OPTIONS, { slug: linkedCourse, name: courseName(linkedCourse) }]
-      : COURSE_OPTIONS;
 
   const showCourseFields =
     formData.subject === "course-enquiry" ||
@@ -351,7 +334,7 @@ export default function ContactForm() {
               onChange={set("courseTopic")}
             >
               <option value="">Select a course</option>
-              {courseOptions.map((c) => (
+              {COURSE_OPTIONS.map((c) => (
                 <option key={c.slug} value={c.slug}>
                   {c.name}
                 </option>

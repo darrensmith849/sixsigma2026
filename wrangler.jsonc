@@ -22,7 +22,19 @@
       "database_name": "2ko-enquiries",
       "database_id": "7300d129-8c81-468d-8077-c5ced9782a8f"
     }
-  ]
+  ],
+  // Workers Logs, switched on 23 Oct 2026 after enquiries went missing with
+  // nothing to show why: every submission, and the warning when the honeypot
+  // or job filter drops one, is now kept in the dashboard. Declared here so a
+  // deploy does not switch it back off.
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true
+    }
+  }
   // Env vars (BREVO_API_KEY, OPENAI_API_KEY, BREVO_*, SIGMAFY_*, NEXT_PUBLIC_SITE_URL)
   // are set in the Cloudflare dashboard (Workers & Pages → Settings → Variables),
   // not committed here. See sixsigma2026-cloudflare-migration runbook.
